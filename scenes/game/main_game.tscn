@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://uy4k0gaf0v3j"]
+
+[ext_resource type="Script" uid="uid://cmewdv5cgidov" path="res://scripts/game/background.gd" id="1_3ykke"]
+[ext_resource type="Script" uid="uid://dqsrjko6kki5b" path="res://scripts/game/main_game.gd" id="1_bc6cy"]
+
+[node name="main_game" type="Node2D"]
+script = ExtResource("1_bc6cy")
+
+[node name="background" type="Area2D" parent="."]
+script = ExtResource("1_3ykke")
+
+[node name="Label" type="Label" parent="background"]
+offset_left = 22.0
+offset_top = 27.0
+offset_right = 71.0
+offset_bottom = 50.0
+text = "STAGE"
+
+[connection signal="stage" from="." to="background" method="_on_main_game_stage"]

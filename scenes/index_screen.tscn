@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://duoikwwyevldk"]
+
+[ext_resource type="Texture2D" uid="uid://dkgjsnt5ilymo" path="res://assets/graphics/escens_graphics/background.png" id="1_pif34"]
+[ext_resource type="Texture2D" uid="uid://n2ouhr0mo1gn" path="res://assets/graphics/menu_graphics/boton_sinpresionar.png" id="2_jlcyx"]
+[ext_resource type="Texture2D" uid="uid://goy8nw7j12dt" path="res://assets/graphics/menu_graphics/boton_presionado.png" id="3_utjaf"]
+
+[node name="IndexScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="img" type="Sprite2D" parent="Background"]
+position = Vector2(398.121, 305.081)
+scale = Vector2(0.271919, 0.315919)
+texture = ExtResource("1_pif34")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -6.12
+anchor_top = -6.245
+anchor_right = -6.12
+anchor_bottom = -6.245
+offset_left = 998.0
+offset_top = 232.0
+offset_right = 4998.0
+offset_bottom = 4232.0
+texture_normal = ExtResource("2_jlcyx")
+texture_hover = ExtResource("3_utjaf")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -28.0
+offset_right = 140.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "JUGAR"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="play" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="options" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="quit" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="credits" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
