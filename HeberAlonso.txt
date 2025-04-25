@@ -1,0 +1,9 @@
+Dirección técnica: Decisiones sobre la arquitectura del software.
+
+Supervisión: Revisar el código escrito por otros desarrolladores y actualizar la rama main del repositorio.
+
+Mentoría: Ayudar a los miembros del equipo a resolver problemas técnicos.
+
+Gestión de tareas: Asignar tareas a los miembros del equipo y asegurar que el trabajo avance según lo planeado.
+
+Programador: Programar elementos del juego y estructura
