@@ -22,9 +22,12 @@ var boss_active=0 # Bandera para Agregar secuaces al BOSS
 
 # Disparos
 var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
-
+# Entorno
+var background = null
 
 func _ready():	# Comienza el juego
+	
+	init_background()
 	
 	init_player() # Instanciar y añadir el jugador en el punto central 
 	
@@ -34,7 +37,10 @@ func _ready():	# Comienza el juego
 	
 	
 #
-
+func init_background():  # Inicia el fondo y los limites de pantalla
+	background = preload("res://scenes/game/background.tscn").instantiate()
+	background.position = Vector2(0,0)  # Colocar al jugador en la parte inferior al centro
+	add_child(background)  # Agrega el nodo hijo
 
 func init_player():  # Inicia al player 1
 	player = preload("res://scenes/game/player.tscn").instantiate()
