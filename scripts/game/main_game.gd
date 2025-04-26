@@ -22,6 +22,7 @@ var boss_active=0 # Bandera para Agregar secuaces al BOSS
 
 # Disparos
 var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
+signal shoot(direction: Vector2) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
 # Entorno
 var background = null
 
@@ -72,7 +73,7 @@ func init_enemy():
 	add_child(enemy)  # Agrega como hijo del main al enemigo
 	enemies.append(enemy)
 	
-	pass
+	
 
 func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de la pantalla para el inicio de los enemigos
 	var posicion_x = 0
@@ -111,11 +112,7 @@ func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
 	
 	return closest_enemy  #devuelve el enemigo mas cercano
 	
-func shoot_at_closest_enemy(): # disparo al enemigo mas cercano
-	var closest_enemy = get_closest_enemy() #obtiene la ubicacion del enemigo mas cercano
-	if closest_enemy:
-		var direction = (closest_enemy.global_position - global_position).normalized()
-		return direction  # Función de disparo que mueve el proyectil en la dirección
+
 
 func timer_shoot():   #temporizador entre disparos
 	var shoot_timer = Timer.new()
@@ -124,9 +121,11 @@ func timer_shoot():   #temporizador entre disparos
 	add_child(shoot_timer)
 	shoot_timer.start()  # inicia el temporizador
 	# Conectar el temporizador a una función que instancia a las naves enemigas
-	shoot_timer.timeout.connect(shoot)
+	shoot_timer.timeout.connect(shoot_at_closest_enemy) # buscar el enemigo mas cercano
 	
-func shoot():
-	var direction = shoot_at_closest_enemy() # dispara un laser al enmigo mas cercano
-	print (direction)
-	pass
+func shoot_at_closest_enemy(): # disparo al enemigo mas cercano
+	var closest_enemy = get_closest_enemy() #obtiene la ubicacion del enemigo mas cercano
+	if closest_enemy:
+		var direction = (closest_enemy.global_position - global_position).normalized()
+		emit_signal("shoot",direction) #envia un señal de disparo o ataque al arma
+		
