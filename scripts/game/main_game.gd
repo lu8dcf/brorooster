@@ -59,8 +59,6 @@ func timer_add_enemy():
 	enemy_timer.timeout.connect(init_enemy)
 	
 func init_enemy():
-	
-	
 	#boss_activo =0 inicia el Boss
 	#boss_activo 1,2 o 3 , agrega diferentes enemigos con el boss
 	
@@ -73,8 +71,6 @@ func init_enemy():
 	add_child(enemy)  # Agrega como hijo del main al enemigo
 	enemies.append(enemy)
 	
-	
-
 func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de la pantalla para el inicio de los enemigos
 	var posicion_x = 0
 	var posicion_y = 0
@@ -102,7 +98,7 @@ func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
 	var closest_enemy = null  # si no tiene ningun enemigo
 	var shortest_distance = INF  # Inicia con una distancia infinita
 	var player_position = player.global_position # sposision actual del player
-	print (player_position)
+	
 	# buscar en toda las instancias de enemigos cual es la mar cercana
 	for enemy in enemies:
 		var distance_to_enemy = player_position.distance_to(enemy.global_position)
@@ -112,8 +108,6 @@ func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
 	
 	return closest_enemy  #devuelve el enemigo mas cercano
 	
-
-
 func timer_shoot():   #temporizador entre disparos
 	var shoot_timer = Timer.new()
 	shoot_timer.wait_time = timer_between_enemy
