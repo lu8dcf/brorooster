@@ -29,7 +29,7 @@ func _physics_process(delta):
 
 func move_with_mouse():
 	
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN) # oculta el mouse y evita que salga de la pantalla del videojuego
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN) # oculta el mouse y evita que salga de la pantalla del videojuego
 	var move_vector = Vector2.ZERO
 	var mouse_position = get_viewport().get_mouse_position() #posicion del mouse
 	var direction_to_mouse = (mouse_position - global_position) #la distancia entre el mouse y el player
