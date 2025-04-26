@@ -20,6 +20,8 @@ var move_enemy = 0.05  # Intervalo de tiempo para el movimiento enemigo
 var timer_between_enemy = .5 # .5 seg Intervalo que aparecen los enemigos
 var boss_active=0 # Bandera para Agregar secuaces al BOSS
 
+var spawn = null
+
 # Disparos
 var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
 
@@ -28,12 +30,10 @@ func _ready():	# Comienza el juego
 	
 	init_player() # Instanciar y añadir el jugador en el punto central 
 	
-	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
-	
-	timer_shoot() # Timer entre disparos
+	init_spawn()
 	
 	
-#
+	#timer_shoot() # Timer entre disparos
 
 
 func init_player():  # Inicia al player 1
@@ -41,6 +41,11 @@ func init_player():  # Inicia al player 1
 	player.position = Vector2(pantalla_ancho/2,pantalla_alto/2)  # Colocar al jugador en la parte inferior al centro
 	add_child(player)  # Agrega el nodo hijo
 	#screen_lives() # Muestra la cantidad de vidas
+
+func init_spawn():
+	await get_tree().create_timer(.8).timeout
+	add_child(preload("res://scenes/game/enemy/spawner_enemy.tscn").instantiate())
+
 
 func timer_add_enemy():
 	var enemy_timer = Timer.new()
@@ -95,7 +100,7 @@ func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
 	var closest_enemy = null  # si no tiene ningun enemigo
 	var shortest_distance = INF  # Inicia con una distancia infinita
 	var player_position = player.global_position # sposision actual del player
-	print (player_position)
+	#print (player_position)
 	# buscar en toda las instancias de enemigos cual es la mar cercana
 	for enemy in enemies:
 		var distance_to_enemy = player_position.distance_to(enemy.global_position)

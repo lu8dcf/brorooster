@@ -16,3 +16,6 @@ var enemigos_eliminados = 0
 # Propiedades de la Pantalla y dispositivos
 var pantalla_ancho = 1280
 var pantalla_alto = 720
+
+#Para actualizar el juego
+var stage = 1;
