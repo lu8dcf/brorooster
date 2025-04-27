@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bddovicgc7oug"
-path="res://.godot/imported/bicho2.png-c93c11c799b33210bc4e3399e36312d1.ctex"
+uid="uid://bijgtjim7ke6g"
+path="res://.godot/imported/button-exit normal.png-3731365c955477c36d48502880eaf463.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/character_graphics/bichos/bicho2.png"
-dest_files=["res://.godot/imported/bicho2.png-c93c11c799b33210bc4e3399e36312d1.ctex"]
+source_file="res://assets/buttons/button-exit normal.png"
+dest_files=["res://.godot/imported/button-exit normal.png-3731365c955477c36d48502880eaf463.ctex"]
 
 [params]
 

@@ -4,6 +4,7 @@ extends CharacterBody2D
 var speed = Global.speed_main # velocidad de movimiento del
 var speed_fly = 2 # Velocidas de vuelo
 var fly_cooldown = 1  # Tiempo de vuelo
+var can_fly = true # habilitacion para que vuele
 var extra = 1 # diferencia de velocidades
 
 var direction = Vector2.ZERO
@@ -39,14 +40,16 @@ func move_with_mouse():
 	# Lógica de movimiento según la posición del mouse
 	if direction_to_mouse.length() > deadzone_radius:
 				
-		if Input.is_action_just_pressed("ui_click_izq"):  # volar con click
+		if Input.is_action_just_pressed("ui_click_izq") and can_fly:  # volar con click
 				
 			# Temporizador para controlar duración del vuelo
 			move_right = "fly_right"
 			move_left = "fly_left"
 			extra = 5 # Incrementar velocidad para el vuelo
 			$rooster_cry.play()
+			can_fly = false #no podra volver a volar hasta que termine el tiempo
 			await get_tree().create_timer(fly_cooldown).timeout  # Tiempo de vuelo: 1 segundo
+			can_fly = true
 			move_right = "right"
 			move_left = "left"
 			extra = 1 # normaliozar el movimiento

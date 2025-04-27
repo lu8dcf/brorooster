@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dunj07hekkscj"
-path="res://.godot/imported/gallina0.png-fc47d5915a2c8cfac270e2ba1793ab78.ctex"
+uid="uid://bay7gixcmdo21"
+path="res://.godot/imported/button-restart normal.png-111562dc6941515c7a51f4af16a98c6a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gallina0.png"
-dest_files=["res://.godot/imported/gallina0.png-fc47d5915a2c8cfac270e2ba1793ab78.ctex"]
+source_file="res://assets/buttons/button-restart normal.png"
+dest_files=["res://.godot/imported/button-restart normal.png-111562dc6941515c7a51f4af16a98c6a.ctex"]
 
 [params]
 

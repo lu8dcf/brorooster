@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://caxhlqgp0b06i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhjye"]
+size = Vector2(1284, 27.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lbss"]
+size = Vector2(32.75, 745)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_mask = 3
+
+[node name="superior" type="CollisionShape2D" parent="."]
+position = Vector2(641, 1)
+shape = SubResource("RectangleShape2D_bhjye")
+
+[node name="inferior" type="CollisionShape2D" parent="."]
+visibility_layer = 3
+position = Vector2(642, 718.75)
+shape = SubResource("RectangleShape2D_bhjye")
+
+[node name="derecha" type="CollisionShape2D" parent="."]
+position = Vector2(904, 351)
+shape = SubResource("RectangleShape2D_4lbss")
+
+[node name="izquierda" type="CollisionShape2D" parent="."]
+position = Vector2(2.75, 356)
+shape = SubResource("RectangleShape2D_4lbss")
