@@ -14,5 +14,5 @@ var score = 0
 var enemigos_eliminados = 0
 
 # Propiedades de la Pantalla y dispositivos
-var pantalla_ancho = 1280
-var pantalla_alto = 720
+var pantalla_ancho = 896
+var pantalla_alto = 504
