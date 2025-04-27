@@ -29,6 +29,8 @@ var background = null
 
 func _ready():	# Comienza el juego
 	
+	$Level_Rooster_Loop.play()
+	
 	init_background()
 	
 	init_player() # Instanciar y añadir el jugador en el punto central 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://uy4k0gaf0v3j"]
+[gd_scene load_steps=6 format=3 uid="uid://uy4k0gaf0v3j"]
 
 [ext_resource type="Script" uid="uid://cmewdv5cgidov" path="res://scripts/game/background.gd" id="1_3ykke"]
 [ext_resource type="Script" uid="uid://dqsrjko6kki5b" path="res://scripts/game/main_game.gd" id="1_bc6cy"]
 [ext_resource type="PackedScene" uid="uid://jlapuo4uvt6t" path="res://scenes/game/weapon.tscn" id="3_7qhhq"]
 [ext_resource type="PackedScene" uid="uid://d4di1n2ndoqm3" path="res://scenes/pause.tscn" id="4_noi7s"]
+[ext_resource type="AudioStream" uid="uid://daqkuodhai7oa" path="res://assets/sound/Level_Rooster_Loop.ogg" id="5_p2514"]
 
 [node name="main_game" type="Node2D"]
 script = ExtResource("1_bc6cy")
@@ -25,6 +26,10 @@ z_index = 2
 position = Vector2(455, 193)
 
 [node name="Pause" parent="." instance=ExtResource("4_noi7s")]
+
+[node name="Level_Rooster_Loop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_p2514")
+volume_db = -2.0
 
 [connection signal="shoot" from="." to="Weapon" method="_on_main_game_shoot"]
 [connection signal="stage" from="." to="background" method="_on_main_game_stage"]
