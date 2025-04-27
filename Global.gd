@@ -3,7 +3,7 @@ extends Node
 
 # Propiedades del  player 
 var lives = 3
-var speed_player = 500
+var speed_player = 1000
 var mouse_sens = 0.5
 
 var speed_main = 200
