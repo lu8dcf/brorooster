@@ -22,7 +22,7 @@ var boss_active=0 # Bandera para Agregar secuaces al BOSS
 
 # Disparos
 var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
-signal shoot(direction: Vector2) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
+signal shoot(enemy_position: Vector2,shelf_position: Vector2) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
 # Entorno
 var background = null
 
@@ -93,20 +93,6 @@ func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de l
 			posicion_x = 0
 			posicion_y = 0
 	return [posicion_x,posicion_y]
-
-func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
-	var closest_enemy = null  # si no tiene ningun enemigo
-	var shortest_distance = INF  # Inicia con una distancia infinita
-	var player_position = player.global_position # sposision actual del player
-	
-	# buscar en toda las instancias de enemigos cual es la mar cercana
-	for enemy in enemies:
-		var distance_to_enemy = player_position.distance_to(enemy.global_position)
-		if distance_to_enemy < shortest_distance:
-			shortest_distance = distance_to_enemy
-			closest_enemy = enemy
-	
-	return closest_enemy  #devuelve el enemigo mas cercano
 	
 func timer_shoot():   #temporizador entre disparos
 	var shoot_timer = Timer.new()
@@ -121,5 +107,19 @@ func shoot_at_closest_enemy(): # disparo al enemigo mas cercano
 	var closest_enemy = get_closest_enemy() #obtiene la ubicacion del enemigo mas cercano
 	if closest_enemy:
 		var direction = (closest_enemy.global_position - global_position).normalized()
-		emit_signal("shoot",direction) #envia un señal de disparo o ataque al arma
 		
+		emit_signal("shoot",closest_enemy.global_position,player.global_position) #envia un señal de disparo o ataque al arma y la socion del enemigo mas cercano
+		
+func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
+	var closest_enemy = null  # si no tiene ningun enemigo
+	var shortest_distance = INF  # Inicia con una distancia infinita
+	var player_position = player.global_position # sposision actual del player
+	
+	# buscar en toda las instancias de enemigos cual es la mar cercana
+	for enemy in enemies:
+		var distance_to_enemy = player_position.distance_to(enemy.global_position)
+		if distance_to_enemy < shortest_distance:
+			shortest_distance = distance_to_enemy
+			closest_enemy = enemy
+	
+	return closest_enemy  #devuelve el enemigo mas cercano
