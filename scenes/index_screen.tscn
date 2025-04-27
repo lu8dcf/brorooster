@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://duoikwwyevldk"]
+[gd_scene load_steps=4 format=3 uid="uid://c7x0c6h51oqaj"]
 
 [ext_resource type="Texture2D" uid="uid://dkgjsnt5ilymo" path="res://assets/graphics/escens_graphics/background.png" id="1_pif34"]
 [ext_resource type="Texture2D" uid="uid://n2ouhr0mo1gn" path="res://assets/graphics/menu_graphics/boton_sinpresionar.png" id="2_jlcyx"]
