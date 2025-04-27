@@ -22,7 +22,7 @@ var boss_active=0 # Bandera para Agregar secuaces al BOSS
 
 # Disparos
 var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
-signal shoot(direction: Vector2) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
+signal shoot(enemy_position: Vector2, shelf_position: Vector2) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
 # Entorno
 var background = null
 
@@ -121,5 +121,5 @@ func shoot_at_closest_enemy(): # disparo al enemigo mas cercano
 	var closest_enemy = get_closest_enemy() #obtiene la ubicacion del enemigo mas cercano
 	if closest_enemy:
 		var direction = (closest_enemy.global_position - global_position).normalized()
-		emit_signal("shoot",direction) #envia un señal de disparo o ataque al arma
+		emit_signal("enemy_position",closest_enemy.global_position) #envia un señal de disparo o ataque al arma
 		
