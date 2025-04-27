@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_wthq6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
-radius = 11.0454
+radius = 13.0
 
 [sub_resource type="Animation" id="Animation_5nfiu"]
 length = 0.001
@@ -65,18 +65,20 @@ _data = {
 }
 
 [node name="Enemy1" type="CharacterBody2D"]
+scale = Vector2(2.84874, 2.84874)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_wthq6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-13, -13)
-scale = Vector2(0.0460658, 0.0498263)
+scale = Vector2(0.166377, 0.179622)
 texture = ExtResource("2_wthq6")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-14, -12)
+position = Vector2(-11.9351, -11.233)
+scale = Vector2(0.76, 0.76)
 shape = SubResource("CircleShape2D_dkfay")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -85,6 +87,6 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-16, -12)
+position = Vector2(-13, -13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
