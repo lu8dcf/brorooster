@@ -8,4 +8,4 @@ Gestión de tareas: Asignar tareas a los miembros del equipo y asegurar que el t
 
 Programador: Programar elementos del juego y estructura
 
-trabajar
+trabajar si
