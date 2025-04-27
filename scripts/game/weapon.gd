@@ -1,28 +1,41 @@
-extends Area2D
-var direction: Vector2 = Vector2(0, 0) # direccion a donde debe apuntar el arma,inicial
+extends Node2D
+
 var apunta
 @onready var Weapon = $Weapon  # Es el nodo del arma
+var target_position: Vector2 = Vector2.ZERO
+@export var rotation_speed: float = 5.0  # Ajusta la velocidad de rotación
 
-func _process(delta):
-	apunta = direction - global_position
-	var target_angle = apunta.angle()
-	#print ("----------------")
-	#print ("apunta1 ",apunta)
-	
-	#print ("direction1 ",direction)
-	#print ("Global1 ",global_position)
-	# Rotación gradual hacia el objetivo
-	rotation = lerp_angle(rotation, target_angle, 5 * delta) # Ajustar la velocidad de rotacion "5 * delta"
-
+@export var player: CharacterBody2D  # Asigna el jugador en el inspector
+var offset = Vector2(20, 0)  # Ajusta según la posición deseada
 # girará sobre su eje central y apuntará hacia la posición (x, y) que le indiques. Si necesitas ajustar más detalles como velocidad, interpolaciones, o interacción, ¡puedo ayudarte con eso! 🚀
 
 func _on_main_game_shoot(enemy_position: Vector2,self_position: Vector2) -> void:
-	direction = enemy_position - self_position  # Direccion donde debe apuntar el arma
+	target_position = enemy_position
+	#direction = enemy_position - self_position  # Direccion donde debe apuntar el arma
 	# Obtener el ángulo hacia la dirección calculada
-	var target_angle = direction.angle()
-	#print("---------------")
-	#print ("enemigo ",enemy_position)
-	#print ("propia ",self_position)
-	#print ("angulo ",target_angle)
-	pass # Replace with function body.
+	#target_angle = direction.angle()
 	
+	
+func _process(delta):
+	if player:
+		global_position = player.global_position + offset
+	# Calcular la dirección hacia el objetivo
+	var direction: Vector2 = (target_position - global_position).normalized()
+	
+	# Calcular el ángulo deseado (en radianes)
+	var target_angle: float = direction.angle()
+	
+	# Interpolar suavemente la rotación actual hacia el objetivo
+	rotation = lerp_angle(rotation, target_angle , rotation_speed * delta)
+	
+	print("Ángulo interpolado: ", rotation )
+	# (Opcional) Asegurarse de que el sprite apunte correctamente
+	if direction.x < 0:
+		$Sprite2D.flip_v = true   # Voltear si el objetivo está a la izquierda
+	else:
+		$Sprite2D.flip_v = false
+	#apunta = direction - global_position
+	#var target_angle = apunta.angle()
+		
+	# Rotación gradual hacia el objetivo
+	#rotation = lerp_angle(rotation, target_angle, 5 * delta) # Ajustar la velocidad de rotacion "5 * delta"
