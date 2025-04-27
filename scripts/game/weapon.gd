@@ -1,17 +1,14 @@
 extends Area2D
-var direction: Vector2 = Vector2(0, 0) # direccion a donde debe apuntar el arma,inicial
-var weapon_position: Vector2 = Vector2(0,0) # posicion del arma en el mapal
+var direction: Vector2  # direccion a donde debe apuntar el arma,inicial
 
-var apunta
-var contador =0
+
 
 func _process(delta):
 
-	
 	var target_angle = direction.angle()
-	# Rotación gradual hacia el objetivo
+		# Rotación gradual hacia el objetivo
 	rotation = lerp_angle(rotation, target_angle , 5 *delta) # Ajustar la velocidad de rotacion "5 * delta"
-	
+	print (direction)
 	
 
 	
@@ -19,7 +16,8 @@ func _process(delta):
 
 func _on_main_game_shoot(enemy_position: Vector2,self_position: Vector2):
 	
-	direction = enemy_position - self_position
+	direction = enemy_position - self_position  # Direccion donde debe apuntar el arma
+	
 	# Obtener el ángulo hacia la dirección calculada
 	#var target_angle = direction.angle()
 	# Establecer la rotación del nodo hacia el ángulo objetivo
