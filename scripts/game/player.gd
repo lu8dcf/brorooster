@@ -22,16 +22,7 @@ var deadzone_radius : float = Global.deadzone_radius_main  # Zona muerta para cu
 var move_right = "right"
 var move_left = "left"
 
-# weapons
-@export var weapon_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 
-
-var current_weapon = preload("res://scenes/game/weapon.tscn").instantiate()
-
-func _ready():
-	equip_weapon()
-	pass
-	
 func _physics_process(delta):
 	# depende de lo que elija el jugador, se ejecutara el movimiento con teclado o con mouse.
 	move_with_mouse();
@@ -83,14 +74,4 @@ func move_with_mouse():
 	velocity = velocity.lerp(move_vector, acceleration * get_process_delta_time())
 	
 	move_and_slide()
-	
-func equip_weapon():
-	# Instancia la escena del arma
-	
-
-		# Añade el arma como hijo del jugador
-	#add_child(current_weapon)
-
-
-	print("Arma equipada:")
 	

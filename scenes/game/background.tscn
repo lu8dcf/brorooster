@@ -12,20 +12,20 @@ size = Vector2(13.6875, 1050.5)
 collision_mask = 3
 
 [node name="superior" type="CollisionShape2D" parent="."]
-position = Vector2(845, -29)
+position = Vector2(850, -55)
 shape = SubResource("RectangleShape2D_bhjye")
 
 [node name="inferior" type="CollisionShape2D" parent="."]
 visibility_layer = 3
-position = Vector2(377, 535)
+position = Vector2(369, 510)
 shape = SubResource("RectangleShape2D_bhjye")
 
 [node name="derecha" type="CollisionShape2D" parent="."]
-position = Vector2(925, 270)
+position = Vector2(909, 260)
 shape = SubResource("RectangleShape2D_4lbss")
 
 [node name="izquierda" type="CollisionShape2D" parent="."]
-position = Vector2(-38, 455)
+position = Vector2(-60, 456)
 shape = SubResource("RectangleShape2D_4lbss")
 
 [node name="Terreno" type="Sprite2D" parent="."]
