@@ -12,23 +12,22 @@ size = Vector2(13.6875, 1050.5)
 collision_mask = 3
 
 [node name="superior" type="CollisionShape2D" parent="."]
-position = Vector2(967.313, 4)
+position = Vector2(850, -55)
 shape = SubResource("RectangleShape2D_bhjye")
 
 [node name="inferior" type="CollisionShape2D" parent="."]
 visibility_layer = 3
-position = Vector2(953.375, 1077.13)
+position = Vector2(369, 510)
 shape = SubResource("RectangleShape2D_bhjye")
 
 [node name="derecha" type="CollisionShape2D" parent="."]
-position = Vector2(1918.31, 533.75)
+position = Vector2(909, 260)
 shape = SubResource("RectangleShape2D_4lbss")
 
 [node name="izquierda" type="CollisionShape2D" parent="."]
-position = Vector2(-2.15625, 538)
+position = Vector2(-60, 456)
 shape = SubResource("RectangleShape2D_4lbss")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(956.308, 537.359)
-scale = Vector2(1.11689, 1.08267)
+[node name="Terreno" type="Sprite2D" parent="."]
+position = Vector2(448, 252)
 texture = ExtResource("1_fd8p2")

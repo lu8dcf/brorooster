@@ -19,6 +19,10 @@ offset_bottom = 50.0
 text = "STAGE"
 
 [node name="Weapon" parent="." instance=ExtResource("3_7qhhq")]
+light_mask = 3
+visibility_layer = 2
+z_index = 2
+position = Vector2(455, 193)
 
 [node name="Pause" parent="." instance=ExtResource("4_noi7s")]
 

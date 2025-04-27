@@ -5,7 +5,7 @@ var speed = Global.speed_main # velocidad de movimiento del
 var speed_fly = 2 # Velocidas de vuelo
 var fly_cooldown = 1  # Tiempo de vuelo
 var can_fly = true # habilitacion para que vuele
-var extra = 1 # diferencia de velocidades
+var extra = 2 # diferencia de velocidades
 
 var direction = Vector2.ZERO
 var acceleration: float = 8.0  # Suavizado del movimiento

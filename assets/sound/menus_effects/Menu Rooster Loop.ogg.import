@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c006s8m0k6yn8"
+path="res://.godot/imported/Menu Rooster Loop.ogg-9a4ee465f808c70119258b95242005e7.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/menus_effects/Menu Rooster Loop.ogg"
+dest_files=["res://.godot/imported/Menu Rooster Loop.ogg-9a4ee465f808c70119258b95242005e7.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -3,7 +3,7 @@ extends Node
 
 # Propiedades del  player 
 var lives = 3
-var speed_player = 500
+var speed_player = 1000
 var mouse_sens = 0.5
 
 var speed_main = 200
@@ -14,8 +14,8 @@ var score = 0
 var enemigos_eliminados = 0
 
 # Propiedades de la Pantalla y dispositivos
-var pantalla_ancho = 1280
-var pantalla_alto = 720
+var pantalla_ancho = 896
+var pantalla_alto = 504
 
-#Para actualizar el juego
-var stage = 1;
+# Arma
+var angle = 0
