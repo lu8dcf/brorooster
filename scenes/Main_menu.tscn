@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://0vpi47bbrjfc"]
+[gd_scene load_steps=9 format=3 uid="uid://0vpi47bbrjfc"]
 
 [ext_resource type="Script" uid="uid://bu4dciky2y1ca" path="res://scripts/Main_menu.gd" id="1_651q5"]
 [ext_resource type="AudioStream" uid="uid://c006s8m0k6yn8" path="res://assets/sound/menus_effects/Menu Rooster Loop.ogg" id="2_cvwki"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://goy8nw7j12dt" path="res://assets/graphics/menu_graphics/boton_presionado.png" id="4_3nt8p"]
 [ext_resource type="Texture2D" uid="uid://bkx5hvjgnv17j" path="res://assets/graphics/menu_graphics/gallina_botones1.png" id="4_cvwki"]
 [ext_resource type="Texture2D" uid="uid://dfe4cr31nwlws" path="res://assets/graphics/menu_graphics/gallina_botones2.png" id="5_2w1r8"]
+[ext_resource type="FontFile" uid="uid://dvgq88bv3g16k" path="res://assets/font/Mojang-Regular.ttf" id="6_2w1r8"]
 
 [node name="Menu Main" type="Control"]
 layout_mode = 3
@@ -23,45 +24,52 @@ stream = ExtResource("2_cvwki")
 [node name="Background" type="Node2D" parent="."]
 
 [node name="img" type="Sprite2D" parent="Background"]
-position = Vector2(611, 368)
+position = Vector2(614, 357)
 scale = Vector2(0.425626, 0.36096)
 texture = ExtResource("2_xhl8r")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxBotones" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.407
-anchor_top = 0.32
-anchor_right = 0.61
-anchor_bottom = 0.613
-offset_left = -77.96
-offset_top = -67.4
-offset_right = -11.8
-offset_bottom = 45.64
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -162.0
+offset_right = 80.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="play" type="TextureButton" parent="VBoxContainer"]
+[node name="play" type="TextureButton" parent="VBoxBotones"]
 layout_mode = 2
 size_flags_stretch_ratio = 8.02
 texture_normal = ExtResource("4_cvwki")
 texture_pressed = ExtResource("5_2w1r8")
 texture_hover = ExtResource("5_2w1r8")
 
-[node name="Label" type="Label" parent="VBoxContainer/play"]
-layout_mode = 0
-offset_left = 153.64
-offset_top = 64.6
-offset_right = 281.64
-offset_bottom = 99.6
+[node name="boton_jugar" type="Button" parent="VBoxBotones/play"]
+layout_mode = 2
+offset_left = 149.0
+offset_top = 57.0
+offset_right = 306.0
+offset_bottom = 105.0
+theme_override_colors/font_outline_color = Color(1, 0.996078, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("6_2w1r8")
 theme_override_font_sizes/font_size = 40
 text = "PLAY"
+flat = true
 
-[node name="quit" type="TextureButton" parent="VBoxContainer"]
+[node name="quit" type="TextureButton" parent="VBoxBotones"]
 layout_mode = 2
 texture_normal = ExtResource("4_cvwki")
 texture_pressed = ExtResource("5_2w1r8")
 texture_hover = ExtResource("5_2w1r8")
 
-[node name="Label" type="Label" parent="VBoxContainer/quit"]
+[node name="Label" type="Label" parent="VBoxBotones/quit"]
 layout_mode = 0
 offset_left = 153.0
 offset_top = 66.0
@@ -83,6 +91,7 @@ texture_normal = ExtResource("3_g1asy")
 texture_pressed = ExtResource("4_3nt8p")
 texture_hover = ExtResource("4_3nt8p")
 
-[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxBotones/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxBotones/play/boton_jugar" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="VBoxBotones/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
