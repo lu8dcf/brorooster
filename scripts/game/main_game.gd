@@ -29,7 +29,7 @@ var background = null
 
 func _ready():	# Comienza el juego
 	
-	$Level_Rooster_Loop.play()
+	$level_loop.play()
 	
 	init_background()
 	

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://0vpi47bbrjfc"]
 
 [ext_resource type="Script" uid="uid://bu4dciky2y1ca" path="res://scripts/Main_menu.gd" id="1_651q5"]
-[ext_resource type="AudioStream" uid="uid://c006s8m0k6yn8" path="res://assets/sound/menus_effects/Menu Rooster Loop.ogg" id="2_cvwki"]
+[ext_resource type="AudioStream" uid="uid://cikxb8fm0of51" path="res://assets/sound/loops/menu_loop.ogg" id="2_cvwki"]
 [ext_resource type="Texture2D" uid="uid://dkgjsnt5ilymo" path="res://assets/graphics/escens_graphics/background.png" id="2_xhl8r"]
 [ext_resource type="Texture2D" uid="uid://n2ouhr0mo1gn" path="res://assets/graphics/menu_graphics/boton_sinpresionar.png" id="3_g1asy"]
 [ext_resource type="Texture2D" uid="uid://goy8nw7j12dt" path="res://assets/graphics/menu_graphics/boton_presionado.png" id="4_3nt8p"]
@@ -17,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_651q5")
 
-[node name="sound_menu" type="AudioStreamPlayer2D" parent="."]
+[node name="menu_loop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_cvwki")
 volume_db = -2.0
 
