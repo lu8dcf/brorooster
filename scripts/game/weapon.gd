@@ -16,11 +16,13 @@ func _process(delta):
 
 # girará sobre su eje central y apuntará hacia la posición (x, y) que le indiques. Si necesitas ajustar más detalles como velocidad, interpolaciones, o interacción, ¡puedo ayudarte con eso! 🚀
 
-func _on_main_game_shoot(direction: Vector2) -> void:
-	direction=direction
-	print("---------------")
-	print ("apunta ",apunta)
-	print ("direction ",direction)
-	print ("Global ",global_position)
+func _on_main_game_shoot(enemy_position: Vector2,self_position: Vector2) -> void:
+	direction = enemy_position - self_position  # Direccion donde debe apuntar el arma
+	# Obtener el ángulo hacia la dirección calculada
+	var target_angle = direction.angle()
+	#print("---------------")
+	#print ("enemigo ",enemy_position)
+	#print ("propia ",self_position)
+	#print ("angulo ",target_angle)
 	pass # Replace with function body.
 	
