@@ -28,7 +28,7 @@ func _process(delta):
 	# Interpolar suavemente la rotación actual hacia el objetivo
 	rotation = lerp_angle(rotation, target_angle , rotation_speed * delta)
 	
-	print("Ángulo interpolado: ", rotation )
+	#print("Ángulo interpolado: ", rotation )
 	# (Opcional) Asegurarse de que el sprite apunte correctamente
 	if direction.x < 0:
 		$Sprite2D.flip_v = true   # Voltear si el objetivo está a la izquierda

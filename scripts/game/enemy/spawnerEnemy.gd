@@ -11,22 +11,19 @@ var enemigos = {
 	3: "res://scenes/game/enemy/enemy1.tscn" #seria enemgio 3
 }
 
-
-# Disparos
-var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
-
 func _ready() -> void:
 	#defino en que stage estoy, para saber que aparece
 	var stage = Global.stage
 
 	#Creo que en realidad deberia spwnear hasta que muere el jugador o derrotar x enemgios
 	#pero para probar...
-	for i in 20:
+	for i in range(1, 6):
+		await get_tree().create_timer(timer_between_enemy).timeout
 		timer_add_enemy()
 		pass
 	
 func timer_add_enemy():
-	#await get_tree().create_timer(timer_between_enemy).timeout
+	
 	match (Global.stage):
 		1: iniciarEnemigo(enemigos[1])
 		2:iniciarEnemigo(sorteoEnemigo(1,Global.stage))
