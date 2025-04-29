@@ -22,7 +22,16 @@ var deadzone_radius : float = Global.deadzone_radius_main  # Zona muerta para cu
 var move_right = "right"
 var move_left = "left"
 
+@export var weapon_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
+@export var weapon2_scene: PackedScene # Exporta la escena del arma2 para poder asignarla desde el Inspector
+@onready var weapon_anchor: Marker2D = $WeaponAnchor # punto d eunion del arma
+var new_weapon = null
+var current_weapon: Node2D = null
 
+func _ready():
+	if weapon_scene: #si hay arma, equipar
+		equip_weapon()
+		
 func _physics_process(delta):
 	# depende de lo que elija el jugador, se ejecutara el movimiento con teclado o con mouse.
 	move_with_mouse();
@@ -75,3 +84,40 @@ func move_with_mouse():
 	
 	move_and_slide()
 	
+func equip_weapon():
+	if weapon_scene and is_instance_valid(weapon_anchor):
+		# Instancia la escena del arma
+		var new_weapon = weapon_scene.instantiate()
+
+		# Añade el arma como hijo del jugador
+		add_child(new_weapon)
+
+		# Posiciona el arma en el punto de unión
+		new_weapon.global_position = weapon_anchor.global_position
+
+		# la rotación coincide con de punto de unión
+		new_weapon.global_rotation = weapon_anchor.global_rotation 
+
+		current_weapon = new_weapon
+		print("Arma equipada:", current_weapon.name)
+	else:
+		printerr("No se ha asignado un arma .")
+
+func unequip_weapon(): # desequipar le arma
+	if is_instance_valid(current_weapon):
+		remove_child(current_weapon)
+		current_weapon.queue_free()
+		current_weapon = null
+		print("Arma desequipada.")
+
+# cambio de armas
+func change_weapon(new_weapon_scene: PackedScene):
+	unequip_weapon()
+	weapon_scene = new_weapon_scene
+	equip_weapon()
+
+
+func apuntar_arma(target_position: Vector2):
+	
+	#var direction_to_target = target_position - arma.global_position
+	current_weapon.rotation = 1
