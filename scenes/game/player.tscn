@@ -138,3 +138,6 @@ texture = ExtResource("5_68xwl")
 
 [node name="WeaponAnchor" type="Marker2D" parent="."]
 position = Vector2(46, -3)
+
+[node name="WeaponAnchor2" type="Marker2D" parent="."]
+position = Vector2(46, -3)
