@@ -33,10 +33,11 @@ func _ready():	# Comienza el juego
 	
 	init_player() # Instanciar y añadir el jugador en el punto central 
 	
-	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
+	#timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
 	
 	timer_shoot() # Timer entre disparos
 	
+	init_spawn() #Spawn de enemigos.
 	
 #
 func init_background():  # Inicia el fondo y los limites de pantalla
@@ -59,6 +60,11 @@ func timer_add_enemy():
 	# Conectar el temporizador a una función que instancia a los enemigos
 	
 	enemy_timer.timeout.connect(init_enemy)
+	
+	
+func init_spawn():
+	await get_tree().create_timer(.8).timeout
+	add_child(preload("res://scenes/game/enemy/spawner_enemy.tscn").instantiate())
 	
 	
 func init_enemy():
