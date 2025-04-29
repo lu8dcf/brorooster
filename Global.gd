@@ -19,3 +19,6 @@ var pantalla_alto = 504
 
 # Arma
 var angle = 0
+
+#Stage
+var stage = 1

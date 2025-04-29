@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://j33syemimg3f"]
+
+[ext_resource type="Script" uid="uid://d20odube7tbrs" path="res://scripts/background.gd" id="1_6oegy"]
+[ext_resource type="Texture2D" uid="uid://betmdvb505d0" path="res://assets/graphics/menu_graphics/fondo_movil.png" id="2_6oegy"]
+
+[node name="Background" type="ParallaxBackground"]
+script = ExtResource("1_6oegy")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(2400, 2400)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(1176, 1170)
+texture = ExtResource("2_6oegy")
+region_enabled = true
+region_rect = Rect2(0, 0, 2400, 2400)

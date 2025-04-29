@@ -22,7 +22,7 @@ func _input(_event: InputEvent) -> void:
 func _on_menu_pressed() -> void:
 	$blur_pausa/bg_overlay/VBoxContainer/buttons.play()
 	get_tree().paused = not get_tree().paused
-	get_tree().change_scene_to_file("res://scenes/Main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/hud/Main_menu.tscn")
 
 
 func _on_exit_pressed() -> void:
