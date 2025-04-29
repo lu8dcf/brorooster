@@ -19,10 +19,11 @@ var enemies_boss = [] # Almacenara las instancias de los enemigos Boss
 var move_enemy = 0.05  # Intervalo de tiempo para el movimiento enemigo
 var timer_between_enemy = .5 # .5 seg Intervalo que aparecen los enemigos
 var boss_active=0 # Bandera para Agregar secuaces al BOSS
+var limit_of_enemy = 3 # cantidad de enemigos que se instancian
 
 # Disparos
 var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
-signal shoot(direction: Vector2) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
+signal shoot(enemy_position: Vector2, shelf_position: Vector2) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
 # Entorno
 var background = null
 
@@ -55,21 +56,21 @@ func timer_add_enemy():
 	enemy_timer.one_shot = false #que sea ciclico
 	add_child(enemy_timer)
 	enemy_timer.start()  # inicia el temporizador
-	# Conectar el temporizador a una función que instancia a las naves enemigas
+	# Conectar el temporizador a una función que instancia a los enemigos
+	
 	enemy_timer.timeout.connect(init_enemy)
 	
-func init_enemy():
-	#boss_activo =0 inicia el Boss
-	#boss_activo 1,2 o 3 , agrega diferentes enemigos con el boss
 	
-	# emite la señal cuando hubo un cambio de stage y lo envia a la pantalla
-	#emit_signal("stage_actual",stage)  
+func init_enemy():
+	limit_of_enemy -=1 #limitar la cantidad de enemigos que se instancian
+	if limit_of_enemy>0:
 	# Nivel 1 - babosas
-	var position = enemy_starting_point() # posicion inicial del enemigo en algun extremo
-	var enemy = preload("res://scenes/game/enemy/enemy1.tscn").instantiate()
-	enemy.position = Vector2(position[0], position[1]) # Ubica al enemigo en la X random e Y en el inicio
-	add_child(enemy)  # Agrega como hijo del main al enemigo
-	enemies.append(enemy)
+		var position = enemy_starting_point() # posicion inicial del enemigo en algun extremo
+		var enemy = preload("res://scenes/game/enemy/enemy1.tscn").instantiate()
+		enemy.position = Vector2(position[0], position[1]) # Ubica al enemigo en la X random e Y en el inicio
+		add_child(enemy)  # Agrega como hijo del main al enemigo
+		enemies.append(enemy)
+		print ("Cantidad de enemigos: ",3-limit_of_enemy)
 	
 func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de la pantalla para el inicio de los enemigos
 	var posicion_x = 0
@@ -121,5 +122,5 @@ func shoot_at_closest_enemy(): # disparo al enemigo mas cercano
 	var closest_enemy = get_closest_enemy() #obtiene la ubicacion del enemigo mas cercano
 	if closest_enemy:
 		var direction = (closest_enemy.global_position - global_position).normalized()
-		emit_signal("shoot",direction) #envia un señal de disparo o ataque al arma
+		emit_signal("shoot",closest_enemy.global_position,player.global_position) #envia un señal de disparo o ataque al arma y la socion del enemigo mas cercano
 		
