@@ -7,7 +7,7 @@ var timer_between_enemy = .5 # .5 seg Intervalo que aparecen los enemigos
 # Diccionario con las rutas de los enemigos
 var enemigos = {
 	1: "res://scenes/game/enemy/enemy1.tscn",
-	2: "res://scenes/game/enemy/enemy1.tscn", #seria enemigo 2
+	2: "res://scenes/game/enemy/enemy_2.tscn", #seria enemigo 2
 	3: "res://scenes/game/enemy/enemy1.tscn" #seria enemgio 3
 }
 

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1xpgrulqctvy"]
+
+[ext_resource type="Script" uid="uid://c3pfudkfgn4x6" path="res://scenes/game/enemy/enemy_2.gd" id="1_4crda"]
+[ext_resource type="Texture2D" uid="uid://dy15m7nyu5k7i" path="res://assets/graphics/character_graphics/bichos/bicho2.png" id="1_nv4sx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt6ul"]
+size = Vector2(74, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nv4sx"]
+size = Vector2(74, 24)
+
+[node name="Enemy2" type="CharacterBody2D"]
+script = ExtResource("1_4crda")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_nv4sx")
+hframes = 10
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_qt6ul")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_nv4sx")
