@@ -10,7 +10,7 @@ func _ready() -> void:
 	SetUp()
 	pass
 	
-func _physics_process(_delta): 
+func A_physics_process(_delta): 
 	move_and_collide(movimiento)
 	if Global.lives >= 1:
 		set_vector(get_node("/root/main_game/player").global_position - global_position)
