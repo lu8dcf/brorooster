@@ -24,6 +24,10 @@ var limit_of_enemy = 3 # cantidad de enemigos que se instancian
 # Disparos
 var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
 signal shoot(enemy_position: Vector2, shelf_position: Vector2) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
+
+# Armas - Weapons
+var nodo_destino = get_node("res://scenes/game/player.tscn")
+
 # Entorno
 var background = null
 
@@ -35,11 +39,11 @@ func _ready():	# Comienza el juego
 	
 	init_player() # Instanciar y añadir el jugador en el punto central 
 	
-	#timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
+	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
 	
 	timer_shoot() # Timer entre disparos
 	
-	init_spawn() #Spawn de enemigos.
+	#init_spawn() #Spawn de enemigos.
 	
 #
 func init_background():  # Inicia el fondo y los limites de pantalla
@@ -108,8 +112,9 @@ func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
 	var shortest_distance = INF  # Inicia con una distancia infinita
 	var player_position = player.global_position # sposision actual del player
 	
-	# buscar en toda las instancias de enemigos cual es la mar cercana
+	# buscar en toda las instancias de enemigos cual es la mas cercana
 	for enemy in enemies:
+		#print ("buacando")
 		var distance_to_enemy = player_position.distance_to(enemy.global_position)
 		if distance_to_enemy < shortest_distance:
 			shortest_distance = distance_to_enemy
@@ -119,16 +124,19 @@ func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
 	
 func timer_shoot():   #temporizador entre disparos
 	var shoot_timer = Timer.new()
-	shoot_timer.wait_time = timer_between_enemy
+	shoot_timer.wait_time = timer_between_shoot
 	shoot_timer.one_shot = false #que sea ciclico
 	add_child(shoot_timer)
 	shoot_timer.start()  # inicia el temporizador
-	# Conectar el temporizador a una función que instancia a las naves enemigas
+	# Conectar el temporizador de disparo
+	#print("time disparo")
 	shoot_timer.timeout.connect(shoot_at_closest_enemy) # buscar el enemigo mas cercano
+	
 	
 func shoot_at_closest_enemy(): # disparo al enemigo mas cercano
 	var closest_enemy = get_closest_enemy() #obtiene la ubicacion del enemigo mas cercano
+	#print("disparo")
 	if closest_enemy:
 		var direction = (closest_enemy.global_position - global_position).normalized()
 		emit_signal("shoot",closest_enemy.global_position,player.global_position) #envia un señal de disparo o ataque al arma y la socion del enemigo mas cercano
-		
+		print("enemigo cerca")

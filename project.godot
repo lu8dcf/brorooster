@@ -21,6 +21,7 @@ Global="*res://Global.gd"
 GlobalEnemy="*res://Global_enemy.gd"
 GlobalHud="*res://Global_hud.gd"
 GlobalItem="*res://Global_item.gd"
+GlobalShoot="*res://Global_shoot.gd"
 
 [display]
 
