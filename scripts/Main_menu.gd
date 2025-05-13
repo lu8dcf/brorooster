@@ -4,7 +4,7 @@ extends Control
 func _ready() -> void:
 	
 	pass # Replace with function body.
-	$menu_loop.play()
+	#$menu_loop.play()
 func _on_play_pressed() -> void: # al hacer click en el boton de JUGAR empieza el juego en el nivel 1
 	get_tree().change_scene_to_file("res://scenes/game/main_game.tscn")
 	
