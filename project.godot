@@ -21,11 +21,11 @@ Global="*res://Global.gd"
 GlobalEnemy="*res://Global_enemy.gd"
 GlobalHud="*res://Global_hud.gd"
 GlobalItem="*res://Global_item.gd"
+GlobalShoot="*res://Global_shoot.gd"
 
 [display]
 
-window/size/viewport_width=896
-window/size/viewport_height=504
+window/stretch/mode="viewport"
 
 [input]
 
