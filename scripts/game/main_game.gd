@@ -26,7 +26,7 @@ var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
 signal shoot(enemy_position: Vector2, shelf_position: Vector2) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
 
 # Armas - Weapons
-var nodo_destino = get_node("res://scenes/game/player.tscn")
+
 
 # Entorno
 var background = null
@@ -139,4 +139,6 @@ func shoot_at_closest_enemy(): # disparo al enemigo mas cercano
 	if closest_enemy:
 		var direction = (closest_enemy.global_position - global_position).normalized()
 		emit_signal("shoot",closest_enemy.global_position,player.global_position) #envia un señal de disparo o ataque al arma y la socion del enemigo mas cercano
-		print("enemigo cerca")
+		var angulo_disparo = (player.global_position - closest_enemy.global_position).angle()
+		GlobalShoot.angulo_disparo = angulo_disparo
+		#print("enemigo cerca" , angulo_disparo )
