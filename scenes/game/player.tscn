@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bepl2aiuisyca" path="res://assets/graphics/character_graphics/gallo.png" id="2_u3rb4"]
 [ext_resource type="AudioStream" uid="uid://do7r37xy1l23s" path="res://assets/sound/sound_effects/rooster_cry.mp3" id="3_u3rb4"]
 [ext_resource type="PackedScene" uid="uid://jlapuo4uvt6t" path="res://scenes/game/weapon.tscn" id="4_nybob"]
-[ext_resource type="Script" path="res://scripts/game/weapon_anchor.gd" id="5_68xwl"]
+[ext_resource type="Script" uid="uid://bvxjdl8k0gp8j" path="res://scripts/game/weapon_anchor.gd" id="5_68xwl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4jmp"]
 radius = 31.0
