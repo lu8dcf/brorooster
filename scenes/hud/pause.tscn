@@ -1,15 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4di1n2ndoqm3"]
+[gd_scene load_steps=11 format=3 uid="uid://d4di1n2ndoqm3"]
 
 [ext_resource type="Script" uid="uid://dwtsl61ric474" path="res://scripts/pause.gd" id="1_f1d2v"]
 [ext_resource type="Shader" uid="uid://r621tvcnd0ql" path="res://shaders/pause_blur_shaders.gdshader" id="2_r8yp4"]
 [ext_resource type="Texture2D" uid="uid://h412wt6r5wx4" path="res://assets/buttons/pausa logo.png" id="3_r1fnm"]
-[ext_resource type="Texture2D" uid="uid://bu2ao0ecf5ssp" path="res://assets/buttons/button-menu normal.png" id="4_wen6a"]
-[ext_resource type="Texture2D" uid="uid://bay7gixcmdo21" path="res://assets/buttons/button-restart normal.png" id="5_cml1b"]
-[ext_resource type="Texture2D" uid="uid://bijgtjim7ke6g" path="res://assets/buttons/button-exit normal.png" id="6_1xtef"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m0klm"]
 shader = ExtResource("2_r8yp4")
 shader_parameter/lod = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2r2e"]
+bg_color = Color(0.758192, 0.758192, 0.758192, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uo3r"]
+bg_color = Color(0.08, 0.08, 0.08, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
 
 [sub_resource type="Animation" id="Animation_cg718"]
 length = 0.001
@@ -65,9 +76,16 @@ _data = {
 &"resume_pause_blur": SubResource("Animation_cy2kx")
 }
 
-[node name="Pause" type="Node2D"]
+[node name="Pause" type="Control"]
 process_mode = 3
-position = Vector2(436, 253)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.62714, 1.62714)
 script = ExtResource("1_f1d2v")
 
@@ -94,44 +112,67 @@ scale = Vector2(1.62714, 1.62714)
 [node name="VBoxContainer" type="VBoxContainer" parent="blur_pausa/bg_overlay"]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -957.5
-offset_top = -857.0
-offset_right = 957.5
-offset_bottom = 857.0
-grow_horizontal = 2
+offset_left = -1860.0
+offset_top = -839.0
+offset_right = 55.0
+offset_bottom = 875.0
+grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(0.1, 0.1)
 pivot_offset = Vector2(865, 910)
+alignment = 1
 
 [node name="buttons" type="AudioStreamPlayer2D" parent="blur_pausa/bg_overlay/VBoxContainer"]
 
 [node name="text_paused" type="Sprite2D" parent="blur_pausa/bg_overlay/VBoxContainer"]
+visible = false
 position = Vector2(893.295, -1043.5)
 scale = Vector2(1.58652, 1.58652)
 texture = ExtResource("3_r1fnm")
 
-[node name="menu" type="TextureButton" parent="blur_pausa/bg_overlay/VBoxContainer"]
+[node name="menu" type="Button" parent="blur_pausa/bg_overlay/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("4_wen6a")
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_font_sizes/font_size = 200
+theme_override_styles/focus = SubResource("StyleBoxFlat_x2r2e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0uo3r")
+text = "MENU"
 
-[node name="restart" type="TextureButton" parent="blur_pausa/bg_overlay/VBoxContainer"]
+[node name="Space1" type="Control" parent="blur_pausa/bg_overlay/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("5_cml1b")
 
-[node name="exit" type="TextureButton" parent="blur_pausa/bg_overlay/VBoxContainer"]
+[node name="restart" type="Button" parent="blur_pausa/bg_overlay/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("6_1xtef")
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_font_sizes/font_size = 200
+theme_override_styles/focus = SubResource("StyleBoxFlat_x2r2e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0uo3r")
+text = "RESTART"
+
+[node name="Space2" type="Control" parent="blur_pausa/bg_overlay/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="exit" type="Button" parent="blur_pausa/bg_overlay/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_font_sizes/font_size = 200
+theme_override_styles/focus = SubResource("StyleBoxFlat_x2r2e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0uo3r")
+text = "EXIT"
+
+[node name="Space3" type="Control" parent="blur_pausa/bg_overlay/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
 
 [node name="info" type="Label" parent="blur_pausa/bg_overlay/VBoxContainer"]
 layout_mode = 2

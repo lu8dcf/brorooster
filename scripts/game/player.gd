@@ -22,21 +22,44 @@ var deadzone_radius : float = Global.deadzone_radius_main  # Zona muerta para cu
 var move_right = "right"
 var move_left = "left"
 
+#Weapon
 @export var weapon_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 @export var weapon2_scene: PackedScene # Exporta la escena del arma2 para poder asignarla desde el Inspector
 @onready var weapon_anchor: Marker2D = $WeaponAnchor # punto d eunion del arma
+@onready var weapon2_anchor: Marker2D = $WeaponAnchor2 # punto d eunion del arma
 var new_weapon = null
-var current_weapon: Node2D = null
+
+var current_weapon: Node2D 
+var current_weapon2: Node2D 
+var arma_asignada=0
+var target_angle: float = 0.0 
 
 func _ready():
 	if weapon_scene: #si hay arma, equipar
-		equip_weapon()
+		equip_weapon(0.0)
+		equip_weapon2(0.0)
+	pass
 		
 func _physics_process(delta):
 	# depende de lo que elija el jugador, se ejecutara el movimiento con teclado o con mouse.
-	move_with_mouse();
+	move_with_mouse()
+func _process(delta):
+	# Rotar gradualmente el arma hacia el ángulo objetivo
+	if is_instance_valid(current_weapon):
+		current_weapon.rotation = lerp_angle(
+			current_weapon.rotation,
+			target_angle + 0.7854,
+			10.0 * delta  # Ajusta la velocidad de rotación
+		)
+		
+	if is_instance_valid(current_weapon2):
+		current_weapon2.rotation = lerp_angle(
+			current_weapon2.rotation,
+			target_angle + 0.7854,
+			10.0 * delta  # Ajusta la velocidad de rotación
+		)
 	
-
+	
 func move_with_mouse():
 	
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN) # oculta el mouse y evita que salga de la pantalla del videojuego
@@ -84,25 +107,30 @@ func move_with_mouse():
 	
 	move_and_slide()
 	
-func equip_weapon():
-	if weapon_scene and is_instance_valid(weapon_anchor):
-		# Instancia la escena del arma
-		var new_weapon = weapon_scene.instantiate()
+func equip_weapon(_angle:float):
+	if not weapon_scene and not is_instance_valid(weapon_anchor):
+		return
+		
+	if is_instance_valid(current_weapon):
+		current_weapon.queue_free()
+	# Instancia la escena del arma
+	current_weapon = weapon_scene.instantiate()
+	$WeaponAnchor.add_child(current_weapon)
+	current_weapon.position = Vector2.ZERO
+	
+	
 
-		# Añade el arma como hijo del jugador
-		add_child(new_weapon)
-
-		# Posiciona el arma en el punto de unión
-		new_weapon.global_position = weapon_anchor.global_position
-
-		# la rotación coincide con de punto de unión
-		new_weapon.global_rotation = weapon_anchor.global_rotation 
-
-		current_weapon = new_weapon
-		print("Arma equipada:", current_weapon.name)
-	else:
-		printerr("No se ha asignado un arma .")
-
+func equip_weapon2(_angle:float):
+	if not weapon2_scene and not is_instance_valid(weapon2_anchor):
+		return
+		
+	if is_instance_valid(current_weapon2):
+		current_weapon2.queue_free()
+	# Instancia la escena del arma
+	current_weapon2 = weapon2_scene.instantiate()
+	$WeaponAnchor2.add_child(current_weapon2)
+	current_weapon2.position = Vector2.ZERO
+		
 func unequip_weapon(): # desequipar le arma
 	if is_instance_valid(current_weapon):
 		remove_child(current_weapon)
@@ -114,10 +142,19 @@ func unequip_weapon(): # desequipar le arma
 func change_weapon(new_weapon_scene: PackedScene):
 	unequip_weapon()
 	weapon_scene = new_weapon_scene
-	equip_weapon()
+	equip_weapon(0.0)
 
 
 func apuntar_arma(target_position: Vector2):
 	
 	#var direction_to_target = target_position - arma.global_position
 	current_weapon.rotation = 1
+
+
+func _on_main_game_shoot(angulo_disparo: float) -> void:
+	target_angle = angulo_disparo
+	
+# Señal recibida desde main_game con el ángulo al enemigo más cercano
+func _on_enemy_detected(angle_to_enemy: float):
+	target_angle = angle_to_enemy	
+	

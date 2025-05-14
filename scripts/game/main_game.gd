@@ -13,6 +13,7 @@ var player = null
 var screen_live = Global.lives   # cantidad de vidas que se muestran en pantalla
 signal live  # muestra las vidas activas
 
+
 # Enemigos
 var enemies = []  # Almacenará las instancias de enemigos
 var enemies_boss = [] # Almacenara las instancias de los enemigos Boss
@@ -23,23 +24,35 @@ var limit_of_enemy = 3 # cantidad de enemigos que se instancian
 
 # Disparos
 var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
-signal shoot(enemy_position: Vector2, shelf_position: Vector2) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
+signal shoot(angulo_disparo) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
+
+# Armas - Weapons
+
+
 # Entorno
 var background = null
 
 func _ready():	# Comienza el juego
 	
+	$level_loop.play()
+	
 	init_background()
 	
 	init_player() # Instanciar y añadir el jugador en el punto central 
+	$player.connect("enemy_detected", $player._on_enemy_detected) # asignar la señal del angulo del arma
 	
-	#timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
+	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
 	
 	timer_shoot() # Timer entre disparos
 	
-	init_spawn() #Spawn de enemigos.
+	#init_spawn() #Spawn de enemigos.
 	
-#
+func _process(delta):
+	var closest_enemy = get_closest_enemy()   # pide al enemigo mas cercano
+	if closest_enemy:                         # si existe un enemigo 
+		var angle = $player.global_position.angle_to_point(closest_enemy.global_position)   #envia el angulo al player
+		$player._on_enemy_detected(angle)
+		
 func init_background():  # Inicia el fondo y los limites de pantalla
 	background = preload("res://scenes/game/background.tscn").instantiate()
 	background.position = Vector2(0,0)  # Colocar al jugador en la parte inferior al centro
@@ -106,8 +119,9 @@ func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
 	var shortest_distance = INF  # Inicia con una distancia infinita
 	var player_position = player.global_position # sposision actual del player
 	
-	# buscar en toda las instancias de enemigos cual es la mar cercana
+	# buscar en toda las instancias de enemigos cual es la mas cercana
 	for enemy in enemies:
+		#print ("buacando")
 		var distance_to_enemy = player_position.distance_to(enemy.global_position)
 		if distance_to_enemy < shortest_distance:
 			shortest_distance = distance_to_enemy
@@ -117,16 +131,22 @@ func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
 	
 func timer_shoot():   #temporizador entre disparos
 	var shoot_timer = Timer.new()
-	shoot_timer.wait_time = timer_between_enemy
+	shoot_timer.wait_time = timer_between_shoot
 	shoot_timer.one_shot = false #que sea ciclico
 	add_child(shoot_timer)
 	shoot_timer.start()  # inicia el temporizador
-	# Conectar el temporizador a una función que instancia a las naves enemigas
+	# Conectar el temporizador de disparo
+	#print("time disparo")
 	shoot_timer.timeout.connect(shoot_at_closest_enemy) # buscar el enemigo mas cercano
+	
 	
 func shoot_at_closest_enemy(): # disparo al enemigo mas cercano
 	var closest_enemy = get_closest_enemy() #obtiene la ubicacion del enemigo mas cercano
+	#print("disparo")
 	if closest_enemy:
 		var direction = (closest_enemy.global_position - global_position).normalized()
-		emit_signal("shoot",closest_enemy.global_position,player.global_position) #envia un señal de disparo o ataque al arma y la socion del enemigo mas cercano
 		
+		var angulo_disparo = (player.global_position - closest_enemy.global_position).angle()
+		emit_signal("shoot",angulo_disparo) #envia un señal de disparo o ataque al arma y la socion del enemigo mas cercano
+		var dist = $player.global_position.distance_to(closest_enemy.global_position)
+		#print("enemigo cerca" , angulo_disparo )

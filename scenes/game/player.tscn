@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bepl2aiuisyca" path="res://assets/graphics/character_graphics/gallo.png" id="2_u3rb4"]
 [ext_resource type="AudioStream" uid="uid://do7r37xy1l23s" path="res://assets/sound/sound_effects/rooster_cry.mp3" id="3_u3rb4"]
 [ext_resource type="PackedScene" uid="uid://jlapuo4uvt6t" path="res://scenes/game/weapon.tscn" id="4_nybob"]
-[ext_resource type="Texture2D" uid="uid://cl3ut7r0qec47" path="res://assets/graphics/character_graphics/armas/arma2.png" id="5_68xwl"]
+[ext_resource type="Script" uid="uid://bvxjdl8k0gp8j" path="res://scripts/game/weapon_anchor.gd" id="5_68xwl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4jmp"]
 radius = 31.0
@@ -112,16 +112,17 @@ collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_yp0on")
 weapon_scene = ExtResource("4_nybob")
+weapon2_scene = ExtResource("4_nybob")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["player"]]
 texture_filter = 1
-position = Vector2(4, -4)
+position = Vector2(21, 3)
 texture = ExtResource("2_u3rb4")
 hframes = 16
 frame = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, -4)
+position = Vector2(21, 5)
 shape = SubResource("CapsuleShape2D_c4jmp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -130,14 +131,13 @@ libraries = {
 }
 
 [node name="rooster_cry" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(21, 3)
 stream = ExtResource("3_u3rb4")
 
-[node name="Arma2" type="Sprite2D" parent="."]
-position = Vector2(45, 20)
-texture = ExtResource("5_68xwl")
-
 [node name="WeaponAnchor" type="Marker2D" parent="."]
-position = Vector2(46, -3)
+position = Vector2(63, 3)
+rotation = 0.120428
+script = ExtResource("5_68xwl")
 
 [node name="WeaponAnchor2" type="Marker2D" parent="."]
-position = Vector2(46, -3)
+position = Vector2(-17, 3)

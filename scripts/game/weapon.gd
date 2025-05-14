@@ -13,6 +13,7 @@ var offset = Vector2(20, 0)  # Ajusta según la posición deseada
 
 func _on_main_game_shoot(enemy_position: Vector2,self_position: Vector2) -> void:
 	target_position = enemy_position
+	print("mia",self_position,"  enemigo: ",target_position)
 	#direction = enemy_position - self_position  # Direccion donde debe apuntar el arma
 	# Obtener el ángulo hacia la dirección calculada
 	#target_angle = direction.angle()

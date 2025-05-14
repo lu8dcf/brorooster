@@ -2,11 +2,23 @@
 
 [ext_resource type="Script" uid="uid://cmewdv5cgidov" path="res://scripts/game/background.gd" id="1_3ykke"]
 [ext_resource type="Script" uid="uid://dqsrjko6kki5b" path="res://scripts/game/main_game.gd" id="1_bc6cy"]
-[ext_resource type="PackedScene" uid="uid://jlapuo4uvt6t" path="res://scenes/game/weapon.tscn" id="3_7qhhq"]
 [ext_resource type="PackedScene" uid="uid://d4di1n2ndoqm3" path="res://scenes/hud/pause.tscn" id="4_noi7s"]
+[ext_resource type="PackedScene" path="res://scenes/hud/hud_game.tscn" id="5_p2514"]
 
 [node name="main_game" type="Node2D"]
 script = ExtResource("1_bc6cy")
+
+[node name="HudGame" parent="." instance=ExtResource("5_p2514")]
+z_index = 2
+custom_minimum_size = Vector2(600, 0)
+anchors_preset = 10
+anchor_bottom = 0.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 901.0
+offset_bottom = 1.0
+grow_vertical = 1
+size_flags_horizontal = 3
 
 [node name="background" type="Area2D" parent="."]
 script = ExtResource("1_3ykke")
@@ -18,13 +30,8 @@ offset_right = 71.0
 offset_bottom = 50.0
 text = "STAGE"
 
-[node name="Weapon" parent="." instance=ExtResource("3_7qhhq")]
-light_mask = 3
-visibility_layer = 2
-z_index = 2
-position = Vector2(455, 193)
-
 [node name="Pause" parent="." instance=ExtResource("4_noi7s")]
 
-[connection signal="shoot" from="." to="Weapon" method="_on_main_game_shoot"]
+[node name="level_loop" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="stage" from="." to="background" method="_on_main_game_stage"]
