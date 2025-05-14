@@ -19,6 +19,8 @@ func _input(_event: InputEvent) -> void:
 		#$Popup.visible = not $Popup.visible
 
 
+
+
 func _on_menu_pressed() -> void:
 	$blur_pausa/bg_overlay/VBoxContainer/buttons.play()
 	get_tree().paused = not get_tree().paused
