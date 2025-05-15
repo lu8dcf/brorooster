@@ -148,5 +148,4 @@ func shoot_at_closest_enemy(): # disparo al enemigo mas cercano
 		
 		var angulo_disparo = (player.global_position - closest_enemy.global_position).angle()
 		emit_signal("shoot",angulo_disparo) #envia un señal de disparo o ataque al arma y la socion del enemigo mas cercano
-		var dist = $player.global_position.distance_to(closest_enemy.global_position)
-		#print("enemigo cerca" , angulo_disparo )
+		
