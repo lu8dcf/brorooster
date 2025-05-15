@@ -44,7 +44,6 @@ func _ready():	# Comienza el juego
 	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
 	
 	timer_shoot() # Timer entre disparos
-	
 	#init_spawn() #Spawn de enemigos.
 	
 func _process(delta):
