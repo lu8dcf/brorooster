@@ -23,10 +23,24 @@ var move_right = "right"
 var move_left = "left"
 
 #Weapon
-@export var weapon_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
-@export var weapon2_scene: PackedScene # Exporta la escena del arma2 para poder asignarla desde el Inspector
-@onready var weapon_anchor: Marker2D = $WeaponAnchor1 # punto d eunion del arma
+	#habilitar las armas
+var weapon1_enable = true
+var weapon2_enable = true
+
+var weapon1_path= "res://scenes/game/weapon.tscn"
+var weapon2_path= "res://scenes/game/weapon.tscn"
+
+	#weapon1
+@export var weapon1_scene_path: String = weapon1_path
+var weapon1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
+@onready var weapon_anchor: Marker2D = $WeaponAnchor1 # punto de union del arma
+
+	#weapon2
+@export var weapon2_scene_path: String = weapon2_path
+var weapon2_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 @onready var weapon2_anchor: Marker2D = $WeaponAnchor2 # punto d eunion del arma
+
+
 var new_weapon = null
 
 var current_weapon: Node2D 
@@ -34,9 +48,7 @@ var current_weapon2: Node2D
 var arma_asignada=0
 var target_angle: float = 0.0 
 
-	#habilitar las armas
-var weapon1 = true
-var weapon2 = true
+
 
 
 # Disparo
@@ -48,13 +60,23 @@ var weapon2 = true
 @onready var shoot_timer2 = $shoot_timer2
 
 func _ready():
-	if weapon_scene and weapon1: #si hay arma1, equipar
-		equip_weapon(0.0)
-		shoot_timer1.timeout.connect(_on_shoot_timer1_timeout)
+	# Instalar el Weapon1 
+	if weapon1_scene_path != "" and weapon1_enable:
+		weapon1_scene = ResourceLoader.load(weapon1_scene_path)
+		if weapon1_scene:
+			var weapon1_instance = weapon1_scene.instantiate()
+			add_child(weapon1_instance)
+			equip_weapon1(0.0) # La coloca en la posicion 1
+			shoot_timer1.timeout.connect(_on_shoot_timer1_timeout) # Activa el timer de disparo
 		
-	if weapon2_scene and weapon2: #si hay arma2, equipar
-		equip_weapon2(0.0)
-		shoot_timer2.timeout.connect(_on_shoot_timer2_timeout)	
+	# Instalar el Weapon2 	
+	if weapon2_scene_path != "" and weapon2_enable:
+		weapon2_scene = ResourceLoader.load(weapon2_scene_path)
+		if weapon2_scene:
+			var weapon2_instance = weapon2_scene.instantiate()
+			add_child(weapon2_instance)
+			equip_weapon2(0.0) # La coloca en la posicion 1
+			shoot_timer2.timeout.connect(_on_shoot_timer2_timeout) # Activa el timer de disparo
 	
 	
 		
@@ -125,14 +147,14 @@ func move_with_mouse():
 	
 	move_and_slide()
 	
-func equip_weapon(_angle:float):
-	if not weapon_scene and not is_instance_valid(weapon_anchor):
+func equip_weapon1(_angle:float):
+	if not weapon1_scene and not is_instance_valid(weapon_anchor):
 		return
-		
+	
 	if is_instance_valid(current_weapon):
 		current_weapon.queue_free()
 	# Instancia la escena del arma
-	current_weapon = weapon_scene.instantiate()
+	current_weapon = weapon1_scene.instantiate()
 	$WeaponAnchor1.add_child(current_weapon)
 	current_weapon.position = Vector2.ZERO
 	
@@ -149,7 +171,7 @@ func equip_weapon2(_angle:float):
 	$WeaponAnchor2.add_child(current_weapon2)
 	current_weapon2.position = Vector2.ZERO
 		
-func unequip_weapon(): # desequipar le arma
+func unequip_weapon1(): # desequipar le arma
 	if is_instance_valid(current_weapon):
 		remove_child(current_weapon)
 		current_weapon.queue_free()
@@ -158,9 +180,9 @@ func unequip_weapon(): # desequipar le arma
 
 # cambio de armas
 func change_weapon(new_weapon_scene: PackedScene):
-	unequip_weapon()
-	weapon_scene = new_weapon_scene
-	equip_weapon(0.0)
+	unequip_weapon1()
+	weapon1_scene = new_weapon_scene
+	equip_weapon1(0.0)
 
 
 func apuntar_arma(target_position: Vector2):

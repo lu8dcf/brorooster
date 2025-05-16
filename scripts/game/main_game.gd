@@ -43,8 +43,7 @@ func _ready():	# Comienza el juego
 	
 	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
 	
-	#timer_shoot() # Timer entre disparos
-	
+		
 	#init_spawn() #Spawn de enemigos.
 	
 func _process(delta):
@@ -91,7 +90,7 @@ func init_enemy():
 		enemies.append(enemy)
 		#print ("Cantidad de enemigos: ",30-limit_of_enemy)
 	
-func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de la pantalla para el inicio de los enemigos
+func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de la pantalla para el inicio de los enemigossalchicha
 	var posicion_x = 0
 	var posicion_y = 0
 	

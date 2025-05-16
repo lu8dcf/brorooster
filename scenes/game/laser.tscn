@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://c4aluy8e8usba" path="res://assets/sound/sound_effects/disparo.mp3" id="3_172y8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w0hk3"]
-radius = 7.07107
+radius = 13.0384
 
 [sub_resource type="Animation" id="Animation_jq7sb"]
 length = 0.001

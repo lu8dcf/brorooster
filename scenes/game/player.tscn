@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://drqyqccjd1hg1"]
+[gd_scene load_steps=13 format=3 uid="uid://drqyqccjd1hg1"]
 
 [ext_resource type="Script" uid="uid://bso05fufxr8db" path="res://scripts/game/player.gd" id="1_yp0on"]
 [ext_resource type="Texture2D" uid="uid://bepl2aiuisyca" path="res://assets/graphics/character_graphics/gallo.png" id="2_u3rb4"]
-[ext_resource type="PackedScene" uid="uid://jlapuo4uvt6t" path="res://scenes/game/weapon.tscn" id="2_wwvfn"]
 [ext_resource type="PackedScene" uid="uid://j5ph5wn80b7k" path="res://scenes/game/laser.tscn" id="3_t8yk2"]
 [ext_resource type="AudioStream" uid="uid://do7r37xy1l23s" path="res://assets/sound/sound_effects/rooster_cry.mp3" id="3_u3rb4"]
 [ext_resource type="Script" uid="uid://bvxjdl8k0gp8j" path="res://scripts/game/weapon_anchor.gd" id="5_68xwl"]
@@ -111,8 +110,6 @@ _data = {
 position = Vector2(-21, -3)
 collision_mask = 10
 script = ExtResource("1_yp0on")
-weapon_scene = ExtResource("2_wwvfn")
-weapon2_scene = ExtResource("2_wwvfn")
 shoot1_scene = ExtResource("3_t8yk2")
 shoot2_scene = ExtResource("3_t8yk2")
 
@@ -150,6 +147,7 @@ position = Vector2(63, 3)
 position = Vector2(-17, 3)
 
 [node name="shoot_timer1" type="Timer" parent="."]
+wait_time = 0.31
 autostart = true
 
 [node name="shoot_timer2" type="Timer" parent="."]
