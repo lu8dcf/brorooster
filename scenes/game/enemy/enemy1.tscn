@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcllyvkq5kbei"]
+[gd_scene load_steps=8 format=3 uid="uid://bcllyvkq5kbei"]
 
 [ext_resource type="Script" uid="uid://ctj6tr0wflkj0" path="res://scripts/game/enemy/enemy1.gd" id="1_wthq6"]
 [ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_wthq6"]
@@ -64,8 +64,6 @@ _data = {
 &"right": SubResource("Animation_dkfay")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wthq6"]
-
 [node name="Enemy1" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(2.84874, 2.84874)
 collision_layer = 2
@@ -89,15 +87,6 @@ shape = SubResource("CircleShape2D_dkfay")
 libraries = {
 &"": SubResource("AnimationLibrary_x8ej3")
 }
-
-[node name="HItbox" type="Area2D" parent="." groups=["enemies"]]
-position = Vector2(-13, -13)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HItbox"]
-light_mask = 2
-visibility_layer = 5
-position = Vector2(0.362835, 1.76696)
-shape = SubResource("CircleShape2D_wthq6")
 
 [node name="HealthBar" type="Control" parent="."]
 layout_mode = 3
