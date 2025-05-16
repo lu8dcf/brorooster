@@ -43,12 +43,9 @@ func _ready():	# Comienza el juego
 	
 	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
 	
-<<<<<<< HEAD
-	timer_shoot() # Timer entre disparos
-=======
-	#timer_shoot() # Timer entre disparos
+
 	
->>>>>>> juego
+
 	#init_spawn() #Spawn de enemigos.
 	
 func _process(delta):
@@ -134,7 +131,7 @@ func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
 	return closest_enemy  #devuelve el enemigo mas cercano
 	
 	
-<<<<<<< HEAD
+
 	
 func shoot_at_closest_enemy(): # disparo al enemigo mas cercano
 	var closest_enemy = get_closest_enemy() #obtiene la ubicacion del enemigo mas cercano
@@ -145,5 +142,3 @@ func shoot_at_closest_enemy(): # disparo al enemigo mas cercano
 		var angulo_disparo = (player.global_position - closest_enemy.global_position).angle()
 		emit_signal("shoot",angulo_disparo) #envia un señal de disparo o ataque al arma y la socion del enemigo mas cercano
 		
-=======
->>>>>>> juego

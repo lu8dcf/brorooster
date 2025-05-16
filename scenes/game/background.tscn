@@ -17,19 +17,11 @@ shape = SubResource("RectangleShape2D_bhjye")
 
 [node name="inferior" type="CollisionShape2D" parent="."]
 visibility_layer = 3
-<<<<<<< HEAD
-position = Vector2(549, 786)
-shape = SubResource("RectangleShape2D_bhjye")
-
-[node name="derecha" type="CollisionShape2D" parent="."]
-position = Vector2(1169, 307)
-=======
 position = Vector2(403, 748)
 shape = SubResource("RectangleShape2D_bhjye")
 
 [node name="derecha" type="CollisionShape2D" parent="."]
 position = Vector2(1179, 342)
->>>>>>> juego
 shape = SubResource("RectangleShape2D_4lbss")
 
 [node name="izquierda" type="CollisionShape2D" parent="."]
@@ -37,11 +29,6 @@ position = Vector2(-24, 383)
 shape = SubResource("RectangleShape2D_4lbss")
 
 [node name="Terreno" type="Sprite2D" parent="."]
-<<<<<<< HEAD
-position = Vector2(570, 372)
-scale = Vector2(1.27232, 1.47619)
-=======
 position = Vector2(577.5, 362.5)
 scale = Vector2(1.28906, 1.43849)
->>>>>>> juego
 texture = ExtResource("1_fd8p2")

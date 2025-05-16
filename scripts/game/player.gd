@@ -153,17 +153,13 @@ func change_weapon(new_weapon_scene: PackedScene):
 	equip_weapon(0.0)
 
 
-<<<<<<< HEAD
 
-func _on_main_game_shoot(angulo_disparo: float) -> void:
-	target_angle = angulo_disparo
-=======
 func apuntar_arma(target_position: Vector2):
 	
 	#var direction_to_target = target_position - arma.global_position
 	current_weapon.rotation = 1
 
->>>>>>> juego
+
 	
 # Señal recibida desde main_game con el ángulo al enemigo más cercano
 func _on_enemy_detected(angle_to_enemy: float):
