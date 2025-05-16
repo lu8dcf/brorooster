@@ -25,7 +25,7 @@ var move_left = "left"
 #Weapon
 @export var weapon_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 @export var weapon2_scene: PackedScene # Exporta la escena del arma2 para poder asignarla desde el Inspector
-@onready var weapon_anchor: Marker2D = $WeaponAnchor # punto d eunion del arma
+@onready var weapon_anchor: Marker2D = $WeaponAnchor1 # punto d eunion del arma
 @onready var weapon2_anchor: Marker2D = $WeaponAnchor2 # punto d eunion del arma
 var new_weapon = null
 
@@ -34,11 +34,29 @@ var current_weapon2: Node2D
 var arma_asignada=0
 var target_angle: float = 0.0 
 
+	#habilitar las armas
+var weapon1 = true
+var weapon2 = true
+
+
+# Disparo
+@export var shoot1_scene: PackedScene
+@export var shoot2_scene: PackedScene
+@onready var muzzle1  :  Marker2D = $shoot1
+@onready var muzzle2  :  Marker2D = $shoot2
+@onready var shoot_timer1 = $shoot_timer1
+@onready var shoot_timer2 = $shoot_timer2
+
 func _ready():
-	if weapon_scene: #si hay arma, equipar
+	if weapon_scene and weapon1: #si hay arma1, equipar
 		equip_weapon(0.0)
+		shoot_timer1.timeout.connect(_on_shoot_timer1_timeout)
+		
+	if weapon_scene and weapon1: #si hay arma2, equipar
 		equip_weapon2(0.0)
-	pass
+		shoot_timer2.timeout.connect(_on_shoot_timer2_timeout)	
+	
+	
 		
 func _physics_process(delta):
 	# depende de lo que elija el jugador, se ejecutara el movimiento con teclado o con mouse.
@@ -108,7 +126,7 @@ func equip_weapon(_angle:float):
 		
 	# Instancia la escena del arma
 	current_weapon = weapon_scene.instantiate()
-	$WeaponAnchor.add_child(current_weapon)
+	$WeaponAnchor1.add_child(current_weapon)
 	current_weapon.position = Vector2.ZERO
 	
 	
@@ -135,11 +153,38 @@ func change_weapon(new_weapon_scene: PackedScene):
 	equip_weapon(0.0)
 
 
+<<<<<<< HEAD
 
 func _on_main_game_shoot(angulo_disparo: float) -> void:
 	target_angle = angulo_disparo
+=======
+func apuntar_arma(target_position: Vector2):
+	
+	#var direction_to_target = target_position - arma.global_position
+	current_weapon.rotation = 1
+
+>>>>>>> juego
 	
 # Señal recibida desde main_game con el ángulo al enemigo más cercano
 func _on_enemy_detected(angle_to_enemy: float):
-	target_angle = angle_to_enemy	
+	target_angle = angle_to_enemy
 	
+func _on_shoot_timer1_timeout():
+	shoot1(target_angle)
+		
+func _on_shoot_timer2_timeout():
+	shoot2(target_angle)
+		
+func shoot1(angle):  # Disparo hacia el angulo del enemigo mas cercano
+	var shoot1 = shoot1_scene.instantiate()
+	shoot1.global_position = muzzle1.global_position
+	shoot1.rotation = angle
+	shoot1.set_direction(Vector2.from_angle(angle))  # Método en la bala
+	get_parent().add_child(shoot1)
+	
+func shoot2(angle):  # Disparo hacia el angulo del enemigo mas cercano
+	var shoot2 = shoot2_scene.instantiate()
+	shoot2.global_position = muzzle2.global_position
+	shoot2.rotation = angle
+	shoot2.set_direction(Vector2.from_angle(angle))  # Método en la bala
+	get_parent().add_child(shoot2)	

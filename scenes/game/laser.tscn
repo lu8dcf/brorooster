@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://j5ph5wn80b7k"]
+[gd_scene load_steps=8 format=3 uid="uid://j5ph5wn80b7k"]
 
 [ext_resource type="Script" uid="uid://cjnv5pvwd81tt" path="res://scripts/game/laser.gd" id="1_s3ssn"]
 [ext_resource type="Texture2D" uid="uid://cpwkx40jjea51" path="res://assets/graphics/character_graphics/armas/bala.png" id="2_w0hk3"]
+[ext_resource type="AudioStream" uid="uid://c4aluy8e8usba" path="res://assets/sound/sound_effects/disparo.mp3" id="3_172y8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w0hk3"]
 radius = 7.07107
@@ -58,7 +59,8 @@ hframes = 7
 position = Vector2(8, -8)
 shape = SubResource("CircleShape2D_w0hk3")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="sonido_disparo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_172y8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
