@@ -2,10 +2,12 @@ extends CharacterBody2D
 
 var movimiento  = Vector2()
 
-var velocidad = 1
+var velocidad = 1 # velocidad del enemigo
+var health1 = 20  # Vida de la babosa
+@export var health: float = 30
 
 func _ready():
-	#$AnimationPlayer.play("tornado")
+	update_health(health)
 	pass
 
 func _physics_process(_delta): 
@@ -25,11 +27,23 @@ func set_vector(vector):
 	pass
 	
 	 
-
-
 func _on_area_2d_body_entered(body):
-	
 	if body.is_in_group("player"):
-		
 		print ("toco")
-	pass # Replace with function body.
+	
+
+func take_damage(amount: int):
+	health -= amount
+	# $AnimationPlayer.play("hit")
+	print("Enemigo golpeado! Vida restante: ", health)
+	update_health(health)
+	if health <= 0:
+		die()
+
+func die():
+	# $AnimationPlayer.play("death")
+	# await $AnimationPlayer.animation_finished
+	queue_free()
+	
+func update_health(value: float):   #barra de vida del enemigo
+	$HealthBar/ProgressBar.value = value

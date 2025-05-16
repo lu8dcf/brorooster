@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed = 600.0  # Velocidad del láser
+var speed = 800.0  # Velocidad del láser
 var tiempo_sonido = .2
 var damage = 10 # Daño que genera la bala, esto se debera hacer generico
 var direction: Vector2 # direccion hacia donde ira la bala, enemigo mas cercano
@@ -19,6 +19,9 @@ func set_direction(dir: Vector2): # Direccion de la bala
 	direction = dir
 	
 func _on_body_entered(body):   # cuando pege en el enemigo el daño que le provoca
-	if body.is_in_group("enemies"):
-		body.take_damage(damage)  # Método en el enemigo
+	
+	if body.is_in_group("enemies") and body.has_method("take_damage"):
+		body.take_damage(damage)  # Método en el enemigo de daño
+		
 	queue_free()
+	

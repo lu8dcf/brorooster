@@ -52,7 +52,7 @@ func _ready():
 		equip_weapon(0.0)
 		shoot_timer1.timeout.connect(_on_shoot_timer1_timeout)
 		
-	if weapon_scene and weapon1: #si hay arma2, equipar
+	if weapon2_scene and weapon2: #si hay arma2, equipar
 		equip_weapon2(0.0)
 		shoot_timer2.timeout.connect(_on_shoot_timer2_timeout)	
 	

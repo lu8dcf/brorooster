@@ -20,7 +20,7 @@ var enemies_boss = [] # Almacenara las instancias de los enemigos Boss
 var move_enemy = 0.05  # Intervalo de tiempo para el movimiento enemigo
 var timer_between_enemy = .5 # .5 seg Intervalo que aparecen los enemigos
 var boss_active=0 # Bandera para Agregar secuaces al BOSS
-var limit_of_enemy = 3 # cantidad de enemigos que se instancian
+var limit_of_enemy = 30 # cantidad de enemigos que se instancian
 
 # Disparos
 # var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
@@ -89,7 +89,7 @@ func init_enemy():
 		enemy.position = Vector2(position[0], position[1]) # Ubica al enemigo en la X random e Y en el inicio
 		add_child(enemy)  # Agrega como hijo del main al enemigo
 		enemies.append(enemy)
-		print ("Cantidad de enemigos: ",3-limit_of_enemy)
+		#print ("Cantidad de enemigos: ",30-limit_of_enemy)
 	
 func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de la pantalla para el inicio de los enemigos
 	var posicion_x = 0
@@ -99,7 +99,7 @@ func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de l
 	match side:
 		1: #arriba
 			posicion_x = randf_range(100, pantalla_ancho-100) # Rando en X del aparicion del enemigo en el ancho d ela pantalla
-			posicion_y = 0
+			posicion_y = 10
 		2: #derecha
 			posicion_x = pantalla_ancho
 			posicion_y = randf_range(100, pantalla_alto-100) # Rando en X del aparicion del enemigo en el ancho d ela pantalla
@@ -107,11 +107,11 @@ func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de l
 			posicion_x = randf_range(100, pantalla_ancho-100) # Rando en X del aparicion del enemigo en el ancho d ela pantalla
 			posicion_y = pantalla_alto
 		4: #izquierda
-			posicion_x = 0
+			posicion_x = 10
 			posicion_y = randf_range(100, pantalla_alto-100) # Rando en X del aparicion del enemigo en el ancho d ela pantalla
 		_:
-			posicion_x = 0
-			posicion_y = 0
+			posicion_x = 10
+			posicion_y = 10
 	return [posicion_x,posicion_y]
 
 func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
@@ -121,11 +121,11 @@ func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
 	
 	# buscar en toda las instancias de enemigos cual es la mas cercana
 	for enemy in enemies:
-		#print ("buacando")
-		var distance_to_enemy = player_position.distance_to(enemy.global_position)
-		if distance_to_enemy < shortest_distance:
-			shortest_distance = distance_to_enemy
-			closest_enemy = enemy
+		if is_instance_valid(enemy):  # ← Filtra nodos eliminados
+			var distance_to_enemy = player_position.distance_to(enemy.global_position)
+			if distance_to_enemy < shortest_distance:
+				shortest_distance = distance_to_enemy
+				closest_enemy = enemy
 	
 	return closest_enemy  #devuelve el enemigo mas cercano
 	

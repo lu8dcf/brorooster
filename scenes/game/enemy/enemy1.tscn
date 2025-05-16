@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcllyvkq5kbei"]
+[gd_scene load_steps=9 format=3 uid="uid://bcllyvkq5kbei"]
 
 [ext_resource type="Script" uid="uid://ctj6tr0wflkj0" path="res://scripts/game/enemy/enemy1.gd" id="1_wthq6"]
 [ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_wthq6"]
@@ -64,10 +64,12 @@ _data = {
 &"right": SubResource("Animation_dkfay")
 }
 
-[node name="Enemy1" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wthq6"]
+
+[node name="Enemy1" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(2.84874, 2.84874)
-collision_layer = 4
-collision_mask = 3
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_wthq6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -77,6 +79,8 @@ texture = ExtResource("2_wthq6")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 5
 position = Vector2(-11.9351, -11.233)
 scale = Vector2(0.76, 0.76)
 shape = SubResource("CircleShape2D_dkfay")
@@ -86,7 +90,30 @@ libraries = {
 &"": SubResource("AnimationLibrary_x8ej3")
 }
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HItbox" type="Area2D" parent="." groups=["enemies"]]
 position = Vector2(-13, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HItbox"]
+light_mask = 2
+visibility_layer = 5
+position = Vector2(0.362835, 1.76696)
+shape = SubResource("CircleShape2D_wthq6")
+
+[node name="HealthBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -19.0
+offset_top = -23.0
+offset_right = -3.0
+offset_bottom = -21.0
+
+[node name="ProgressBar" type="ProgressBar" parent="HealthBar"]
+layout_mode = 0
+offset_left = 2.85251
+offset_top = 1.93806
+offset_right = 75.8525
+offset_bottom = 28.9381
+scale = Vector2(0.15, 0.15)
+max_value = 30.0
+step = 1.0
+rounded = true
