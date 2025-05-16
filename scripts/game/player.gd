@@ -35,29 +35,32 @@ var weapon2_path= "res://scenes/game/weapon.tscn"
 var weapon1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 @onready var weapon_anchor: Marker2D = $WeaponAnchor1 # punto de union del arma
 
+	#disparo 1
+@export var shoot1_scene: PackedScene
+@onready var muzzle1  :  Marker2D = $shoot1 #desde donde sale el disparo
+@onready var shoot_timer1 = $shoot_timer1 
+
 	#weapon2
 @export var weapon2_scene_path: String = weapon2_path
 var weapon2_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 @onready var weapon2_anchor: Marker2D = $WeaponAnchor2 # punto d eunion del arma
+
+	#disapro2
+@export var shoot2_scene: PackedScene
+@onready var muzzle2  :  Marker2D = $shoot2
+@onready var shoot_timer2 = $shoot_timer2	
+
 
 
 var new_weapon = null
 
 var current_weapon: Node2D 
 var current_weapon2: Node2D 
-var arma_asignada=0
+
 var target_angle: float = 0.0 
 
 
 
-
-# Disparo
-@export var shoot1_scene: PackedScene
-@export var shoot2_scene: PackedScene
-@onready var muzzle1  :  Marker2D = $shoot1
-@onready var muzzle2  :  Marker2D = $shoot2
-@onready var shoot_timer1 = $shoot_timer1
-@onready var shoot_timer2 = $shoot_timer2
 
 func _ready():
 	# Instalar el Weapon1 
@@ -88,14 +91,14 @@ func _process(delta):
 	if is_instance_valid(current_weapon):
 		current_weapon.rotation = lerp_angle(
 			current_weapon.rotation,
-			target_angle + 0.7854,
+			target_angle + 0.79,
 			10.0 * delta  # Ajusta la velocidad de rotación
 		)
 		
 	if is_instance_valid(current_weapon2):
 		current_weapon2.rotation = lerp_angle(
 			current_weapon2.rotation,
-			target_angle + 0.7854,
+			target_angle + 0.78,
 			10.0 * delta  # Ajusta la velocidad de rotación
 		)
 	

@@ -120,7 +120,7 @@ texture = ExtResource("2_u3rb4")
 hframes = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21, 5)
+position = Vector2(18, 5)
 shape = SubResource("CapsuleShape2D_c4jmp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -129,7 +129,7 @@ libraries = {
 }
 
 [node name="rooster_cry" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(22, 5)
+position = Vector2(18, 7)
 stream = ExtResource("3_u3rb4")
 
 [node name="WeaponAnchor1" type="Marker2D" parent="."]
