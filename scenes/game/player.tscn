@@ -140,10 +140,10 @@ script = ExtResource("5_68xwl")
 position = Vector2(-17, 3)
 
 [node name="shoot1" type="Marker2D" parent="."]
-position = Vector2(63, 3)
+position = Vector2(62, 5)
 
 [node name="shoot2" type="Marker2D" parent="."]
-position = Vector2(-17, 3)
+position = Vector2(-16, 5)
 
 [node name="shoot_timer1" type="Timer" parent="."]
 wait_time = 0.31

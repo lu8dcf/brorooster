@@ -24,7 +24,7 @@ var move_left = "left"
 
 #Weapon
 	#habilitar las armas
-var weapon1_enable = true
+var weapon1_enable = false
 var weapon2_enable = true
 
 var weapon1_path= "res://scenes/game/weapon.tscn"
@@ -53,8 +53,7 @@ var weapon2_scene: PackedScene # Exporta la escena del arma para poder asignarla
 
 
 var new_weapon = null
-
-var current_weapon: Node2D 
+var current_weapon1: Node2D 
 var current_weapon2: Node2D 
 
 var target_angle: float = 0.0 
@@ -86,19 +85,20 @@ func _ready():
 func _physics_process(delta):
 	# depende de lo que elija el jugador, se ejecutara el movimiento con teclado o con mouse.
 	move_with_mouse()
+	
 func _process(delta):
 	# Rotar gradualmente el arma hacia el ángulo objetivo
-	if is_instance_valid(current_weapon):
-		current_weapon.rotation = lerp_angle(
-			current_weapon.rotation,
-			target_angle + 0.79,
-			10.0 * delta  # Ajusta la velocidad de rotación
-		)
+	if is_instance_valid(current_weapon1): 
+		current_weapon1.rotation = lerp_angle(current_weapon1.rotation,target_angle - 0.79, 10.0 * delta)  # Ajusta la velocidad de rotación
+		#if current_weapon1.rotation < 0:
+			#$Sprite2D.flip_v = true   # Voltear si el objetivo está a la izquierda
+		#else:
+			#$Sprite2D.flip_v = false
 		
 	if is_instance_valid(current_weapon2):
 		current_weapon2.rotation = lerp_angle(
 			current_weapon2.rotation,
-			target_angle + 0.78,
+			target_angle - 0.78,
 			10.0 * delta  # Ajusta la velocidad de rotación
 		)
 	
@@ -154,12 +154,12 @@ func equip_weapon1(_angle:float):
 	if not weapon1_scene and not is_instance_valid(weapon_anchor):
 		return
 	
-	if is_instance_valid(current_weapon):
-		current_weapon.queue_free()
+	if is_instance_valid(current_weapon1):
+		current_weapon1.queue_free()
 	# Instancia la escena del arma
-	current_weapon = weapon1_scene.instantiate()
-	$WeaponAnchor1.add_child(current_weapon)
-	current_weapon.position = Vector2.ZERO
+	current_weapon1 = weapon1_scene.instantiate()
+	$WeaponAnchor1.add_child(current_weapon1)
+	current_weapon1.position = Vector2.ZERO
 	
 	
 
@@ -175,10 +175,10 @@ func equip_weapon2(_angle:float):
 	current_weapon2.position = Vector2.ZERO
 		
 func unequip_weapon1(): # desequipar le arma
-	if is_instance_valid(current_weapon):
-		remove_child(current_weapon)
-		current_weapon.queue_free()
-		current_weapon = null
+	if is_instance_valid(current_weapon1):
+		remove_child(current_weapon1)
+		current_weapon1.queue_free()
+		current_weapon1 = null
 		print("Arma desequipada.")
 
 # cambio de armas
@@ -189,9 +189,7 @@ func change_weapon(new_weapon_scene: PackedScene):
 
 
 func apuntar_arma(target_position: Vector2):
-	
-	#var direction_to_target = target_position - arma.global_position
-	current_weapon.rotation = 1
+	current_weapon1.rotation = 1
 
 	
 # Señal recibida desde main_game con el ángulo al enemigo más cercano

@@ -39,7 +39,8 @@ func _ready():	# Comienza el juego
 	init_background()
 	
 	init_player() # Instanciar y añadir el jugador en el punto central 
-	$player.connect("enemy_detected", $player._on_enemy_detected) # asignar la señal del angulo del arma
+	# asignar la señal del angulo del arma y disparo
+	$player.connect("enemy_detected", $player._on_enemy_detected) 
 	
 	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
 	

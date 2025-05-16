@@ -18,8 +18,5 @@ func _process(delta):
 	var target_angle: float = direction.angle()
 	
 	
-	if direction.x < 0:
-		$Sprite2D.flip_v = true   # Voltear si el objetivo está a la izquierda
-	else:
-		$Sprite2D.flip_v = false
+	
 	
