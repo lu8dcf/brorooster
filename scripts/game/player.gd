@@ -23,13 +23,15 @@ var move_right = "right"
 var move_left = "left"
 
 #Weapon
-	#habilitar las armas
-var weapon1_enable = false
+	#habilitar las armas    estas son las variables al seleccionar las armas
+var weapon1_enable = true
 var weapon2_enable = true
 
 var weapon1_path= "res://scenes/game/weapon.tscn"
 var weapon2_path= "res://scenes/game/weapon.tscn"
 
+var time_shoot1= 0.5
+var time_shoot2= 0.3
 	#weapon1
 @export var weapon1_scene_path: String = weapon1_path
 var weapon1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
@@ -67,18 +69,18 @@ func _ready():
 		weapon1_scene = ResourceLoader.load(weapon1_scene_path)
 		if weapon1_scene:
 			var weapon1_instance = weapon1_scene.instantiate()
-			add_child(weapon1_instance)
+			#add_child(weapon1_instance)
 			equip_weapon1(0.0) # La coloca en la posicion 1
-			shoot_timer1.timeout.connect(_on_shoot_timer1_timeout) # Activa el timer de disparo
+			timer_Shoot1() # Activa el timer de disparo
 		
 	# Instalar el Weapon2 	
 	if weapon2_scene_path != "" and weapon2_enable:
 		weapon2_scene = ResourceLoader.load(weapon2_scene_path)
 		if weapon2_scene:
 			var weapon2_instance = weapon2_scene.instantiate()
-			add_child(weapon2_instance)
+			#add_child(weapon2_instance)
 			equip_weapon2(0.0) # La coloca en la posicion 1
-			shoot_timer2.timeout.connect(_on_shoot_timer2_timeout) # Activa el timer de disparo
+			timer_Shoot2() # Activa el timer de disparo
 	
 	
 		
@@ -96,11 +98,7 @@ func _process(delta):
 			#$Sprite2D.flip_v = false
 		
 	if is_instance_valid(current_weapon2):
-		current_weapon2.rotation = lerp_angle(
-			current_weapon2.rotation,
-			target_angle - 0.78,
-			10.0 * delta  # Ajusta la velocidad de rotación
-		)
+		current_weapon2.rotation = lerp_angle(current_weapon2.rotation,target_angle - 0.78, 10.0 * delta)  # Ajusta la velocidad de rotación
 	
 	
 func move_with_mouse():
@@ -147,13 +145,12 @@ func move_with_mouse():
 	
 	# Interpolación para movimiento suave
 	velocity = velocity.lerp(move_vector, acceleration * get_process_delta_time())
-	
 	move_and_slide()
 	
+	# equipa el arma 1
 func equip_weapon1(_angle:float):
 	if not weapon1_scene and not is_instance_valid(weapon_anchor):
 		return
-	
 	if is_instance_valid(current_weapon1):
 		current_weapon1.queue_free()
 	# Instancia la escena del arma
@@ -161,8 +158,7 @@ func equip_weapon1(_angle:float):
 	$WeaponAnchor1.add_child(current_weapon1)
 	current_weapon1.position = Vector2.ZERO
 	
-	
-
+	# equipa el arma 2
 func equip_weapon2(_angle:float):
 	if not weapon2_scene and not is_instance_valid(weapon2_anchor):
 		return
@@ -188,30 +184,39 @@ func change_weapon(new_weapon_scene: PackedScene):
 	equip_weapon1(0.0)
 
 
-func apuntar_arma(target_position: Vector2):
-	current_weapon1.rotation = 1
-
 	
 # Señal recibida desde main_game con el ángulo al enemigo más cercano
 func _on_enemy_detected(angle_to_enemy: float):
 	target_angle = angle_to_enemy
 	
-func _on_shoot_timer1_timeout():
-	shoot1(target_angle)
+
+
+func timer_Shoot1():
+	var shoot1_timer = Timer.new()
+	shoot1_timer.wait_time = time_shoot1
+	shoot1_timer.one_shot = false #que sea ciclico
+	add_child(shoot1_timer)
+	shoot1_timer.start()  # inicia el temporizador
+	shoot1_timer.timeout.connect(shoot1)	
+	
+func timer_Shoot2():
+	var shoot2_timer = Timer.new()
+	shoot2_timer.wait_time = time_shoot2
+	shoot2_timer.one_shot = false #que sea ciclico
+	add_child(shoot2_timer)
+	shoot2_timer.start()  # inicia el temporizador
+	shoot2_timer.timeout.connect(shoot2)	
 		
-func _on_shoot_timer2_timeout():
-	shoot2(target_angle)
-		
-func shoot1(angle):  # Disparo hacia el angulo del enemigo mas cercano
+func shoot1():  # Disparo hacia el angulo del enemigo mas cercano
 	var shoot1 = shoot1_scene.instantiate()
 	shoot1.global_position = muzzle1.global_position
-	shoot1.rotation = angle
-	shoot1.set_direction(Vector2.from_angle(angle))  # Método en la bala
+	shoot1.rotation = target_angle
+	shoot1.set_direction(Vector2.from_angle(target_angle))  # Método en la bala
 	get_parent().add_child(shoot1)
 	
-func shoot2(angle):  # Disparo hacia el angulo del enemigo mas cercano
+func shoot2():  # Disparo hacia el angulo del enemigo mas cercano
 	var shoot2 = shoot2_scene.instantiate()
 	shoot2.global_position = muzzle2.global_position
-	shoot2.rotation = angle
-	shoot2.set_direction(Vector2.from_angle(angle))  # Método en la bala
+	shoot2.rotation = target_angle
+	shoot2.set_direction(Vector2.from_angle(target_angle))  # Método en la bala
 	get_parent().add_child(shoot2)	

@@ -144,11 +144,3 @@ position = Vector2(62, 5)
 
 [node name="shoot2" type="Marker2D" parent="."]
 position = Vector2(-16, 5)
-
-[node name="shoot_timer1" type="Timer" parent="."]
-wait_time = 0.31
-autostart = true
-
-[node name="shoot_timer2" type="Timer" parent="."]
-wait_time = 0.798
-autostart = true
