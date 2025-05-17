@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_wthq6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
-radius = 13.0
+radius = 21.0476
 
 [sub_resource type="Animation" id="Animation_5nfiu"]
 length = 0.001
@@ -54,7 +54,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2i(2, 0), Vector2i(3, 0)]
+"values": [Vector2i(4, 0), Vector2i(6, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8ej3"]
@@ -65,22 +65,21 @@ _data = {
 }
 
 [node name="Enemy1" type="CharacterBody2D" groups=["enemies"]]
-scale = Vector2(2.84874, 2.84874)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_wthq6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-13, -13)
-scale = Vector2(0.166377, 0.179622)
+position = Vector2(-24.7731, -21.4569)
+scale = Vector2(0.984132, 1.01629)
 texture = ExtResource("2_wthq6")
-hframes = 4
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 5
-position = Vector2(-11.9351, -11.233)
-scale = Vector2(0.76, 0.76)
+position = Vector2(-26, -17)
+scale = Vector2(1.2353, 0.76)
 shape = SubResource("CircleShape2D_dkfay")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -92,16 +91,16 @@ libraries = {
 layout_mode = 3
 anchors_preset = 0
 offset_left = -19.0
-offset_top = -23.0
+offset_top = -34.0
 offset_right = -3.0
-offset_bottom = -21.0
+offset_bottom = -32.0
 
 [node name="ProgressBar" type="ProgressBar" parent="HealthBar"]
 layout_mode = 0
-offset_left = 2.85251
-offset_top = 1.93806
-offset_right = 75.8525
-offset_bottom = 28.9381
+offset_left = -18.0
+offset_top = -12.0
+offset_right = 129.0
+offset_bottom = 15.0
 scale = Vector2(0.15, 0.15)
 max_value = 30.0
 step = 1.0

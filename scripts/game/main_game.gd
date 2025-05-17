@@ -39,12 +39,13 @@ func _ready():	# Comienza el juego
 	init_background()
 	
 	init_player() # Instanciar y añadir el jugador en el punto central 
-	$player.connect("enemy_detected", $player._on_enemy_detected) # asignar la señal del angulo del arma
+	# asignar la señal del angulo del arma y disparo
+	$player.connect("enemy_detected", $player._on_enemy_detected) 
 	
 	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
 	
 
-	
+		
 
 	#init_spawn() #Spawn de enemigos.
 	
@@ -92,7 +93,7 @@ func init_enemy():
 		enemies.append(enemy)
 		#print ("Cantidad de enemigos: ",30-limit_of_enemy)
 	
-func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de la pantalla para el inicio de los enemigos
+func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de la pantalla para el inicio de los enemigossalchicha
 	var posicion_x = 0
 	var posicion_y = 0
 	
