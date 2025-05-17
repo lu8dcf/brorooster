@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://drqyqccjd1hg1"]
+[gd_scene load_steps=13 format=3 uid="uid://drqyqccjd1hg1"]
 
 [ext_resource type="Script" uid="uid://bso05fufxr8db" path="res://scripts/game/player.gd" id="1_yp0on"]
 [ext_resource type="Texture2D" uid="uid://bepl2aiuisyca" path="res://assets/graphics/character_graphics/gallo.png" id="2_u3rb4"]
-[ext_resource type="PackedScene" uid="uid://jlapuo4uvt6t" path="res://scenes/game/weapon.tscn" id="2_wwvfn"]
 [ext_resource type="PackedScene" uid="uid://j5ph5wn80b7k" path="res://scenes/game/laser.tscn" id="3_t8yk2"]
 [ext_resource type="AudioStream" uid="uid://do7r37xy1l23s" path="res://assets/sound/sound_effects/rooster_cry.mp3" id="3_u3rb4"]
 [ext_resource type="Script" uid="uid://bvxjdl8k0gp8j" path="res://scripts/game/weapon_anchor.gd" id="5_68xwl"]
@@ -38,10 +37,10 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.428571, 0.571429, 0.714286, 0.857143),
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(6, 0), Vector2i(5, 0), Vector2i(4, 0)]
+"values": [Vector2i(12, 0), Vector2i(13, 0), Vector2i(14, 0), Vector2i(15, 0), Vector2i(14, 0), Vector2i(13, 0), Vector2i(12, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_2h4ie"]
@@ -56,32 +55,14 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.428571, 0.571429, 0.714286, 0.857143),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(12, 0), Vector2i(13, 0), Vector2i(14, 0), Vector2i(15, 0), Vector2i(14, 0), Vector2i(13, 0), Vector2i(12, 0)]
+"values": [Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(6, 0), Vector2i(5, 0), Vector2i(4, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_1smw4"]
 resource_name = "left"
-length = 0.6
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_7ybyr"]
-resource_name = "right"
 length = 0.6
 loop_mode = 1
 step = 0.15
@@ -98,6 +79,24 @@ tracks/0/keys = {
 "values": [Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0), Vector2i(11, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_7ybyr"]
+resource_name = "right"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ssvxt"]
 _data = {
 &"RESET": SubResource("Animation_cd2b0"),
@@ -111,8 +110,6 @@ _data = {
 position = Vector2(-21, -3)
 collision_mask = 10
 script = ExtResource("1_yp0on")
-weapon_scene = ExtResource("2_wwvfn")
-weapon2_scene = ExtResource("2_wwvfn")
 shoot1_scene = ExtResource("3_t8yk2")
 shoot2_scene = ExtResource("3_t8yk2")
 
@@ -121,10 +118,9 @@ texture_filter = 1
 position = Vector2(21, 3)
 texture = ExtResource("2_u3rb4")
 hframes = 16
-frame = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21, 5)
+position = Vector2(18, 5)
 shape = SubResource("CapsuleShape2D_c4jmp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -133,7 +129,7 @@ libraries = {
 }
 
 [node name="rooster_cry" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(22, 5)
+position = Vector2(18, 7)
 stream = ExtResource("3_u3rb4")
 
 [node name="WeaponAnchor1" type="Marker2D" parent="."]
@@ -144,14 +140,7 @@ script = ExtResource("5_68xwl")
 position = Vector2(-17, 3)
 
 [node name="shoot1" type="Marker2D" parent="."]
-position = Vector2(63, 3)
+position = Vector2(62, 5)
 
 [node name="shoot2" type="Marker2D" parent="."]
-position = Vector2(-17, 3)
-
-[node name="shoot_timer1" type="Timer" parent="."]
-autostart = true
-
-[node name="shoot_timer2" type="Timer" parent="."]
-wait_time = 0.798
-autostart = true
+position = Vector2(-16, 5)
