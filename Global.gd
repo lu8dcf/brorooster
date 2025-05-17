@@ -1,8 +1,10 @@
 extends Node
-
-
 # Propiedades del  player 
-var lives = 3
+var lives = 3:
+	set(value):
+		lives = value
+		emit_signal("lives_changed", lives)
+		
 var speed_player = 1000
 var mouse_sens = 0.5
 
@@ -22,3 +24,7 @@ var angle = 0
 
 #Stage
 var stage = 1
+
+signal lives_changed(new_value)
+func decrease_lives(amount = 1):
+	lives = max(0, lives - amount)

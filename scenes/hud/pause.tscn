@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://d4di1n2ndoqm3"]
 
-[ext_resource type="Script" uid="uid://dwtsl61ric474" path="res://scripts/pause.gd" id="1_f1d2v"]
+[ext_resource type="Script" uid="uid://dub0w1pt21gno" path="res://Global_hud.gd" id="1_0joif"]
 [ext_resource type="Shader" uid="uid://r621tvcnd0ql" path="res://shaders/pause_blur_shaders.gdshader" id="2_r8yp4"]
 [ext_resource type="Texture2D" uid="uid://h412wt6r5wx4" path="res://assets/buttons/pausa logo.png" id="3_r1fnm"]
 
@@ -87,7 +87,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.62714, 1.62714)
-script = ExtResource("1_f1d2v")
+script = ExtResource("1_0joif")
 
 [node name="blur_pausa" type="CanvasLayer" parent="."]
 

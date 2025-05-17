@@ -100,6 +100,7 @@ func _physics_process(delta):
 	
 func _process(delta):
 	# Rotar gradualmente el arma hacia el ángulo objetivo
+
 	if is_instance_valid(current_weapon1): 
 		current_weapon1.rotation = lerp_angle(current_weapon1.rotation,target_angle - 0.79, 10.0 * delta)  # Ajusta la velocidad de rotación
 		#if current_weapon1.rotation < 0:
@@ -109,6 +110,7 @@ func _process(delta):
 		
 	if is_instance_valid(current_weapon2):
 		current_weapon2.rotation = lerp_angle(current_weapon2.rotation,target_angle - 0.78, 10.0 * delta)  # Ajusta la velocidad de rotación
+
 	
 	
 func move_with_mouse():
@@ -162,20 +164,21 @@ func move_with_mouse():
 func equip_weapon1(_angle:float):
 	if not weapon1_scene and not is_instance_valid(weapon_anchor):
 		return
+
+
 	if is_instance_valid(current_weapon1):
 		current_weapon1.queue_free()
+
 	# Instancia la escena del arma
 	current_weapon1 = weapon1_scene.instantiate()
 	$WeaponAnchor1.add_child(current_weapon1)
 	current_weapon1.position = Vector2.ZERO
 	
-	# equipa el arma 2
+
 func equip_weapon2(_angle:float):
 	if not weapon2_scene and not is_instance_valid(weapon2_anchor):
 		return
 		
-	if is_instance_valid(current_weapon2):
-		current_weapon2.queue_free()
 	# Instancia la escena del arma
 	current_weapon2 = weapon2_scene.instantiate()
 	$WeaponAnchor2.add_child(current_weapon2)
@@ -193,6 +196,8 @@ func change_weapon(new_weapon_scene: PackedScene):
 	unequip_weapon1()
 	weapon1_scene = new_weapon_scene
 	equip_weapon1(0.0)
+
+
 
 
 	
