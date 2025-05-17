@@ -11,7 +11,6 @@ var direction = Vector2.ZERO
 var acceleration: float = 8.0  # Suavizado del movimiento
 var rotation_speed: float = 5.0
 var target_velocity: Vector2 = Vector2.ZERO
-# var deadzone_radius : float = GlobalSettings.deadzone_radius_main  # Zona muerta para cuando el mouse se alinea con la nave
 var mouse_sensitivy = Global.mouse_sens # se utiliza la variable global que se modifica en el menu de opciones
 
 # Propiedades de la Pantalla y dispositivos
@@ -24,23 +23,29 @@ var move_left = "left"
 
 #Weapon
 	#habilitar las armas    estas son las variables al seleccionar las armas
+
+
 var weapon1_enable = true
-var weapon2_enable = true
-
 var weapon1_path= "res://scenes/game/weapon.tscn"
-var weapon2_path= "res://scenes/game/weapon.tscn"
-
+var shoot1_path="res://scenes/game/laser.tscn"
 var time_shoot1= 0.5
+
+var weapon2_enable = true
+var weapon2_path= "res://scenes/game/weapon.tscn"
+var shoot2_path="res://scenes/game/laser.tscn"
 var time_shoot2= 0.3
+
 	#weapon1
 @export var weapon1_scene_path: String = weapon1_path
 var weapon1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 @onready var weapon_anchor: Marker2D = $WeaponAnchor1 # punto de union del arma
 
 	#disparo 1
-@export var shoot1_scene: PackedScene
+@export var shoot1_scene_path: String = shoot1_path
+var shoot1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
+
 @onready var muzzle1  :  Marker2D = $shoot1 #desde donde sale el disparo
-@onready var shoot_timer1 = $shoot_timer1 
+
 
 	#weapon2
 @export var weapon2_scene_path: String = weapon2_path
@@ -48,9 +53,10 @@ var weapon2_scene: PackedScene # Exporta la escena del arma para poder asignarla
 @onready var weapon2_anchor: Marker2D = $WeaponAnchor2 # punto d eunion del arma
 
 	#disapro2
-@export var shoot2_scene: PackedScene
+@export var shoot2_scene_path: String = shoot2_path
+var shoot2_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 @onready var muzzle2  :  Marker2D = $shoot2
-@onready var shoot_timer2 = $shoot_timer2	
+
 
 
 
@@ -71,7 +77,9 @@ func _ready():
 			var weapon1_instance = weapon1_scene.instantiate()
 			#add_child(weapon1_instance)
 			equip_weapon1(0.0) # La coloca en la posicion 1
-			timer_Shoot1() # Activa el timer de disparo
+			shoot1_scene = ResourceLoader.load(shoot1_scene_path)
+			if shoot1_scene:
+				timer_Shoot1() # Activa el timer de disparo
 		
 	# Instalar el Weapon2 	
 	if weapon2_scene_path != "" and weapon2_enable:
@@ -80,7 +88,9 @@ func _ready():
 			var weapon2_instance = weapon2_scene.instantiate()
 			#add_child(weapon2_instance)
 			equip_weapon2(0.0) # La coloca en la posicion 1
-			timer_Shoot2() # Activa el timer de disparo
+			shoot2_scene = ResourceLoader.load(shoot2_scene_path)
+			if shoot2_scene:
+				timer_Shoot2() # Activa el timer de disparo
 	
 	
 		
@@ -150,6 +160,7 @@ func move_with_mouse():
 	move_and_slide()
 	
 	# equipa el arma 1
+
 func equip_weapon1(_angle:float):
 	if not weapon1_scene and not is_instance_valid(weapon_anchor):
 		return
