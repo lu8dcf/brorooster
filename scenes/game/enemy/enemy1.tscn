@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcllyvkq5kbei"]
+[gd_scene load_steps=9 format=3 uid="uid://bcllyvkq5kbei"]
 
 [ext_resource type="Script" uid="uid://ctj6tr0wflkj0" path="res://scripts/game/enemy/enemy1.gd" id="1_wthq6"]
 [ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_wthq6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
-radius = 21.0476
+radius = 12.2139
 
 [sub_resource type="Animation" id="Animation_5nfiu"]
 length = 0.001
@@ -64,6 +64,9 @@ _data = {
 &"right": SubResource("Animation_dkfay")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wthq6"]
+radius = 19.0263
+
 [node name="Enemy1" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
 collision_mask = 5
@@ -78,7 +81,7 @@ hframes = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 5
-position = Vector2(-26, -17)
+position = Vector2(-26, -18)
 scale = Vector2(1.2353, 0.76)
 shape = SubResource("CircleShape2D_dkfay")
 
@@ -105,3 +108,11 @@ scale = Vector2(0.15, 0.15)
 max_value = 30.0
 step = 1.0
 rounded = true
+
+[node name="AreaDaño" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
+position = Vector2(-27, -17)
+shape = SubResource("CircleShape2D_wthq6")
+
+[connection signal="body_entered" from="AreaDaño" to="." method="_on_area_daño_body_entered"]

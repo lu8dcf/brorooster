@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://drqyqccjd1hg1"]
+[gd_scene load_steps=13 format=3 uid="uid://drqyqccjd1hg1"]
 
 [ext_resource type="Script" uid="uid://bso05fufxr8db" path="res://scripts/game/player.gd" id="1_yp0on"]
 [ext_resource type="Texture2D" uid="uid://bepl2aiuisyca" path="res://assets/graphics/character_graphics/gallo.png" id="2_u3rb4"]
@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://bvxjdl8k0gp8j" path="res://scripts/game/weapon_anchor.gd" id="5_68xwl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4jmp"]
-radius = 31.0
-height = 74.0
+radius = 30.0
+height = 60.0
 
 [sub_resource type="Animation" id="Animation_cd2b0"]
 length = 0.001
@@ -105,6 +105,9 @@ _data = {
 &"right": SubResource("Animation_7ybyr")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nybob"]
+radius = 36.0
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(-21, -3)
 collision_mask = 10
@@ -141,3 +144,11 @@ position = Vector2(62, 5)
 
 [node name="shoot2" type="Marker2D" parent="."]
 position = Vector2(-16, 5)
+
+[node name="AreaRecoleccion" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaRecoleccion"]
+position = Vector2(19, 7)
+shape = SubResource("CircleShape2D_nybob")
+
+[connection signal="area_entered" from="AreaRecoleccion" to="." method="_on_area_recoleccion_area_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://uy4k0gaf0v3j"]
+[gd_scene load_steps=6 format=3 uid="uid://uy4k0gaf0v3j"]
 
 [ext_resource type="Script" uid="uid://cmewdv5cgidov" path="res://scripts/game/background.gd" id="1_3ykke"]
 [ext_resource type="Script" uid="uid://dqsrjko6kki5b" path="res://scripts/game/main_game.gd" id="1_bc6cy"]
+[ext_resource type="Script" path="res://scripts/hud_game.gd" id="3_p2514"]
 [ext_resource type="PackedScene" uid="uid://d4di1n2ndoqm3" path="res://scenes/hud/pause.tscn" id="4_noi7s"]
 [ext_resource type="PackedScene" uid="uid://c7i1pt230pwus" path="res://scenes/hud/hud_game.tscn" id="5_p2514"]
 
@@ -19,6 +20,7 @@ offset_right = 901.0
 offset_bottom = 1.0
 grow_vertical = 1
 size_flags_horizontal = 3
+script = ExtResource("3_p2514")
 
 [node name="background" type="Area2D" parent="."]
 script = ExtResource("1_3ykke")

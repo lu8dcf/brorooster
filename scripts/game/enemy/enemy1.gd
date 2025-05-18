@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+#Valores
+var damage = 5
+
+
 var movimiento  = Vector2()
 
 var velocidad = 1 # velocidad del enemigo
@@ -35,7 +39,7 @@ func _on_area_2d_body_entered(body):
 func take_damage(amount: int):
 	health -= amount
 	# $AnimationPlayer.play("hit")
-	print("Enemigo golpeado! Vida restante: ", health)
+	#print("Enemigo golpeado! Vida restante: ", health)
 	update_health(health)
 	if health <= 0:
 		die()
@@ -47,3 +51,8 @@ func die():
 	
 func update_health(value: float):   #barra de vida del enemigo
 	$HealthBar/ProgressBar.value = value
+
+
+func _on_area_daño_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player") and body.has_method("take_damage"):
+		body.take_damage(damage)  # Método en el enemigo de daño

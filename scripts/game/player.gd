@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 # Propiedades 
+var health = 100
 var speed = Global.speed_main # velocidad de movimiento del
 var speed_fly = 2 # Velocidas de vuelo
 var fly_cooldown = 1  # Tiempo de vuelo
@@ -34,6 +35,8 @@ var weapon2_enable = true
 var weapon2_path= "res://scenes/game/weapon.tscn"
 var shoot2_path="res://scenes/game/laser.tscn"
 var time_shoot2= 0.3
+
+var diferencia_sprit_weapon = -PI/4
 
 	#weapon1
 @export var weapon1_scene_path: String = weapon1_path
@@ -101,14 +104,16 @@ func _physics_process(delta):
 func _process(delta):
 	# Rotar gradualmente el arma hacia el ángulo objetivo
 	if is_instance_valid(current_weapon1): 
-		current_weapon1.rotation = lerp_angle(current_weapon1.rotation,target_angle - 0.79, 10.0 * delta)  # Ajusta la velocidad de rotación
-		#if current_weapon1.rotation < 0:
-			#$Sprite2D.flip_v = true   # Voltear si el objetivo está a la izquierda
-		#else:
-			#$Sprite2D.flip_v = false
+		current_weapon1.rotation = lerp_angle(current_weapon1.rotation,target_angle + diferencia_sprit_weapon , 10.0 * delta)  # Ajusta la velocidad de rotación
+		# Determinar si el arma está apuntando hacia la izquierda
+		var is_aiming_left = abs(target_angle) > PI/2 and abs(target_angle) < 3*PI/2
+	# Voltear horizontalmente el sprite del arma
+		var weapon_sprite = current_weapon1.get_node("Sprite2D")  # Asegúrate de que esta es la ruta correcta
+		
+		#weapon_sprite.flip_h = true
 		
 	if is_instance_valid(current_weapon2):
-		current_weapon2.rotation = lerp_angle(current_weapon2.rotation,target_angle - 0.78, 10.0 * delta)  # Ajusta la velocidad de rotación
+		current_weapon2.rotation = lerp_angle(current_weapon2.rotation,target_angle + diferencia_sprit_weapon, 10.0 * delta)  # Ajusta la velocidad de rotación
 	
 	
 func move_with_mouse():
@@ -231,3 +236,23 @@ func shoot2():  # Disparo hacia el angulo del enemigo mas cercano
 	shoot2.rotation = target_angle
 	shoot2.set_direction(Vector2.from_angle(target_angle))  # Método en la bala
 	get_parent().add_child(shoot2)	
+
+
+# recibir daño
+func take_damage(amount: int):
+	health -= amount
+	# $AnimationPlayer.play("hit")
+	print (health)
+	if health <= 0:
+		die()
+
+# morir al no tenes mas vidas
+func die():
+	# $AnimationPlayer.play("death")
+	# await $AnimationPlayer.animation_finished
+	queue_free()
+
+# Juntar los items
+func _on_area_recoleccion_area_entered(item) -> void:
+	if item.is_in_group("items") and item.has_method("take_maiz"):
+		item.take_maiz()  # recibir la cantidad de maiz
