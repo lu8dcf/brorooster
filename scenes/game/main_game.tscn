@@ -13,11 +13,12 @@ z_index = 2
 custom_minimum_size = Vector2(600, 0)
 anchors_preset = 10
 anchor_bottom = 0.0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 901.0
-offset_bottom = 1.0
+offset_left = 2.0
+offset_top = 8.0
+offset_right = 1138.0
+offset_bottom = 90.0
 grow_vertical = 1
+pivot_offset = Vector2(-2, -6)
 size_flags_horizontal = 3
 
 [node name="background" type="Area2D" parent="."]
@@ -31,6 +32,10 @@ offset_bottom = 50.0
 text = "STAGE"
 
 [node name="Pause" parent="." instance=ExtResource("4_noi7s")]
+offset_left = 26.0
+offset_top = 37.0
+offset_right = 26.0
+offset_bottom = 37.0
 
 [node name="level_loop" type="AudioStreamPlayer2D" parent="."]
 

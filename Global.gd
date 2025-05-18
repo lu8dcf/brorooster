@@ -1,6 +1,8 @@
 extends Node
 # Propiedades del  player 
-var lives = 3:
+var lives = 100:
+	get:
+		return lives
 	set(value):
 		lives = value
 		emit_signal("lives_changed", lives)
