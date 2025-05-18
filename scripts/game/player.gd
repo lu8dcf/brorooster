@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Propiedades 
-var health = 100
+var health = Global.get_lives()
 var speed = Global.speed_main # velocidad de movimiento del
 var speed_fly = 2 # Velocidas de vuelo
 var fly_cooldown = 1  # Tiempo de vuelo
@@ -246,8 +246,10 @@ func shoot2():  # Disparo hacia el angulo del enemigo mas cercano
 
 # recibir daño
 func take_damage(amount: int):
-	health -= amount
+	
 	# $AnimationPlayer.play("hit")
+	Global.decrease_lives(amount)
+	health -= amount
 	print (health)
 	if health <= 0:
 		die()
@@ -256,7 +258,8 @@ func take_damage(amount: int):
 func die():
 	# $AnimationPlayer.play("death")
 	# await $AnimationPlayer.animation_finished
-	queue_free()
+	#queue_free()
+	print("mori")
 
 # Juntar los items
 func _on_area_recoleccion_area_entered(item) -> void:
