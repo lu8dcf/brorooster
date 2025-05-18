@@ -43,11 +43,29 @@ func _ready():	# Comienza el juego
 	$player.connect("enemy_detected", $player._on_enemy_detected) 
 	
 	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
-	
 
+	
+<<<<<<< HEAD
+
+=======
+	var spawner = preload("res://scenes/game/enemy/spawner_worms.tscn").instantiate()
+	spawner.position = Vector2(180, pantalla_alto - 180)
+	spawner.player = player  # ← Ya existe porque init_player() se ejecutó antes
+	add_child(spawner)
+	
+	var spawner2 = preload("res://scenes/game/enemy/spawner_worms.tscn").instantiate()
+	spawner2.position = Vector2(150, pantalla_alto - 650)  # ← un poco más arriba
+	spawner2.player = player
+	add_child(spawner2)
+
+	$player.connect("enemy_detected", $player._on_enemy_detected)
+	timer_add_enemy()
+>>>>>>> 934a195c635156df6d6512248c3c031578d31db3
 		
 
 	#init_spawn() #Spawn de enemigos.
+	
+	
 	
 func _process(delta):
 	var closest_enemy = get_closest_enemy()   # pide al enemigo mas cercano
