@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c7i1pt230pwus"]
 
-[ext_resource type="Script" path="res://scripts/hud_game.gd" id="1_fgv6s"]
+[ext_resource type="Script" uid="uid://40qhcogcgsib" path="res://scripts/hud_game.gd" id="1_fgv6s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0rtn"]
 bg_color = Color(1, 0.477691, 0.482099, 0.670588)

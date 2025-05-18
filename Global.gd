@@ -30,3 +30,6 @@ var stage = 1
 signal lives_changed(new_value)
 func decrease_lives(amount = 1):
 	lives = max(0, lives - amount)
+	
+func get_lives() -> int:
+	return lives
