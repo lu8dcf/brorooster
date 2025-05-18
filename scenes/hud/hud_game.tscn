@@ -141,3 +141,5 @@ text = "   PAUSA  "
 
 [node name="Space3" type="Control" parent="VBoxContainer/Background/HBoxContainer"]
 layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/Background/HBoxContainer/MarginContainer/pausa" to="." method="_on_pausa_pressed"]

@@ -5,7 +5,7 @@ extends Control
 
 func _ready() -> void:
 	# Configuración inicial
-	life_bar.max_value = 3
+	life_bar.max_value = Global.lives
 	life_bar.value = Global.lives
 	
 	# Conexión de señal
@@ -14,3 +14,7 @@ func _ready() -> void:
 func _on_lives_changed(new_value: int) -> void:
 	life_bar.value = new_value
 	# Aquí puedes agregar efectos visuales/auditivos cuando cambia la vida
+
+
+func _on_pausa_pressed() -> void:
+	pass # Replace with function body.
