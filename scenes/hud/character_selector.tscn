@@ -1,0 +1,3 @@
+[gd_scene load_steps=0 format=3 uid="uid://2pdfmf3oc5d5"]
+
+[node name="CharacterSelector" type="CanvasLayer"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://d4di1n2ndoqm3"]
 
-[ext_resource type="Script" uid="uid://dwtsl61ric474" path="res://scripts/pause.gd" id="1_f1d2v"]
+[ext_resource type="Script" uid="uid://dx33cafc0nwp" path="res://scripts/pause.gd" id="1_0joif"]
 [ext_resource type="Shader" uid="uid://r621tvcnd0ql" path="res://shaders/pause_blur_shaders.gdshader" id="2_r8yp4"]
 [ext_resource type="Texture2D" uid="uid://h412wt6r5wx4" path="res://assets/buttons/pausa logo.png" id="3_r1fnm"]
 
@@ -87,7 +87,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.62714, 1.62714)
-script = ExtResource("1_f1d2v")
+script = ExtResource("1_0joif")
 
 [node name="blur_pausa" type="CanvasLayer" parent="."]
 
@@ -110,21 +110,20 @@ position = Vector2(436, 253)
 scale = Vector2(1.62714, 1.62714)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="blur_pausa/bg_overlay"]
-visible = false
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1860.0
-offset_top = -839.0
-offset_right = 55.0
-offset_bottom = 875.0
-grow_horizontal = 0
+offset_left = -862.0
+offset_top = -852.0
+offset_right = 1053.0
+offset_bottom = 862.0
+grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(865, 910)
+pivot_offset = Vector2(855, 790)
 alignment = 1
 
 [node name="buttons" type="AudioStreamPlayer2D" parent="blur_pausa/bg_overlay/VBoxContainer"]
@@ -161,6 +160,19 @@ text = "RESTART"
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
+[node name="options" type="Button" parent="blur_pausa/bg_overlay/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_font_sizes/font_size = 200
+theme_override_styles/focus = SubResource("StyleBoxFlat_x2r2e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0uo3r")
+text = "OPTIONS"
+
+[node name="Space3" type="Control" parent="blur_pausa/bg_overlay/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
 [node name="exit" type="Button" parent="blur_pausa/bg_overlay/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -170,7 +182,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_x2r2e")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0uo3r")
 text = "EXIT"
 
-[node name="Space3" type="Control" parent="blur_pausa/bg_overlay/VBoxContainer"]
+[node name="Space4" type="Control" parent="blur_pausa/bg_overlay/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
@@ -188,4 +200,5 @@ libraries = {
 
 [connection signal="pressed" from="blur_pausa/bg_overlay/VBoxContainer/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="blur_pausa/bg_overlay/VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="blur_pausa/bg_overlay/VBoxContainer/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="blur_pausa/bg_overlay/VBoxContainer/exit" to="." method="_on_exit_pressed"]

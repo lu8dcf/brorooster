@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7i1pt230pwus"]
+[gd_scene load_steps=8 format=3 uid="uid://c7i1pt230pwus"]
+
+[ext_resource type="Script" path="res://scripts/hud_game.gd" id="1_fgv6s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0rtn"]
 bg_color = Color(1, 0.477691, 0.482099, 0.670588)
@@ -49,6 +51,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fgv6s")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -73,7 +76,7 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Background/HBoxContainer"]
 layout_mode = 2
 
-[node name="live_bar" type="ProgressBar" parent="VBoxContainer/Background/HBoxContainer/VBoxContainer"]
+[node name="life_bar" type="ProgressBar" parent="VBoxContainer/Background/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -139,3 +142,5 @@ text = "   PAUSA  "
 
 [node name="Space3" type="Control" parent="VBoxContainer/Background/HBoxContainer"]
 layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/Background/HBoxContainer/MarginContainer/pausa" to="." method="_on_pausa_pressed"]
