@@ -5,8 +5,8 @@ extends Control
 
 func _ready() -> void:
 	# Configuración inicial
-	life_bar.max_value = Global.health
-	life_bar.value = Global.health
+	life_bar.max_value = Global._health
+	life_bar.value = Global._health
 	
 	# Conexión de señal
 	Global.lives_changed.connect(_on_lives_changed)

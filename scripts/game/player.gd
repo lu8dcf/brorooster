@@ -276,7 +276,7 @@ func shoot2():  # Disparo hacia el angulo del enemigo mas cercano
 func take_damage(amount: int):
 	
 	# $AnimationPlayer.play("hit")
-	Global.decrease_lives(amount)
+	Global.decrease_lives(amount * armor)
 	health -= amount * armor
 	print (health)
 	if health <= 0:

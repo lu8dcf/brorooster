@@ -3,32 +3,43 @@ extends Node
 # Propiedades del  player seleccionado 
 
 	# Cantidad de vida 
-var health = 100:
+var _health = 100:
 	get:
-		return health
+		return _health
 	set(value):
-		health = value
-		emit_signal("lives_changed", health)
+		# Validación 
+		if value < 0:
+			value = 0
+		elif value > 100:
+			value = 100
+		emit_signal("lives_changed", _health)
 	# velocidad de movimiento
-var speed = 200:
+var _speed = 200:
 	get:
-		return speed
+		return _speed
 	set(value):
-		speed = value
-				
+		if value < 0:
+			value = 0
+		elif value > 400:
+			value = 400
+		_speed = value		
 	#Armadura  valor de 0,1 a 1 - 1 sin armadura
-var armor = 1:
+var _armor = 1:
 	get:
-		return armor
+		return _armor
 	set(value):
-		armor = value
+		if value < 0:
+			value = 0.1
+		elif value > 1:
+			value = 1
+		_armor = value
 					
-var sprite_player = "res://assets/graphics/character_graphics/gallo.png":
+var _sprite_player = "res://assets/graphics/character_graphics/gallo.png":
 	get:
-		return sprite_player
+		return _sprite_player
 	set(value):
-		sprite_player = value
-		
+		_sprite_player = value
+		# aca hay que proteger por carga fallida
 		
 var mouse_sens = 0.5
 
@@ -51,7 +62,7 @@ var stage = 1
 
 signal lives_changed(new_value)
 func decrease_lives(amount = 1):
-	health = max(0, health - amount)
+	_health = max(0, _health - amount)
 	
 func get_lives() -> int:
-	return health
+	return _health
