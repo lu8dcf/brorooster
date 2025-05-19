@@ -61,10 +61,16 @@ func init_background():  # Inicia el fondo y los limites de pantalla
 	add_child(background)  # Agrega el nodo hijo
 
 func init_player():  # Inicia al player 1
-	player = preload("res://scenes/game/player.tscn").instantiate()
-	player.position = Vector2(pantalla_ancho/2,pantalla_alto/2)  # Colocar al jugador en la parte inferior al centro
+	# Definir parámetros, estos parametros deben se tomaddos de la global
+	var p_health = 150
+	var p_speed = 350
+	var p_armor = 10
+	var sprite_path = NodePath("res://assets/graphics/character_graphics/gallo.png")  # Ruta relativa al nodo Player
+	
+	player = PlayerFactory.load_player("res://scenes/game/player.tscn",p_health,p_speed,p_armor,sprite_path)
+	player.position = Vector2(pantalla_ancho/2,pantalla_alto/2)  # Colocar al jugador en el centro
 	add_child(player)  # Agrega el nodo hijo
-	#screen_lives() # Muestra la cantidad de vidas
+	
 
 func timer_add_enemy():
 	var enemy_timer = Timer.new()
