@@ -10,8 +10,8 @@ signal stage # Indicador del Stage Actual
 
 # Player
 var player = null
-var screen_live = Global.lives   # cantidad de vidas que se muestran en pantalla
-signal live  # muestra las vidas activas
+#var screen_live = Global.lives   # cantidad de vidas que se muestran en pantalla
+#signal live  # muestra las vidas activas
 
 
 # Enemigos
@@ -22,11 +22,7 @@ var timer_between_enemy = .5 # .5 seg Intervalo que aparecen los enemigos
 var boss_active=0 # Bandera para Agregar secuaces al BOSS
 var limit_of_enemy = 30 # cantidad de enemigos que se instancian
 
-# Disparos
-# var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
-# signal shoot(angulo_disparo) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
 
-# Armas - Weapons
 
 
 # Entorno
@@ -62,9 +58,9 @@ func init_background():  # Inicia el fondo y los limites de pantalla
 
 func init_player():  # Inicia al player 1
 	# Definir parámetros, estos parametros deben se tomaddos de la global
-	var p_health = 150
-	var p_speed = 350
-	var p_armor = 10
+	var p_health = 100
+	var p_speed = 200
+	var p_armor = 1
 	var sprite_path = NodePath("res://assets/graphics/character_graphics/gallo.png")  # Ruta relativa al nodo Player
 	
 	player = PlayerFactory.load_player("res://scenes/game/player.tscn",p_health,p_speed,p_armor,sprite_path)

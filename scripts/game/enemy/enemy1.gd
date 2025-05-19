@@ -16,7 +16,7 @@ func _ready():
 
 func _physics_process(_delta): 
 	move_and_collide(movimiento)
-	if Global.lives >= 1:
+	if Global.health >= 1:
 		set_vector(get_node("/root/main_game/player").global_position - global_position)
 	else:
 		movimiento = Vector2.ZERO

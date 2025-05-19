@@ -1,13 +1,35 @@
 extends Node
-# Propiedades del  player 
-var lives = 100:
+
+# Propiedades del  player seleccionado 
+
+	# Cantidad de vida 
+var health = 100:
 	get:
-		return lives
+		return health
 	set(value):
-		lives = value
-		emit_signal("lives_changed", lives)
+		health = value
+		emit_signal("lives_changed", health)
+	# velocidad de movimiento
+var speed = 200:
+	get:
+		return speed
+	set(value):
+		speed = value
+				
+	#Armadura  valor de 0,1 a 1 - 1 sin armadura
+var armor = 1:
+	get:
+		return armor
+	set(value):
+		armor = value
+					
+var sprite_player = "res://assets/graphics/character_graphics/gallo.png":
+	get:
+		return sprite_player
+	set(value):
+		sprite_player = value
 		
-var speed_player = 1000
+		
 var mouse_sens = 0.5
 
 var speed_main = 200
@@ -29,7 +51,7 @@ var stage = 1
 
 signal lives_changed(new_value)
 func decrease_lives(amount = 1):
-	lives = max(0, lives - amount)
+	health = max(0, health - amount)
 	
 func get_lives() -> int:
-	return lives
+	return health
