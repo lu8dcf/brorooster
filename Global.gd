@@ -1,6 +1,7 @@
 extends Node
 
 # Propiedades del  player seleccionado 
+var currentPlayer : CharacterData = null # se carga en autoload
 
 	# Cantidad de vida 
 var _health = 100:

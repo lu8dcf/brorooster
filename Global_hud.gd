@@ -6,7 +6,7 @@ func _ready():
 	
 	# BOTONES
 func _on_play_pressed() -> void: # al hacer click en el boton de JUGAR empieza el juego en el nivel 1
-	get_tree().change_scene_to_file("res://scenes/game/main_game.tscn")
+	get_tree().change_scene_to_file("res://scenes/hud/character_selector.tscn")
 
 func _on_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/hud/Main_menu.tscn")
@@ -19,3 +19,11 @@ func _on_credits_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+# funcionalidad con teclado
+func _input(event: InputEvent) -> void:
+	if (event.is_action_pressed("ui_accept")):
+		_on_play_pressed()
+	elif(event.is_action_pressed("ui_cancel")):
+		_on_exit_pressed()

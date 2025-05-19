@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://0vpi47bbrjfc"]
+[gd_scene load_steps=5 format=3 uid="uid://0vpi47bbrjfc"]
 
 [ext_resource type="Script" uid="uid://dub0w1pt21gno" path="res://Global_hud.gd" id="1_aigy5"]
 [ext_resource type="PackedScene" uid="uid://lvvnb1v5hp5o" path="res://scenes/hud/base/base_button.tscn" id="3_otjpq"]
+[ext_resource type="PackedScene" uid="uid://bh8g3tik5mpcj" path="res://scenes/hud/base/base_label.tscn" id="4_nb3ju"]
 [ext_resource type="PackedScene" uid="uid://j33syemimg3f" path="res://scenes/hud/background.tscn" id="9_wi0jm"]
 
 [node name="Menu Main" type="Control"]
@@ -64,6 +65,14 @@ grow_horizontal = 1
 grow_vertical = 0
 theme_override_font_sizes/font_size = 12
 text = "credits"
+
+[node name="Label" parent="." instance=ExtResource("4_nb3ju")]
+layout_mode = 1
+offset_left = -541.0
+offset_top = -340.0
+offset_right = -232.0
+offset_bottom = -195.0
+text = "broroster"
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="options" to="." method="_on_options_pressed"]
