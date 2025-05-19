@@ -1,9 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://0vpi47bbrjfc"]
+[gd_scene load_steps=5 format=3 uid="uid://0vpi47bbrjfc"]
 
-[ext_resource type="Script" uid="uid://bu4dciky2y1ca" path="res://scripts/Main_menu.gd" id="1_0vy3t"]
-[ext_resource type="AudioStream" uid="uid://c006s8m0k6yn8" path="res://assets/sound/menus_effects/Menu Rooster Loop.ogg" id="2_wi0jm"]
-[ext_resource type="Texture2D" uid="uid://bkx5hvjgnv17j" path="res://assets/graphics/menu_graphics/gallina_botones1.png" id="4_8m5t7"]
-[ext_resource type="Texture2D" uid="uid://dfe4cr31nwlws" path="res://assets/graphics/menu_graphics/gallina_botones2.png" id="5_eorq0"]
+[ext_resource type="Script" uid="uid://dub0w1pt21gno" path="res://Global_hud.gd" id="1_aigy5"]
 [ext_resource type="FontFile" uid="uid://42y8s0xqtt1n" path="res://assets/font/font_game.tres" id="6_0wwkh"]
 [ext_resource type="PackedScene" uid="uid://j33syemimg3f" path="res://scenes/hud/background.tscn" id="9_wi0jm"]
 
@@ -16,10 +13,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0vy3t")
+script = ExtResource("1_aigy5")
 
 [node name="sound_menu" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_wi0jm")
 
 [node name="VBoxBotones" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -36,22 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
 
-[node name="play" type="TextureButton" parent="VBoxBotones"]
-visible = false
-layout_mode = 2
-size_flags_stretch_ratio = 8.02
-texture_normal = ExtResource("4_8m5t7")
-texture_pressed = ExtResource("5_eorq0")
-texture_hover = ExtResource("5_eorq0")
-
-[node name="quit" type="TextureButton" parent="VBoxBotones"]
-visible = false
-layout_mode = 2
-texture_normal = ExtResource("4_8m5t7")
-texture_pressed = ExtResource("5_eorq0")
-texture_hover = ExtResource("5_eorq0")
-
-[node name="button_play" type="Button" parent="VBoxBotones"]
+[node name="play" type="Button" parent="VBoxBotones"]
 layout_mode = 2
 theme = SubResource("Theme_q4q5n")
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
@@ -63,7 +44,7 @@ theme_override_font_sizes/font_size = 55
 text = "PLAY"
 flat = true
 
-[node name="button_exit" type="Button" parent="VBoxBotones"]
+[node name="exit" type="Button" parent="VBoxBotones"]
 layout_mode = 2
 theme = SubResource("Theme_q4q5n")
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
@@ -75,7 +56,7 @@ theme_override_font_sizes/font_size = 55
 text = "QUIT"
 flat = true
 
-[node name="button_options" type="Button" parent="."]
+[node name="options" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -95,7 +76,5 @@ flat = true
 [node name="Background2" parent="." instance=ExtResource("9_wi0jm")]
 
 [connection signal="pressed" from="VBoxBotones/play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxBotones/quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="VBoxBotones/button_play" to="." method="_on_boton_jugar_pressed"]
-[connection signal="pressed" from="VBoxBotones/button_exit" to="." method="_on_boton_salir_pressed"]
-[connection signal="pressed" from="button_options" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="VBoxBotones/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="options" to="." method="_on_options_pressed"]

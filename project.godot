@@ -22,10 +22,13 @@ GlobalEnemy="*res://Global_enemy.gd"
 GlobalHud="*res://Global_hud.gd"
 GlobalItem="*res://Global_item.gd"
 GlobalShoot="*res://Global_shoot.gd"
+GlobalPlayer="*res://Global_player.gd"
 
 [display]
 
-window/stretch/mode="viewport"
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
 
 [input]
 

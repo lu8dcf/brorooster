@@ -10,8 +10,8 @@ signal stage # Indicador del Stage Actual
 
 # Player
 var player = null
-var screen_live = Global.lives   # cantidad de vidas que se muestran en pantalla
-signal live  # muestra las vidas activas
+#var screen_live = Global.lives   # cantidad de vidas que se muestran en pantalla
+#signal live  # muestra las vidas activas
 
 
 # Enemigos
@@ -22,11 +22,7 @@ var timer_between_enemy = .5 # .5 seg Intervalo que aparecen los enemigos
 var boss_active=0 # Bandera para Agregar secuaces al BOSS
 var limit_of_enemy = 30 # cantidad de enemigos que se instancian
 
-# Disparos
-# var timer_between_shoot = .5 # .5 seg Intervalo que aparecen los enemigos
-# signal shoot(angulo_disparo) # Senal de disparo,segun el temporizador y direccion haciua el enemigo mas cercano
 
-# Armas - Weapons
 
 
 # Entorno
@@ -44,7 +40,9 @@ func _ready():	# Comienza el juego
 	
 	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
 	
+
 		
+
 	#init_spawn() #Spawn de enemigos.
 	
 func _process(delta):
@@ -59,10 +57,16 @@ func init_background():  # Inicia el fondo y los limites de pantalla
 	add_child(background)  # Agrega el nodo hijo
 
 func init_player():  # Inicia al player 1
-	player = preload("res://scenes/game/player.tscn").instantiate()
-	player.position = Vector2(pantalla_ancho/2,pantalla_alto/2)  # Colocar al jugador en la parte inferior al centro
+	# Definir parámetros, estos parametros deben se tomaddos de la global
+	var p_health = Global._health
+	var p_speed = Global._speed
+	var p_armor = Global._armor
+	var sprite_path = NodePath(Global._sprite_player)  # Ruta relativa al nodo Player
+	
+	player = PlayerFactory.load_player("res://scenes/game/player.tscn",p_health,p_speed,p_armor,sprite_path)
+	player.position = Vector2(pantalla_ancho/2,pantalla_alto/2)  # Colocar al jugador en el centro
 	add_child(player)  # Agrega el nodo hijo
-	#screen_lives() # Muestra la cantidad de vidas
+	
 
 func timer_add_enemy():
 	var enemy_timer = Timer.new()
@@ -130,3 +134,14 @@ func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
 	return closest_enemy  #devuelve el enemigo mas cercano
 	
 	
+
+	
+func shoot_at_closest_enemy(): # disparo al enemigo mas cercano
+	var closest_enemy = get_closest_enemy() #obtiene la ubicacion del enemigo mas cercano
+	#print("disparo")
+	if closest_enemy:
+		var direction = (closest_enemy.global_position - global_position).normalized()
+		
+		var angulo_disparo = (player.global_position - closest_enemy.global_position).angle()
+		emit_signal("shoot",angulo_disparo) #envia un señal de disparo o ataque al arma y la socion del enemigo mas cercano
+		
