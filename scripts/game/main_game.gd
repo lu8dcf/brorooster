@@ -41,8 +41,6 @@ func _ready():	# Comienza el juego
 	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
 	
 
-		
-
 	#init_spawn() #Spawn de enemigos.
 	
 func _process(delta):
@@ -67,6 +65,9 @@ func init_player():  # Inicia al player 1
 	player.position = Vector2(pantalla_ancho/2,pantalla_alto/2)  # Colocar al jugador en el centro
 	add_child(player)  # Agrega el nodo hijo
 	
+	player = PlayerFactory.load_player("res://scenes/game/player.tscn",p_health,p_speed,p_armor,sprite_path)
+	player.position = Vector2(pantalla_ancho/3,pantalla_alto/3)  # Colocar al jugador en el centro
+	add_child(player)  # Agrega el nodo hijo
 
 func timer_add_enemy():
 	var enemy_timer = Timer.new()
