@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbh2v2p3fl2ac"
-path="res://.godot/imported/splash.png-1511184774d4ba154b75756934971914.ctex"
+uid="uid://cf37mj15io1gb"
+path="res://.godot/imported/btn.png-83c8facde5ff7cc75efc1d50062c9ecc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/escens_graphics/splash.png"
-dest_files=["res://.godot/imported/splash.png-1511184774d4ba154b75756934971914.ctex"]
+source_file="res://assets/graphics/menu_graphics/btn.png"
+dest_files=["res://.godot/imported/btn.png-83c8facde5ff7cc75efc1d50062c9ecc.ctex"]
 
 [params]
 
