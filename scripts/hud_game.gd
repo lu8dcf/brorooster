@@ -5,11 +5,12 @@ extends Control
 
 func _ready() -> void:
 	# Configuración inicial
-	life_bar.max_value = Global._health
-	life_bar.value = Global._health
+	life_bar.max_value = Global.get_lives()
+	life_bar.value = Global.get_lives()
 	
 	# Conexión de señal
 	Global.lives_changed.connect(_on_lives_changed)
+	print("cambiando vida")
 
 func _on_lives_changed(new_value: int) -> void:
 	life_bar.value = new_value

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3gw0handi0b6"]
+
+[ext_resource type="Texture2D" uid="uid://bwbvg3vxi0e7c" path="res://assets/graphics/menu_graphics/hud.png" id="1_dwawp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0umfa"]
+texture = ExtResource("1_dwawp")
+
+[node name="Panel" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -198.5
+offset_right = 215.0
+offset_bottom = 198.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0umfa")

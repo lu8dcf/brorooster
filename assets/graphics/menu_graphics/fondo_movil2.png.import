@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jxt1mo3ccrk2"
-path="res://.godot/imported/fondo_movil.png-3d3f65009e9a461dee581fbf62e5b700.ctex"
+uid="uid://bfmqic7h16al8"
+path="res://.godot/imported/fondo_movil2.png-1521b2362af96f31287d386f9e0b9326.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/menu_graphics/fondo_movil.png"
-dest_files=["res://.godot/imported/fondo_movil.png-3d3f65009e9a461dee581fbf62e5b700.ctex"]
+source_file="res://assets/graphics/menu_graphics/fondo_movil2.png"
+dest_files=["res://.godot/imported/fondo_movil2.png-1521b2362af96f31287d386f9e0b9326.ctex"]
 
 [params]
 

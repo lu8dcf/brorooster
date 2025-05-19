@@ -1,17 +1,16 @@
 extends Node
 
 # Propiedades del  player seleccionado 
+var currentPlayer : CharacterData = null # se carga en autoload
 
 	# Cantidad de vida 
 var _health = 100:
 	get:
 		return _health
 	set(value):
-		# Validación 
-		if value < 0:
-			value = 0
-		elif value > 100:
-			value = 100
+		var new_value = clamp(value,0,100) # esto evita que decrezca de 0 o supere el máximo 100
+		if new_value != _health:
+			_health = new_value
 		emit_signal("lives_changed", _health)
 	# velocidad de movimiento
 var _speed = 200:

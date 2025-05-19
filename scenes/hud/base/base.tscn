@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ovctrnetmfb1"]
+
+[ext_resource type="PackedScene" uid="uid://b3gw0handi0b6" path="res://scenes/hud/base/base_panel.tscn" id="1_v6ot6"]
+[ext_resource type="PackedScene" uid="uid://bh8g3tik5mpcj" path="res://scenes/hud/base/base_label.tscn" id="2_x0kkh"]
+[ext_resource type="PackedScene" uid="uid://lvvnb1v5hp5o" path="res://scenes/hud/base/base_button.tscn" id="3_qh7pa"]
+
+[node name="Base" type="CanvasLayer"]
+
+[node name="Panel" parent="." instance=ExtResource("1_v6ot6")]
+
+[node name="Label" parent="." instance=ExtResource("2_x0kkh")]
+
+[node name="Button" parent="." instance=ExtResource("3_qh7pa")]

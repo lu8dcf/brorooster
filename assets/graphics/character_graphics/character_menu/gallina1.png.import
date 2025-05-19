@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jxt1mo3ccrk2"
-path="res://.godot/imported/fondo_movil.png-3d3f65009e9a461dee581fbf62e5b700.ctex"
+uid="uid://cgbviaj0qb76d"
+path="res://.godot/imported/gallina1.png-091247f5b1c28943a5ab548f7d6b8ded.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/menu_graphics/fondo_movil.png"
-dest_files=["res://.godot/imported/fondo_movil.png-3d3f65009e9a461dee581fbf62e5b700.ctex"]
+source_file="res://assets/graphics/character_graphics/character_menu/gallina1.png"
+dest_files=["res://.godot/imported/gallina1.png-091247f5b1c28943a5ab548f7d6b8ded.ctex"]
 
 [params]
 

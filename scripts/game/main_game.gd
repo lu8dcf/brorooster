@@ -56,14 +56,16 @@ func init_background():  # Inicia el fondo y los limites de pantalla
 
 func init_player():  # Inicia al player 1
 	# Definir parámetros, estos parametros deben se tomaddos de la global
-	var p_health = Global._health
-	var p_speed = Global._speed
-	var p_armor = Global._armor
-	var sprite_path = NodePath(Global._sprite_player)  # Ruta relativa al nodo Player
-	
-	player = PlayerFactory.load_player("res://scenes/game/player.tscn",p_health,p_speed,p_armor,sprite_path)
-	player.position = Vector2(pantalla_ancho/2,pantalla_alto/2)  # Colocar al jugador en el centro
-	add_child(player)  # Agrega el nodo hijo
+	print("personaje: ",Global.currentPlayer.name)
+	if Global.currentPlayer != null:	
+		var p_health = Global.currentPlayer.health
+		var p_speed = Global.currentPlayer.speed
+		var p_armor = Global.currentPlayer.armor
+		var sprite_path = NodePath(Global._sprite_player)  # Ruta relativa al nodo Player
+		
+		player = PlayerFactory.load_player("res://scenes/game/player.tscn",p_health,p_speed,p_armor,sprite_path)
+		player.position = Vector2(pantalla_ancho/2,pantalla_alto/2)  # Colocar al jugador en el centro
+		add_child(player)  # Agrega el nodo hijo
 	
 	player = PlayerFactory.load_player("res://scenes/game/player.tscn",p_health,p_speed,p_armor,sprite_path)
 	player.position = Vector2(pantalla_ancho/3,pantalla_alto/3)  # Colocar al jugador en el centro
