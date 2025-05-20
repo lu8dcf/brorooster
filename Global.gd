@@ -67,7 +67,7 @@ func initialize_default_character() -> void:
 			default_char._health = 100
 			default_char._speed = 200
 			default_char._armor = 1.0
-			#default_char._texture = preload("res://assets/graphics/character_graphics/character_menu/gallina1.png")
+
 			default_char._sprite_player = "res://assets/graphics/character_graphics/gallo.png"
 			currentPlayer = default_char
 			push_warning("Usando personaje por defecto fallback")
