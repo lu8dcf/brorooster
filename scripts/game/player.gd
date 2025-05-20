@@ -1,12 +1,40 @@
 extends CharacterBody2D
+class_name Player
 
 # Propiedades 
-var health = Global.get_lives()
-var speed = Global.speed_main # velocidad de movimiento del
-var speed_fly = 2 # Velocidas de vuelo
+@export var health: int = 100 # vida del player
+@export var speed: int = 200 # velocidad de movimiento del player
+@export var armor: float = 1.0 # Armadura 1 sin armadura / 0.8 recibe 20% menos daño
+@export var sprite_path: String
+
+# Referencia al sprite
+@onready var sprite = $Sprite2D 
+
+# Constructor
+func _init(initial_health: int = 100, initial_speed: int = 300, 
+		  initial_armor: float = 0, sprite_node_path: String=("res://assets/graphics/character_graphics/gallos/gallo1.png")):
+	health = initial_health
+	speed = initial_speed
+	armor = initial_armor
+	sprite_path = sprite_node_path
+	
+# Función para cargar el player
+func setup(new_health: int, new_speed: int, new_armor: float, new_sprite_path: NodePath):
+	health = new_health
+	speed = new_speed
+	armor = new_armor
+	sprite_path = new_sprite_path
+	if sprite_path != "":
+		$Sprite2D.texture = load(sprite_path)	
+	
+	
+
+var velocidad_extra = 5 # diferencia de velocidades entre caminar y volar
+
 var fly_cooldown = 1  # Tiempo de vuelo
 var can_fly = true # habilitacion para que vuele
-var extra = 2 # diferencia de velocidades
+
+var extra = velocidad_extra # variable de refuerzo
 
 var direction = Vector2.ZERO
 var acceleration: float = 8.0  # Suavizado del movimiento
@@ -136,7 +164,7 @@ func move_with_mouse():
 			# Temporizador para controlar duración del vuelo
 			move_right = "fly_right"
 			move_left = "fly_left"
-			extra = 5 # Incrementar velocidad para el vuelo
+			extra = velocidad_extra # Incrementar velocidad para el vuelo
 			$rooster_cry.play()
 			can_fly = false #no podra volver a volar hasta que termine el tiempo
 			await get_tree().create_timer(fly_cooldown).timeout  # Tiempo de vuelo: 1 segundo
@@ -248,10 +276,11 @@ func shoot2():  # Disparo hacia el angulo del enemigo mas cercano
 func take_damage(amount: int):
 	
 	# $AnimationPlayer.play("hit")
-	Global.decrease_lives(amount)
-	health -= amount
-	print (health)
-	if health <= 0:
+	armor = Global.currentPlayer._armor
+	var damage_taken = amount * armor
+	Global.currentPlayer.take_damage(damage_taken)
+	print (Global.currentPlayer._health, "sacar: ", damage_taken, "armor,", armor)
+	if Global.currentPlayer._health <= 0:
 		die()
 
 # morir al no tenes mas vidas

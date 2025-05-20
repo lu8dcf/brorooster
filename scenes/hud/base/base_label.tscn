@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh8g3tik5mpcj"]
+
+[ext_resource type="FontFile" uid="uid://bbufnohtiso2" path="res://assets/font/omega-pixel-biform.ttf" id="1_32brh"]
+
+[node name="Label" type="Label"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -140.0
+offset_right = 135.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_32brh")
+theme_override_font_sizes/font_size = 40
+text = "text"
+horizontal_alignment = 1
+vertical_alignment = 1
