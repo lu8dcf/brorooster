@@ -4,7 +4,7 @@ class_name Player
 # Propiedades 
 @export var health: int = 100 # vida del player
 @export var speed: int = 200 # velocidad de movimiento del player
-@export var armor: int = 1 # Armadura 1 sin armadura / 0.8 recibe 20% menos daño
+@export var armor: float = 1.0 # Armadura 1 sin armadura / 0.8 recibe 20% menos daño
 @export var sprite_path: String
 
 # Referencia al sprite
@@ -12,14 +12,14 @@ class_name Player
 
 # Constructor
 func _init(initial_health: int = 100, initial_speed: int = 300, 
-		  initial_armor: int = 0, sprite_node_path: String=("res://assets/graphics/character_graphics/gallos/gallo1.png")):
+		  initial_armor: float = 0, sprite_node_path: String=("res://assets/graphics/character_graphics/gallos/gallo1.png")):
 	health = initial_health
 	speed = initial_speed
 	armor = initial_armor
 	sprite_path = sprite_node_path
 	
 # Función para cargar el player
-func setup(new_health: int, new_speed: int, new_armor: int, new_sprite_path: NodePath):
+func setup(new_health: int, new_speed: int, new_armor: float, new_sprite_path: NodePath):
 	health = new_health
 	speed = new_speed
 	armor = new_armor
@@ -276,9 +276,10 @@ func shoot2():  # Disparo hacia el angulo del enemigo mas cercano
 func take_damage(amount: int):
 	
 	# $AnimationPlayer.play("hit")
+	armor = Global.currentPlayer._armor
 	var damage_taken = amount * armor
 	Global.currentPlayer.take_damage(damage_taken)
-	print (Global.currentPlayer._health)
+	print (Global.currentPlayer._health, "sacar: ", damage_taken, "armor,", armor)
 	if Global.currentPlayer._health <= 0:
 		die()
 

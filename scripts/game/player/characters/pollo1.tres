@@ -7,7 +7,7 @@
 resource_name = "pollo1"
 script = ExtResource("3_ikuo1")
 _key = "nivelado"
-_display_name = "claudio"
+_display_name = "Claudio"
 _texture = ExtResource("2_ji61g")
 _sprite_player = "res://assets/graphics/character_graphics/gallos/gallo1.png"
 _max_health = 100

@@ -6,11 +6,11 @@
 [resource]
 script = ExtResource("1_v275f")
 _key = "audaz"
-_display_name = "Rosa"
+_display_name = "Miriam"
 _texture = ExtResource("1_ibijh")
 _sprite_player = "res://assets/graphics/character_graphics/gallos/gallo4.png"
 _max_health = 60
 _health = 60
 _speed = 400
-_armor = 0.8
+_armor = 1.0
 metadata/_custom_type_script = "uid://soig72hlatid"
