@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://bfl3d80xsfsv2"]
+
+[ext_resource type="Texture2D" uid="uid://dp4w7rot4o6j" path="res://assets/graphics/character_graphics/character_menu/gallina2.png" id="2_kcu55"]
+[ext_resource type="Script" uid="uid://soig72hlatid" path="res://Global_player.gd" id="3_kuedf"]
+
+[resource]
+resource_name = "pollo2"
+script = ExtResource("3_kuedf")
+_key = "tanque"
+_display_name = "tobias"
+_texture = ExtResource("2_kcu55")
+_sprite_player = ""
+_max_health = 150
+_health = 150
+_speed = 150
+_armor = 2.0
+metadata/_custom_type_script = "uid://soig72hlatid"
