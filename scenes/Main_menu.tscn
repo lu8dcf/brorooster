@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-[gd_scene load_steps=8 format=3 uid="uid://43gjrtg0t6rg"]
 
-[ext_resource type="Script" uid="uid://bu4dciky2y1ca" path="res://scripts/Main_menu.gd" id="1_651q5"]
-[ext_resource type="AudioStream" uid="uid://cikxb8fm0of51" path="res://assets/sound/loops/menu_loop.ogg" id="2_cvwki"]
-=======
 [gd_scene load_steps=8 format=3 uid="uid://o62ma1ukvwww"]
 
 [ext_resource type="Script" uid="uid://bu4dciky2y1ca" path="res://scripts/Main_menu.gd" id="1_651q5"]
 [ext_resource type="AudioStream" path="res://assets/sound/loops/menu_loop.ogg" id="2_cvwki"]
->>>>>>> menu
+
 [ext_resource type="Texture2D" uid="uid://dkgjsnt5ilymo" path="res://assets/graphics/escens_graphics/background.png" id="2_xhl8r"]
 [ext_resource type="Texture2D" uid="uid://n2ouhr0mo1gn" path="res://assets/graphics/menu_graphics/boton_sinpresionar.png" id="3_g1asy"]
 [ext_resource type="Texture2D" uid="uid://goy8nw7j12dt" path="res://assets/graphics/menu_graphics/boton_presionado.png" id="4_3nt8p"]

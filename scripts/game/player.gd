@@ -5,28 +5,32 @@ class_name Player
 @export var health: int = 100 # vida del player
 @export var speed: int = 200 # velocidad de movimiento del player
 @export var armor: int = 1 # Armadura 1 sin armadura / 0.8 recibe 20% menos daño
-@export var sprite_path: NodePath
+@export var sprite_path: String
 
 # Referencia al sprite
-@onready var sprite: Sprite2D = get_node(sprite_path)
+@onready var sprite = $Sprite2D 
 
 # Constructor
 func _init(initial_health: int = 100, initial_speed: int = 300, 
-		  initial_armor: int = 0, sprite_node_path: NodePath = NodePath()):
+		  initial_armor: int = 0, sprite_node_path: String=""):
 	health = initial_health
 	speed = initial_speed
 	armor = initial_armor
 	sprite_path = sprite_node_path
 	
+	
+	
 # Función para cargar el player
-func setup(new_health: int, new_speed: int, new_armor: int, new_sprite_path: NodePath):
+func setup(new_health: int, new_speed: int, new_armor: int, new_sprite_path: String):
 	health = new_health
 	speed = new_speed
 	armor = new_armor
 	sprite_path = new_sprite_path
-	if has_node(new_sprite_path):
-		sprite = get_node(new_sprite_path)	
 	
+	if sprite_path != "":
+		print(new_sprite_path)
+		#sprite = get_node(new_sprite_path)	
+		$Sprite2D.texture = load(new_sprite_path)
 	
 
 var velocidad_extra = 5 # diferencia de velocidades entre caminar y volar
@@ -74,7 +78,6 @@ var weapon1_scene: PackedScene # Exporta la escena del arma para poder asignarla
 	#disparo 1
 @export var shoot1_scene_path: String = shoot1_path
 var shoot1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
-
 @onready var muzzle1  :  Marker2D = $shoot1 #desde donde sale el disparo
 
 
@@ -101,6 +104,7 @@ var target_angle: float = 0.0
 
 
 func _ready():
+	
 	# Instalar el Weapon1 
 	if weapon1_scene_path != "" and weapon1_enable:
 		weapon1_scene = ResourceLoader.load(weapon1_scene_path)
@@ -198,11 +202,8 @@ func move_with_mouse():
 func equip_weapon1(_angle:float):
 	if not weapon1_scene and not is_instance_valid(weapon_anchor):
 		return
-
-
 	if is_instance_valid(current_weapon1):
 		current_weapon1.queue_free()
-
 	# Instancia la escena del arma
 	current_weapon1 = weapon1_scene.instantiate()
 	$WeaponAnchor1.add_child(current_weapon1)
@@ -212,7 +213,6 @@ func equip_weapon1(_angle:float):
 func equip_weapon2(_angle:float):
 	if not weapon2_scene and not is_instance_valid(weapon2_anchor):
 		return
-		
 	# Instancia la escena del arma
 	current_weapon2 = weapon2_scene.instantiate()
 	$WeaponAnchor2.add_child(current_weapon2)
@@ -231,16 +231,10 @@ func change_weapon(new_weapon_scene: PackedScene):
 	weapon1_scene = new_weapon_scene
 	equip_weapon1(0.0)
 
-
-
-
-	
 # Señal recibida desde main_game con el ángulo al enemigo más cercano
 func _on_enemy_detected(angle_to_enemy: float):
 	target_angle = angle_to_enemy
 	
-
-
 func timer_Shoot1():
 	var shoot1_timer = Timer.new()
 	shoot1_timer.wait_time = time_shoot1

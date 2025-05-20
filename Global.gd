@@ -34,7 +34,7 @@ var _armor = 1:
 			value = 1
 		_armor = value
 					
-var _sprite_player = "res://assets/graphics/character_graphics/gallo.png":
+var _sprite_player = "res://assets/graphics/character_graphics/gallos/gallo1.png":
 	get:
 		return _sprite_player
 	set(value):
