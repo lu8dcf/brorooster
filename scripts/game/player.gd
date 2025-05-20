@@ -8,26 +8,18 @@ class_name Player
 @export var sprite_path: String
 
 # Referencia al sprite
-<<<<<<< HEAD
-@onready var sprite = $Sprite2D
-
-# Constructor
-func _init(initial_health: int = 100, initial_speed: int = 300, 
-		  initial_armor: int = 0, sprite_node_path: String = "res://assets/graphics/character_graphics/gallos/gallo1.png"):
-=======
 @onready var sprite = $Sprite2D 
 
 # Constructor
 func _init(initial_health: int = 100, initial_speed: int = 300, 
 		  initial_armor: int = 0, sprite_node_path: String=("res://assets/graphics/character_graphics/gallos/gallo1.png")):
->>>>>>> main
 	health = initial_health
 	speed = initial_speed
 	armor = initial_armor
 	sprite_path = sprite_node_path
 	
 # Función para cargar el player
-func setup(new_health: int, new_speed: int, new_armor: int, new_sprite_path: String):
+func setup(new_health: int, new_speed: int, new_armor: int, new_sprite_path: NodePath):
 	health = new_health
 	speed = new_speed
 	armor = new_armor

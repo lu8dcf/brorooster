@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://2pdfmf3oc5d5"]
 
-[ext_resource type="Script" path="res://scripts/character_selector.gd" id="1_n7fce"]
+[ext_resource type="Script" uid="uid://tcjpk4u037rg" path="res://scripts/character_selector.gd" id="1_n7fce"]
 [ext_resource type="PackedScene" uid="uid://j33syemimg3f" path="res://scenes/hud/background.tscn" id="1_pldg3"]
 [ext_resource type="PackedScene" uid="uid://b3gw0handi0b6" path="res://scenes/hud/base/base_panel.tscn" id="1_udih3"]
 [ext_resource type="PackedScene" uid="uid://lvvnb1v5hp5o" path="res://scenes/hud/base/base_button.tscn" id="3_o5v18"]
