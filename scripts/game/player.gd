@@ -5,14 +5,14 @@ class_name Player
 @export var health: int = 100 # vida del player
 @export var speed: int = 200 # velocidad de movimiento del player
 @export var armor: int = 1 # Armadura 1 sin armadura / 0.8 recibe 20% menos daño
-@export var sprite_path: NodePath
+@export var sprite_path: String
 
 # Referencia al sprite
-@onready var sprite: Sprite2D = get_node(sprite_path)
+@onready var sprite = $Sprite2D 
 
 # Constructor
 func _init(initial_health: int = 100, initial_speed: int = 300, 
-		  initial_armor: int = 0, sprite_node_path: NodePath = NodePath()):
+		  initial_armor: int = 0, sprite_node_path: String=("res://assets/graphics/character_graphics/gallos/gallo1.png")):
 	health = initial_health
 	speed = initial_speed
 	armor = initial_armor
@@ -24,8 +24,8 @@ func setup(new_health: int, new_speed: int, new_armor: int, new_sprite_path: Nod
 	speed = new_speed
 	armor = new_armor
 	sprite_path = new_sprite_path
-	if has_node(new_sprite_path):
-		sprite = get_node(new_sprite_path)	
+	if sprite_path != "":
+		$Sprite2D.texture = load(sprite_path)	
 	
 	
 

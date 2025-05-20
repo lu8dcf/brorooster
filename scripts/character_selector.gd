@@ -4,7 +4,8 @@ extends CanvasLayer
 @export var characters: Array[CharacterData] = [
 	preload("res://scripts/game/player/characters/pollo1.tres"),
 	preload("res://scripts/game/player/characters/pollo2.tres"),
-	preload("res://scripts/game/player/characters/pollo3.tres")
+	preload("res://scripts/game/player/characters/pollo3.tres"),
+	preload("res://scripts/game/player/characters/pollo4.tres")
 ]
 
 @onready var char_portrait = $Sprite2D
