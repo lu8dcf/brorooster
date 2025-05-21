@@ -34,7 +34,7 @@ var velocidad_extra = 5 # diferencia de velocidades entre caminar y volar
 var fly_cooldown = 1  # Tiempo de vuelo
 var can_fly = true # habilitacion para que vuele
 
-var extra = velocidad_extra # variable de refuerzo
+var extra = 1 # variable de refuerzo cuando vuela toma el valor del multiplicador velocidad extra
 
 var direction = Vector2.ZERO
 var acceleration: float = 8.0  # Suavizado del movimiento
