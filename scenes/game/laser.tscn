@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cpwkx40jjea51" path="res://assets/graphics/character_graphics/armas/bala.png" id="2_w0hk3"]
 [ext_resource type="AudioStream" uid="uid://c4aluy8e8usba" path="res://assets/sound/sound_effects/disparo.mp3" id="3_172y8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w0hk3"]
-radius = 28.0179
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_172y8"]
+height = 44.0
 
 [sub_resource type="Animation" id="Animation_jq7sb"]
 length = 0.001
@@ -78,13 +78,15 @@ script = ExtResource("1_s3ssn")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 2
 visibility_layer = 2
+position = Vector2(-9.09495e-13, 0)
 rotation = 6.28319
+scale = Vector2(1, 0.288741)
 texture = ExtResource("2_w0hk3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4
 visibility_layer = 4
-shape = SubResource("CircleShape2D_w0hk3")
+shape = SubResource("CapsuleShape2D_172y8")
 
 [node name="sonido_disparo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_172y8")
