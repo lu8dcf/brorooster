@@ -50,24 +50,28 @@ func _ready() -> void:
 	
 	
 func update_attribute_indicators(character: CharacterData) -> void:
-	"""Actualiza todos los indicadores de atributos"""
-	# Vida
+	"""Actualiza los indicadores mostrando doble icono solo para valores dobles o mayores"""
+	# Vida (solo mostrar doble si es ≥ 2x)
+	var health_ratio = character._health / float(BASE_HEALTH)
 	health_indicator.set_modifier(
-		1 if character._health > BASE_HEALTH else 
-		(-1 if character._health < BASE_HEALTH else 0)
+		1 if character._health > BASE_HEALTH else (-1 if character._health < BASE_HEALTH else 0),
+		health_ratio >= 2.0  # Solo true si es doble o más
 	)
 	
-	# Armadura
+	# Armadura (solo mostrar doble si es ≥ 2x)
+	var armor_ratio = character._armor / BASE_ARMOR
 	armor_indicator.set_modifier(
-		1 if character._armor < BASE_ARMOR else 
-		(-1 if character._armor > BASE_ARMOR else 0)
+		1 if character._armor > BASE_ARMOR else (-1 if character._armor < BASE_ARMOR else 0),
+		armor_ratio >= 2.0  # Solo true si es doble o más
 	)
 	
-	# Velocidad
+	# Velocidad (solo mostrar doble si es ≥ 2x)
+	var speed_ratio = character._speed / float(BASE_SPEED)
 	speed_indicator.set_modifier(
-		1 if character._speed > BASE_SPEED else 
-		(-1 if character._speed < BASE_SPEED else 0)
+		1 if character._speed > BASE_SPEED else (-1 if character._speed < BASE_SPEED else 0),
+		speed_ratio >= 2.0  # Solo true si es doble o más
 	)
+
 	
 func set_default_character() -> void:
 	"""Establece el primer personaje como predeterminado globalmente"""
