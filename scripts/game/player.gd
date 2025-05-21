@@ -64,8 +64,9 @@ var weapon2_path= "res://scenes/game/weapon.tscn"
 var shoot2_path="res://scenes/game/laser.tscn"
 var time_shoot2= 0.3
 
-var diferencia_sprit_weapon = -PI/4
-
+var diferencia_sprit_weapon = 0 # con el sprite a cero se puede evitar
+var inv_image_weapon1=0 # determinacion hacia adonde aponta el arma de 0aPI/2 derecha =0
+var inv_image_weapon2=0
 	#weapon1
 @export var weapon1_scene_path: String = weapon1_path
 var weapon1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
@@ -133,20 +134,32 @@ func _process(delta):
 	# Rotar gradualmente el arma hacia el ángulo objetivo
 
 	if is_instance_valid(current_weapon1): 
+		
+		var weapon_sprite = current_weapon1.get_node("Sprite2D")  # Sprite del arma
+		#current_weapon1.rotation = lerp_angle(current_weapon1.rotation,prueba            , 10.0 * delta) 
 		current_weapon1.rotation = lerp_angle(current_weapon1.rotation,target_angle + diferencia_sprit_weapon , 10.0 * delta)  # Ajusta la velocidad de rotación
-		# Determinar si el arma está apuntando hacia la izquierda
-		var is_aiming_left = abs(target_angle) > PI/2 and abs(target_angle) < 3*PI/2
-	# Voltear horizontalmente el sprite del arma
-		var weapon_sprite = current_weapon1.get_node("Sprite2D")  # Asegúrate de que esta es la ruta correcta
 		
-		#weapon_sprite.flip_h = true
-		
+		# Determinar si el arma está apuntando hacia la izquierda invierte el sprite
+		if  abs(target_angle) > PI/2 and inv_image_weapon1 == 0:
+			weapon_sprite.flip_v = true # Voltear horizontalmente el sprite del arma
+			inv_image_weapon1=1
+			
+		elif abs(target_angle) < PI/2  and inv_image_weapon1 == 1:
+			weapon_sprite.flip_v = false # dejarla original
+			inv_image_weapon1=0
+			
+			
 	if is_instance_valid(current_weapon2):
 
 		current_weapon2.rotation = lerp_angle(current_weapon2.rotation,target_angle + diferencia_sprit_weapon, 10.0 * delta)  # Ajusta la velocidad de rotación
-
-	
-	
+		var weapon_sprite = current_weapon2.get_node("Sprite2D")  # Sprite del arma
+		if  abs(target_angle) > PI/2 and inv_image_weapon2 == 0:
+			weapon_sprite.flip_v = true
+			inv_image_weapon2=1
+			
+		elif abs(target_angle) < PI/2  and inv_image_weapon2 == 1:
+			weapon_sprite.flip_v = false
+			inv_image_weapon2=0
 func move_with_mouse():
 	
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN) # oculta el mouse y evita que salga de la pantalla del videojuego
