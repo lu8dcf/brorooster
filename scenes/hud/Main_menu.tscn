@@ -68,11 +68,13 @@ text = "credits"
 
 [node name="Label" parent="." instance=ExtResource("4_nb3ju")]
 layout_mode = 1
-offset_left = -541.0
-offset_top = -340.0
-offset_right = -232.0
-offset_bottom = -195.0
-text = "broroster"
+offset_left = -523.0
+offset_top = -293.0
+offset_right = -216.0
+offset_bottom = -124.0
+theme_override_font_sizes/font_size = 45
+text = "atomic
+roster"
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="options" to="." method="_on_options_pressed"]

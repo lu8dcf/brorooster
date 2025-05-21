@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://2pdfmf3oc5d5"]
+[gd_scene load_steps=11 format=3 uid="uid://2pdfmf3oc5d5"]
 
 [ext_resource type="Script" uid="uid://tcjpk4u037rg" path="res://scripts/character_selector.gd" id="1_n7fce"]
 [ext_resource type="PackedScene" uid="uid://j33syemimg3f" path="res://scenes/hud/background.tscn" id="1_pldg3"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://lvvnb1v5hp5o" path="res://scenes/hud/base/base_button.tscn" id="3_o5v18"]
 [ext_resource type="PackedScene" uid="uid://bh8g3tik5mpcj" path="res://scenes/hud/base/base_label.tscn" id="4_65ger"]
 [ext_resource type="Texture2D" uid="uid://cgbviaj0qb76d" path="res://assets/graphics/character_graphics/character_menu/gallina1.png" id="6_yjmsv"]
+[ext_resource type="PackedScene" path="res://scenes/hud/base/base_indicator.tscn" id="7_swoxo"]
+[ext_resource type="Texture2D" uid="uid://by4kk6daj1fl3" path="res://assets/graphics/menu_graphics/icon_menu/icon_heart.png" id="7_yjmsv"]
+[ext_resource type="Texture2D" uid="uid://dekmfpnpb3h8l" path="res://assets/graphics/menu_graphics/icon_menu/icon_armor.png" id="8_s68bq"]
+[ext_resource type="Texture2D" uid="uid://s87f4evqptdm" path="res://assets/graphics/menu_graphics/icon_menu/icon_speed.png" id="9_lq6x1"]
 
 [node name="CharacterSelector" type="CanvasLayer"]
 script = ExtResource("1_n7fce")
@@ -50,17 +54,45 @@ offset_bottom = -69.0
 grow_vertical = 0
 text = "ok"
 
-[node name="Label" parent="." instance=ExtResource("4_65ger")]
-offset_left = -289.0
-offset_top = -267.0
-offset_right = 300.0
-offset_bottom = -122.0
-text = "selecciona tu pollo"
+[node name="character_name" parent="." instance=ExtResource("4_65ger")]
+offset_left = -291.0
+offset_top = -301.0
+offset_right = 298.0
+offset_bottom = -156.0
+text = "nombre"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(556, 330)
 scale = Vector2(3.35625, 3.35625)
 texture = ExtResource("6_yjmsv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -180.0
+offset_right = 145.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="health_indicator" parent="HBoxContainer" instance=ExtResource("7_swoxo")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+base_icon_texture = ExtResource("7_yjmsv")
+
+[node name="armor_indicator" parent="HBoxContainer" instance=ExtResource("7_swoxo")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+base_icon_texture = ExtResource("8_s68bq")
+
+[node name="speed_indicator" parent="HBoxContainer" instance=ExtResource("7_swoxo")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+base_icon_texture = ExtResource("9_lq6x1")
 
 [connection signal="pressed" from="btn_rig" to="." method="_on_btn_rig_pressed"]
 [connection signal="pressed" from="btn_lef" to="." method="_on_btn_lef_pressed"]
