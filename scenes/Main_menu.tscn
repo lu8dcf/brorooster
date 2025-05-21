@@ -1,19 +1,8 @@
-<<<<<<< HEAD
-[gd_scene load_steps=8 format=3 uid="uid://43gjrtg0t6rg"]
+[gd_scene load_steps=4 format=3 uid="uid://cxbalrn73ft87"]
 
-[ext_resource type="Script" uid="uid://bu4dciky2y1ca" path="res://scripts/Main_menu.gd" id="1_651q5"]
 [ext_resource type="AudioStream" uid="uid://cikxb8fm0of51" path="res://assets/sound/loops/menu_loop.ogg" id="2_cvwki"]
-=======
-[gd_scene load_steps=8 format=3 uid="uid://o62ma1ukvwww"]
-
-[ext_resource type="Script" uid="uid://bu4dciky2y1ca" path="res://scripts/Main_menu.gd" id="1_651q5"]
-[ext_resource type="AudioStream" path="res://assets/sound/loops/menu_loop.ogg" id="2_cvwki"]
->>>>>>> menu
-[ext_resource type="Texture2D" uid="uid://dkgjsnt5ilymo" path="res://assets/graphics/escens_graphics/background.png" id="2_xhl8r"]
 [ext_resource type="Texture2D" uid="uid://n2ouhr0mo1gn" path="res://assets/graphics/menu_graphics/boton_sinpresionar.png" id="3_g1asy"]
 [ext_resource type="Texture2D" uid="uid://goy8nw7j12dt" path="res://assets/graphics/menu_graphics/boton_presionado.png" id="4_3nt8p"]
-[ext_resource type="Texture2D" uid="uid://bkx5hvjgnv17j" path="res://assets/graphics/menu_graphics/gallina_botones1.png" id="4_cvwki"]
-[ext_resource type="Texture2D" uid="uid://dfe4cr31nwlws" path="res://assets/graphics/menu_graphics/gallina_botones2.png" id="5_2w1r8"]
 
 [node name="Menu Main" type="Control"]
 layout_mode = 3
@@ -22,7 +11,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_651q5")
 
 [node name="menu_loop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_cvwki")
@@ -33,7 +21,6 @@ volume_db = -2.0
 [node name="img" type="Sprite2D" parent="Background"]
 position = Vector2(611, 368)
 scale = Vector2(0.425626, 0.36096)
-texture = ExtResource("2_xhl8r")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -50,9 +37,6 @@ offset_bottom = 45.64
 [node name="play" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_stretch_ratio = 8.02
-texture_normal = ExtResource("4_cvwki")
-texture_pressed = ExtResource("5_2w1r8")
-texture_hover = ExtResource("5_2w1r8")
 
 [node name="Label" type="Label" parent="VBoxContainer/play"]
 layout_mode = 0
@@ -65,9 +49,6 @@ text = "PLAY"
 
 [node name="quit" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("4_cvwki")
-texture_pressed = ExtResource("5_2w1r8")
-texture_hover = ExtResource("5_2w1r8")
 
 [node name="Label" type="Label" parent="VBoxContainer/quit"]
 layout_mode = 0
