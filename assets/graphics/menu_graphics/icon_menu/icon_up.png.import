@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfe4cr31nwlws"
-path="res://.godot/imported/gallina_botones2.png-9bf9048a17134da9a5005ef06c769f17.ctex"
+uid="uid://dprt1qqyy87iv"
+path="res://.godot/imported/icon_up.png-a5e529408ab75da05e70eafd79055264.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/menu_graphics/gallina_botones2.png"
-dest_files=["res://.godot/imported/gallina_botones2.png-9bf9048a17134da9a5005ef06c769f17.ctex"]
+source_file="res://assets/graphics/menu_graphics/icon_menu/icon_up.png"
+dest_files=["res://.godot/imported/icon_up.png-a5e529408ab75da05e70eafd79055264.ctex"]
 
 [params]
 
