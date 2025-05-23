@@ -57,6 +57,7 @@ var move_left = "left"
 var weapon1_enable = true
 var weapon1_path= "res://scenes/game/weapon.tscn"
 var shoot1_path="res://scenes/game/laser.tscn"
+#var shoot1_path="res://scenes/game/Bullet/explosiveBullet.tscn"
 var time_shoot1= 0.5
 
 var weapon2_enable = true
