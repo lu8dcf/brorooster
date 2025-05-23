@@ -61,8 +61,8 @@ func update_attribute_indicators(character: CharacterData) -> void:
 	# Armadura (solo mostrar doble si es ≥ 2x)
 	var armor_ratio = character._armor / BASE_ARMOR
 	armor_indicator.set_modifier(
-		1 if character._armor > BASE_ARMOR else (-1 if character._armor < BASE_ARMOR else 0),
-		armor_ratio >= 2.0  # Solo true si es doble o más
+		1 if character._armor < BASE_ARMOR else (-1 if character._armor < BASE_ARMOR else 0),
+		armor_ratio <= 1.0  # Solo true si es doble o más
 	)
 	
 	# Velocidad (solo mostrar doble si es ≥ 2x)
@@ -121,6 +121,7 @@ func _on_btn_rig_pressed() -> void:
 
 func _on_btn_ok_pressed() -> void:
 	select_character()
+	GlobalAudio.stop_music()
 	get_tree().change_scene_to_file("res://scenes/game/main_game.tscn")
 
 func _input(event: InputEvent) -> void:

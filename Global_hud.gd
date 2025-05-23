@@ -2,7 +2,8 @@ extends Node
 
 
 func _ready():
-	pass	
+	# En cualquier script de escena
+	GlobalAudio.play_music(preload("res://assets/sound/menus_effects/intro.mp3"))
 	
 	# BOTONES
 func _on_play_pressed() -> void: # al hacer click en el boton de JUGAR empieza el juego en el nivel 1
@@ -25,5 +26,4 @@ func _on_exit_pressed() -> void:
 func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("ui_accept")):
 		_on_play_pressed()
-	elif(event.is_action_pressed("ui_cancel")):
-		_on_exit_pressed()
+	

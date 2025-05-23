@@ -23,6 +23,7 @@ GlobalHud="*res://Global_hud.gd"
 GlobalItem="*res://Global_item.gd"
 GlobalShoot="*res://Global_shoot.gd"
 GlobalPlayer="*res://Global_player.gd"
+GlobalAudio="*res://global_audio.gd"
 
 [display]
 
