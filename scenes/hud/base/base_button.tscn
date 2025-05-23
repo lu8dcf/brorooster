@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://lvvnb1v5hp5o"]
+[gd_scene load_steps=11 format=3 uid="uid://lvvnb1v5hp5o"]
 
 [ext_resource type="FontFile" uid="uid://bbufnohtiso2" path="res://assets/font/omega-pixel-biform.ttf" id="1_g3l2f"]
 [ext_resource type="Texture2D" uid="uid://clpbv1yb8dhlu" path="res://assets/graphics/menu_graphics/btn_hover.png" id="2_g4i27"]
 [ext_resource type="Texture2D" uid="uid://bljy1ua2akxhj" path="res://assets/graphics/menu_graphics/btn_pressed.png" id="3_3f6ip"]
 [ext_resource type="Texture2D" uid="uid://cf37mj15io1gb" path="res://assets/graphics/menu_graphics/btn.png" id="4_7oap5"]
+[ext_resource type="Script" uid="uid://c7706yinxpo01" path="res://scripts/base_hud.gd" id="5_3f6ip"]
+[ext_resource type="AudioStream" uid="uid://chbg7m7c7sea2" path="res://assets/sound/menus_effects/button.mp3" id="6_7oap5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g3l2f"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qdhl5"]
 texture = ExtResource("2_g4i27")
@@ -28,7 +32,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_g3l2f")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g3l2f")
 theme_override_styles/hover = SubResource("StyleBoxTexture_qdhl5")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_p27ap")
 theme_override_styles/normal = SubResource("StyleBoxTexture_vffwk")
 text = "btn"
+script = ExtResource("5_3f6ip")
+
+[node name="button_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_7oap5")
+bus = &"Effects"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

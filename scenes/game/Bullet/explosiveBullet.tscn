@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://327rtgostnc"]
+
+[ext_resource type="Script" uid="uid://cm8vbx1vbobli" path="res://scripts/game/Armas/explosiveBullet.gd" id="1_jmag0"]
+[ext_resource type="Texture2D" uid="uid://cpwkx40jjea51" path="res://assets/graphics/character_graphics/armas/bala.png" id="2_68w05"]
+[ext_resource type="AudioStream" uid="uid://c4aluy8e8usba" path="res://assets/sound/sound_effects/disparo.mp3" id="3_462y7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7mtx"]
+radius = 28.0179
+
+[sub_resource type="Animation" id="Animation_jq7sb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_172y8"]
+resource_name = "shoot"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(6, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qkje"]
+_data = {
+&"RESET": SubResource("Animation_jq7sb"),
+&"shoot": SubResource("Animation_172y8")
+}
+
+[node name="ExplosiveBullet" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_jmag0")
+metadata/_custom_type_script = "uid://c3pkhs1x7b35n"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(8, -8.9375)
+scale = Vector2(0.242134, 0.250744)
+texture = ExtResource("2_68w05")
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(8, -7)
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_k7mtx")
+debug_color = Color(0.869597, 0.000510764, 0.851147, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1qkje")
+}
+
+[node name="sonido_disparo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_462y7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

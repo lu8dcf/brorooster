@@ -34,7 +34,7 @@ var velocidad_extra = 5 # diferencia de velocidades entre caminar y volar
 var fly_cooldown = 1  # Tiempo de vuelo
 var can_fly = true # habilitacion para que vuele
 
-var extra = velocidad_extra # variable de refuerzo
+var extra = 1 # variable de refuerzo cuando vuela toma el valor del multiplicador velocidad extra
 
 var direction = Vector2.ZERO
 var acceleration: float = 8.0  # Suavizado del movimiento
@@ -57,6 +57,7 @@ var move_left = "left"
 var weapon1_enable = true
 var weapon1_path= "res://scenes/game/weapon.tscn"
 var shoot1_path="res://scenes/game/laser.tscn"
+#var shoot1_path="res://scenes/game/Bullet/explosiveBullet.tscn"
 var time_shoot1= 0.5
 
 var weapon2_enable = true
@@ -64,8 +65,11 @@ var weapon2_path= "res://scenes/game/weapon.tscn"
 var shoot2_path="res://scenes/game/laser.tscn"
 var time_shoot2= 0.3
 
-var diferencia_sprit_weapon = -PI/4
+var diferencia_sprit_weapon = 0 # con el sprite a cero se puede evitar
+var inv_image_weapon1=0 # determinacion hacia adonde aponta el arma de 0aPI/2 derecha =0
+var inv_image_weapon2=0
 
+@export var weapon: Node2D  # Asigna el nodo del arma en el inspector
 	#weapon1
 @export var weapon1_scene_path: String = weapon1_path
 var weapon1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
@@ -133,20 +137,32 @@ func _process(delta):
 	# Rotar gradualmente el arma hacia el ángulo objetivo
 
 	if is_instance_valid(current_weapon1): 
+		
+		var weapon_sprite = current_weapon1.get_node("Sprite2D")  # Sprite del arma
+		#current_weapon1.rotation = lerp_angle(current_weapon1.rotation,prueba            , 10.0 * delta) 
 		current_weapon1.rotation = lerp_angle(current_weapon1.rotation,target_angle + diferencia_sprit_weapon , 10.0 * delta)  # Ajusta la velocidad de rotación
-		# Determinar si el arma está apuntando hacia la izquierda
-		var is_aiming_left = abs(target_angle) > PI/2 and abs(target_angle) < 3*PI/2
-	# Voltear horizontalmente el sprite del arma
-		var weapon_sprite = current_weapon1.get_node("Sprite2D")  # Asegúrate de que esta es la ruta correcta
 		
-		#weapon_sprite.flip_h = true
-		
+		# Determinar si el arma está apuntando hacia la izquierda invierte el sprite
+		if  abs(target_angle) > PI/2 and inv_image_weapon1 == 0:
+			weapon_sprite.flip_v = true # Voltear horizontalmente el sprite del arma
+			inv_image_weapon1=1
+			
+		elif abs(target_angle) < PI/2  and inv_image_weapon1 == 1:
+			weapon_sprite.flip_v = false # dejarla original
+			inv_image_weapon1=0
+			
+			
 	if is_instance_valid(current_weapon2):
 
 		current_weapon2.rotation = lerp_angle(current_weapon2.rotation,target_angle + diferencia_sprit_weapon, 10.0 * delta)  # Ajusta la velocidad de rotación
-
-	
-	
+		var weapon_sprite = current_weapon2.get_node("Sprite2D")  # Sprite del arma
+		if  abs(target_angle) > PI/2 and inv_image_weapon2 == 0:
+			weapon_sprite.flip_v = true
+			inv_image_weapon2=1
+			
+		elif abs(target_angle) < PI/2  and inv_image_weapon2 == 1:
+			weapon_sprite.flip_v = false
+			inv_image_weapon2=0
 func move_with_mouse():
 	
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN) # oculta el mouse y evita que salga de la pantalla del videojuego
@@ -260,9 +276,11 @@ func timer_Shoot2():
 func shoot1():  # Disparo hacia el angulo del enemigo mas cercano
 	var shoot1 = shoot1_scene.instantiate()
 	shoot1.global_position = muzzle1.global_position
-	shoot1.rotation = target_angle
+	shoot1.rotation = target_angle  # direccion del enemigo
 	shoot1.set_direction(Vector2.from_angle(target_angle))  # Método en la bala
 	get_parent().add_child(shoot1)
+	current_weapon1.play_retroceso()
+	
 	
 func shoot2():  # Disparo hacia el angulo del enemigo mas cercano
 	var shoot2 = shoot2_scene.instantiate()
@@ -270,7 +288,7 @@ func shoot2():  # Disparo hacia el angulo del enemigo mas cercano
 	shoot2.rotation = target_angle
 	shoot2.set_direction(Vector2.from_angle(target_angle))  # Método en la bala
 	get_parent().add_child(shoot2)	
-
+	current_weapon2.play_retroceso()
 
 # recibir daño
 func take_damage(amount: int):

@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cpwkx40jjea51" path="res://assets/graphics/character_graphics/armas/bala.png" id="2_w0hk3"]
 [ext_resource type="AudioStream" uid="uid://bi6ycgghk2anq" path="res://assets/sound/sound_effects/attack_1.ogg" id="3_172y8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w0hk3"]
-radius = 28.0179
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_172y8"]
+height = 44.0
 
 [sub_resource type="Animation" id="Animation_jq7sb"]
 length = 0.001
@@ -21,10 +21,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
 
 [sub_resource type="Animation" id="Animation_172y8"]
 resource_name = "shoot"
-length = 0.7
+length = 1.00001
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -34,10 +46,22 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(6, 0)]
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1qkje"]
@@ -54,16 +78,15 @@ script = ExtResource("1_s3ssn")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(8, -8.9375)
-scale = Vector2(0.242134, 0.250744)
+position = Vector2(-9.09495e-13, 0)
+rotation = 6.28319
+scale = Vector2(1, 0.288741)
 texture = ExtResource("2_w0hk3")
-hframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4
 visibility_layer = 4
-position = Vector2(8, -7)
-shape = SubResource("CircleShape2D_w0hk3")
+shape = SubResource("CapsuleShape2D_172y8")
 
 [node name="sonido_disparo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_172y8")
