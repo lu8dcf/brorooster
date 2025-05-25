@@ -147,3 +147,10 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("ui_left"):
 		_play_button_sound()
 		_on_btn_lef_pressed()
+
+
+func _on_btn_ok_pressed() -> void:
+		select_character()
+		GlobalHud.current_state =  GlobalHud.GameState.IN_GAME
+		GlobalAudio.stop_music()
+		get_tree().change_scene_to_file("res://scenes/game/main_game.tscn")
