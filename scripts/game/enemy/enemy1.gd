@@ -1,18 +1,17 @@
 extends CharacterBody2D
 
 #Valores
-var damage = 5
-
-
+var damage = 5  
 var movimiento  = Vector2()
-
 var velocidad = 1 # velocidad del enemigo
 var health1 = 20  # Vida de la babosa
 @export var health: float = 30
+# Referencia al sprite para poder modificarlo mas adelante ne la seleccion del player
+@onready var sprite = $Sprite2D 
 
 func _ready():
 	update_health(health)
-	pass
+	# $Sprite2D.texture = load("res://assets/graphics/character_graphics/bichos/bicho1_nive3.png")	# Cambia la textura de player dependiedno la seleccion
 
 func _physics_process(_delta): 
 	move_and_collide(movimiento)

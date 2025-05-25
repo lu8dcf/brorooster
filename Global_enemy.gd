@@ -6,6 +6,14 @@ var stats: Dictionary= {"nombre"= "", "vida"= 0, "alcance"= 0, "dano"= 0, "veloc
 var movimiento = Vector2()
 var velocidad = 0.5
 
+# Enemigos
+var enemies = []  # Almacenará las instancias de enemigos
+
+
+var timer_between_enemy = .5 # .5 seg Intervalo que aparecen los enemigos
+
+
+
 func _ready() -> void:
 	SetUp()
 	pass

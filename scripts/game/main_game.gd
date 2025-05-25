@@ -6,10 +6,10 @@ var pantalla_alto = Global.pantalla_alto
 var rand = RandomNumberGenerator.new() # semilla de random segun el tiempo
 
 # Estado de la partida
-signal stage # Indicador del Stage Actual
+# signal stage # Indicador del Stage Actual
 
 # Player
-var player = null
+var player = null  # instancia del player
 #var screen_live = Global.lives   # cantidad de vidas que se muestran en pantalla
 #signal live  # muestra las vidas activas
 
@@ -38,11 +38,14 @@ func _ready():	# Comienza el juego
 	# asignar la señal del angulo del arma y disparo
 	$player.connect("enemy_detected", $player._on_enemy_detected) 
 	
+<<<<<<< HEAD
 	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
+=======
+	#timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
+			
+>>>>>>> main
 
-		
-
-	#init_spawn() #Spawn de enemigos.
+	init_spawn() #Spawn de enemigos.
 	
 	
 	
@@ -127,7 +130,7 @@ func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
 	var player_position = player.global_position # sposision actual del player
 	
 	# buscar en toda las instancias de enemigos cual es la mas cercana
-	for enemy in enemies:
+	for enemy in GlobalEnemy.enemies:
 		if is_instance_valid(enemy):  # ← Filtra nodos eliminados
 			var distance_to_enemy = player_position.distance_to(enemy.global_position)
 			if distance_to_enemy < shortest_distance:
