@@ -3,6 +3,7 @@ extends Node2D
 # Enemigos
 var move_enemy = 0.05  # Intervalo de tiempo para el movimiento enemigo
 var timer_between_enemy = .5 # .5 seg Intervalo que aparecen los enemigos
+var velocidad = 10
 
 # Diccionario con las rutas de los enemigos
 var enemigos = {
@@ -17,15 +18,15 @@ func _ready() -> void:
 
 	#Creo que en realidad deberia spwnear hasta que muere el jugador o derrotar x enemgios
 	#pero para probar...
-	for i in range(1, 6):
+	for i in range(1, 60):
 		await get_tree().create_timer(timer_between_enemy).timeout
 		timer_add_enemy()
 		pass
 	
 func timer_add_enemy():
 	
-	match (Global.stage):
-		1: iniciarEnemigo(enemigos[1])
+	match (Global.stage):  # este paso lo vamos a manejar por oleadas
+		1:iniciarEnemigo(enemigos[1])
 		2:iniciarEnemigo(sorteoEnemigo(1,Global.stage))
 		3:iniciarEnemigo(sorteoEnemigo(1,Global.stage))
 		_:iniciarEnemigo(enemigos[1])
@@ -40,8 +41,10 @@ func iniciarEnemigo (enemigo: String):
 	var position = enemy_starting_point() # posicion inicial del enemigo en algun extremo
 	var enemy = load(enemigo).instantiate()
 	enemy.position = Vector2(position[0], position[1]) # Ubica al enemigo en la X random e Y en el inicio
+	GlobalEnemy.enemies.append(enemy)
 	add_child(enemy)  # Agrega como hijo del main al enemigo
 pass
+
 
 
 

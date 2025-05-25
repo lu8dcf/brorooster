@@ -37,7 +37,7 @@ var enemigos_eliminados := 0
 var pantalla_ancho := 1160
 var pantalla_alto := 764
 var angle := 0
-var stage := 1
+var stage := 1   # se debe dejar de usar serian oleadas
 
 
 # Métodos de conveniencia para acceder a propiedades
