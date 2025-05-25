@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+@onready var button_sound: AudioStreamPlayer = $button_sound
+@export var button_click_sound: AudioStream
+
 # Array de personajes precargados
 @export var characters: Array[CharacterData] = [
 	preload("res://scripts/game/player/characters/pollo1.tres"),
@@ -28,6 +31,10 @@ var current_index: int = 0:
 
 
 func _ready() -> void:
+	# Asegúrate de que el sonido está asignado
+	if button_click_sound:
+		button_sound.stream = button_click_sound
+		
 	# Añade este selector al grupo para que Global pueda encontrarlo
 	add_to_group("character_selector")
 	# Configuración inicial
@@ -119,17 +126,31 @@ func _on_btn_lef_pressed() -> void:
 func _on_btn_rig_pressed() -> void:
 	current_index = (current_index + 1) % characters.size()
 
-func _on_btn_ok_pressed() -> void:
+# Función para reproducir sonido de botón
+func _play_button_sound():
+	if button_sound and button_sound.stream:
+		button_sound.play()
+		
+func selector_weapon():
+	_play_button_sound()
 	select_character()
-	GlobalAudio.stop_music()
-	get_tree().change_scene_to_file("res://scenes/game/main_game.tscn")
-
+	GlobalHud.current_state =  GlobalHud.GameState.WEAPON_SELECT
+	get_tree().change_scene_to_file("res://scenes/hud/weapon_selector.tscn")
+	
+		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		_on_btn_ok_pressed()
+		selector_weapon()
 	elif event.is_action_pressed("ui_cancel"):
-		get_tree().change_scene_to_file("res://scenes/Main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/hud/Main_menu.tscn")
+		GlobalHud.current_state =  GlobalHud.GameState.MAIN_MENU
 	elif event.is_action_pressed("ui_right"):
+		_play_button_sound()
 		_on_btn_rig_pressed()
 	elif event.is_action_pressed("ui_left"):
+		_play_button_sound()
 		_on_btn_lef_pressed()
+
+
+func _on_btn_ok_pressed() -> void:
+		selector_weapon()

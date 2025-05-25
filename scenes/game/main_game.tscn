@@ -38,5 +38,3 @@ offset_right = 26.0
 offset_bottom = 37.0
 
 [node name="level_loop" type="AudioStreamPlayer2D" parent="."]
-
-[connection signal="stage" from="." to="background" method="_on_main_game_stage"]

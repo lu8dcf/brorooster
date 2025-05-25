@@ -1,16 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://thp8e5hjjk43"]
+[gd_scene load_steps=11 format=3 uid="uid://thp8e5hjjk43"]
 
 [ext_resource type="PackedScene" uid="uid://j33syemimg3f" path="res://scenes/hud/background.tscn" id="1_b35bo"]
+[ext_resource type="Script" uid="uid://wgl3lg3nryqs" path="res://scripts/weapon_selector.gd" id="1_hsk16"]
 [ext_resource type="PackedScene" uid="uid://b3gw0handi0b6" path="res://scenes/hud/base/base_panel.tscn" id="2_o8pfo"]
 [ext_resource type="PackedScene" uid="uid://lvvnb1v5hp5o" path="res://scenes/hud/base/base_button.tscn" id="3_2qmbm"]
 [ext_resource type="PackedScene" uid="uid://bh8g3tik5mpcj" path="res://scenes/hud/base/base_label.tscn" id="4_hsk16"]
-[ext_resource type="Texture2D" uid="uid://cgbviaj0qb76d" path="res://assets/graphics/character_graphics/character_menu/gallina1.png" id="5_x7tdh"]
 [ext_resource type="PackedScene" uid="uid://bv6twj2qoy0sm" path="res://scenes/hud/base/base_indicator.tscn" id="6_06pme"]
+[ext_resource type="Texture2D" uid="uid://014t5hldx08k" path="res://assets/graphics/character_graphics/weapon_menu/Iconodearma1.png" id="6_x7tdh"]
 [ext_resource type="Texture2D" uid="uid://by4kk6daj1fl3" path="res://assets/graphics/menu_graphics/icon_menu/icon_heart.png" id="7_qoaa5"]
 [ext_resource type="Texture2D" uid="uid://dekmfpnpb3h8l" path="res://assets/graphics/menu_graphics/icon_menu/icon_armor.png" id="8_igb3v"]
 [ext_resource type="Texture2D" uid="uid://s87f4evqptdm" path="res://assets/graphics/menu_graphics/icon_menu/icon_speed.png" id="9_4moto"]
 
 [node name="WeaponSelector" type="CanvasLayer"]
+script = ExtResource("1_hsk16")
 
 [node name="Background" parent="." instance=ExtResource("1_b35bo")]
 
@@ -64,9 +66,9 @@ offset_bottom = -156.0
 text = "nombre"
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel"]
-position = Vector2(397, 334)
-scale = Vector2(3.35625, 3.35625)
-texture = ExtResource("5_x7tdh")
+position = Vector2(416, 346)
+scale = Vector2(10.3883, 10.3883)
+texture = ExtResource("6_x7tdh")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -82,17 +84,21 @@ offset_bottom = -140.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="health_indicator" parent="Panel/HBoxContainer" instance=ExtResource("6_06pme")]
+[node name="cost_indicator" parent="Panel/HBoxContainer" instance=ExtResource("6_06pme")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 base_icon_texture = ExtResource("7_qoaa5")
 
-[node name="armor_indicator" parent="Panel/HBoxContainer" instance=ExtResource("6_06pme")]
+[node name="shoot_time_indicator" parent="Panel/HBoxContainer" instance=ExtResource("6_06pme")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 base_icon_texture = ExtResource("8_igb3v")
 
-[node name="speed_indicator" parent="Panel/HBoxContainer" instance=ExtResource("6_06pme")]
+[node name="bullet_type_indicator" parent="Panel/HBoxContainer" instance=ExtResource("6_06pme")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 base_icon_texture = ExtResource("9_4moto")
+
+[connection signal="pressed" from="Panel/btn_rig" to="." method="_on_btn_rig_pressed"]
+[connection signal="pressed" from="Panel/btn_lef" to="." method="_on_btn_lef_pressed"]
+[connection signal="pressed" from="Panel/btn_ok" to="." method="_on_btn_ok_pressed"]

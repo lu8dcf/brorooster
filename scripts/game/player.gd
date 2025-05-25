@@ -7,7 +7,7 @@ class_name Player
 @export var armor: float = 1.0 # Armadura 1 sin armadura / 0.8 recibe 20% menos daño
 @export var sprite_path: String
 
-# Referencia al sprite
+# Referencia al sprite para poder modificarlo mas adelante ne la seleccion del player
 @onready var sprite = $Sprite2D 
 
 # Constructor
@@ -25,7 +25,7 @@ func setup(new_health: int, new_speed: int, new_armor: float, new_sprite_path: N
 	armor = new_armor
 	sprite_path = new_sprite_path
 	if sprite_path != "":
-		$Sprite2D.texture = load(sprite_path)	
+		$Sprite2D.texture = load(sprite_path)	# Cambia la textura de player dependiedno la seleccion
 	
 	
 
