@@ -10,6 +10,15 @@ var direction: Vector2 # direccion hacia donde ira la bala, enemigo mas cercano
 func _ready():
 	$sonido_disparo.play() # Sonido del laser a disparar
 	
+	#Tipo COnstructor
+func setup(_speed: float, _tiempo_sonido: float, _damage: int, _direction: Vector2, _sprite_path: String = ""):
+	speed = _speed
+	tiempo_sonido = _tiempo_sonido
+	damage = _damage
+	direction = _direction
+	if _sprite_path != "":
+		$Sprite2D.texture = load(_sprite_path)
+
 	
 func _physics_process(delta):
 	position += direction * speed  * delta # Mover el disparo
