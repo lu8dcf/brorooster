@@ -7,6 +7,7 @@ extends Node
 enum GameState {
 	MAIN_MENU,
 	CHARACTER_SELECT,
+	WEAPON_SELECT,
 	IN_GAME
 }
 

@@ -131,15 +131,18 @@ func _play_button_sound():
 	if button_sound and button_sound.stream:
 		button_sound.play()
 		
+func selector_weapon():
+	_play_button_sound()
+	select_character()
+	GlobalHud.current_state =  GlobalHud.GameState.WEAPON_SELECT
+	get_tree().change_scene_to_file("res://scenes/hud/weapon_selector.tscn")
+	
+		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		_play_button_sound()
-		select_character()
-		GlobalHud.current_state =  GlobalHud.GameState.IN_GAME
-		GlobalAudio.stop_music()
-		get_tree().change_scene_to_file("res://scenes/game/main_game.tscn")
+		selector_weapon()
 	elif event.is_action_pressed("ui_cancel"):
-		get_tree().change_scene_to_file("res://scenes/Main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/hud/Main_menu.tscn")
 		GlobalHud.current_state =  GlobalHud.GameState.MAIN_MENU
 	elif event.is_action_pressed("ui_right"):
 		_play_button_sound()
@@ -150,7 +153,4 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_btn_ok_pressed() -> void:
-		select_character()
-		GlobalHud.current_state =  GlobalHud.GameState.IN_GAME
-		GlobalAudio.stop_music()
-		get_tree().change_scene_to_file("res://scenes/game/main_game.tscn")
+		selector_weapon()

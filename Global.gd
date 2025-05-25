@@ -16,15 +16,26 @@ var currentPlayer: CharacterData = null:
 			push_error("Se intentó asignar un tipo inválido a currentPlayer")
 
 
+var currentWeapon: WeaponData = null:
+	set(value):
+		if value is WeaponData:
+			currentWeapon = value
+			# Conecta señales del personaje
+			weapon_changed.emit(currentWeapon)
+		else:
+			push_error("Se intentó asignar un tipo inválido a currentWeapon")
+
 
 func _ready() -> void:
 	# Inicializar con personaje por defecto
 	if currentPlayer == null:
 		initialize_default_character()
-		
+	if currentWeapon == null:
+		initialize_default_weapon()
 		
 # Señales globales
 signal character_changed(new_character: CharacterData)
+signal weapon_changed(new_weapon: WeaponData)
 signal health_changed(new_value: int)
 
 
@@ -70,6 +81,25 @@ func initialize_default_character() -> void:
 			default_char._texture = preload("res://assets/graphics/character_graphics/character_menu/gallina1.png")
 			default_char._sprite_player = "res://assets/graphics/character_graphics/gallo.png"
 			currentPlayer = default_char
+			push_warning("Usando personaje por defecto fallback")
+			
+
+func initialize_default_weapon() -> void:
+	# Carga el primer personaje del selector si existe
+		var selector = get_tree().get_first_node_in_group("weapon_selector")
+		if selector and selector.characters.size() > 0:
+			currentPlayer = selector.characters[0]
+		else:
+		# Fallback: crea un personaje por defecto
+			var default_weapon = WeaponData.new()
+			default_weapon._id = 1
+			default_weapon._bullet_type="A"
+			default_weapon._cost = 1
+			default_weapon._display_name = "Arma"
+			default_weapon._rarety = 0
+			default_weapon._texture = preload("res://assets/graphics/character_graphics/weapon_menu/Iconodearma1.png")
+			default_weapon._sprite_texture= "res://assets/graphics/character_graphics/armas/arma1.png"
+			currentWeapon = default_weapon
 			push_warning("Usando personaje por defecto fallback")
 
 func _on_character_health_changed(new_health: int):

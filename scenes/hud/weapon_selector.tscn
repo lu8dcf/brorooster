@@ -89,12 +89,16 @@ custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 base_icon_texture = ExtResource("7_qoaa5")
 
-[node name="damage_indicator" parent="Panel/HBoxContainer" instance=ExtResource("6_06pme")]
+[node name="shoot_time_indicator" parent="Panel/HBoxContainer" instance=ExtResource("6_06pme")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 base_icon_texture = ExtResource("8_igb3v")
 
-[node name="rarety_indicator" parent="Panel/HBoxContainer" instance=ExtResource("6_06pme")]
+[node name="bullet_type_indicator" parent="Panel/HBoxContainer" instance=ExtResource("6_06pme")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 base_icon_texture = ExtResource("9_4moto")
+
+[connection signal="pressed" from="Panel/btn_rig" to="." method="_on_btn_rig_pressed"]
+[connection signal="pressed" from="Panel/btn_lef" to="." method="_on_btn_lef_pressed"]
+[connection signal="pressed" from="Panel/btn_ok" to="." method="_on_btn_ok_pressed"]
