@@ -52,13 +52,17 @@ var move_left = "left"
 
 #Weapon
 	#habilitar las armas    estas son las variables al seleccionar las armas
+@export var arma1_data: ArmaData
 
 
 var weapon1_enable = true
-var weapon1_path= "res://scenes/game/weapon.tscn"
-var shoot1_path="res://scenes/game/laser.tscn"
+#var weapon1_path= "res://scenes/game/weapon.tscn"
+var weapon1_path= "res://scenes/game/Armas/Arma.tscn"
+#var shoot1_path="res://scenes/game/laser.tscn"
+var shoot1_path="res://scenes/game/Bullet/bullet.tscn"
 #var shoot1_path="res://scenes/game/Bullet/explosiveBullet.tscn"
 var time_shoot1= 0.5
+var shooting = false
 
 var weapon2_enable = true
 var weapon2_path= "res://scenes/game/weapon.tscn"
@@ -75,9 +79,11 @@ var inv_image_weapon2=0
 var weapon1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 @onready var weapon_anchor: Marker2D = $WeaponAnchor1 # punto de union del arma
 
+var arma1_scene : PackedScene
+
 	#disparo 1
-@export var shoot1_scene_path: String = shoot1_path
-var shoot1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
+#@export var shoot1_scene_path: String = shoot1_path
+#var shoot1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 
 @onready var muzzle1  :  Marker2D = $shoot1 #desde donde sale el disparo
 
@@ -95,7 +101,7 @@ var shoot2_scene: PackedScene # Exporta la escena del arma para poder asignarla 
 
 
 
-var new_weapon = null
+#var new_weapon = null
 var current_weapon1: Node2D 
 var current_weapon2: Node2D 
 
@@ -105,16 +111,20 @@ var target_angle: float = 0.0
 
 
 func _ready():
+	
+	if arma1_data and arma1_data.arma_escena and arma1_data:
+		arma1_scene = arma1_data.arma_escena
+		equip_weapon1(0.0)
 	# Instalar el Weapon1 
 	if weapon1_scene_path != "" and weapon1_enable:
 		weapon1_scene = ResourceLoader.load(weapon1_scene_path)
 		if weapon1_scene:
-			var weapon1_instance = weapon1_scene.instantiate()
+			#var weapon1_instance = weapon1_scene.instantiate()
 			#add_child(weapon1_instance)
 			equip_weapon1(0.0) # La coloca en la posicion 1
-			shoot1_scene = ResourceLoader.load(shoot1_scene_path)
-			if shoot1_scene:
-				timer_Shoot1() # Activa el timer de disparo
+		#	shoot1_scene = ResourceLoader.load(shoot1_scene_path)
+			#if shoot1_scene:
+				#timer_Shoot1() # Activa el timer de disparo
 		
 	# Instalar el Weapon2 	
 	if weapon2_scene_path != "" and weapon2_enable:
@@ -212,17 +222,23 @@ func move_with_mouse():
 	# equipa el arma 1
 
 func equip_weapon1(_angle:float):
-	if not weapon1_scene and not is_instance_valid(weapon_anchor):
-		return
-
-
-	if is_instance_valid(current_weapon1):
-		current_weapon1.queue_free()
-
-	# Instancia la escena del arma
-	current_weapon1 = weapon1_scene.instantiate()
-	$WeaponAnchor1.add_child(current_weapon1)
+	if arma1_data and arma1_data.arma_escena:
+		if is_instance_valid(current_weapon1):
+			current_weapon1.queue_free()
+	current_weapon1 = arma1_data.arma_escena.instantiate()
+	current_weapon1.arma_data = arma1_data  #Asigno el resurse
+	weapon_anchor.add_child(current_weapon1)
 	current_weapon1.position = Vector2.ZERO
+	#
+	#if not arma1_scene and not is_instance_valid(weapon_anchor):
+		#return
+	#if is_instance_valid(current_weapon1):
+		#current_weapon1.queue_free()
+#
+	## Instancia la escena del arma
+	#current_weapon1 = weapon1_scene.instantiate()
+	#$WeaponAnchor1.add_child(current_weapon1)
+	#current_weapon1.position = Vector2.ZERO
 	
 
 func equip_weapon2(_angle:float):
@@ -239,7 +255,7 @@ func unequip_weapon1(): # desequipar le arma
 		remove_child(current_weapon1)
 		current_weapon1.queue_free()
 		current_weapon1 = null
-		print("Arma desequipada.")
+		#print("Arma desequipada.")
 
 # cambio de armas
 func change_weapon(new_weapon_scene: PackedScene):
@@ -254,16 +270,25 @@ func change_weapon(new_weapon_scene: PackedScene):
 # Señal recibida desde main_game con el ángulo al enemigo más cercano
 func _on_enemy_detected(angle_to_enemy: float):
 	target_angle = angle_to_enemy
+	shootWeapon1()
 	
-
-
-func timer_Shoot1():
-	var shoot1_timer = Timer.new()
-	shoot1_timer.wait_time = time_shoot1
-	shoot1_timer.one_shot = false #que sea ciclico
-	add_child(shoot1_timer)
-	shoot1_timer.start()  # inicia el temporizador
-	shoot1_timer.timeout.connect(shoot1)	
+	
+func shootWeapon1():
+	if !shooting and current_weapon1:
+		shooting = true
+		current_weapon1.shoot(muzzle1.global_position, target_angle)
+		await get_tree().create_timer(arma1_data.tiempoDisparo).timeout
+		shooting = false
+	
+	
+	
+#func timer_Shoot1():
+	#var shoot1_timer = Timer.new()
+	#shoot1_timer.wait_time = time_shoot1
+	#shoot1_timer.one_shot = false #que sea ciclico
+	#add_child(shoot1_timer)
+	#shoot1_timer.start()  # inicia el temporizador
+	#shoot1_timer.timeout.connect(shoot1)	
 	
 func timer_Shoot2():
 	var shoot2_timer = Timer.new()
@@ -273,22 +298,23 @@ func timer_Shoot2():
 	shoot2_timer.start()  # inicia el temporizador
 	shoot2_timer.timeout.connect(shoot2)	
 		
-func shoot1():  # Disparo hacia el angulo del enemigo mas cercano
-	var shoot1 = shoot1_scene.instantiate()
-	shoot1.global_position = muzzle1.global_position
-	shoot1.rotation = target_angle  # direccion del enemigo
-	shoot1.set_direction(Vector2.from_angle(target_angle))  # Método en la bala
-	get_parent().add_child(shoot1)
-	current_weapon1.play_retroceso()
+#func shoot1():  # Disparo hacia el angulo del enemigo mas cercano
+	#var shoot1 = shoot1_scene.instantiate()
+	#shoot1.global_position = muzzle1.global_position
+	#shoot1.rotation = target_angle  # direccion del enemigo
+	#shoot1.set_direction(Vector2.from_angle(target_angle))  # Método en la bala
+	#get_parent().add_child(shoot1)
+	#current_weapon1.play_retroceso()
 	
 	
 func shoot2():  # Disparo hacia el angulo del enemigo mas cercano
-	var shoot2 = shoot2_scene.instantiate()
-	shoot2.global_position = muzzle2.global_position
-	shoot2.rotation = target_angle
-	shoot2.set_direction(Vector2.from_angle(target_angle))  # Método en la bala
-	get_parent().add_child(shoot2)	
-	current_weapon2.play_retroceso()
+	pass
+	#var shoot2 = shoot2_scene.instantiate()
+	#shoot2.global_position = muzzle2.global_position
+	#shoot2.rotation = target_angle
+	#shoot2.set_direction(Vector2.from_angle(target_angle))  # Método en la bala
+	#get_parent().add_child(shoot2)	
+	#current_weapon2.play_retroceso()
 
 # recibir daño
 func take_damage(amount: int):
@@ -297,7 +323,7 @@ func take_damage(amount: int):
 	armor = Global.currentPlayer._armor
 	var damage_taken = amount * armor
 	Global.currentPlayer.take_damage(damage_taken)
-	print (Global.currentPlayer._health, "sacar: ", damage_taken, "armor,", armor)
+	#print (Global.currentPlayer._health, "sacar: ", damage_taken, "armor,", armor)
 	if Global.currentPlayer._health <= 0:
 		die()
 
@@ -306,7 +332,8 @@ func die():
 	# $AnimationPlayer.play("death")
 	# await $AnimationPlayer.animation_finished
 	#queue_free()
-	print("mori")
+	#print("mori")
+	pass
 
 # Juntar los items
 func _on_area_recoleccion_area_entered(item) -> void:

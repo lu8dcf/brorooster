@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ArmaData" load_steps=5 format=3 uid="uid://gqcoofs446g2"]
+
+[ext_resource type="PackedScene" uid="uid://sj6pcycsxrfx" path="res://scenes/game/Armas/Arma.tscn" id="1_b5gju"]
+[ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="1_qdhyo"]
+[ext_resource type="PackedScene" uid="uid://bb0lfcam5hcep" path="res://scenes/game/Bullet/meleeBullet.tscn" id="2_b5gju"]
+[ext_resource type="Texture2D" uid="uid://c7kjg63xsklc8" path="res://assets/graphics/character_graphics/armas/arma4.png" id="4_c25oh"]
+
+[resource]
+script = ExtResource("1_qdhyo")
+nombre = "melee1"
+sprite = ExtResource("4_c25oh")
+damage = 4
+tiempoDisparo = 1.0
+arma_escena = ExtResource("1_b5gju")
+bullet_scene = ExtResource("2_b5gju")
+costo = 0
+metadata/_custom_type_script = "uid://pfcy5ekpq4t6"

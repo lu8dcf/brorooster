@@ -1,7 +1,7 @@
 extends Area2D
 
 var speed = 1000.0  # Velocidad del láser
-var tiempo_sonido = .2
+var tiempo_sonido = .2 #Se puede hacer fijo
 var damage = 10 # Daño que genera la bala, esto se debera hacer generico
 var direction: Vector2 # direccion hacia donde ira la bala, enemigo mas cercano
 

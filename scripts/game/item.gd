@@ -1,11 +1,11 @@
-extends Node
+extends Node2D
 
 class_name Item
 
 #Atributos
 var nombre : String
 #var tipoObjeto : String
-var precio : int
+var costo : int
 
 #Metodos
 

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ArmaData" load_steps=5 format=3 uid="uid://bx85usceyolur"]
+
+[ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="1_4omnu"]
+[ext_resource type="PackedScene" uid="uid://sj6pcycsxrfx" path="res://scenes/game/Armas/Arma.tscn" id="1_gvv6i"]
+[ext_resource type="PackedScene" uid="uid://ceivc2d3taao1" path="res://scenes/game/Bullet/bullet.tscn" id="1_lmv5e"]
+[ext_resource type="Texture2D" uid="uid://c3ndtt7g0u7" path="res://assets/graphics/character_graphics/armas/arma1.png" id="3_gvv6i"]
+
+[resource]
+script = ExtResource("1_4omnu")
+nombre = "pistola1"
+sprite = ExtResource("3_gvv6i")
+damage = 10
+tiempoDisparo = 2.0
+arma_escena = ExtResource("1_gvv6i")
+bullet_scene = ExtResource("1_lmv5e")
+costo = 0
+metadata/_custom_type_script = "uid://pfcy5ekpq4t6"
