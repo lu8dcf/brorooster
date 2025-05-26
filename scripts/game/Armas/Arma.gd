@@ -7,7 +7,7 @@ class_name Arma
 var id : int
 var danio: int
 var tiempoAccion : float
-var tipo =["Fuego", "Electrico","Comun"]
+var tipoBullet =["Fuego", "Electrico","Comun"]
 var nivel : int
 
 

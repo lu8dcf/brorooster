@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjnv5pvwd81tt" path="res://scripts/game/laser.gd" id="1_s3ssn"]
 [ext_resource type="Texture2D" uid="uid://cpwkx40jjea51" path="res://assets/graphics/character_graphics/armas/bala.png" id="2_w0hk3"]
-[ext_resource type="AudioStream" uid="uid://c4aluy8e8usba" path="res://assets/sound/sound_effects/disparo.mp3" id="3_172y8"]
+[ext_resource type="AudioStream" uid="uid://bi6ycgghk2anq" path="res://assets/sound/sound_effects/attack_1.ogg" id="3_172y8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_172y8"]
 height = 44.0

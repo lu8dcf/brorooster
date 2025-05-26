@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqli7064cylk"]
+
+[ext_resource type="Script" uid="uid://djbtye0rt0ysm" path="res://scripts/game/enemy/spawner_worms.gd" id="1_xd2sm"]
+[ext_resource type="Texture2D" uid="uid://mvby2iqjv5gi" path="res://assets/graphics/character_graphics/bichos/gusanosaliendodetierra.png" id="2_p2sfe"]
+
+[node name="SpawnerWorms" type="Node2D"]
+z_index = 1
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_xd2sm")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_p2sfe")
+hframes = 68
+
+[node name="TimeToSpawn" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="TimeToSpawn" to="." method="_on_time_to_spawn_timeout"]

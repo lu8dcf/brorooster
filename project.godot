@@ -24,6 +24,8 @@ GlobalItem="*res://Global_item.gd"
 GlobalShoot="*res://Global_shoot.gd"
 GlobalPlayer="*res://Global_player.gd"
 GlobalAudio="*res://global_audio.gd"
+GlobalWeapon="*res://global_weapon.gd"
+GlobalOleada="*res://Global_oleada.gd"
 
 [display]
 
