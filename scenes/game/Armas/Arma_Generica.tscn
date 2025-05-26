@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 [gd_scene load_steps=7 format=3 uid="uid://ihocfpp65sx5"]
 
 [ext_resource type="Script" uid="uid://o2fv10kawcqa" path="res://scripts/game/Arma/ArmaScript.gd" id="1_y00s4"]
+=======
+[gd_scene load_steps=7 format=3 uid="uid://cxmbgupico0nc"]
+
+[ext_resource type="Script" path="res://scripts/game/Arma/Arma.gd" id="1_y00s4"]
+>>>>>>> main
 [ext_resource type="Texture2D" uid="uid://c3ndtt7g0u7" path="res://assets/graphics/character_graphics/armas/arma1.png" id="2_sh3m8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_roymg"]

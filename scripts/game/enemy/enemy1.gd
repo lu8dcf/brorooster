@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 #Valores
-var damage = 5  
+var damage = 10
 var movimiento  = Vector2()
 var velocidad = 1 # velocidad del enemigo
 var health1 = 20  # Vida de la babosa
+
 @export var health: float = 30
 # Referencia al sprite para poder modificarlo mas adelante ne la seleccion del player
 @onready var sprite = $Sprite2D 
@@ -22,7 +23,7 @@ func _physics_process(_delta):
 	
 	
 func set_vector(vector):
-	movimiento = vector.normalized() * velocidad
+	movimiento = vector.normalized() * velocidad 
 	if movimiento.x > 0:
 		$AnimationPlayer.play("right")
 	else:

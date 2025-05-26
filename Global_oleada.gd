@@ -2,16 +2,21 @@ extends Node
 
 # General 
 
-var oleada = 0
+
 var maiz = 0
 
 
 # Enemigos
 var enemies = []
-
+var timer_between_enemy = 1
 
 
 # Oleada
+var oleada = 0
+
+#Factory enemy
+var dificult = 1
+var timer_spawn = 1
 
 # debe ser lista tipo fifo
 # -- Oleada
