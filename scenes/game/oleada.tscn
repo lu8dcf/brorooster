@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8fjq3jbx8rlt"]
+
+[ext_resource type="Script" path="res://scripts/game/oleada.gd" id="1_sg7fu"]
+
+[node name="oleada" type="Node2D"]
+script = ExtResource("1_sg7fu")
