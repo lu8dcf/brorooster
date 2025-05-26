@@ -5,8 +5,6 @@ extends Area2D
 
 var nuevo_fondo = preload("res://assets/graphics/menu_graphics/backgrounddefault.png")  # fondo por defecto
 
-var spawner_worms_scene = preload("res://scenes/game/enemy/spawner_worms.tscn")
-
 
 
 func _on_main_game_stage() -> void:
