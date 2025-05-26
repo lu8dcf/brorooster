@@ -8,8 +8,7 @@ var velocidad = 0.5
 
 
 
-# Enemigos
-var enemies = []  # Almacenará las instancias de enemigos
+
 
 
 var timer_between_enemy = .5 # .5 seg Intervalo que aparecen los enemigos

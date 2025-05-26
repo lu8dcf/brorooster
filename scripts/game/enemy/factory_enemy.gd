@@ -4,15 +4,12 @@ class_name EnemyFactory
 # spawn
 var posicionCero = 10 # margen de posision de spawn de los enemigos en los bordes
 
-
 # Enemigos
-#var move_enemy = 0.05  # Intervalo de tiempo para el movimiento enemigo
 var timer_between_enemy = GlobalOleada.timer_between_enemy # .5 seg Intervalo que aparecen los enemigos
-#var velocidad = 10
-
+var tipo_enemigo = 1
 
 # Diccionario con las rutas de los enemigos
-var enemigos = {
+var tipos_enemigos = {
 	1: "res://scenes/game/enemy/enemy1.tscn",
 	2: "res://scenes/game/enemy/enemy2.tscn", #seria enemigo 2
 	3: "res://scenes/game/enemy/enemy3.tscn", #seria enemgio 3
@@ -20,32 +17,35 @@ var enemigos = {
 	5: "res://scenes/game/enemy/enemy5.tscn"
 }
 
+var enemigo_iniciar = tipos_enemigos[tipo_enemigo]
+
 func _ready() -> void:
-	await get_tree().create_timer(timer_between_enemy).timeout
+	#await get_tree().create_timer(timer_between_enemy).timeout
 	timer_add_enemy()
-	pass
 	
+	
+
+# Timer entre instancias de enemigos
 func timer_add_enemy():
-	
-	match (Global.stage):  # este paso lo vamos a manejar por oleadas
-		1:iniciarEnemigo(enemigos[1])
-		2:iniciarEnemigo(sorteoEnemigo(1,Global.stage))
-		3:iniciarEnemigo(sorteoEnemigo(1,Global.stage))
-		_:iniciarEnemigo(enemigos[1])
-pass
-	
-	
-func sorteoEnemigo(min, max):
-	var randomEnemy = randi_range(min, max)
-	return enemigos.get(randomEnemy, enemigos[1])  # random de la lista, si no, el enemgio 1
-	
-func iniciarEnemigo (enemigo: String):
+	var enemy_timer = Timer.new()
+	enemy_timer.wait_time = timer_between_enemy
+	enemy_timer.one_shot = false #que sea ciclico
+	add_child(enemy_timer)
+	enemy_timer.start()  # inicia el temporizador
+	# Conectar el temporizador a una función que instancia a los enemigos
+	enemy_timer.timeout.connect(intance_enemy)	
+
+func intance_enemy():
+	init_enemy(enemigo_iniciar)
+
+# Instaciar en eenemigo correspondiente
+func init_enemy (enemigo_iniciar: String):
 	var position = enemy_starting_point() # posicion inicial del enemigo en algun extremo
-	var enemy = load(enemigo).instantiate()
+	var enemy = load(enemigo_iniciar).instantiate()
 	enemy.position = Vector2(position[0], position[1]) # Ubica al enemigo en la X random e Y en el inicio
-	GlobalEnemy.enemies.append(enemy)
+	GlobalOleada.enemies.append(enemy)  # Agrega el enmigo a la lista de nemigos 
 	add_child(enemy)  # Agrega como hijo del main al enemigo
-pass
+
 
 
 func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de la pantalla para el inicio de los enemigos
