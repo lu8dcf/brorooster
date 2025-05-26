@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7fbapgikejjl"]
+
+[ext_resource type="Script" uid="uid://dlfxq5a846olc" path="res://scripts/game/enemy/factory_enemy.gd" id="1_ofiju"]
+
+[node name="factoy_enemy" type="Node2D"]
+script = ExtResource("1_ofiju")

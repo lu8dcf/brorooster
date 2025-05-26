@@ -1,27 +1,29 @@
 extends Node2D
+class_name EnemyFactory
+
+# spawn
+var posicionCero = 10 # margen de posision de spawn de los enemigos en los bordes
+
 
 # Enemigos
-var move_enemy = 0.05  # Intervalo de tiempo para el movimiento enemigo
-var timer_between_enemy = .5 # .5 seg Intervalo que aparecen los enemigos
-var velocidad = 10
+#var move_enemy = 0.05  # Intervalo de tiempo para el movimiento enemigo
+var timer_between_enemy = GlobalOleada.timer_between_enemy # .5 seg Intervalo que aparecen los enemigos
+#var velocidad = 10
+
 
 # Diccionario con las rutas de los enemigos
 var enemigos = {
 	1: "res://scenes/game/enemy/enemy1.tscn",
-	2: "res://scenes/game/enemy/enemy_2.tscn", #seria enemigo 2
-	3: "res://scenes/game/enemy/enemy1.tscn" #seria enemgio 3
+	2: "res://scenes/game/enemy/enemy2.tscn", #seria enemigo 2
+	3: "res://scenes/game/enemy/enemy3.tscn", #seria enemgio 3
+	4: "res://scenes/game/enemy/enemy4.tscn",
+	5: "res://scenes/game/enemy/enemy5.tscn"
 }
 
 func _ready() -> void:
-	#defino en que stage estoy, para saber que aparece
-	var stage = Global.stage
-
-	#Creo que en realidad deberia spwnear hasta que muere el jugador o derrotar x enemgios
-	#pero para probar...
-	for i in range(1, 60):
-		await get_tree().create_timer(timer_between_enemy).timeout
-		timer_add_enemy()
-		pass
+	await get_tree().create_timer(timer_between_enemy).timeout
+	timer_add_enemy()
+	pass
 	
 func timer_add_enemy():
 	
@@ -46,8 +48,6 @@ func iniciarEnemigo (enemigo: String):
 pass
 
 
-
-
 func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de la pantalla para el inicio de los enemigos
 	var posicion_x = 0
 	var posicion_y = 0
@@ -56,17 +56,17 @@ func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de l
 	match side:
 		1: #arriba
 			posicion_x = randf_range(100, Global.pantalla_ancho-100) # Rando en X del aparicion del enemigo en el ancho d ela pantalla
-			posicion_y = 0
+			posicion_y = posicionCero
 		2: #derecha
-			posicion_x = Global.pantalla_ancho
+			posicion_x = Global.pantalla_ancho -posicionCero
 			posicion_y = randf_range(100, Global.pantalla_alto-100) # Rando en X del aparicion del enemigo en el ancho d ela pantalla
 		3: #abajo
 			posicion_x = randf_range(100, Global.pantalla_ancho-100) # Rando en X del aparicion del enemigo en el ancho d ela pantalla
-			posicion_y = Global.pantalla_alto
+			posicion_y = Global.pantalla_alto -posicionCero
 		4: #izquierda
-			posicion_x = 0
+			posicion_x = posicionCero
 			posicion_y = randf_range(100, Global.pantalla_alto-100) # Rando en X del aparicion del enemigo en el ancho d ela pantalla
 		_:
-			posicion_x = 0
-			posicion_y = 0
-	return [posicion_x,posicion_y]extends Node
+			posicion_x = posicionCero
+			posicion_y = posicionCero
+	return [posicion_x,posicion_y]

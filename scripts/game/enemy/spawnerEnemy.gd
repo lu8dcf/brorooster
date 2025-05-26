@@ -5,6 +5,7 @@ var move_enemy = 0.05  # Intervalo de tiempo para el movimiento enemigo
 var timer_between_enemy = .5 # .5 seg Intervalo que aparecen los enemigos
 var velocidad = 10
 
+
 # Diccionario con las rutas de los enemigos
 var enemigos = {
 	1: "res://scenes/game/enemy/enemy1.tscn",

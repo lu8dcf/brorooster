@@ -6,6 +6,8 @@ var stats: Dictionary= {"nombre"= "", "vida"= 0, "alcance"= 0, "dano"= 0, "veloc
 var movimiento = Vector2()
 var velocidad = 0.5
 
+
+
 # Enemigos
 var enemies = []  # Almacenará las instancias de enemigos
 

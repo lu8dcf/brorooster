@@ -5,8 +5,6 @@ var pantalla_ancho = Global.pantalla_ancho
 var pantalla_alto = Global.pantalla_alto
 var rand = RandomNumberGenerator.new() # semilla de random segun el tiempo
 
-# Estado de la partida
-# signal stage # Indicador del Stage Actual
 
 # Player
 var player = null  # instancia del player
@@ -25,6 +23,7 @@ var limit_of_enemy = 30 # cantidad de enemigos que se instancian
 
 
 
+
 # Entorno
 var background = null
 
@@ -39,11 +38,11 @@ func _ready():	# Comienza el juego
 	$player.connect("enemy_detected", $player._on_enemy_detected) 
 	
 
-	timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
+	#timer_add_enemy() # Timer que marca los tiempos que se instancian los enemigos
 
 
-	init_spawn() #Spawn de enemigos.
-	
+	#init_spawn() #Spawn de enemigos.
+	init_factory_enemy()
 	
 	
 func _process(delta):
@@ -85,7 +84,11 @@ func timer_add_enemy():
 func init_spawn():
 	await get_tree().create_timer(.8).timeout
 	add_child(preload("res://scenes/game/enemy/spawner_enemy.tscn").instantiate())
-	
+
+func init_factory_enemy():
+	await get_tree().create_timer(.8).timeout
+	add_child(preload("res://scenes/game/enemy/factoy_enemy.tscn").instantiate())
+		
 	
 func init_enemy():
 	limit_of_enemy -=1 #limitar la cantidad de enemigos que se instancian
