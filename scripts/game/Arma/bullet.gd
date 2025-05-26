@@ -8,6 +8,13 @@ var damage = 10 # Daño que genera la bala, esto se debera hacer generico
 var direction: Vector2 # direccion hacia donde ira la bala, enemigo mas cercano
 @onready var animation_player = $AnimationPlayer
 	
+
+func setup(damage_value: int, direction_value: Vector2):
+	damage = damage_value
+	direction = direction_value
+	
+	
+	
 	#muestra el retroceso 
 func play_retroceso():
 	animation_player.play("retroceso")	

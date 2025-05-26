@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://drqyqccjd1hg1"]
+[gd_scene load_steps=15 format=3 uid="uid://drqyqccjd1hg1"]
 
 [ext_resource type="Script" uid="uid://bso05fufxr8db" path="res://scripts/game/player.gd" id="1_yp0on"]
-[ext_resource type="Resource" uid="uid://bx85usceyolur" path="res://scripts/game/Arma/Armas/pistola1.tres" id="2_68xwl"]
+[ext_resource type="Resource" uid="uid://clt32m2s6rh6b" path="res://scripts/game/Arma/Armas/bazooka1.tres" id="2_68xwl"]
 [ext_resource type="Texture2D" uid="uid://cq73x7xb31jtd" path="res://assets/graphics/character_graphics/gallos/gallo1.png" id="2_nybob"]
 [ext_resource type="AudioStream" uid="uid://do7r37xy1l23s" path="res://assets/sound/sound_effects/rooster_cry.mp3" id="3_u3rb4"]
+[ext_resource type="Resource" uid="uid://bx85usceyolur" path="res://scripts/game/Arma/Armas/pistola1.tres" id="3_wwvfn"]
 [ext_resource type="Script" uid="uid://bvxjdl8k0gp8j" path="res://scripts/game/weapon_anchor.gd" id="5_68xwl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4jmp"]
@@ -114,6 +115,7 @@ position = Vector2(-21, -3)
 collision_mask = 10
 script = ExtResource("1_yp0on")
 arma1_data = ExtResource("2_68xwl")
+arma2_data = ExtResource("3_wwvfn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -139,14 +141,12 @@ position = Vector2(63, 3)
 script = ExtResource("5_68xwl")
 
 [node name="WeaponAnchor2" type="Marker2D" parent="."]
-visible = false
 position = Vector2(-17, 3)
 
 [node name="shoot1" type="Marker2D" parent="."]
 position = Vector2(62, 5)
 
 [node name="shoot2" type="Marker2D" parent="."]
-visible = false
 position = Vector2(-16, 5)
 
 [node name="AreaRecoleccion" type="Area2D" parent="."]
