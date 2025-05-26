@@ -33,13 +33,12 @@ func timer_add_enemy():
 	add_child(enemy_timer)
 	enemy_timer.start()  # inicia el temporizador
 	# Conectar el temporizador a una función que instancia a los enemigos
-	enemy_timer.timeout.connect(intance_enemy)	
+	enemy_timer.timeout.connect(init_enemy)	
 
-func intance_enemy():
-	init_enemy(enemigo_iniciar)
+
 
 # Instaciar en eenemigo correspondiente
-func init_enemy (enemigo_iniciar: String):
+func init_enemy ():
 	var position = enemy_starting_point() # posicion inicial del enemigo en algun extremo
 	var enemy = load(enemigo_iniciar).instantiate()
 	enemy.position = Vector2(position[0], position[1]) # Ubica al enemigo en la X random e Y en el inicio
