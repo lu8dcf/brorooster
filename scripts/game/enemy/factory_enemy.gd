@@ -10,11 +10,15 @@ var sprite_enemy_default = "res://assets/graphics/character_graphics/bichos/bich
 var enemy_count = GlobalEnemy.enemy_count  # Cantidad de enemigos para instanciar
 var grup_dificult_per = GlobalEnemy.group_dificult # porcentaje aumentado en el grupo d edificultad
 #oleada
-
 var dificult_oleada = GlobalOleada.oleada # tomo el valor d ela oleada actual
 var dificult_grup = 1  # nivel inicial de los bichos
 var dificult_percent = 1 # porcentaje aumentado de nivel en los bichos 1=100%
 var dificult_extra = 0 # cuando dificultad de grupo supere el 4 se comienza a cambiar el valor d eextra, que modulara el sprite con color
+# colores internos del sprite para oleada > 20
+var red = 1
+var green = 1
+var blue = 1
+
 
 var enemy2 = true #Lombris
 var enemy3 = true #Bolita
@@ -84,8 +88,25 @@ func init_enemy (enemy_type):
 	# parametros de la intancia
 	enemy.health = parametros[0] *  dificult_percent # carga la vida
 	enemy.damage = parametros[1] *  dificult_percent # carga el daño
-	enemy.veloci = parametros[2] *  dificult_percent # carga la velocidad
-	enemy.color = dificult_extra  # modifica el color del sprite a partir d ela oleada 21
+	enemy.veloci = parametros[2]   # carga la velocidad
+	
+	# modifica el color del sprite a partir d ela oleada 21
+	match dificult_extra:
+		1:
+			red=0.7
+			blue=0.7
+		2:
+			red=0.7
+			green=0.7
+		3:
+			blue=0.7
+			green=0.7	
+		4:
+			green=0.7	
+	enemy.red = red
+	enemy.green = green
+	enemy.blue = blue
+		
 	# genera la direccion del Sprite   "defecto" + tipo + nivel + numero de nivel
 	enemy.sprite = sprite_enemy_default + str(enemy_type) + "_nivel" + str(dificult_grup) + ".png"
 		

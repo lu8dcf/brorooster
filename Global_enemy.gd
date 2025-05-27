@@ -6,7 +6,7 @@ class_name Enemy
 # aca se pueden modificar las caracteristicas de los bichos
 
 var enemy_count = 5 # Cantidad de enemigos disponibles
-var group_dificult = 0.2 # porcentaje que se agrega al subir d enivel el bicho en todos sus paramentros
+var group_dificult = 0.1 # porcentaje que se agrega al subir d enivel el bicho en todos sus paramentros
 
 #tipo de dato
 #[ health , damage , velocidad  ] 
