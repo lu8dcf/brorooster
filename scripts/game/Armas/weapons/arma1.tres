@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_wsbfl")
 _id = 1
-_display_name = "Arma Comun"
+_display_name = "Dora Metralladora"
 _weapon_type = "Ametralladora"
 _texture = ExtResource("1_5wfgq")
 _sprite_texture = "res://assets/graphics/character_graphics/armas/arma1.png"

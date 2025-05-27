@@ -1,5 +1,7 @@
 extends Node
 
+signal wave_changed(new_value)
+
 # General 
 
 
@@ -32,6 +34,8 @@ var bichos ={
 	1: [10,5,20," sprite babosa"],
 	2: [15,6,22,"sprite lombris"],
 }
+
+
 
 
 # -- valores enemigos
