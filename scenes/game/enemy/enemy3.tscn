@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy6sd6414wvyk"]
+[gd_scene load_steps=9 format=3 uid="uid://ccv782ygvrwof"]
 
-[ext_resource type="Script" uid="uid://bo3r5lgu6xxkp" path="res://scripts/game/enemy/enemy2.gd" id="1_q1dl8"]
-[ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_1qd6x"]
+[ext_resource type="Script" uid="uid://cefw0qn2gpwqs" path="res://scripts/game/enemy/enemy3.gd" id="1_lmc2w"]
+[ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_fejlx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
 radius = 12.2139
@@ -67,15 +67,15 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_wthq6"]
 radius = 19.0263
 
-[node name="Enemy2" type="CharacterBody2D" groups=["enemies"]]
+[node name="Enemy3" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_q1dl8")
+script = ExtResource("1_lmc2w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-24.7731, -21.4569)
 scale = Vector2(0.984132, 1.01629)
-texture = ExtResource("2_1qd6x")
+texture = ExtResource("2_fejlx")
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

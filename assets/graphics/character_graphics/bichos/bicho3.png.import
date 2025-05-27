@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbi50bbnyn6b2"
-path="res://.godot/imported/BICHOBOLA_nivel1.png-3e1a160be7f3ccd49cd866e2abf36fc1.ctex"
+uid="uid://cbsy4hgmhstej"
+path="res://.godot/imported/bicho3.png-7917afed4ad7bf779c6d1baf453c4bf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/character_graphics/bichos/BICHOBOLA_nivel1.png"
-dest_files=["res://.godot/imported/BICHOBOLA_nivel1.png-3e1a160be7f3ccd49cd866e2abf36fc1.ctex"]
+source_file="res://assets/graphics/character_graphics/bichos/bicho3.png"
+dest_files=["res://.godot/imported/bicho3.png-7917afed4ad7bf779c6d1baf453c4bf0.ctex"]
 
 [params]
 
