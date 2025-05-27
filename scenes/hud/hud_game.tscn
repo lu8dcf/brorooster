@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7i1pt230pwus"]
+[gd_scene load_steps=9 format=3 uid="uid://c7i1pt230pwus"]
 
 [ext_resource type="Script" uid="uid://40qhcogcgsib" path="res://scripts/hud_game.gd" id="1_fgv6s"]
+[ext_resource type="PackedScene" uid="uid://bh8g3tik5mpcj" path="res://scenes/hud/base/base_label.tscn" id="2_kn25u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0rtn"]
 bg_color = Color(1, 0.477691, 0.482099, 0.670588)
@@ -115,11 +116,9 @@ text = "LV.0"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Oleadas" type="Label" parent="VBoxContainer/Background/HBoxContainer"]
+[node name="wave_text" parent="VBoxContainer/Background/HBoxContainer" instance=ExtResource("2_kn25u")]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.947199, 0.947199, 0.947199, 1)
-theme_override_font_sizes/font_size = 20
-text = "OLEADA 999"
+theme_override_font_sizes/font_size = 35
 
 [node name="Space2" type="Control" parent="VBoxContainer/Background/HBoxContainer"]
 layout_mode = 2

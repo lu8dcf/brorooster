@@ -6,11 +6,11 @@
 [resource]
 script = ExtResource("2_mkk88")
 _id = 3
-_display_name = "Piuw Piuw"
+_display_name = "Piuw Piuw Roja"
 _weapon_type = "Pistola larga"
 _texture = ExtResource("1_gsky3")
 _sprite_texture = "res://assets/graphics/character_graphics/armas/arma1.png"
-_cost = 1.0
+_cost = 100.0
 _shoot_time = 1.0
 _bullet_type = "A"
 _rarety = 0

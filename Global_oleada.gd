@@ -1,5 +1,7 @@
 extends Node
 
+signal wave_changed(new_value)
+
 # General 
 
 
@@ -12,7 +14,7 @@ var timer_between_enemy = 1
 
 
 # Oleada
-var oleada = 0
+var oleada = 1
 
 #Factory enemy
 var dificult = 1
@@ -32,6 +34,8 @@ var bichos ={
 	1: [10,5,20," sprite babosa"],
 	2: [15,6,22,"sprite lombris"],
 }
+
+
 
 
 # -- valores enemigos

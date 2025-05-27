@@ -1,83 +1,89 @@
+<<<<<<< HEAD
 [gd_scene load_steps=26 format=3 uid="uid://d1xpgrulqctvy"]
 
-[ext_resource type="Script" uid="uid://c3pfudkfgn4x6" path="res://scenes/game/enemy/enemy_2.gd" id="1_4crda"]
-[ext_resource type="Texture2D" uid="uid://dy15m7nyu5k7i" path="res://assets/graphics/character_graphics/bichos/bicho2.png" id="1_nv4sx"]
-[ext_resource type="Texture2D" uid="uid://mvby2iqjv5gi" path="res://assets/graphics/character_graphics/bichos/gusanosaliendodetierra.png" id="3_qt6ul"]
+[ext_resource type="Script" uid="uid://c3pfudkfgn4x6" path="res://scenes/game/enemy/enemy2.gd" id="1_1qd6x"]
+=======
+[gd_scene load_steps=26 format=3 uid="uid://dp7glkipefswh"]
+
+[ext_resource type="Script" path="res://scenes/game/enemy/enemy2.gd" id="1_1qd6x"]
+>>>>>>> menu
+[ext_resource type="Texture2D" uid="uid://dy15m7nyu5k7i" path="res://assets/graphics/character_graphics/bichos/bicho2.png" id="2_ypn87"]
+[ext_resource type="Texture2D" uid="uid://mvby2iqjv5gi" path="res://assets/graphics/character_graphics/bichos/gusanosaliendodetierra.png" id="3_u7qfg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4crda"]
-atlas = ExtResource("1_nv4sx")
+atlas = ExtResource("2_ypn87")
 region = Rect2(0, 0, 98, 83)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qt6ul"]
-atlas = ExtResource("1_nv4sx")
+atlas = ExtResource("2_ypn87")
 region = Rect2(98, 0, 98, 83)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cuc1c"]
-atlas = ExtResource("1_nv4sx")
+atlas = ExtResource("2_ypn87")
 region = Rect2(196, 0, 98, 83)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eqlbr"]
-atlas = ExtResource("1_nv4sx")
+atlas = ExtResource("2_ypn87")
 region = Rect2(294, 0, 98, 83)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1v15"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(0, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n17sp"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(216, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hoik"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(432, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hueu"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(648, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4svel"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(864, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_covst"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(1080, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o0jb3"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(1296, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ucu4p"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(1512, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufswp"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(1728, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0h6wx"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(1944, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jateh"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(2160, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ox3i"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(2376, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1typw"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(2592, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d6ydp"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(2808, 0, 216, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_75yih"]
-atlas = ExtResource("3_qt6ul")
+atlas = ExtResource("3_u7qfg")
 region = Rect2(3024, 0, 216, 115)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o1v15"]
@@ -158,7 +164,7 @@ size = Vector2(70, 37)
 
 [node name="Enemy2" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.8, 0.8)
-script = ExtResource("1_4crda")
+script = ExtResource("1_1qd6x")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
