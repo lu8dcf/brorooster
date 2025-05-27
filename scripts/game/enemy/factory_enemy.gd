@@ -38,7 +38,6 @@ func _ready() -> void:
 	
 	
 func deteccionDificultad(): # desarma el valor d ela oleada en 2 parametros
-	
 	while dificult_oleada > 5:
 		dificult_oleada -=5	 # busco el valor de 1-5 del grupo
 		dificult_grupo +=1 # busco el nivel del grupo
