@@ -1,19 +1,21 @@
 extends CharacterBody2D
 
-#Valores
-var damage = 10
-var movimiento  = Vector2()
-var velocidad = 1 # velocidad del enemigo
-var health1 = 20  # Vida de la babosa
+# Parametros obtenidos de la instancia -----------------------
+var health : float  # Vida de la babosa
+var damage : float  # daño que causa la babosa al player
+var veloci : float # velocidad de movimiento d ela babosa
+var sprite : String  # Sprite correspondiente al nivel
 
-@export var health: float = 30
+# --------------------------------------------------------------
+var movimiento  = Vector2()
 # Referencia al sprite para poder modificarlo mas adelante ne la seleccion del player
-@onready var sprite = $Sprite2D 
+#@onready var sprite = $Sprite2D 
 
 func _ready():
 	update_health(health)
-	# $Sprite2D.texture = load("res://assets/graphics/character_graphics/bichos/bicho1_nive3.png")	# Cambia la textura de player dependiedno la seleccion
-
+	$Sprite2D.texture = load(sprite)	# Cambia la textura de player dependiedno la seleccion
+	print ("h ",health," d ",damage," v ",veloci)
+	
 func _physics_process(_delta): 
 	move_and_collide(movimiento)
 	if Global.currentPlayer._health >= 1:
@@ -23,7 +25,7 @@ func _physics_process(_delta):
 	
 	
 func set_vector(vector):
-	movimiento = vector.normalized() * velocidad 
+	movimiento = vector.normalized() * veloci
 	if movimiento.x > 0:
 		$AnimationPlayer.play("right")
 	else:
@@ -36,7 +38,7 @@ func _on_area_2d_body_entered(body):
 		print ("toco")
 	
 
-func take_damage(amount: int):
+func take_damage(amount: float):
 	health -= amount
 	# $AnimationPlayer.play("hit")
 	#print("Enemigo golpeado! Vida restante: ", health)
@@ -47,11 +49,11 @@ func take_damage(amount: int):
 func die():
 	# $AnimationPlayer.play("death")
 	# await $AnimationPlayer.animation_finished
+	# Soltar maiz si tiene
 	queue_free()
 	
 func update_health(value: float):   #barra de vida del enemigo
 	$HealthBar/ProgressBar.value = value
-
 
 func _on_area_daño_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.has_method("take_damage"):
