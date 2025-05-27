@@ -1,10 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dy6sd6414wvyk"]
 
-<<<<<<< HEAD
-[ext_resource type="Script" path="res://scripts/game/enemy/enemy2.gd" id="1_q1dl8"]
-=======
 [ext_resource type="Script" uid="uid://bo3r5lgu6xxkp" path="res://scripts/game/enemy/enemy2.gd" id="1_q1dl8"]
->>>>>>> juego
 [ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_1qd6x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
