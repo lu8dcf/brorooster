@@ -1,11 +1,10 @@
 extends CharacterBody2D
-
+class_name Bolita
 # Parametros obtenidos de la instancia -----------------------
-var health : float  # Vida de la babosa
-var damage : float  # daño que causa la babosa al player
-var veloci : float # velocidad de movimiento d ela babosa
+var health : float  # Vida del bicho
+var damage : float  # daño que causa  al player
+var veloci : float # velocidad de movimiento 
 var sprite : String  # Sprite correspondiente al nivel
-
 var red : int     # color del Sprite-  a partir d ela oleada 21
 var green : int
 var blue : int
@@ -29,7 +28,6 @@ func _physics_process(_delta):
 		movimiento = Vector2.ZERO
 	
 
-		
 func set_vector(vector):
 	movimiento = vector.normalized() * veloci
 	if movimiento.x > 0:
