@@ -38,7 +38,7 @@ func deteccionDificultad(): # desarma el valor de la oleada en 2 parametros
 	while dificult_oleada > enemy_count:
 		dificult_oleada -=enemy_count	 # busco el valor de 1-5 del grupo
 		dificult_grup +=1 # busco el nivel del grupo - al momento tenemos 4 grupos niveles
-		dificult_percent = (dificult_percent * dificult_grup) + 1 # Aumenta el porcentaje de dificultad al cambiar de grupo
+		dificult_percent = (grup_dificult_per * dificult_grup) + 1 # Aumenta el porcentaje de dificultad al cambiar de grupo
 		if dificult_grup > 4:
 			dificult_extra = dificult_grup - 4 # extraigo el extra calculado a partir d ela oleada 21
 			dificult_grup = 4
@@ -88,7 +88,7 @@ func init_enemy (enemy_type):
 	# parametros de la intancia
 	enemy.health = parametros[0] *  dificult_percent # carga la vida
 	enemy.damage = parametros[1] *  dificult_percent # carga el daño
-	enemy.veloci = parametros[2]   # carga la velocidad
+	enemy.veloci = parametros[2] *  dificult_percent  # carga la velocidad
 	
 	# modifica el color del sprite a partir d ela oleada 21
 	match dificult_extra:
