@@ -26,7 +26,13 @@ func setup(new_health: int, new_speed: int, new_armor: float, new_sprite_path: N
 	sprite_path = new_sprite_path
 	if sprite_path != "":
 		$Sprite2D.texture = load(sprite_path)	# Cambia la textura de player dependiedno la seleccion
-	
+		# Añadir efectos como sombras
+		#var shadow = Sprite2D.new()
+		#shadow.texture = $Sprite2D.texture
+		#shadow.modulate = Color(100, 0, 0, 0.3)
+		#shadow.position = Vector2(5, 5)
+		#shadow.z_index = $Sprite2D.z_index - 3
+		#add_child(shadow)
 	
 
 var velocidad_extra = 5 # diferencia de velocidades entre caminar y volar

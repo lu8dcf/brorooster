@@ -14,7 +14,7 @@ var movimiento  = Vector2()
 func _ready():
 	update_health(health)
 	$Sprite2D.texture = load(sprite)	# Cambia la textura de player dependiedno la seleccion
-	print ("h ",health," d ",damage," v ",veloci)
+	$Sprite2D.modulate = Color.GOLD
 	
 func _physics_process(_delta): 
 	move_and_collide(movimiento)
