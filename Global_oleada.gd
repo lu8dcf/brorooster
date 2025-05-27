@@ -14,7 +14,7 @@ var timer_between_enemy = 1
 
 
 # Oleada
-var oleada = 27
+var oleada = 50
 
 #Factory enemy
 var timer_spawn = 1  # tiempo por defecto entre spawn d eenemigos
