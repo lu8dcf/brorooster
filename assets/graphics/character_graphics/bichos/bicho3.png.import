@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsl053lypnh1t"
-path="res://.godot/imported/bicho1_nive1.png-305d65ea540cd2b81b639db45d790ded.ctex"
+uid="uid://cbsy4hgmhstej"
+path="res://.godot/imported/bicho3.png-7917afed4ad7bf779c6d1baf453c4bf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/character_graphics/bichos/bicho1_nive1.png"
-dest_files=["res://.godot/imported/bicho1_nive1.png-305d65ea540cd2b81b639db45d790ded.ctex"]
+source_file="res://assets/graphics/character_graphics/bichos/bicho3.png"
+dest_files=["res://.godot/imported/bicho3.png-7917afed4ad7bf779c6d1baf453c4bf0.ctex"]
 
 [params]
 

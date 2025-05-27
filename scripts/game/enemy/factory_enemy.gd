@@ -6,42 +6,42 @@ var posicionCero = 10 # margen de posision de spawn de los enemigos en los borde
 
 # Enemigos
 var timer_between_enemy = GlobalOleada.timer_between_enemy # .5 seg Intervalo que aparecen los enemigos
-var tipo_enemigo = 1
-
+var sprite_enemy_default = "res://assets/graphics/character_graphics/bichos/bicho" # se le agregara el numero de bicho y nivel
+var enemy_count = GlobalEnemy.enemy_count  # Cantidad de enemigos para instanciar
+var grup_dificult_per = GlobalEnemy.group_dificult # porcentaje aumentado en el grupo d edificultad
 #oleada
-var oleada = GlobalOleada.oleada
-var dificult_oleada = oleada
-var dificult_grupo = 1
+var dificult_oleada = GlobalOleada.oleada # tomo el valor d ela oleada actual
+var dificult_grup = 1  # nivel inicial de los bichos
+var dificult_percent = 1 # porcentaje aumentado de nivel en los bichos 1=100%
+var dificult_extra = 0 # cuando dificultad de grupo supere el 4 se comienza a cambiar el valor d eextra, que modulara el sprite con color
+# colores internos del sprite para oleada > 20
+var red = 1
+var green = 1
+var blue = 1
 
-var enemy2 = true
-var enemy3 = true
-var enemy4 = true
-var enemy5 = true
 
-# Diccionario con las rutas de los enemigos
-var tipos_enemigos = {
-	1: "res://scenes/game/enemy/enemy1.tscn", # Babosas
-	2: "res://scenes/game/enemy/enemy2.tscn", # Lombris
-	3: "res://scenes/game/enemy/enemy3.tscn", # Bicho bola
-	4: "res://scenes/game/enemy/enemy4.tscn", # Saltamontes
-	5: "res://scenes/game/enemy/enemy5.tscn" # Araña BOSS
-}
+var enemy2 = true #Lombris
+var enemy3 = true #Bolita
+var enemy4 = true #Langosta
+var enemy5 = true #Araña
 
-var enemigo_iniciar = tipos_enemigos[1]
 
 func _ready() -> void:
 	#await get_tree().create_timer(timer_between_enemy).timeout
 	
 	deteccionDificultad()  # detecte la dificulta y genera parametro dependiendo la oleada
 	
-	timer_add_enemy()
+	timer_add_enemy() # Timer para agregar enemigos segun la logica del nivel
 	
 	
-func deteccionDificultad(): # desarma el valor d ela oleada en 2 parametros
-	while dificult_oleada > 5:
-		dificult_oleada -=5	 # busco el valor de 1-5 del grupo
-		dificult_grupo +=1 # busco el nivel del grupo
-	
+func deteccionDificultad(): # desarma el valor de la oleada en 2 parametros
+	while dificult_oleada > enemy_count:
+		dificult_oleada -=enemy_count	 # busco el valor de 1-5 del grupo
+		dificult_grup +=1 # busco el nivel del grupo - al momento tenemos 4 grupos niveles
+		dificult_percent = (grup_dificult_per * dificult_grup) + 1 # Aumenta el porcentaje de dificultad al cambiar de grupo
+		if dificult_grup > 4:
+			dificult_extra = dificult_grup - 4 # extraigo el extra calculado a partir d ela oleada 21
+			dificult_grup = 4
 
 # Timer entre instancias de enemigos
 func timer_add_enemy():
@@ -56,32 +56,60 @@ func timer_add_enemy():
 func create_enemy():
 	if dificult_oleada > 4 and enemy5:
 		enemy5=false  # Bloquea al boss para que solo se instancie una vez por oleada
-		init_enemy(tipos_enemigos[5]) # elige al BOSS
+		init_enemy(5) # elige al BOSS
 	
 	if dificult_oleada > 3 and enemy4:
 		enemy4=false
-		enemigo_iniciar = tipos_enemigos[4]  # elige la langosta
-		init_enemy(enemigo_iniciar)
+		init_enemy(4) # elige la langosta
 	
 	if dificult_oleada > 2 and enemy3:
 		enemy3=false
-		enemigo_iniciar = tipos_enemigos[3]  # elige al bicho bola
-		init_enemy(enemigo_iniciar)
+		init_enemy(3) # elige al bicho bola
 	
 	if dificult_oleada > 1 and enemy2:
 		enemy2=false
-		enemigo_iniciar = tipos_enemigos[2]  # elige al bicho bola
-		init_enemy(enemigo_iniciar)
+		init_enemy(2) # elige a la lombriz
 		
 	if dificult_oleada > 0:
 		reset_variables() # resetea todos los valores para volver a intanciar el grupo
-		init_enemy(tipos_enemigos[1])  # elige a la babosa
+		init_enemy(1)  # elige a la babosa
 		
 		
 # Instaciar en eenemigo correspondiente
-func init_enemy (enemigo_iniciar):
+func init_enemy (enemy_type):
 	var position = enemy_starting_point() # posicion inicial del enemigo en algun extremo
-	var enemy = load(enemigo_iniciar).instantiate()
+	var enemy_scene = GlobalEnemy.enemy_class[enemy_type] # busca la escena correspondinte al bicho seleccionado
+	
+	var enemy = load(enemy_scene).instantiate()  # instancia
+	
+	# leer parametros del bicho
+	var parametros = GlobalEnemy.enemy_param[enemy_type] #obtiene los paramaetros del bicho [health, damage, velocity]
+		
+	# parametros de la intancia
+	enemy.health = parametros[0] *  dificult_percent # carga la vida
+	enemy.damage = parametros[1] *  dificult_percent # carga el daño
+	enemy.veloci = parametros[2] *  dificult_percent  # carga la velocidad
+	
+	# modifica el color del sprite a partir d ela oleada 21
+	match dificult_extra:
+		1:
+			red=0.7
+			blue=0.7
+		2:
+			red=0.7
+			green=0.7
+		3:
+			blue=0.7
+			green=0.7	
+		4:
+			green=0.7	
+	enemy.red = red
+	enemy.green = green
+	enemy.blue = blue
+		
+	# genera la direccion del Sprite   "defecto" + tipo + nivel + numero de nivel
+	enemy.sprite = sprite_enemy_default + str(enemy_type) + "_nivel" + str(dificult_grup) + ".png"
+		
 	enemy.position = Vector2(position[0], position[1]) # Ubica al enemigo en la X random e Y en el inicio
 	GlobalOleada.enemies.append(enemy)  # Agrega el enmigo a la lista de nemigos 
 	add_child(enemy)  # Agrega como hijo del main al enemigo
