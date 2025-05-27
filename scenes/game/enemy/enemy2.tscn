@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dy6sd6414wvyk"]
 
 [ext_resource type="Script" path="res://scripts/game/enemy/enemy2.gd" id="1_q1dl8"]
-[ext_resource type="Texture2D" uid="uid://brgn28yge00ex" path="res://assets/graphics/character_graphics/bichos/GUSANOPRUEBA.png" id="2_q1dl8"]
+[ext_resource type="Texture2D" uid="uid://dy15m7nyu5k7i" path="res://assets/graphics/character_graphics/bichos/bicho2.png" id="2_q1dl8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
 radius = 12.2139
