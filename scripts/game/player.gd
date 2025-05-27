@@ -26,7 +26,13 @@ func setup(new_health: int, new_speed: int, new_armor: float, new_sprite_path: N
 	sprite_path = new_sprite_path
 	if sprite_path != "":
 		$Sprite2D.texture = load(sprite_path)	# Cambia la textura de player dependiedno la seleccion
-	
+		# Añadir efectos como sombras
+		#var shadow = Sprite2D.new()
+		#shadow.texture = $Sprite2D.texture
+		#shadow.modulate = Color(100, 0, 0, 0.3)
+		#shadow.position = Vector2(5, 5)
+		#shadow.z_index = $Sprite2D.z_index - 3
+		#add_child(shadow)
 	
 
 var velocidad_extra = 5 # diferencia de velocidades entre caminar y volar
@@ -61,14 +67,11 @@ var weapon1_path= "res://scenes/game/Armas/Arma.tscn"
 #var shoot1_path="res://scenes/game/laser.tscn"
 var shoot1_path="res://scenes/game/Bullet/bullet.tscn"
 #var shoot1_path="res://scenes/game/Bullet/explosiveBullet.tscn"
-var time_shoot1= 0.5
-var shooting1 = false
-var shooting2 = false
-
+var time_shoot1= 2
 var weapon2_enable = true
 var weapon2_path= "res://scenes/game/weapon.tscn"
 var shoot2_path="res://scenes/game/laser.tscn"
-var time_shoot2= 0.3
+var time_shoot2= 2.1
 
 var diferencia_sprit_weapon = 0 # con el sprite a cero se puede evitar
 var inv_image_weapon1=0 # determinacion hacia adonde aponta el arma de 0aPI/2 derecha =0
