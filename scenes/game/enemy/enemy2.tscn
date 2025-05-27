@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy6sd6414wvyk"]
+[gd_scene load_steps=10 format=3 uid="uid://dy6sd6414wvyk"]
 
-[ext_resource type="Script" uid="uid://bo3r5lgu6xxkp" path="res://scripts/game/enemy/enemy2.gd" id="1_q1dl8"]
-[ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_1qd6x"]
+[ext_resource type="Script" path="res://scripts/game/enemy/enemy2.gd" id="1_q1dl8"]
+[ext_resource type="Texture2D" uid="uid://brgn28yge00ex" path="res://assets/graphics/character_graphics/bichos/GUSANOPRUEBA.png" id="2_q1dl8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
 radius = 12.2139
@@ -20,6 +20,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.984, 1.016)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-90, -44)]
+}
 
 [sub_resource type="Animation" id="Animation_wthq6"]
 resource_name = "left"
@@ -36,7 +60,31 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0)]
+"values": [Vector2i(15, 0), Vector2i(16, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1.016)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(28, -44)]
 }
 
 [sub_resource type="Animation" id="Animation_dkfay"]
@@ -54,12 +102,78 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2i(4, 0), Vector2i(6, 0)]
+"values": [Vector2i(15, 0), Vector2i(16, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1.016)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-85, -44)]
+}
+
+[sub_resource type="Animation" id="Animation_1qd6x"]
+resource_name = "SPAWN"
+length = 2.2375
+step = 0.09
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.18, 0.27, 0.36, 0.45, 0.54, 0.63, 0.72, 0.81, 0.9, 0.99, 1.08, 1.17, 1.26),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0), Vector2i(11, 0), Vector2i(12, 0), Vector2i(13, 0), Vector2i(14, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1.016)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.54),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-84, -44)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8ej3"]
 _data = {
 &"RESET": SubResource("Animation_5nfiu"),
+&"SPAWN": SubResource("Animation_1qd6x"),
 &"left": SubResource("Animation_wthq6"),
 &"right": SubResource("Animation_dkfay")
 }
@@ -73,10 +187,10 @@ collision_mask = 5
 script = ExtResource("1_q1dl8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-24.7731, -21.4569)
-scale = Vector2(0.984132, 1.01629)
-texture = ExtResource("2_1qd6x")
-hframes = 8
+position = Vector2(-90, -44)
+scale = Vector2(-0.984, 1.016)
+texture = ExtResource("2_q1dl8")
+hframes = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
