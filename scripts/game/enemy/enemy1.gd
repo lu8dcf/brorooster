@@ -5,16 +5,22 @@ var health : float  # Vida de la babosa
 var damage : float  # daño que causa la babosa al player
 var veloci : float # velocidad de movimiento d ela babosa
 var sprite : String  # Sprite correspondiente al nivel
-
+var color : int  # color del Sprite-  a partir d ela oleada 21
 # --------------------------------------------------------------
 var movimiento  = Vector2()
+var red = 1     # colores del sprite
+var green = 1
+var blue = 1
+
 # Referencia al sprite para poder modificarlo mas adelante ne la seleccion del player
 #@onready var sprite = $Sprite2D 
 
 func _ready():
 	update_health(health)
 	$Sprite2D.texture = load(sprite)	# Cambia la textura de player dependiedno la seleccion
-	$Sprite2D.modulate = Color.GOLD
+	
+	sprite_color()
+	$Sprite2D.modulate = Color(red,green,blue)
 	
 func _physics_process(_delta): 
 	move_and_collide(movimiento)
@@ -23,7 +29,19 @@ func _physics_process(_delta):
 	else:
 		movimiento = Vector2.ZERO
 	
-	
+func sprite_color():
+	if color==1:
+		red=0
+		blue=0
+	if color==2:
+		red=0
+		green=0	
+	if color==3:
+		blue=0
+		green=0	
+	if color==4:
+		green=0	
+		
 func set_vector(vector):
 	movimiento = vector.normalized() * veloci
 	if movimiento.x > 0:

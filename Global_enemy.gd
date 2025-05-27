@@ -12,11 +12,11 @@ var group_dificult = 0.2 # porcentaje que se agrega al subir d enivel el bicho e
 #[ health , damage , velocidad  ] 
 
 var enemy_param = {
-	1:[20, 10 , 1 ], # "Babosa"
-	2:[30, 10 , 1.5], # "Lombriz"
-	3:[40, 10 , 1.8 ], # "Bolita"
-	4:[50, 10 , 2 ], #"Langosta"
-	5:[200, 50 , 2.1 ]# "Araña"
+	1:[10, 10 , 0.8 ], # "Babosa"
+	2:[20, 10 , 1], # "Lombriz"
+	3:[30, 10 , 1.3 ], # "Bolita"
+	4:[40, 10 , 1.5 ], #"Langosta"
+	5:[200, 50 , 1.2 ]# "Araña"
 }
 
 # Diccionario con las rutas de los enemigos

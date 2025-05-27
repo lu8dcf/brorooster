@@ -14,6 +14,7 @@ var grup_dificult_per = GlobalEnemy.group_dificult # porcentaje aumentado en el 
 var dificult_oleada = GlobalOleada.oleada # tomo el valor d ela oleada actual
 var dificult_grup = 1  # nivel inicial de los bichos
 var dificult_percent = 1 # porcentaje aumentado de nivel en los bichos 1=100%
+var dificult_extra = 0 # cuando dificultad de grupo supere el 4 se comienza a cambiar el valor d eextra, que modulara el sprite con color
 
 var enemy2 = true #Lombris
 var enemy3 = true #Bolita
@@ -33,7 +34,10 @@ func deteccionDificultad(): # desarma el valor de la oleada en 2 parametros
 	while dificult_oleada > enemy_count:
 		dificult_oleada -=enemy_count	 # busco el valor de 1-5 del grupo
 		dificult_grup +=1 # busco el nivel del grupo - al momento tenemos 4 grupos niveles
-		dificult_percent = (dificult_percent * dificult_grup) + 1
+		dificult_percent = (dificult_percent * dificult_grup) + 1 # Aumenta el porcentaje de dificultad al cambiar de grupo
+		if dificult_grup > 4:
+			dificult_extra = dificult_grup - 4 # extraigo el extra calculado a partir d ela oleada 21
+			dificult_grup = 4
 
 # Timer entre instancias de enemigos
 func timer_add_enemy():
@@ -81,6 +85,7 @@ func init_enemy (enemy_type):
 	enemy.health = parametros[0] *  dificult_percent # carga la vida
 	enemy.damage = parametros[1] *  dificult_percent # carga el daño
 	enemy.veloci = parametros[2] *  dificult_percent # carga la velocidad
+	enemy.color = dificult_extra  # modifica el color del sprite a partir d ela oleada 21
 	# genera la direccion del Sprite   "defecto" + tipo + nivel + numero de nivel
 	enemy.sprite = sprite_enemy_default + str(enemy_type) + "_nivel" + str(dificult_grup) + ".png"
 		
