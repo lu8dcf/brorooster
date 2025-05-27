@@ -34,3 +34,22 @@ func set_modifier(comparison: int, is_double: bool = false):
 			modifier_icon1.texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_down.png")
 			modifier_icon1.show()
 			# Solo mostramos el segundo icono para valores positivos extremos (no para la mitad)
+
+func set_modifier_weapon(comparison: int, is_double: bool = false):
+# Resetear todos los iconos primero
+	modifier_icon1.hide()
+	modifier_icon2.hide()
+	
+	match comparison:
+		1:
+			modifier_icon1.texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_up.png")
+			modifier_icon1.show()
+			if is_double:
+				modifier_icon2.texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_up.png")
+				modifier_icon2.show()
+		0:
+			# No hacer nada, ya están ocultos
+			pass
+		-1:
+			modifier_icon1.texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_down.png")
+			modifier_icon1.show()

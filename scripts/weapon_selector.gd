@@ -23,11 +23,12 @@ var random_weapons: Array[WeaponData] = [] # lista de las que se cargarán de fo
 
 
 
-
 # Añade estas constantes para comparación
 const BASE_COST = 100
 const BASE_SHOOT_TIME = 1.0
-const BASE_BULLET_TYPE = "A" # CAMBIAR TODOS ESTOS VALORES
+const BASE_BULLET_TYPE = [
+	"A","B","C"
+]
 
 
 
@@ -60,9 +61,9 @@ func _ready() -> void:
 		push_error("No hay armas configuradas en el selector")
 		
 		# Configura los iconos base (hazlo solo una vez)
-	cost_indicator.base_icon_texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_heart.png")
-	shoot_time_indicator.base_icon_texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_armor.png")
-	bullet_type_indicator.base_icon_texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_speed.png")
+	cost_indicator.base_icon_texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_cost.png")
+	shoot_time_indicator.base_icon_texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_speed.png")
+	bullet_type_indicator.base_icon_texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_bullet.png")
 	
 	# Actualiza los indicadores con el personaje inicial
 	update_attribute_indicators(random_weapons[current_index])
@@ -93,24 +94,23 @@ func update_attribute_indicators(weapon: WeaponData) -> void:
 	"""Actualiza los indicadores mostrando doble icono solo para valores dobles o mayores"""
 	# Vida (solo mostrar doble si es ≥ 2x)
 	var cost_ratio = weapon._cost / float(BASE_COST)
-	cost_indicator.set_modifier(
+	cost_indicator.set_modifier_weapon(
 		1 if weapon._cost > BASE_COST else (-1 if weapon._cost < BASE_COST else 0),
-		cost_ratio >= 2.0  # Solo true si es doble o más
+		cost_ratio >= weapon._cost * 2  # Solo true si es doble o más
 	)
 	
-	# Armadura (solo mostrar doble si es ≥ 2x)
+	# Velocidad (solo mostrar doble si es ≥ 2x)
 	var shoot_time_ratio = weapon._shoot_time / BASE_SHOOT_TIME
-	shoot_time_indicator.set_modifier(
+	shoot_time_indicator.set_modifier_weapon(
 		1 if weapon._shoot_time < BASE_SHOOT_TIME else (-1 if weapon._shoot_time < BASE_SHOOT_TIME else 0),
 		shoot_time_ratio <= 1.0  # Solo true si es doble o más
 	)
 	
-	# Velocidad (solo mostrar doble si es ≥ 2x)
-	#var bullet_type_ratio = weapon._bullet_type ==(BASE_BULLET_TYPE)
-	#bullet_type_indicator.set_modifier(
-		#1 if weapon._bullet_type > BASE_BULLET_TYPE else (-1 if weapon._bullet_type < BASE_BULLET_TYPE else 0),
-		#bullet_type_ratio >= 2.0  # Solo true si es doble o más
-	#)
+	 # Tipo de bala - se mostraran los tipos de balas.
+	bullet_type_indicator.set_modifier_weapon(
+		1 if weapon._bullet_type == BASE_BULLET_TYPE[0] else (-1 if weapon._bullet_type == BASE_BULLET_TYPE[1] else 0),
+		  # Solo true si es doble o más
+	)
 
 func update_portrait(index: int) -> void:
 	"""Actualiza el la imagen del arma """

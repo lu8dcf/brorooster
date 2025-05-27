@@ -1,6 +1,7 @@
 extends Enemy
 
 var target: CharacterBody2D = null  # ← Asegurate de tener esto
+var stats
 
 func SetUp():
 	stats["nombre"] = "Gusano"

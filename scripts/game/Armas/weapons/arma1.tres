@@ -6,11 +6,11 @@
 [resource]
 script = ExtResource("2_wsbfl")
 _id = 1
-_display_name = "Arma Comun"
+_display_name = "Dora Metralladora"
 _weapon_type = "Ametralladora"
 _texture = ExtResource("1_5wfgq")
 _sprite_texture = "res://assets/graphics/character_graphics/armas/arma1.png"
-_cost = 1.0
+_cost = 20.0
 _shoot_time = 1.0
 _bullet_type = "A"
 _rarety = 0

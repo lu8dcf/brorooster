@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 [gd_scene load_steps=26 format=3 uid="uid://d1xpgrulqctvy"]
 
 [ext_resource type="Script" uid="uid://c3pfudkfgn4x6" path="res://scenes/game/enemy/enemy2.gd" id="1_1qd6x"]
+=======
+[gd_scene load_steps=26 format=3 uid="uid://dp7glkipefswh"]
+
+[ext_resource type="Script" path="res://scenes/game/enemy/enemy2.gd" id="1_1qd6x"]
+>>>>>>> menu
 [ext_resource type="Texture2D" uid="uid://dy15m7nyu5k7i" path="res://assets/graphics/character_graphics/bichos/bicho2.png" id="2_ypn87"]
 [ext_resource type="Texture2D" uid="uid://mvby2iqjv5gi" path="res://assets/graphics/character_graphics/bichos/gusanosaliendodetierra.png" id="3_u7qfg"]
 
