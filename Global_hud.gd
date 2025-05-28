@@ -19,8 +19,7 @@ func _ready():
 		button_sound.stream = button_click_sound
 	
 	# Reproduce música de fondo (opcional)
-	GlobalAudio.play_music(preload("res://assets/sound/loops/level_loop.ogg"))
-
+	GlobalAudio.play_music(preload("res://assets/sound/loops/menu_loop.ogg"))
 # Funciones de los botones
 func _on_play_pressed() -> void:
 	_play_button_sound()

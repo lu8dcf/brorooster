@@ -14,8 +14,7 @@ var player = null  # instancia del player
 var background = null
 
 func _ready():	# Comienza el juego
-	
-	$level_loop.play()
+	$sound_level.play()
 	
 	init_background()
 	
