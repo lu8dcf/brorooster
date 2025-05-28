@@ -26,4 +26,5 @@ var timer_spawn = 1  # tiempo por defecto entre spawn d eenemigos
 # debe ser lista tipo fifo
 # -- Oleada
 #tiempo de oleada
-var tiempo_oleada = 20 # tiempo por defecto que dura una oleada
+var tiempo_oleada = 5.0 # tiempo por defecto que dura una oleada
+var tiempo_seleccion = 5.0 # tiempo que esta el menu se compra y armado para la prox oleada

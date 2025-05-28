@@ -23,7 +23,8 @@ func _ready():	# Comienza el juego
 	# asignar la señal del angulo del arma y disparo
 	$player.connect("enemy_detected", $player._on_enemy_detected) 
 	
-	init_factory_enemy()
+	init_oleada()
+	#init_factory_enemy()
 	
 	
 func _process(delta):
@@ -54,6 +55,10 @@ func init_player():  # Inicia al player 1
 func init_factory_enemy():
 	await get_tree().create_timer(.2).timeout
 	add_child(preload("res://scenes/game/enemy/factoy_enemy.tscn").instantiate())
+
+func init_oleada():
+	await get_tree().create_timer(.2).timeout
+	add_child(preload("res://scenes/game/oleada.tscn").instantiate())
 		
 
 func get_closest_enemy():   # obtiene la direccion del enemigo mas cercano
