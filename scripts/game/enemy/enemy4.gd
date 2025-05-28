@@ -14,7 +14,7 @@ var movimiento = Vector2()
 
 # Lógica de salto
 var salto_timer := Timer.new()
-var salto_fuerza := 20.0
+var salto_fuerza := 10.0
 var desaceleracion := 0.9
 
 func _ready():
