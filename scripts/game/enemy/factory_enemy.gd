@@ -42,7 +42,7 @@ func deteccionDificultad(): # desarma el valor de la oleada en 2 parametros
 		if dificult_grup > 4:
 			dificult_extra = dificult_grup - 4 # extraigo el extra calculado a partir d ela oleada 21
 			dificult_grup = 4
-
+	
 # Timer entre instancias de enemigos
 func timer_add_enemy():
 	var enemy_timer = Timer.new()
