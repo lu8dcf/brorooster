@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn6cx6comltn7"]
+
+[ext_resource type="PackedScene" uid="uid://b3gw0handi0b6" path="res://scenes/hud/base/base_panel.tscn" id="1_21ycv"]
+[ext_resource type="PackedScene" uid="uid://bh8g3tik5mpcj" path="res://scenes/hud/base/base_label.tscn" id="2_4g13u"]
+[ext_resource type="PackedScene" uid="uid://di8wmjenmmyrs" path="res://scenes/hud/base/base_weapon_shadow.tscn" id="2_nbyaw"]
+[ext_resource type="Texture2D" uid="uid://cgbviaj0qb76d" path="res://assets/graphics/character_graphics/character_menu/gallina1.png" id="3_gmhi7"]
+
+[node name="HudShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[node name="Panel" parent="." instance=ExtResource("1_21ycv")]
+layout_mode = 1
+offset_left = -550.0
+offset_top = -297.0
+offset_right = -374.0
+offset_bottom = -127.0
+
+[node name="Label" parent="." instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = -595.0
+offset_top = -331.0
+offset_right = -324.0
+offset_bottom = -186.0
+theme_override_font_sizes/font_size = 20
+text = "nombre"
+
+[node name="character" type="Sprite2D" parent="."]
+position = Vector2(102, 135)
+texture = ExtResource("3_gmhi7")
+
+[node name="label_inventario" parent="." instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = -478.0
+offset_right = -181.0
+offset_bottom = -24.0
+theme_override_font_sizes/font_size = 27
+text = "inventario"
+
+[node name="weapon_shadow" parent="." instance=ExtResource("2_nbyaw")]
+position = Vector2(116, 593)
+
+[node name="weapon_shadow2" parent="." instance=ExtResource("2_nbyaw")]
+position = Vector2(119, 474)
+
+[node name="weapon_shadow3" parent="." instance=ExtResource("2_nbyaw")]
+position = Vector2(121, 366)
