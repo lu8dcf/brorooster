@@ -1,7 +1,7 @@
 extends Area2D
 class_name bulletClass
 
-
+var tipo : String = "A"
 var speed = 1000.0  # Velocidad del láser
 var tiempo_sonido = .2
 var damage = 10 # Daño que genera la bala, esto se debera hacer generico

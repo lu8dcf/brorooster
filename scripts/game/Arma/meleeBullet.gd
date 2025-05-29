@@ -3,8 +3,8 @@ extends bulletClass  # Asegúrate de que bulletClass hereda de Area2D
 var tiempoAtaque := 0.1
 var estoyAtacando := false
 
-
 func _ready():
+	tipo = "C"
 	speed = 0  # por las dudas, pero no es necesario si sobrescribís _physics_process
 	$Deteccion/CollisionShape2D.disabled = true
 	await get_tree().process_frame

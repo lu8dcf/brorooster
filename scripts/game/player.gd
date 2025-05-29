@@ -63,9 +63,9 @@ var move_left = "left"
 
 var weapon1_enable = true
 #var weapon1_path= "res://scenes/game/weapon.tscn"
-var weapon1_path= "res://scenes/game/Armas/Arma.tscn"
+#var weapon1_path= "res://scenes/game/Armas/Arma.tscn"
 #var shoot1_path="res://scenes/game/laser.tscn"
-var shoot1_path="res://scenes/game/Bullet/bullet.tscn"
+#var shoot1_path="res://scenes/game/Bullet/bullet.tscn"
 #var shoot1_path="res://scenes/game/Bullet/explosiveBullet.tscn"
 var time_shoot1= 2
 var weapon2_enable = true
@@ -79,7 +79,7 @@ var inv_image_weapon2=0
 
 @export var weapon: Node2D  # Asigna el nodo del arma en el inspector
 	#weapon1
-@export var weapon1_scene_path: String = weapon1_path
+#@export var weapon1_scene_path: String = weapon1_path
 var weapon1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 @onready var weapon_anchor: Marker2D = $WeaponAnchor1 # punto de union del arma
 
@@ -91,7 +91,7 @@ var arma2_scene : PackedScene
 #var shoot1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 
 @onready var muzzle1  :  Marker2D = $shoot1 #desde donde sale el disparo
-
+var shooting1 = false
 
 	#weapon2
 @export var weapon2_scene_path: String = weapon2_path
@@ -102,7 +102,7 @@ var weapon2_scene: PackedScene # Exporta la escena del arma para poder asignarla
 @export var shoot2_scene_path: String = shoot2_path
 var shoot2_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 @onready var muzzle2  :  Marker2D = $shoot2
-
+var shooting2 = false
 
 
 

@@ -3,9 +3,9 @@ extends bulletClass
 var tiempoAExplotar = .3;
 var explotar = false
 
-
 #Constructor
 func init(dmg: int, dir: Vector2, Texplotar : float):
+	tipo = "B"
 	damage = dmg
 	tiempoAExplotar = Texplotar
 	set_direction(dir)
