@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceivc2d3taao1"]
+[gd_scene load_steps=9 format=3 uid="uid://bb0lfcam5hcep"]
 
-[ext_resource type="Script" uid="uid://c3pkhs1x7b35n" path="res://scripts/game/Arma/bullet.gd" id="1_sx7wi"]
-[ext_resource type="Texture2D" uid="uid://cpwkx40jjea51" path="res://assets/graphics/character_graphics/armas/bala.png" id="2_vhna4"]
-[ext_resource type="AudioStream" uid="uid://c4aluy8e8usba" path="res://assets/sound/sound_effects/disparo.mp3" id="3_0pdot"]
+[ext_resource type="Script" uid="uid://dmbe3dklc01wq" path="res://scripts/game/Arma/meleeBullet.gd" id="1_ys6f8"]
+[ext_resource type="Texture2D" uid="uid://cpwkx40jjea51" path="res://assets/graphics/character_graphics/armas/bala.png" id="2_7dl6e"]
+[ext_resource type="AudioStream" uid="uid://c4aluy8e8usba" path="res://assets/sound/sound_effects/disparo.mp3" id="3_wstg5"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vhna4"]
-height = 44.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dl6e"]
 
 [sub_resource type="Animation" id="Animation_jq7sb"]
 length = 0.001
@@ -70,30 +69,46 @@ _data = {
 &"shoot": SubResource("Animation_172y8")
 }
 
-[node name="Bullet" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys6f8"]
+
+[node name="MeleeBullet" type="Area2D"]
+scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_sx7wi")
+script = ExtResource("1_ys6f8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 light_mask = 2
 visibility_layer = 2
 position = Vector2(-9.09495e-13, 0)
 rotation = 6.28319
 scale = Vector2(1, 0.288741)
-texture = ExtResource("2_vhna4")
+texture = ExtResource("2_7dl6e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4
 visibility_layer = 4
-shape = SubResource("CapsuleShape2D_vhna4")
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_7dl6e")
+disabled = true
 
 [node name="sonido_disparo" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_0pdot")
+stream = ExtResource("3_wstg5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_1qkje")
 }
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Deteccion" type="Area2D" parent="."]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deteccion"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ys6f8")
+disabled = true
+
+[connection signal="body_entered" from="Deteccion" to="." method="_on_deteccion_body_entered"]

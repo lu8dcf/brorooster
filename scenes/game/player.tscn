@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://drqyqccjd1hg1"]
+[gd_scene load_steps=14 format=3 uid="uid://drqyqccjd1hg1"]
 
 [ext_resource type="Script" uid="uid://bso05fufxr8db" path="res://scripts/game/player.gd" id="1_yp0on"]
 [ext_resource type="Texture2D" uid="uid://cq73x7xb31jtd" path="res://assets/graphics/character_graphics/gallos/gallo1.png" id="2_nybob"]
 [ext_resource type="AudioStream" uid="uid://do7r37xy1l23s" path="res://assets/sound/sound_effects/rooster_cry.mp3" id="3_u3rb4"]
+[ext_resource type="Resource" uid="uid://c3oxra1oclla8" path="res://scripts/game/Arma/Armas/arma1.tres" id="3_wwvfn"]
 [ext_resource type="Script" uid="uid://bvxjdl8k0gp8j" path="res://scripts/game/weapon_anchor.gd" id="5_68xwl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4jmp"]
@@ -112,6 +113,8 @@ radius = 36.0
 position = Vector2(-21, -3)
 collision_mask = 10
 script = ExtResource("1_yp0on")
+arma1_data = ExtResource("3_wwvfn")
+arma2_data = ExtResource("3_wwvfn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

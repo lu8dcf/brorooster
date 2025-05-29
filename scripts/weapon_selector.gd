@@ -4,13 +4,14 @@ extends CanvasLayer
 @export var button_click_sound: AudioStream
 
 # Array de personajes precargados
-@export var weapons: Array[WeaponData] = [
-	preload("res://scripts/game/Armas/weapons/arma1.tres"),
-	preload("res://scripts/game/Armas/weapons/arma2.tres"),
-	preload("res://scripts/game/Armas/weapons/arma3.tres"),
-]
+@export var weapons: Array[ArmaData] = [
+	preload("res://scripts/game/Arma/Armas/arma1.tres"),
+	preload("res://scripts/game/Arma/Armas/melee1.tres"),
+	preload("res://scripts/game/Arma/Armas/bazooka1.tres")
+	
+] 
 
-var random_weapons: Array[WeaponData] = [] # lista de las que se cargarán de forma aletoria
+var random_weapons: Array[ArmaData] = [] # lista de las que se cargarán de forma aletoria
 
 
 @onready var weapon_portrait =$Panel/Sprite2D
@@ -47,7 +48,7 @@ func _ready() -> void:
 	add_to_group("weapon_selector")
 	
 	# Selecciona 3 armas aleatorias (sin repetición)
-	random_weapons = select_random_weapons(3)
+	#random_weapons = select_random_weapons(3)
 	
 	
 	# Configuración inicial
@@ -56,7 +57,7 @@ func _ready() -> void:
 		if Global.currentWeapon == null:
 			Global.currentWeapon = random_weapons[0]
 		update_portrait(current_index)
-		weapon_label.text = random_weapons[current_index]._display_name
+		weapon_label.text = random_weapons[current_index].nombre
 	else:
 		push_error("No hay armas configuradas en el selector")
 		
@@ -66,10 +67,10 @@ func _ready() -> void:
 	bullet_type_indicator.base_icon_texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_bullet.png")
 	
 	# Actualiza los indicadores con el personaje inicial
-	update_attribute_indicators(random_weapons[current_index])
+	#update_attribute_indicators(random_weapons[current_index])
 
-func select_random_weapons(count: int) -> Array[WeaponData]:
-	var selected: Array[WeaponData] = []
+func select_random_weapons(count: int) -> Array[ArmaData]:
+	var selected: Array[ArmaData] = []
 	
 	# Si hay menos armas que las solicitadas, devuelve todas
 	if weapons.size() <= count:
@@ -90,19 +91,19 @@ func select_random_weapons(count: int) -> Array[WeaponData]:
 	return selected
 
 
-func update_attribute_indicators(weapon: WeaponData) -> void:
+func update_attribute_indicators(weapon: ArmaData) -> void:
 	"""Actualiza los indicadores mostrando doble icono solo para valores dobles o mayores"""
 	# Vida (solo mostrar doble si es ≥ 2x)
-	var cost_ratio = weapon._cost / float(BASE_COST)
+	var cost_ratio = weapon.costo / float(BASE_COST)
 	cost_indicator.set_modifier_weapon(
-		1 if weapon._cost > BASE_COST else (-1 if weapon._cost < BASE_COST else 0),
-		cost_ratio >= weapon._cost * 2  # Solo true si es doble o más
+		1 if weapon.costo > BASE_COST else (-1 if weapon.costo < BASE_COST else 0),
+		cost_ratio >= weapon.costo * 2  # Solo true si es doble o más
 	)
 	
 	# Velocidad (solo mostrar doble si es ≥ 2x)
-	var shoot_time_ratio = weapon._shoot_time / BASE_SHOOT_TIME
+	var shoot_time_ratio = weapon.tiempoDisparo / BASE_SHOOT_TIME
 	shoot_time_indicator.set_modifier_weapon(
-		1 if weapon._shoot_time < BASE_SHOOT_TIME else (-1 if weapon._shoot_time < BASE_SHOOT_TIME else 0),
+		1 if weapon.tiempoDisparo < BASE_SHOOT_TIME else (-1 if weapon.tiempoDisparo < BASE_SHOOT_TIME else 0),
 		shoot_time_ratio <= 1.0  # Solo true si es doble o más
 	)
 	
@@ -116,7 +117,7 @@ func update_portrait(index: int) -> void:
 	"""Actualiza el la imagen del arma """
 	if index >= 0 and index < random_weapons.size():
 		weapon_portrait.texture = random_weapons[index]._texture
-		weapon_label.text = random_weapons[index]._display_name  # Actualiza el label
+		weapon_label.text = random_weapons[index].nombre  # Actualiza el label
 		update_attribute_indicators(random_weapons[index])
 	else:
 		push_error("Índice de personaje fuera de rango")
@@ -125,7 +126,7 @@ func select_weapon() -> void:
 	"""Selecciona el personaje actualmente visualizado"""
 	if random_weapons.size() > 0 and current_index < random_weapons.size():
 		Global.currentWeapon = random_weapons[current_index]
-		print("arma seleccionada: ", Global.currentWeapon._display_name)
+		print("arma seleccionada: ", Global.currentWeapon.nombre)
 		
 		# Opcional: Guardar selección para futuras sesiones
 		save_selection()

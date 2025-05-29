@@ -1,8 +1,14 @@
 extends bulletClass
 
-var tiempoAExplotar = .5;
+var tiempoAExplotar = .3;
 var explotar = false
 
+#Constructor
+func init(dmg: int, dir: Vector2, Texplotar : float):
+	tipo = "B"
+	damage = dmg
+	tiempoAExplotar = Texplotar
+	set_direction(dir)
 
 
 func _ready():
@@ -26,11 +32,13 @@ func set_direction(dir: Vector2): # Direccion de la bala
 func Explotar():
 	speed = 0
 	explotar = true
-	await get_tree().create_timer(.3).timeout #esperar un segundito
-	var cuerpos_en_area = $".".get_overlapping_bodies() #lista con los objetos en el area
-	for cuerpo in cuerpos_en_area: #dañar a los objetos del area
+	
+	await get_tree().process_frame # Un frame de tiempo para registrar colisiones
+
+	# Obtener cuerpos dentro del Area
+	var cuerpos_en_area = $ExplosionArea.get_overlapping_bodies()
+	for cuerpo in cuerpos_en_area:
 		if cuerpo.is_in_group("enemies") and cuerpo.has_method("take_damage"):
 			cuerpo.take_damage(damage)
 
 	queue_free()
-	pass # Replace with function body.
