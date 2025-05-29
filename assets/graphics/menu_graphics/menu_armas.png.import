@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://bnlhscbtsa506"
+=======
+uid="uid://cx2nqy3h3vrsn"
+>>>>>>> menu
 path="res://.godot/imported/menu_armas.png-9e8a7c1e6c6e8a8b342b5a927ede2650.ctex"
 metadata={
 "vram_texture": false
