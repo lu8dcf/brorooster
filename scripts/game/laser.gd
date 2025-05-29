@@ -2,8 +2,10 @@ extends Area2D
 
 var speed = 1000.0  # Velocidad del láser
 var tiempo_sonido = .2
-var damage = 2.0 # Daño que genera la bala, esto se debera hacer generico
+var damage = 10 # Daño que genera la bala, esto se debera hacer generico
 var direction: Vector2 # direccion hacia donde ira la bala, enemigo mas cercano
+var pantalla_ancho = Global.pantalla_ancho
+var pantalla_alto = Global.pantalla_alto
 
 func _ready():
 	$sonido_disparo.play() # Sonido del laser a disparar
@@ -12,7 +14,7 @@ func _ready():
 func _physics_process(delta):
 	position += direction * speed  * delta # Mover el disparo
 	# Si el láser sale de la pantalla, se elimina
-	if position.y < 0 or position.x < 0:  # falta agregar los exptremos para cuando la bala salga de pantalla
+	if position.y < 0 or position.x < 0 or position.y > pantalla_alto or position.x > pantalla_ancho:  # falta agregar los exptremos para cuando la bala salga de pantalla
 		queue_free()
 
 func set_direction(dir: Vector2): # Direccion de la bala

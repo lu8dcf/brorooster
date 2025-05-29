@@ -15,6 +15,16 @@ var menu_armas: Sprite2D = null  # Referencia al menú de armas
 
 func _ready():
 	iniciar_oleada()
+	
+func _input(event):
+	# Detectar clic con el botón izquierdo del mouse
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		match estado_actual:
+			EstadoJuego.OLEADA:
+				pass
+			EstadoJuego.SELECCION:
+				cambiar_estado()
+		
 
 func _process(delta):
 	tiempo_restante -= delta
@@ -30,6 +40,7 @@ func cambiar_estado():
 			iniciar_oleada()
 
 func iniciar_oleada():
+	get_tree().paused = false
 	estado_actual = EstadoJuego.OLEADA
 	tiempo_restante = duracion_oleada
 	

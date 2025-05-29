@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gallo_arturo"
-run/main_scene="uid://0vpi47bbrjfc"
+run/main_scene="uid://bbt1cau8cjhjc"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
