@@ -48,7 +48,7 @@ func _ready() -> void:
 	add_to_group("weapon_selector")
 	
 	# Selecciona 3 armas aleatorias (sin repetición)
-	#random_weapons = select_random_weapons(3)
+	random_weapons = select_random_weapons(3)
 	
 	
 	# Configuración inicial
