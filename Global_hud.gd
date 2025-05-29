@@ -20,10 +20,7 @@ func _ready():
 	
 	# Reproduce música de fondo (opcional)
 	GlobalAudio.play_music(preload("res://assets/sound/loops/menu_loop.ogg"))
-<<<<<<< HEAD
 
-=======
->>>>>>> menu
 # Funciones de los botones
 func _on_play_pressed() -> void:
 	_play_button_sound()
