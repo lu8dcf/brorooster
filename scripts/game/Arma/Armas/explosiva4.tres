@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ArmaData" load_steps=5 format=3 uid="uid://dn6l3nngawd7r"]
+
+[ext_resource type="Texture2D" uid="uid://cw1n0ga0xi4a2" path="res://assets/graphics/character_graphics/weapon_menu/Iconodearma17.png" id="1_hmhlh"]
+[ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_xs7gg"]
+[ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="3_3bdh7"]
+[ext_resource type="Texture2D" uid="uid://jsu1uvka5bs0" path="res://assets/graphics/character_graphics/armas/arma15.png" id="4_hxjtt"]
+
+[resource]
+script = ExtResource("3_3bdh7")
+nombre = "explosiva4"
+sprite = ExtResource("4_hxjtt")
+damage = 16
+tiempoDisparo = 0.4
+arma_escena = ExtResource("2_xs7gg")
+_bullet_type = "B"
+_texture = ExtResource("1_hmhlh")
+costo = 0
+_rarety = 0
+metadata/_custom_type_script = "uid://pfcy5ekpq4t6"

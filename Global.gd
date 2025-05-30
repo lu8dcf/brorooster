@@ -97,6 +97,7 @@ func initialize_default_weapon() -> void:
 			default_weapon.costo = 1
 			default_weapon.nombre = "Arma"
 			default_weapon._rarety = 0
+			default_weapon.arma_escena = preload("res://scenes/game/Armas/Arma.tscn") # agregue esta linea
 			default_weapon.bullet_scene = preload("res://scenes/game/Bullet/bullet.tscn")
 			default_weapon._texture = preload("res://assets/graphics/character_graphics/weapon_menu/Iconodearma1.png")
 			default_weapon.sprite= preload("res://assets/graphics/character_graphics/armas/arma1.png")

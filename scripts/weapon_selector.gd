@@ -7,9 +7,21 @@ extends CanvasLayer
 @export var weapons: Array[ArmaData] = [
 	preload("res://scripts/game/Arma/Armas/arma1.tres"),
 	preload("res://scripts/game/Arma/Armas/melee1.tres"),
-	preload("res://scripts/game/Arma/Armas/bazooka1.tres")
-	
-] 
+	preload("res://scripts/game/Arma/Armas/bazooka1.tres"),
+	preload("res://scripts/game/Arma/Armas/arma2.tres"),
+	preload("res://scripts/game/Arma/Armas/bazooka2.tres"),
+	preload("res://scripts/game/Arma/Armas/melee2.tres"),
+	preload("res://scripts/game/Arma/Armas/melee3.tres"),
+	preload("res://scripts/game/Arma/Armas/melee4.tres"),
+	preload("res://scripts/game/Arma/Armas/melee5.tres"),
+	preload("res://scripts/game/Arma/Armas/bazooka3.tres"),
+	preload("res://scripts/game/Arma/Armas/arma3.tres"),
+	preload("res://scripts/game/Arma/Armas/melee6.tres"),
+	preload("res://scripts/game/Arma/Armas/melee7.tres"),
+	preload("res://scripts/game/Arma/Armas/arma4.tres"),
+	preload("res://scripts/game/Arma/Armas/explosiva4.tres"),
+	preload("res://scripts/game/Arma/Armas/melee8.tres"),
+	] 
 
 var random_weapons: Array[ArmaData] = [] # lista de las que se cargarán de forma aletoria
 
