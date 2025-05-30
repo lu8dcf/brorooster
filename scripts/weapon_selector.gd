@@ -7,14 +7,14 @@ extends CanvasLayer
 @export var weapons: Array[ArmaData] = [
 	preload("res://scripts/game/Arma/Armas/arma1.tres"),
 	preload("res://scripts/game/Arma/Armas/melee1.tres"),
-	preload("res://scripts/game/Arma/Armas/bazooka1.tres"),
+	preload("res://scripts/game/Arma/Armas/explosiva1.tres"),
 	preload("res://scripts/game/Arma/Armas/arma2.tres"),
-	preload("res://scripts/game/Arma/Armas/bazooka2.tres"),
+	preload("res://scripts/game/Arma/Armas/explosiva2.tres"),
 	preload("res://scripts/game/Arma/Armas/melee2.tres"),
 	preload("res://scripts/game/Arma/Armas/melee3.tres"),
 	preload("res://scripts/game/Arma/Armas/melee4.tres"),
 	preload("res://scripts/game/Arma/Armas/melee5.tres"),
-	preload("res://scripts/game/Arma/Armas/bazooka3.tres"),
+	preload("res://scripts/game/Arma/Armas/explosiva3.tres"),
 	preload("res://scripts/game/Arma/Armas/arma3.tres"),
 	preload("res://scripts/game/Arma/Armas/melee6.tres"),
 	preload("res://scripts/game/Arma/Armas/melee7.tres"),
@@ -79,7 +79,7 @@ func _ready() -> void:
 	bullet_type_indicator.base_icon_texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_bullet.png")
 	
 	# Actualiza los indicadores con el personaje inicial
-	#update_attribute_indicators(random_weapons[current_index])
+	update_attribute_indicators(random_weapons[current_index])
 
 func select_random_weapons(count: int) -> Array[ArmaData]:
 	var selected: Array[ArmaData] = []
