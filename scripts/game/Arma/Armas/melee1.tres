@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b7xtixvxdlkrh" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma_nivel1_4.png" id="1_c25oh"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="1_qdhyo"]
 [ext_resource type="PackedScene" uid="uid://bb0lfcam5hcep" path="res://scenes/game/Bullet/meleeBullet.tscn" id="1_us0b2"]
-[ext_resource type="PackedScene" uid="uid://jlapuo4uvt6t" path="res://scenes/game/weapon.tscn" id="2_64w2y"]
+[ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_c25oh"]
 
 [resource]
 script = ExtResource("1_qdhyo")
@@ -12,7 +12,7 @@ nombre = "el diabolo"
 sprite = ExtResource("1_c25oh")
 damage = 15
 tiempoDisparo = 0.3
-arma_escena = ExtResource("2_64w2y")
+arma_escena = ExtResource("2_c25oh")
 _bullet_type = "C"
 _texture = ExtResource("1_64w2y")
 bullet_scene = ExtResource("1_us0b2")

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ArmaData" load_steps=6 format=3 uid="uid://csftlkioxtfmh"]
+
+[ext_resource type="Texture2D" uid="uid://bg6k3gxowbnfu" path="res://assets/graphics/character_graphics/weapon_menu/Iconodearma9.png" id="1_t6cxm"]
+[ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_01lps"]
+[ext_resource type="PackedScene" uid="uid://ceivc2d3taao1" path="res://scenes/game/Bullet/bullet.tscn" id="3_j6axm"]
+[ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="4_qhwir"]
+[ext_resource type="Texture2D" uid="uid://ctk5wbk76hel7" path="res://assets/graphics/character_graphics/armas/arma11.png" id="5_08dvv"]
+
+[resource]
+script = ExtResource("4_qhwir")
+nombre = "arma3"
+sprite = ExtResource("5_08dvv")
+damage = 10
+tiempoDisparo = 0.5
+arma_escena = ExtResource("2_01lps")
+_bullet_type = "A"
+_texture = ExtResource("1_t6cxm")
+bullet_scene = ExtResource("3_j6axm")
+costo = 0
+_rarety = 0
+metadata/_custom_type_script = "uid://pfcy5ekpq4t6"

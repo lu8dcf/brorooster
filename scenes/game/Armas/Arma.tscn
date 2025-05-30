@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://swmyyvbp2wyd"]
+
+[ext_resource type="Script" uid="uid://o2fv10kawcqa" path="res://scripts/game/Arma/ArmaScript.gd" id="1_jfrbx"]
+[ext_resource type="Texture2D" uid="uid://c3ndtt7g0u7" path="res://assets/graphics/character_graphics/armas/arma1.png" id="2_ywmue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsmt0"]
+size = Vector2(2.25, 3.75)
+
+[sub_resource type="Animation" id="Animation_b6hqs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tsmt0"]
+resource_name = "retroceso"
+length = 0.1
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"new_marker",
+"time": 0.1
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"new_marker_2",
+"time": 0.87
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0473892, 0.0702352, 0.0997392),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-8, -1), Vector2(3, 0), Vector2(2.38419e-07, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_80mr2"]
+_data = {
+&"RESET": SubResource("Animation_b6hqs"),
+&"retroceso": SubResource("Animation_tsmt0")
+}
+
+[node name="Weapon" type="Node2D"]
+light_mask = 2
+visibility_layer = 2
+script = ExtResource("1_jfrbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.857895, 0.857895)
+texture = ExtResource("2_ywmue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.125, 0.125)
+shape = SubResource("RectangleShape2D_tsmt0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_80mr2")
+}

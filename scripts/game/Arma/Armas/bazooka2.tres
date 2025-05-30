@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ArmaData" load_steps=6 format=3 uid="uid://cwd2q457pkjmb"]
+
+[ext_resource type="Texture2D" uid="uid://dic6d73e11xer" path="res://assets/graphics/character_graphics/weapon_menu/Iconodearma10.png" id="1_rw0fy"]
+[ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_7gvhk"]
+[ext_resource type="PackedScene" uid="uid://327rtgostnc" path="res://scenes/game/Bullet/explosiveBullet.tscn" id="3_lwn6q"]
+[ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="4_1myl0"]
+[ext_resource type="Texture2D" uid="uid://bbld8xb5v6ap" path="res://assets/graphics/character_graphics/armas/arma3.png" id="5_fhiic"]
+
+[resource]
+script = ExtResource("4_1myl0")
+nombre = "bazooka2"
+sprite = ExtResource("5_fhiic")
+damage = 20
+tiempoDisparo = 0.4
+arma_escena = ExtResource("2_7gvhk")
+_bullet_type = "B"
+_texture = ExtResource("1_rw0fy")
+bullet_scene = ExtResource("3_lwn6q")
+costo = 0
+_rarety = 0
+metadata/_custom_type_script = "uid://pfcy5ekpq4t6"
