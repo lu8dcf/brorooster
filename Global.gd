@@ -104,6 +104,8 @@ func initialize_default_weapon() -> void:
 			currentWeapon = default_weapon
 			push_warning("Usando personaje por defecto fallback")
 
+# Global.current_weapon.
+
 func _on_character_health_changed(new_health: int):
 	# Propaga el cambio de salud del personaje como señal global
 	lives_changed.emit(new_health)
