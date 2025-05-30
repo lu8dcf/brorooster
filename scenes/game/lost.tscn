@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://35rtpfiw4mjj"]
+
+[ext_resource type="Script" uid="uid://cixs3oc0yfne8" path="res://scripts/game/lost.gd" id="1_yirl7"]
+
+[node name="lost" type="Node2D"]
+script = ExtResource("1_yirl7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
