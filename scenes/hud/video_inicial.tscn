@@ -3,10 +3,22 @@
 [ext_resource type="Script" uid="uid://c2ytq2nch4tqx" path="res://scripts/video_inicial.gd" id="1_3vo0c"]
 [ext_resource type="VideoStream" uid="uid://cwwxuvdpbvo6r" path="res://assets/graphics/video_graphics/IntroAtomicRooster.ogv" id="2_hdikg"]
 
-[node name="video_inicial" type="Node2D"]
+[node name="video_inicial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_3vo0c")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 stream = ExtResource("2_hdikg")
+autoplay = true
+expand = true

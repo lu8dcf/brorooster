@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ArmaData" load_steps=5 format=3 uid="uid://dgo5klfnh8yo3"]
+
+[ext_resource type="Texture2D" uid="uid://bipdlos8f2i5h" path="res://assets/graphics/character_graphics/weapon_menu/Iconodearma12.png" id="1_jpibh"]
+[ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_7ptgy"]
+[ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="3_hntvp"]
+[ext_resource type="Texture2D" uid="uid://c3ig8sptan6bf" path="res://assets/graphics/character_graphics/armas/arma9.png" id="4_wvneb"]
+
+[resource]
+script = ExtResource("3_hntvp")
+nombre = "melee5"
+sprite = ExtResource("4_wvneb")
+damage = 11
+tiempoDisparo = 0.6
+arma_escena = ExtResource("2_7ptgy")
+_bullet_type = "C"
+_texture = ExtResource("1_jpibh")
+costo = 0
+_rarety = 0
+metadata/_custom_type_script = "uid://pfcy5ekpq4t6"

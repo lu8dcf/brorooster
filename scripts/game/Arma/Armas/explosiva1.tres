@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="ArmaData" load_steps=6 format=3 uid="uid://blv08dls0ow7n"]
 
 [ext_resource type="PackedScene" uid="uid://327rtgostnc" path="res://scenes/game/Bullet/explosiveBullet.tscn" id="1_18fa1"]
-[ext_resource type="Texture2D" uid="uid://b2iy3kekyd41c" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma_nivel1_11.png" id="1_ifmko"]
+[ext_resource type="Texture2D" uid="uid://lelh2tou5ljd" path="res://assets/graphics/character_graphics/weapon_menu/Iconodearma11.png" id="1_ifmko"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="1_xalju"]
-[ext_resource type="PackedScene" uid="uid://jlapuo4uvt6t" path="res://scenes/game/weapon.tscn" id="2_5hxim"]
+[ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_ifmko"]
 [ext_resource type="Texture2D" uid="uid://cyicrgty4b5be" path="res://assets/graphics/character_graphics/armas/arma5.png" id="3_fgbql"]
 
 [resource]
 script = ExtResource("1_xalju")
-nombre = ""
+nombre = "bezucona"
 sprite = ExtResource("3_fgbql")
 damage = 18
 tiempoDisparo = 0.4
-arma_escena = ExtResource("2_5hxim")
+arma_escena = ExtResource("2_ifmko")
 _bullet_type = "B"
 _texture = ExtResource("1_ifmko")
 bullet_scene = ExtResource("1_18fa1")

@@ -1,0 +1,224 @@
+[gd_scene load_steps=8 format=3 uid="uid://cn6cx6comltn7"]
+
+[ext_resource type="PackedScene" uid="uid://b3gw0handi0b6" path="res://scenes/hud/base/base_panel.tscn" id="1_21ycv"]
+[ext_resource type="PackedScene" uid="uid://bh8g3tik5mpcj" path="res://scenes/hud/base/base_label.tscn" id="2_4g13u"]
+[ext_resource type="PackedScene" uid="uid://di8wmjenmmyrs" path="res://scenes/hud/base/base_weapon_shadow.tscn" id="2_nbyaw"]
+[ext_resource type="Texture2D" uid="uid://cgbviaj0qb76d" path="res://assets/graphics/character_graphics/character_menu/gallina1.png" id="3_gmhi7"]
+[ext_resource type="Texture2D" uid="uid://hbdqji4tmdvy" path="res://assets/graphics/menu_graphics/icon_menu/icon_cost.png" id="4_e6qmr"]
+[ext_resource type="PackedScene" uid="uid://lvvnb1v5hp5o" path="res://scenes/hud/base/base_button.tscn" id="5_gmhi7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e6qmr"]
+
+[node name="HudShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[node name="Panel" parent="." instance=ExtResource("1_21ycv")]
+layout_mode = 1
+offset_left = -550.0
+offset_top = -295.0
+offset_right = -267.0
+offset_bottom = -103.0
+
+[node name="Label" parent="Panel" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = -67.0
+offset_top = -92.0
+offset_right = 76.0
+offset_bottom = -21.0
+theme_override_font_sizes/font_size = 20
+text = "nombre"
+
+[node name="character" type="Sprite2D" parent="Panel"]
+position = Vector2(83, 112)
+scale = Vector2(1.09375, 1.075)
+texture = ExtResource("3_gmhi7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 95.0
+offset_right = 249.0
+offset_bottom = 152.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/VBoxContainer"]
+position = Vector2(6, 13)
+scale = Vector2(1.83333, 1.83333)
+texture = ExtResource("4_e6qmr")
+
+[node name="Label" parent="Panel/VBoxContainer" instance=ExtResource("2_4g13u")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "    0"
+
+[node name="panel_inventory" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 247.0
+offset_right = 509.0
+offset_bottom = 645.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_e6qmr")
+
+[node name="label_inventory" parent="panel_inventory" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = -203.0
+offset_top = -219.0
+offset_right = 94.0
+offset_bottom = -103.0
+theme_override_font_sizes/font_size = 27
+text = "inventario"
+
+[node name="inv_1" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
+position = Vector2(99, 346)
+
+[node name="inv_2" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
+position = Vector2(98, 230)
+
+[node name="inv_3" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
+position = Vector2(98, 119)
+
+[node name="inv_4" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
+position = Vector2(265, 119)
+
+[node name="inv_5" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
+position = Vector2(265, 230)
+
+[node name="inv_6" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
+position = Vector2(265, 345)
+
+[node name="btn_sold" parent="panel_inventory" instance=ExtResource("5_gmhi7")]
+layout_mode = 1
+offset_left = 113.0
+offset_top = 103.0
+offset_right = 231.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 16
+text = "vender"
+
+[node name="panel_merge" parent="." instance=ExtResource("1_21ycv")]
+layout_mode = 1
+offset_left = -49.0
+offset_top = 15.0
+offset_right = 556.0
+offset_bottom = 299.0
+
+[node name="Label4" parent="panel_merge" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = -106.5
+offset_top = -136.0
+offset_right = 97.5
+offset_bottom = -59.0
+theme_override_font_sizes/font_size = 25
+text = "Combinas?"
+
+[node name="Label3" parent="panel_merge" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = -183.5
+offset_top = 68.0
+offset_right = 194.5
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 15
+text = "Deben ser 2 armas iguales"
+
+[node name="weapon_merge_1" parent="panel_merge" instance=ExtResource("2_nbyaw")]
+position = Vector2(138, 193)
+
+[node name="Label2" parent="panel_merge" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = -122.5
+offset_top = -44.0
+offset_right = -46.5
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 70
+text = "+"
+
+[node name="weapon_merge_2" parent="panel_merge" instance=ExtResource("2_nbyaw")]
+position = Vector2(290, 193)
+
+[node name="Label" parent="panel_merge" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = 27.5
+offset_top = -22.0
+offset_right = 135.5
+offset_bottom = 52.0
+text = "="
+
+[node name="weapon_merge_result" parent="panel_merge" instance=ExtResource("2_nbyaw")]
+position = Vector2(466, 193)
+
+[node name="panel_shop" parent="." instance=ExtResource("1_21ycv")]
+layout_mode = 1
+offset_top = -363.0
+offset_right = 552.0
+offset_bottom = -15.0
+
+[node name="text_shop" parent="panel_shop" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = -113.0
+offset_top = -148.5
+offset_right = 115.0
+offset_bottom = -43.5
+theme_override_font_sizes/font_size = 25
+text = "Compras?"
+
+[node name="weapon_shop_1" parent="panel_shop" instance=ExtResource("2_nbyaw")]
+position = Vector2(167, 186)
+
+[node name="text_weapon_shop_1" parent="panel_shop" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = -291.5
+offset_top = 41.0
+offset_right = -136.5
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="panel_shop/text_weapon_shop_1"]
+offset_left = 41.0
+offset_top = 49.0
+offset_right = 123.0
+offset_bottom = 106.0
+
+[node name="Sprite2D" type="Sprite2D" parent="panel_shop/text_weapon_shop_1/VBoxContainer"]
+position = Vector2(6, 13)
+scale = Vector2(1.83333, 1.83333)
+texture = ExtResource("4_e6qmr")
+
+[node name="Label" parent="panel_shop/text_weapon_shop_1/VBoxContainer" instance=ExtResource("2_4g13u")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "    0"
+
+[node name="weapon_shop_2" parent="panel_shop" instance=ExtResource("2_nbyaw")]
+position = Vector2(374, 186.438)
+
+[node name="text_weapon_shop_2" parent="panel_shop" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = -80.0
+offset_top = 34.9375
+offset_right = 64.0
+offset_bottom = 94.9375
+theme_override_font_sizes/font_size = 20
+
+[node name="weapon_shop_3" parent="panel_shop" instance=ExtResource("2_nbyaw")]
+position = Vector2(574, 186)
+
+[node name="text_weapon_shop_3" parent="panel_shop" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = 107.0
+offset_top = 30.5
+offset_right = 287.0
+offset_bottom = 96.5
+theme_override_font_sizes/font_size = 20

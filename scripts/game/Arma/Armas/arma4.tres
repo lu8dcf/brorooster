@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ArmaData" load_steps=6 format=3 uid="uid://d0xuv0nfjmxkr"]
+
+[ext_resource type="Texture2D" uid="uid://bb7356mb2khat" path="res://assets/graphics/character_graphics/weapon_menu/Iconodearma16.png" id="1_28ywr"]
+[ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_ra6nk"]
+[ext_resource type="PackedScene" uid="uid://ceivc2d3taao1" path="res://scenes/game/Bullet/bullet.tscn" id="3_0ywqa"]
+[ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="4_8d54t"]
+[ext_resource type="Texture2D" uid="uid://b7x2ug7oj3prc" path="res://assets/graphics/character_graphics/armas/arma14.png" id="5_lfg4o"]
+
+[resource]
+script = ExtResource("4_8d54t")
+nombre = "classico"
+sprite = ExtResource("5_lfg4o")
+damage = 11
+tiempoDisparo = 0.2
+arma_escena = ExtResource("2_ra6nk")
+_bullet_type = "A"
+_texture = ExtResource("1_28ywr")
+bullet_scene = ExtResource("3_0ywqa")
+costo = 0
+_rarety = 0
+metadata/_custom_type_script = "uid://pfcy5ekpq4t6"

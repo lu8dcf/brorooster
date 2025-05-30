@@ -8,8 +8,7 @@ class_name ArmaData
 @export var tiempoDisparo: float
 @export var arma_escena: PackedScene = load("res://scenes/game/weapon.tscn")
 @export var _bullet_type : String
-#@export var _rarety : int
-@export var _texture : CompressedTexture2D
+@export var _texture : CompressedTexture2D #iconos
 @export var bullet_scene: PackedScene
 @export var costo : int
 

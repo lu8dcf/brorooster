@@ -13,9 +13,9 @@ func _ready():
 	video_player.play()
 	
 	# funcion para expandir el video a pantalla completa pero se ve un poco feo
-	video_player.set_expand(true)
-	video_player.custom_minimum_size = DisplayServer.window_get_size()
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	#video_player.set_expand(true)
+	#video_player.custom_minimum_size = DisplayServer.window_get_size()
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
 func _input(event):
 	# Detectar clic con el botón izquierdo del mouse
