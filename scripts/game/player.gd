@@ -233,7 +233,7 @@ func equip_weapon1(_angle:float):
 		if is_instance_valid(current_weapon1):
 			current_weapon1.queue_free()
 	current_weapon1 = arma1_data.arma_escena.instantiate()
-	current_weapon1.arma_data = arma1_data  #Asigno el resurse
+	current_weapon1.arma_data = Global.currentWeapon
 	weapon_anchor.add_child(current_weapon1)
 	current_weapon1.position = Vector2.ZERO
 	#

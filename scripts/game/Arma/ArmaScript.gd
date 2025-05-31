@@ -9,12 +9,14 @@ func setup(nombre : String, sprite : Texture2D, damage : int, tiempoDisparo : fl
 	arma_data = ArmaData.new()
 	arma_data.nombre = nombre
 	arma_data.sprite = sprite
+
 	arma_data.damage = damage
 	arma_data.tiempoDisparo = tiempoDisparo
 	arma_data.bullet_scene = bullet_scene
 	arma_data.costo = costo
 
-
+func _ready() -> void:
+	$Sprite2D.texture = arma_data.sprite
 
 #y para instanciar, seria:
 #var nueva_arma = Arma.new()
