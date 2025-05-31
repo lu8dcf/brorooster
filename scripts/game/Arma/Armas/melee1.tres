@@ -8,7 +8,7 @@
 
 [resource]
 script = ExtResource("1_qdhyo")
-nombre = "el diabolo"
+nombre = "neptuno"
 sprite = ExtResource("1_c25oh")
 damage = 15
 tiempoDisparo = 0.3

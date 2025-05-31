@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("3_3bdh7")
-nombre = "explosiva4"
+nombre = "escopetona"
 sprite = ExtResource("4_hxjtt")
 damage = 16
 tiempoDisparo = 0.4

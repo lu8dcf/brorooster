@@ -8,7 +8,7 @@
 
 [resource]
 script = ExtResource("4_qhwir")
-nombre = "arma3"
+nombre = "piu piu"
 sprite = ExtResource("5_08dvv")
 damage = 10
 tiempoDisparo = 0.5
