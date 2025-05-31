@@ -8,7 +8,7 @@
 
 [resource]
 script = ExtResource("4_8df8t")
-nombre = "arma2"
+nombre = "buzz light"
 sprite = ExtResource("5_sb037")
 damage = 14
 tiempoDisparo = 0.3
