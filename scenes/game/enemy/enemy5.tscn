@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ca4kmxefguwsy"]
+[gd_scene load_steps=11 format=3 uid="uid://ca4kmxefguwsy"]
 
 [ext_resource type="Script" uid="uid://cy5dkcg7yhosn" path="res://scripts/game/enemy/enemy5.gd" id="1_b3f5t"]
-[ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_bqb1u"]
+[ext_resource type="Texture2D" uid="uid://behekbgwu4h48" path="res://assets/graphics/character_graphics/bichos/bicho5_nivel1.png" id="2_b3f5t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
 radius = 12.2139
@@ -20,12 +20,24 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_wthq6"]
 resource_name = "left"
-length = 0.5
+length = 1.046
 loop_mode = 1
-step = 0.25
+step = 0.0915
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,17 +45,29 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0)]
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0915, 0.183, 0.2745, 0.366, 0.4575, 0.549, 0.6405, 0.732, 0.8235, 0.915, 1.0065),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
 }
 
 [sub_resource type="Animation" id="Animation_dkfay"]
 resource_name = "right"
-length = 0.5
+length = 1.052
 loop_mode = 1
-step = 0.25
+step = 0.0915
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -51,17 +75,63 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [Vector2i(4, 0), Vector2i(6, 0)]
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0915, 0.183, 0.2745, 0.366, 0.4575, 0.549, 0.6405, 0.732, 0.8235, 0.915),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_bqb1u"]
+resource_name = "spawnright"
+step = 0.0915
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0915, 0.183, 0.2745, 0.366, 0.4575, 0.549),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(11, 0), Vector2i(12, 0), Vector2i(13, 0), Vector2i(14, 0), Vector2i(15, 0), Vector2i(16, 0), Vector2i(17, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uff0p"]
+resource_name = "spawnleft"
+step = 0.0915
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0915, 0.183, 0.2745, 0.366, 0.4575, 0.549, 0.6405),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34, 35, 36, 37]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8ej3"]
 _data = {
 &"RESET": SubResource("Animation_5nfiu"),
 &"left": SubResource("Animation_wthq6"),
-&"right": SubResource("Animation_dkfay")
+&"right": SubResource("Animation_dkfay"),
+&"spawnleft": SubResource("Animation_uff0p"),
+&"spawnright": SubResource("Animation_bqb1u")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wthq6"]
@@ -73,10 +143,10 @@ collision_mask = 5
 script = ExtResource("1_b3f5t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-24.7731, -21.4569)
+position = Vector2(-23, -42)
 scale = Vector2(0.984132, 1.01629)
-texture = ExtResource("2_bqb1u")
-hframes = 8
+texture = ExtResource("2_b3f5t")
+hframes = 38
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
