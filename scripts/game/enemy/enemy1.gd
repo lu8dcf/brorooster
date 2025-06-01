@@ -11,7 +11,6 @@ var blue : int
 var movimiento = Vector2()
 
 var tiene_maiz := false
-#var maiz_scene := preload("res://objetos/maiz.tscn")  # Ruta del prefab de maíz (ajustala si es distinta)
 
 func _ready():
 	update_health(health)
