@@ -1,7 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://c7i1pt230pwus"]
 
 [ext_resource type="Script" uid="uid://40qhcogcgsib" path="res://scripts/hud_game.gd" id="1_fgv6s"]
+[ext_resource type="Texture2D" uid="uid://hbdqji4tmdvy" path="res://assets/graphics/menu_graphics/icon_menu/icon_cost.png" id="2_d3ly5"]
 [ext_resource type="PackedScene" uid="uid://bh8g3tik5mpcj" path="res://scenes/hud/base/base_label.tscn" id="2_kn25u"]
+[ext_resource type="PackedScene" uid="uid://chhyjtslwr2x2" path="res://scenes/hud/base/base_hudgame_weapon.tscn" id="4_6li8a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0rtn"]
 bg_color = Color(1, 0.477691, 0.482099, 0.670588)
@@ -12,20 +14,6 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgv6s"]
 bg_color = Color(0.985913, 0.157617, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3ly5"]
-bg_color = Color(0.5841, 0.7194, 0.99, 0.843137)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6li8a"]
-bg_color = Color(0.300573, 0.524721, 1, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -71,11 +59,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 5.5
+offset_bottom = 26.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Background/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 14
 
 [node name="life_bar" type="ProgressBar" parent="VBoxContainer/Background/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -88,29 +79,15 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_fgv6s")
 step = 1.0
 value = 100.0
 
-[node name="exp_bar" type="ProgressBar" parent="VBoxContainer/Background/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 0)
-theme_override_styles/background = SubResource("StyleBoxFlat_d3ly5")
-theme_override_styles/fill = SubResource("StyleBoxFlat_6li8a")
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Background/HBoxContainer/VBoxContainer"]
+position = Vector2(23, 58.5)
+scale = Vector2(2.09167, 1.93286)
+texture = ExtResource("2_d3ly5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Background/HBoxContainer/VBoxContainer/exp_bar"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -39.0
-offset_top = -11.5
-offset_right = 1.0
-offset_bottom = 28.5
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="level" type="Label" parent="VBoxContainer/Background/HBoxContainer/VBoxContainer/exp_bar/VBoxContainer"]
+[node name="Label" parent="VBoxContainer/Background/HBoxContainer/VBoxContainer" instance=ExtResource("2_kn25u")]
 layout_mode = 2
-text = "LV.0"
+theme_override_font_sizes/font_size = 19
+text = "0"
 
 [node name="Space1" type="Control" parent="VBoxContainer/Background/HBoxContainer"]
 layout_mode = 2
@@ -141,5 +118,19 @@ text = "   PAUSA  "
 
 [node name="Space3" type="Control" parent="VBoxContainer/Background/HBoxContainer"]
 layout_mode = 2
+
+[node name="Space3" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="weapon_player_hudgame" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 590)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="BaseHudgameWeapon" parent="VBoxContainer/weapon_player_hudgame" instance=ExtResource("4_6li8a")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [connection signal="pressed" from="VBoxContainer/Background/HBoxContainer/MarginContainer/pausa" to="." method="_on_pausa_pressed"]

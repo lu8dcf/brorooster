@@ -2,6 +2,10 @@ extends Node
 
 signal lives_changed(new_value)
 
+#inventario global
+var inventory_player = [0] # inventario de maximo 6 slots
+
+
 # Referencia al personaje actual
 var currentPlayer: CharacterData = null:
 	set(value):
@@ -22,6 +26,7 @@ var currentWeapon: ArmaData = null:
 			currentWeapon = value
 			# Conecta señales del personaje
 			weapon_changed.emit(currentWeapon)
+			inventory_player[0] = currentWeapon
 		else:
 			push_error("Se intentó asignar un tipo inválido a currentWeapon")
 

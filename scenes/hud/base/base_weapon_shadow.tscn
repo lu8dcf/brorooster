@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bt4ox28mrdbmc" path="res://assets/graphics/menu_graphics/weapon_shadow.png" id="1_28rf0"]
 
-[node name="weapon_shadow" type="Sprite2D"]
-position = Vector2(-7.62939e-06, 1.90735e-06)
+[node name="weapon_shadow" type="TextureRect"]
 scale = Vector2(0.446839, 0.446839)
 texture = ExtResource("1_28rf0")
