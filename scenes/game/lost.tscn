@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://35rtpfiw4mjj"]
 
-[ext_resource type="Script" uid="uid://cixs3oc0yfne8" path="res://scripts/game/lost.gd" id="1_yirl7"]
+[ext_resource type="Script" path="res://scripts/game/lost.gd" id="1_yirl7"]
 [ext_resource type="Texture2D" uid="uid://dj43o03ithefd" path="res://assets/graphics/menu_graphics/Pantallademuerte60frames.png" id="2_sgciw"]
 
 [sub_resource type="Animation" id="Animation_of5d2"]
@@ -78,3 +78,4 @@ hframes = 58
 libraries = {
 &"": SubResource("AnimationLibrary_g1v24")
 }
+movie_quit_on_finish = true

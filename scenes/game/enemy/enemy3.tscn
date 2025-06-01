@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccv782ygvrwof"]
 
 [ext_resource type="Script" uid="uid://cefw0qn2gpwqs" path="res://scripts/game/enemy/enemy3.gd" id="1_lmc2w"]
-[ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_fejlx"]
+[ext_resource type="Texture2D" uid="uid://cbsy4hgmhstej" path="res://assets/graphics/character_graphics/bichos/bicho3.png" id="2_lmc2w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
 radius = 12.2139
@@ -75,8 +75,8 @@ script = ExtResource("1_lmc2w")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-24.7731, -21.4569)
 scale = Vector2(0.984132, 1.01629)
-texture = ExtResource("2_fejlx")
-hframes = 8
+texture = ExtResource("2_lmc2w")
+hframes = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
