@@ -69,7 +69,10 @@ func get_armor() -> float:
 func get_sprite() -> float:
 	return currentPlayer._sprite if currentPlayer else "res://assets/graphics/character_graphics/gallo.png"
 	
-
+func get_currentWeapon() -> ArmaData:
+	return currentWeapon
+	
+	
 func initialize_default_character() -> void:
 	# Carga el primer personaje del selector si existe
 		var selector = get_tree().get_first_node_in_group("character_selector")
@@ -93,7 +96,7 @@ func initialize_default_weapon() -> void:
 	# Carga el primer personaje del selector si existe
 		var selector = get_tree().get_first_node_in_group("weapon_selector")
 		if selector and selector.characters.size() > 0:
-			currentPlayer = selector.characters[0]
+			currentWeapon = selector.characters[0]
 		else:
 		# Fallback: crea un personaje por defecto
 			var default_weapon = ArmaData.new()

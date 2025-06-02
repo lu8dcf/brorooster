@@ -12,7 +12,7 @@ var timer_between_enemy = 2
 
 
 # Oleada
-var oleada = 4
+var oleada = 5
 
 
 #Factory enemy

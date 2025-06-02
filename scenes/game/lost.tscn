@@ -78,3 +78,4 @@ hframes = 58
 libraries = {
 &"": SubResource("AnimationLibrary_g1v24")
 }
+movie_quit_on_finish = true

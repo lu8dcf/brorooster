@@ -16,7 +16,8 @@ var enemy_param = {
 	2:[10, 10 , .5], # "Lombriz"
 	3:[10, 10 , .6 ], # "Bolita"
 	4:[10, 10 , .7 ], #"Langosta"
-	5:[200, 50 , 1 ]# "Araña"
+	5:[200, 50 , .5 ],# "Araña"
+	6:[5, 10 , 1 ] # arañas pequeñas
 }
 
 # Diccionario con las rutas de los enemigos
@@ -25,5 +26,6 @@ var enemy_class = {
 	2: "res://scenes/game/enemy/enemy2.tscn", # Lombris
 	3: "res://scenes/game/enemy/enemy3.tscn", # Bicho bola
 	4: "res://scenes/game/enemy/enemy4.tscn", # Saltamontes
-	5: "res://scenes/game/enemy/enemy5.tscn" # Araña BOSS
+	5: "res://scenes/game/enemy/enemy5.tscn", # Araña BOSS
+	6: "res://scenes/game/enemy/enemy6.tscn" # Araña BOSS
 }
