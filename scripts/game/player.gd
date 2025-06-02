@@ -67,11 +67,11 @@ var weapon1_enable = true
 #var shoot1_path="res://scenes/game/laser.tscn"
 #var shoot1_path="res://scenes/game/Bullet/bullet.tscn"
 #var shoot1_path="res://scenes/game/Bullet/explosiveBullet.tscn"
-var time_shoot1= .5
+var time_shoot1= GlobalShoot.time_shoot1
 var weapon2_enable = true
 var weapon2_path= "res://scenes/game/weapon.tscn"
 var shoot2_path="res://scenes/game/laser.tscn"
-var time_shoot2= .6
+var time_shoot2= GlobalShoot.time_shoot2
 
 var diferencia_sprit_weapon = 0 # con el sprite a cero se puede evitar
 var inv_image_weapon1=0 # determinacion hacia adonde aponta el arma de 0aPI/2 derecha =0

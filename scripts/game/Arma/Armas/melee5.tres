@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("3_hntvp")
-nombre = "melee5"
+nombre = "el ojo thundera"
 sprite = ExtResource("4_wvneb")
 damage = 11
 tiempoDisparo = 0.6

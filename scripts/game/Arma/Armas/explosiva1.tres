@@ -8,7 +8,7 @@
 
 [resource]
 script = ExtResource("1_xalju")
-nombre = "bezucona"
+nombre = "la bezucona"
 sprite = ExtResource("3_fgbql")
 damage = 18
 tiempoDisparo = 0.4
