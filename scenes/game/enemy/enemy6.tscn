@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0ai7fvaldrsq"]
+[gd_scene load_steps=9 format=3 uid="uid://rnepcneth1mm"]
 
 [ext_resource type="Script" uid="uid://uui6tij67qtt" path="res://scripts/game/enemy/enemy6.gd" id="1_cpb6w"]
 [ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_i2q32"]
