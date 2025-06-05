@@ -3,7 +3,7 @@ extends Node
 signal lives_changed(new_value)
 
 #inventario global
-var inventory_player = [0] # inventario de maximo 6 slots
+var inventory_player = [null, null, null, null, null, null] # inventario de maximo 6 slots
 
 
 # Referencia al personaje actual
