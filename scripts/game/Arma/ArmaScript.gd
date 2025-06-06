@@ -6,6 +6,9 @@ class_name Arma
 
 var puedoDisparar = true
 var inv_image_weapon1=0
+var target_angle: float = 0.0
+var diferencia_sprite_weapon := 0.0  # si querés ajustar el ángulo por sprite
+
 
 #Constructor
 func setup(nombre : String, sprite : Texture2D, damage : int, tiempoDisparo : float, bullet_scene : PackedScene, costo : int) -> void:
@@ -22,24 +25,20 @@ func _ready() -> void:
 	$Sprite2D.texture = arma_data.sprite
 	set_danio_total()
 
-
-
-#func _process(delta: float) -> void:
-	#
-	#var weapon_sprite = arma_data.sprite  # Sprite del arma
-		##current_weapon1.rotation = lerp_angle(current_weapon1.rotation,prueba            , 10.0 * delta) 
-	#arma_data.rotation = lerp_angle(arma_data.rotation,GlobalWeapon.getDireccionEnemigo() , 12.0 * delta)  # Ajusta la velocidad de rotación
-	#
-	## Determinar si el arma está apuntando hacia la izquierda invierte el sprite
-	#if  abs(GlobalWeapon.getDireccionEnemigo()) > PI/2 and inv_image_weapon1 == 0:
-		#weapon_sprite.flip_v = true # Voltear horizontalmente el sprite del arma
-		#inv_image_weapon1=1
-		#
-	#elif abs(Global.getDireccionEnemigo()) < PI/2  and inv_image_weapon1 == 1:
-		#weapon_sprite.flip_v = false # dejarla original
-		#inv_image_weapon1=0
-			#
-
+func _process(delta):
+	#cambio la rotacion del arma (tiene que se la instancia, la escena en ejecucion)
+	rotation = lerp_angle(rotation, target_angle + diferencia_sprite_weapon, 14.0 * delta)
+	
+	# Determinar si el arma está apuntando hacia la izquierda invierte el sprite
+	if  abs(target_angle) > PI/2 and inv_image_weapon1 == 0:
+		$Sprite2D.flip_v = true # Voltear horizontalmente el sprite del arma
+		inv_image_weapon1=1
+		
+	elif abs(target_angle) < PI/2  and inv_image_weapon1 == 1:
+		$Sprite2D.flip_v = false # dejarla original
+		inv_image_weapon1=0
+	
+	
 func set_danio_total():
 	return GlobalWeapon.get_danioGlobal() * arma_data.damage
 

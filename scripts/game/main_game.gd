@@ -9,7 +9,6 @@ var rand = RandomNumberGenerator.new() # semilla de random segun el tiempo
 # Player
 var player = null  # instancia del player
 
-
 # Entorno
 var background = null
 
@@ -21,7 +20,6 @@ func _ready():	# Comienza el juego
 	init_player() # Instanciar y añadir el jugador en el punto central 
 	# asignar la señal del angulo del arma y disparo
 	$player.connect("enemy_detected", $player._on_enemy_detected) 
-	#GlobalWeapon.connect("enemy_detected", $arma._on_enemy_detected)  Conecto
 	init_oleada()
 	#init_factory_enemy()
 	
@@ -31,9 +29,7 @@ func _process(delta):
 	if closest_enemy:                         # si existe un enemigo 
 		var angle = $player.global_position.angle_to_point(closest_enemy.global_position)   #envia el angulo al player
 		$player._on_enemy_detected(angle)
-		#var angle = $player.global_position.angle_to_point(closest_enemy.global_position)   #envia el angulo al player
-		#GlobalWeapon._on_enemy_detected(angle)  Para obtener la direccion el enemigo ams cercano
-		
+
 		
 func init_background():  # Inicia el fondo y los limites de pantalla
 	background = preload("res://scenes/game/background.tscn").instantiate()
