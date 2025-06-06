@@ -59,6 +59,7 @@ layout_mode = 2
 expand_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_2"]
+layout_mode = 0
 offset_left = -15.0
 offset_top = -24.0
 offset_right = 5.0
@@ -81,6 +82,7 @@ layout_mode = 2
 expand_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_3"]
+layout_mode = 0
 offset_left = -15.0
 offset_top = -24.0
 offset_right = 5.0
@@ -103,6 +105,7 @@ layout_mode = 2
 expand_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_4"]
+layout_mode = 0
 offset_left = -15.0
 offset_top = -24.0
 offset_right = 5.0
@@ -125,6 +128,7 @@ layout_mode = 2
 expand_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_5"]
+layout_mode = 0
 offset_left = -15.0
 offset_top = -24.0
 offset_right = 5.0
@@ -147,6 +151,7 @@ layout_mode = 2
 expand_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_6"]
+layout_mode = 0
 offset_left = -15.0
 offset_top = -24.0
 offset_right = 5.0
