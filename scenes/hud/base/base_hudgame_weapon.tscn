@@ -23,142 +23,148 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -842.0
-offset_top = -63.0
-offset_bottom = -28.0
+offset_left = -448.0
+offset_top = -43.0
+offset_right = -15.0
+offset_bottom = -27.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_constants/separation = 40
+theme_override_constants/separation = 26
 
 [node name="weapon_inv_1" parent="Slots" instance=ExtResource("2_nlfkl")]
 layout_mode = 2
 expand_mode = 3
 
-[node name="Sprite2D2" type="TextureRect" parent="Slots/weapon_inv_1"]
+[node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_1"]
 layout_mode = 0
-offset_left = -21.0
-offset_top = -53.0
-offset_right = 18.0
-offset_bottom = -34.0
+offset_left = -15.0
+offset_top = -24.0
+offset_right = 5.0
+offset_bottom = -14.0
 scale = Vector2(4.39237, 4.39237)
 texture = ExtResource("3_g58h3")
 expand_mode = 1
 
 [node name="Label" parent="Slots/weapon_inv_1" instance=ExtResource("4_bumkb")]
 layout_mode = 1
-offset_left = -90.7411
-offset_top = 4.43085
-offset_right = 92.2589
-offset_bottom = 56.4308
-theme_override_font_sizes/font_size = 16
+offset_left = -37.5517
+offset_top = -8.0
+offset_right = 37.4483
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 10
 text = "num"
 
 [node name="weapon_inv_2" parent="Slots" instance=ExtResource("2_nlfkl")]
 layout_mode = 2
 expand_mode = 3
 
-[node name="Label" parent="Slots/weapon_inv_2" instance=ExtResource("4_bumkb")]
-layout_mode = 1
-offset_left = -90.7411
-offset_top = 4.43085
-offset_right = 92.2589
-offset_bottom = 56.4308
-theme_override_font_sizes/font_size = 16
-text = "num"
-
-[node name="Sprite2D2" type="TextureRect" parent="Slots/weapon_inv_2"]
-offset_left = -21.0
-offset_top = -53.0
-offset_right = 18.0
-offset_bottom = -34.0
+[node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_2"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -24.0
+offset_right = 5.0
+offset_bottom = -14.0
 scale = Vector2(4.39237, 4.39237)
 texture = ExtResource("3_g58h3")
 expand_mode = 1
+
+[node name="Label" parent="Slots/weapon_inv_2" instance=ExtResource("4_bumkb")]
+layout_mode = 1
+offset_left = -37.5517
+offset_top = -8.0
+offset_right = 37.4483
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 10
+text = "num"
 
 [node name="weapon_inv_3" parent="Slots" instance=ExtResource("2_nlfkl")]
 layout_mode = 2
 expand_mode = 3
 
-[node name="Label" parent="Slots/weapon_inv_3" instance=ExtResource("4_bumkb")]
-layout_mode = 1
-offset_left = -90.7411
-offset_top = 4.43085
-offset_right = 92.2589
-offset_bottom = 56.4308
-theme_override_font_sizes/font_size = 16
-text = "num"
-
-[node name="Sprite2D2" type="TextureRect" parent="Slots/weapon_inv_3"]
-offset_left = -21.0
-offset_top = -53.0
-offset_right = 18.0
-offset_bottom = -34.0
+[node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_3"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -24.0
+offset_right = 5.0
+offset_bottom = -14.0
 scale = Vector2(4.39237, 4.39237)
 texture = ExtResource("3_g58h3")
 expand_mode = 1
+
+[node name="Label" parent="Slots/weapon_inv_3" instance=ExtResource("4_bumkb")]
+layout_mode = 1
+offset_left = -37.5517
+offset_top = -8.0
+offset_right = 37.4483
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 10
+text = "num"
 
 [node name="weapon_inv_4" parent="Slots" instance=ExtResource("2_nlfkl")]
 layout_mode = 2
 expand_mode = 3
 
-[node name="Label" parent="Slots/weapon_inv_4" instance=ExtResource("4_bumkb")]
-layout_mode = 1
-offset_left = -90.7411
-offset_top = 4.43085
-offset_right = 92.2589
-offset_bottom = 56.4308
-theme_override_font_sizes/font_size = 16
-text = "num"
-
-[node name="Sprite2D2" type="TextureRect" parent="Slots/weapon_inv_4"]
-offset_left = -21.0
-offset_top = -53.0
-offset_right = 18.0
-offset_bottom = -34.0
+[node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_4"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -24.0
+offset_right = 5.0
+offset_bottom = -14.0
 scale = Vector2(4.39237, 4.39237)
 texture = ExtResource("3_g58h3")
 expand_mode = 1
+
+[node name="Label" parent="Slots/weapon_inv_4" instance=ExtResource("4_bumkb")]
+layout_mode = 1
+offset_left = -37.5517
+offset_top = -8.0
+offset_right = 37.4483
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 10
+text = "num"
 
 [node name="weapon_inv_5" parent="Slots" instance=ExtResource("2_nlfkl")]
 layout_mode = 2
 expand_mode = 3
 
-[node name="Label" parent="Slots/weapon_inv_5" instance=ExtResource("4_bumkb")]
-layout_mode = 1
-offset_left = -90.7411
-offset_top = 4.43085
-offset_right = 92.2589
-offset_bottom = 56.4308
-theme_override_font_sizes/font_size = 16
-text = "num"
-
-[node name="Sprite2D2" type="TextureRect" parent="Slots/weapon_inv_5"]
-offset_left = -21.0
-offset_top = -53.0
-offset_right = 18.0
-offset_bottom = -34.0
+[node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_5"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -24.0
+offset_right = 5.0
+offset_bottom = -14.0
 scale = Vector2(4.39237, 4.39237)
 texture = ExtResource("3_g58h3")
 expand_mode = 1
+
+[node name="Label" parent="Slots/weapon_inv_5" instance=ExtResource("4_bumkb")]
+layout_mode = 1
+offset_left = -37.5517
+offset_top = -8.0
+offset_right = 37.4483
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 10
+text = "num"
 
 [node name="weapon_inv_6" parent="Slots" instance=ExtResource("2_nlfkl")]
 layout_mode = 2
 expand_mode = 3
 
-[node name="Label" parent="Slots/weapon_inv_6" instance=ExtResource("4_bumkb")]
-layout_mode = 1
-offset_left = -90.7411
-offset_top = 4.43085
-offset_right = 92.2589
-offset_bottom = 56.4308
-theme_override_font_sizes/font_size = 16
-text = "num"
-
-[node name="Sprite2D2" type="TextureRect" parent="Slots/weapon_inv_6"]
-offset_left = -21.0
-offset_top = -53.0
-offset_right = 18.0
-offset_bottom = -34.0
+[node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_6"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -24.0
+offset_right = 5.0
+offset_bottom = -14.0
 scale = Vector2(4.39237, 4.39237)
 texture = ExtResource("3_g58h3")
 expand_mode = 1
+
+[node name="Label" parent="Slots/weapon_inv_6" instance=ExtResource("4_bumkb")]
+layout_mode = 1
+offset_left = -37.5517
+offset_top = -8.0
+offset_right = 37.4483
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 10
+text = "num"
