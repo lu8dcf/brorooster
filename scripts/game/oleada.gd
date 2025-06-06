@@ -10,14 +10,33 @@ var numero_oleada = GlobalOleada.oleada
 
 enum EstadoJuego { OLEADA, SELECCION }
 var estado_actual: EstadoJuego = EstadoJuego.OLEADA
-var tiempo_restante: float = 0.0
+var tiempo_restante = GlobalOleada.tiempo_oleada
 var menu_armas: Sprite2D = null  # Referencia al menú de armas
-
 
 var tienda_escene = preload("res://scenes/hud/hud_shop.tscn")
 
+
 func _ready():
+	
+	
+	# Configura un Timer para decrementar cada segundo
+	var timer = Timer.new()
+	add_child(timer)
+	timer.timeout.connect(_on_timer_timeout)
+	timer.start(1.0)  # Intervalo de 1 segundo
+	
 	iniciar_oleada()
+	
+func _on_timer_timeout():
+	tiempo_restante -= 1
+	print (tiempo_restante)
+		
+	if tiempo_restante <= 0:
+		# Opcional: Detener el timer al llegar a 0
+		tiempo_restante = GlobalOleada.tiempo_oleada
+		cambiar_estado()
+		
+
 	
 func _input(event):
 	# Detectar clic con el botón izquierdo del mouse
@@ -30,10 +49,7 @@ func _input(event):
 		
 
 func _process(delta):
-	tiempo_restante -= delta
-	
-	if tiempo_restante <= 0:
-		cambiar_estado()
+	pass
 		
 func cambiar_estado():
 	match estado_actual:
@@ -72,12 +88,7 @@ func iniciar_seleccion_armas():
 		factory_enemy.queue_free()
 		factory_enemy = null
 	#
-	## Crear menú de armas (que ignore la pausa)
-	#menu_armas = Sprite2D.new()
-	## Crear menú de tienda (instanciar la escena correctamente)
-	#var tienda_instance = tienda_escene.instantiate()
-	#tienda_instance.process_mode = Node.PROCESS_MODE_ALWAYS
-	#add_child(tienda_instance)
+
 	get_tree().paused = true
 
 	get_tree().change_scene_to_file("res://scenes/hud/hud_shop.tscn")	
