@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_7gvhk"]
 [ext_resource type="PackedScene" uid="uid://327rtgostnc" path="res://scenes/game/Bullet/explosiveBullet.tscn" id="3_lwn6q"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="4_1myl0"]
-[ext_resource type="Texture2D" uid="uid://bbld8xb5v6ap" path="res://assets/graphics/character_graphics/armas/arma3.png" id="5_fhiic"]
+[ext_resource type="Texture2D" uid="uid://b0cfhu1ktah1p" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma10_nivel1.png" id="5_0ha0u"]
 
 [resource]
 script = ExtResource("4_1myl0")
+id = 10
 nombre = "boody"
-sprite = ExtResource("5_fhiic")
-damage = 20
+sprite = ExtResource("5_0ha0u")
+damage = 0.0
 tiempoDisparo = 0.4
 arma_escena = ExtResource("2_7gvhk")
 _bullet_type = "B"

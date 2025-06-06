@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_nlfjh"]
 [ext_resource type="PackedScene" uid="uid://327rtgostnc" path="res://scenes/game/Bullet/explosiveBullet.tscn" id="3_h31to"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="4_p17pc"]
-[ext_resource type="Texture2D" uid="uid://uxngkceup2xw" path="res://assets/graphics/character_graphics/armas/arma10.png" id="5_e0lw4"]
+[ext_resource type="Texture2D" uid="uid://c7bhoeb3ctjew" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma13_nivel1.png" id="5_mude1"]
 
 [resource]
 script = ExtResource("4_p17pc")
+id = 13
 nombre = "eco bazooca"
-sprite = ExtResource("5_e0lw4")
-damage = 22
+sprite = ExtResource("5_mude1")
+damage = 0.0
 tiempoDisparo = 0.7
 arma_escena = ExtResource("2_nlfjh")
 _bullet_type = "B"

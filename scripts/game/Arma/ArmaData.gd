@@ -1,10 +1,10 @@
 extends Resource
 
 class_name ArmaData
-
+@export var id : int # este id es asignado en cada arma segun en numero de arma que es (basao en el sprite)
 @export var nombre: String
 @export var sprite: Texture2D
-@export var damage: int
+@export var damage: float
 @export var tiempoDisparo: float
 @export var arma_escena: PackedScene = load("res://scenes/game/weapon.tscn")
 @export var _bullet_type : String

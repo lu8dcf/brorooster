@@ -116,7 +116,8 @@ var target_angle: float = 0.0
 
 
 func _ready():
-	
+	#Conecto al cambio de arma del global para detectar los cambios.
+	Global.connect("weapon_changed", Callable(self ,"_on_weapon_changed"))
 	if arma1_data and arma1_data.arma_escena and arma1_data:
 		arma1_scene = arma1_data.arma_escena
 		equip_weapon1(0.0)
@@ -150,7 +151,7 @@ func _physics_process(delta):
 	# depende de lo que elija el jugador, se ejecutara el movimiento con teclado o con mouse.
 	move_with_mouse()
 	
-func _process(delta):
+func _process(delta):	
 	# Rotar gradualmente el arma hacia el ángulo objetivo
 
 	if is_instance_valid(current_weapon1): 
@@ -364,3 +365,9 @@ func die():
 func _on_area_recoleccion_area_entered(item) -> void:
 	if item.is_in_group("items") and item.has_method("take_maiz"):
 		item.take_maiz()  # recibir la cantidad de maiz
+
+#Esto deberia permitirme reemplazar el arma, cuando haya cambios
+func _on_weapon_changed(nuevaArma :ArmaData):
+	unequip_weapon1()
+	equip_weapon1(0.0)
+	pass
