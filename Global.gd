@@ -4,6 +4,7 @@ signal lives_changed(new_value)
 
 #inventario global
 var inventory_player = [null, null, null, null, null, null] # inventario de maximo 6 slots
+var manos = [null,null]
 
 # Referencia al personaje actual
 var currentPlayer: CharacterData = null:
@@ -30,6 +31,17 @@ var currentWeapon: ArmaData = null:
 			push_error("Se intentó asignar un tipo inválido a currentWeapon")
 
 
+var secondaryWeapon: ArmaData = null:
+	set(value):
+		if value is ArmaData:
+			secondaryWeapon = value
+			# Conecta señales del personaje
+			weapon_changed_secondary.emit(secondaryWeapon)
+			inventory_player[1] = secondaryWeapon
+		else:
+			push_error("Se intentó asignar un tipo inválido a currentWeapon")
+
+
 func _ready() -> void:
 	# Inicializar con personaje por defecto
 	if currentPlayer == null:
@@ -40,6 +52,7 @@ func _ready() -> void:
 # Señales globales
 signal character_changed(new_character: CharacterData)
 signal weapon_changed(new_weapon: ArmaData)
+signal weapon_changed_secondary(new_weapon:ArmaData)
 signal health_changed(new_value: int)
 
 

@@ -13,6 +13,9 @@ var estado_actual: EstadoJuego = EstadoJuego.OLEADA
 var tiempo_restante: float = 0.0
 var menu_armas: Sprite2D = null  # Referencia al menú de armas
 
+
+var tienda_escene = preload("res://scenes/hud/hud_shop.tscn")
+
 func _ready():
 	iniciar_oleada()
 	
@@ -68,16 +71,14 @@ func iniciar_seleccion_armas():
 	if is_instance_valid(factory_enemy):
 		factory_enemy.queue_free()
 		factory_enemy = null
-	
-	# Crear menú de armas (que ignore la pausa)
-	menu_armas = Sprite2D.new()
-	menu_armas.texture = load("res://assets/graphics/menu_graphics/menu_armas.png")
-	menu_armas.scale = Vector2(1, 1)
-	menu_armas.position = Vector2(400, 300)
-	menu_armas.centered = true
-	menu_armas.process_mode = Node.PROCESS_MODE_ALWAYS  # Para que ignore la pausa
-	
-	add_child(menu_armas)
-	
-	# Pausar el juego (el menú seguirá funcionando por PROCESS_MODE_ALWAYS)
+	#
+	## Crear menú de armas (que ignore la pausa)
+	#menu_armas = Sprite2D.new()
+	## Crear menú de tienda (instanciar la escena correctamente)
+	#var tienda_instance = tienda_escene.instantiate()
+	#tienda_instance.process_mode = Node.PROCESS_MODE_ALWAYS
+	#add_child(tienda_instance)
 	get_tree().paused = true
+
+	get_tree().change_scene_to_file("res://scenes/hud/hud_shop.tscn")	
+	# Pausar el juego (excepto la tienda)
