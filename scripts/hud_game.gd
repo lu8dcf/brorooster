@@ -16,7 +16,8 @@ func _ready() -> void:
 	if Global.lives_changed.is_connected(_on_lives_changed):
 		Global.lives_changed.disconnect(_on_lives_changed)
 	Global.lives_changed.connect(_on_lives_changed)
-	
+
+
 
 func _on_lives_changed(new_value: int) -> void:
 	life_bar.value = new_value
