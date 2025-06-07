@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_c0i33"]
 [ext_resource type="PackedScene" uid="uid://bb0lfcam5hcep" path="res://scenes/game/Bullet/meleeBullet.tscn" id="3_e7n6j"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="4_w54en"]
-[ext_resource type="Texture2D" uid="uid://c6jx7d6p1bxgj" path="res://assets/graphics/character_graphics/armas/arma16.png" id="5_u8vua"]
+[ext_resource type="Texture2D" uid="uid://c8ttj0feihibj" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma3_nivel1.png" id="5_osv5l"]
 
 [resource]
 script = ExtResource("4_w54en")
+id = 3
 nombre = "re palanca"
-sprite = ExtResource("5_u8vua")
-damage = 7
+sprite = ExtResource("5_osv5l")
+damage = 0.0
 tiempoDisparo = 0.3
 arma_escena = ExtResource("2_c0i33")
 _bullet_type = "C"

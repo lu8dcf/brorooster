@@ -112,7 +112,7 @@ func initialize_default_weapon() -> void:
 		else:
 		# Fallback: crea un personaje por defecto
 			var default_weapon = ArmaData.new()
-			#default_weapon._id = 1
+			#default_weapon._id = 0
 			default_weapon._bullet_type="A"
 			default_weapon.costo = 1
 			default_weapon.nombre = "Arma"
@@ -120,9 +120,9 @@ func initialize_default_weapon() -> void:
 			default_weapon.arma_escena = preload("res://scenes/game/Armas/Arma.tscn") # agregue esta linea
 			default_weapon.bullet_scene = preload("res://scenes/game/Bullet/bullet.tscn")
 			default_weapon._texture = preload("res://assets/graphics/character_graphics/weapon_menu/Iconodearma1.png")
-			default_weapon.sprite= preload("res://assets/graphics/character_graphics/armas/arma1.png")
+			default_weapon.sprite= preload("res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma1_nivel1.png")
 			currentWeapon = default_weapon
-			push_warning("Usando personaje por defecto fallback")
+			push_warning("Usando arma por defecto fallback")
 
 # Global.current_weapon.
 

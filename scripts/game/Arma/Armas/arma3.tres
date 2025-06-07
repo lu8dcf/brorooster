@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_01lps"]
 [ext_resource type="PackedScene" uid="uid://ceivc2d3taao1" path="res://scenes/game/Bullet/bullet.tscn" id="3_j6axm"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="4_qhwir"]
-[ext_resource type="Texture2D" uid="uid://ctk5wbk76hel7" path="res://assets/graphics/character_graphics/armas/arma11.png" id="5_08dvv"]
+[ext_resource type="Texture2D" uid="uid://bbb5b2j8xur3x" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma9_nivel1.png" id="5_t6cxm"]
 
 [resource]
 script = ExtResource("4_qhwir")
+id = 9
 nombre = "piu piu"
-sprite = ExtResource("5_08dvv")
-damage = 10
+sprite = ExtResource("5_t6cxm")
+damage = 0.0
 tiempoDisparo = 0.5
 arma_escena = ExtResource("2_01lps")
 _bullet_type = "A"

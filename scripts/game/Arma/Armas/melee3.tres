@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_f8oew"]
 [ext_resource type="PackedScene" uid="uid://bb0lfcam5hcep" path="res://scenes/game/Bullet/meleeBullet.tscn" id="3_g4yal"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="4_5u1vr"]
-[ext_resource type="Texture2D" uid="uid://xnpnm78jecf4" path="res://assets/graphics/character_graphics/armas/arma7.png" id="5_3kd42"]
+[ext_resource type="Texture2D" uid="uid://fe8jb2mbl5at" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma6_nivel1.png" id="5_ilxde"]
 
 [resource]
 script = ExtResource("4_5u1vr")
+id = 6
 nombre = "tesaiga"
-sprite = ExtResource("5_3kd42")
-damage = 15
+sprite = ExtResource("5_ilxde")
+damage = 0.0
 tiempoDisparo = 0.2
 arma_escena = ExtResource("2_f8oew")
 _bullet_type = "C"

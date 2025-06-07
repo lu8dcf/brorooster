@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_8ipkp"]
 [ext_resource type="PackedScene" uid="uid://bb0lfcam5hcep" path="res://scenes/game/Bullet/meleeBullet.tscn" id="3_3f866"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="4_oxub0"]
-[ext_resource type="Texture2D" uid="uid://dfysdhtlja350" path="res://assets/graphics/character_graphics/armas/arma13.png" id="5_ld82k"]
+[ext_resource type="Texture2D" uid="uid://bs8nt1ge00pl" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma15_nivel1.png" id="5_kjfmo"]
 
 [resource]
 script = ExtResource("4_oxub0")
+id = 15
 nombre = "el punga"
-sprite = ExtResource("5_ld82k")
-damage = 7
+sprite = ExtResource("5_kjfmo")
+damage = 0.0
 tiempoDisparo = 0.4
 arma_escena = ExtResource("2_8ipkp")
 _bullet_type = "C"

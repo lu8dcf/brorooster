@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_xs7gg"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="3_3bdh7"]
 [ext_resource type="PackedScene" uid="uid://327rtgostnc" path="res://scenes/game/Bullet/explosiveBullet.tscn" id="3_xs7gg"]
-[ext_resource type="Texture2D" uid="uid://jsu1uvka5bs0" path="res://assets/graphics/character_graphics/armas/arma15.png" id="4_hxjtt"]
+[ext_resource type="Texture2D" uid="uid://bswt1hyjqhqhl" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma17_nivel1.png" id="5_xs7gg"]
 
 [resource]
 script = ExtResource("3_3bdh7")
+id = 17
 nombre = "escopetona"
-sprite = ExtResource("4_hxjtt")
-damage = 16
+sprite = ExtResource("5_xs7gg")
+damage = 0.0
 tiempoDisparo = 0.4
 arma_escena = ExtResource("2_xs7gg")
 _bullet_type = "B"

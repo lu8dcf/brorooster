@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://lelh2tou5ljd" path="res://assets/graphics/character_graphics/weapon_menu/Iconodearma11.png" id="1_ifmko"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="1_xalju"]
 [ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_ifmko"]
-[ext_resource type="Texture2D" uid="uid://cyicrgty4b5be" path="res://assets/graphics/character_graphics/armas/arma5.png" id="3_fgbql"]
+[ext_resource type="Texture2D" uid="uid://3pjkhlmt6f2r" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma11_nivel1.png" id="5_wiotw"]
 
 [resource]
 script = ExtResource("1_xalju")
+id = 11
 nombre = "la bezucona"
-sprite = ExtResource("3_fgbql")
-damage = 18
+sprite = ExtResource("5_wiotw")
+damage = 0.0
 tiempoDisparo = 0.4
 arma_escena = ExtResource("2_ifmko")
 _bullet_type = "B"
