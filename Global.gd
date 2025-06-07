@@ -4,6 +4,7 @@ signal lives_changed(new_value)
 
 #inventario global
 var inventory_player = [null, null, null, null, null, null] # inventario de maximo 6 slots
+var manos = [null,null]
 
 # Referencia al personaje actual
 var currentPlayer: CharacterData = null:
@@ -30,6 +31,17 @@ var currentWeapon: ArmaData = null:
 			push_error("Se intentó asignar un tipo inválido a currentWeapon")
 
 
+var secondaryWeapon: ArmaData = null:
+	set(value):
+		if value is ArmaData:
+			secondaryWeapon = value
+			# Conecta señales del personaje
+			weapon_changed_secondary.emit(secondaryWeapon)
+			inventory_player[1] = secondaryWeapon
+		else:
+			push_error("Se intentó asignar un tipo inválido a currentWeapon")
+
+
 func _ready() -> void:
 	# Inicializar con personaje por defecto
 	if currentPlayer == null:
@@ -40,6 +52,7 @@ func _ready() -> void:
 # Señales globales
 signal character_changed(new_character: CharacterData)
 signal weapon_changed(new_weapon: ArmaData)
+signal weapon_changed_secondary(new_weapon:ArmaData)
 signal health_changed(new_value: int)
 
 
@@ -99,7 +112,7 @@ func initialize_default_weapon() -> void:
 		else:
 		# Fallback: crea un personaje por defecto
 			var default_weapon = ArmaData.new()
-			#default_weapon._id = 1
+			#default_weapon._id = 0
 			default_weapon._bullet_type="A"
 			default_weapon.costo = 1
 			default_weapon.nombre = "Arma"
@@ -107,9 +120,9 @@ func initialize_default_weapon() -> void:
 			default_weapon.arma_escena = preload("res://scenes/game/Armas/Arma.tscn") # agregue esta linea
 			default_weapon.bullet_scene = preload("res://scenes/game/Bullet/bullet.tscn")
 			default_weapon._texture = preload("res://assets/graphics/character_graphics/weapon_menu/Iconodearma1.png")
-			default_weapon.sprite= preload("res://assets/graphics/character_graphics/armas/arma1.png")
+			default_weapon.sprite= preload("res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma1_nivel1.png")
 			currentWeapon = default_weapon
-			push_warning("Usando personaje por defecto fallback")
+			push_warning("Usando arma por defecto fallback")
 
 # Global.current_weapon.
 

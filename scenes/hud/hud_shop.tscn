@@ -1,22 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn6cx6comltn7"]
+[gd_scene load_steps=11 format=3 uid="uid://cn6cx6comltn7"]
 
 [ext_resource type="PackedScene" uid="uid://b3gw0handi0b6" path="res://scenes/hud/base/base_panel.tscn" id="1_21ycv"]
+[ext_resource type="Script" uid="uid://kyx6uel0bmwm" path="res://scripts/hud_shop.gd" id="1_jgdut"]
 [ext_resource type="PackedScene" uid="uid://bh8g3tik5mpcj" path="res://scenes/hud/base/base_label.tscn" id="2_4g13u"]
 [ext_resource type="PackedScene" uid="uid://di8wmjenmmyrs" path="res://scenes/hud/base/base_weapon_shadow.tscn" id="2_nbyaw"]
 [ext_resource type="Texture2D" uid="uid://cgbviaj0qb76d" path="res://assets/graphics/character_graphics/character_menu/gallina1.png" id="3_gmhi7"]
 [ext_resource type="Texture2D" uid="uid://hbdqji4tmdvy" path="res://assets/graphics/menu_graphics/icon_menu/icon_cost.png" id="4_e6qmr"]
 [ext_resource type="PackedScene" uid="uid://lvvnb1v5hp5o" path="res://scenes/hud/base/base_button.tscn" id="5_gmhi7"]
 [ext_resource type="Texture2D" uid="uid://egjhmangrvj8" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma_nivel1_1.png" id="6_3nu7x"]
+[ext_resource type="Texture2D" uid="uid://tkih1fih0mxj" path="res://assets/graphics/menu_graphics/bg_weapon_selected.png" id="8_v82hh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e6qmr"]
 
 [node name="HudShop" type="Control"]
+process_mode = 3
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jgdut")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -27,14 +32,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.180392, 0.180392, 0.180392, 1)
 
-[node name="Panel" parent="." instance=ExtResource("1_21ycv")]
+[node name="panel_character" parent="." instance=ExtResource("1_21ycv")]
 layout_mode = 1
-offset_left = -550.0
-offset_top = -295.0
-offset_right = -267.0
-offset_bottom = -103.0
+anchors_preset = -1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_top = 28.0
+offset_right = -822.0
+offset_bottom = -428.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" parent="Panel" instance=ExtResource("2_4g13u")]
+[node name="Label" parent="panel_character" instance=ExtResource("2_4g13u")]
 layout_mode = 1
 offset_left = -67.0
 offset_top = -92.0
@@ -43,34 +54,55 @@ offset_bottom = -21.0
 theme_override_font_sizes/font_size = 20
 text = "nombre"
 
-[node name="character" type="Sprite2D" parent="Panel"]
+[node name="character" type="Sprite2D" parent="panel_character"]
 position = Vector2(83, 112)
 scale = Vector2(1.09375, 1.075)
 texture = ExtResource("3_gmhi7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="panel_character"]
 layout_mode = 0
 offset_left = 167.0
 offset_top = 95.0
 offset_right = 249.0
 offset_bottom = 152.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Panel/VBoxContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="panel_character/VBoxContainer"]
 position = Vector2(6, 13)
 scale = Vector2(1.83333, 1.83333)
 texture = ExtResource("4_e6qmr")
 
-[node name="Label" parent="Panel/VBoxContainer" instance=ExtResource("2_4g13u")]
+[node name="maiz" parent="panel_character/VBoxContainer" instance=ExtResource("2_4g13u")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "    0"
 
+[node name="TextureButton" type="TextureButton" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.036
+anchor_top = -0.607
+anchor_right = 2.303
+anchor_bottom = 1.0
+offset_left = 93.472
+offset_top = 976.336
+offset_right = -922.638
+offset_bottom = 382.75
+texture_normal = ExtResource("8_v82hh")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="panel_inventory" type="Panel" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 19.0
 offset_top = 247.0
-offset_right = 509.0
-offset_bottom = 645.0
+offset_right = -643.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_e6qmr")
 
 [node name="label_inventory" parent="panel_inventory" instance=ExtResource("2_4g13u")]
@@ -84,19 +116,20 @@ text = "inventario"
 
 [node name="inv_1" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 41.0
+offset_left = 39.0
 offset_top = 337.0
-offset_right = 308.0
+offset_right = 306.0
 offset_bottom = 424.0
 
-[node name="Sprite2D2" type="TextureRect" parent="panel_inventory/inv_1"]
+[node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_1"]
 layout_mode = 0
-offset_left = -127.359
-offset_top = -166.042
-offset_right = 5.64085
-offset_bottom = -102.042
+offset_left = -64.9003
+offset_top = -127.563
+offset_right = 39.0997
+offset_bottom = -76.5628
 scale = Vector2(4.39237, 4.39237)
 texture = ExtResource("6_3nu7x")
+expand_mode = 1
 
 [node name="inv_2" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
@@ -105,14 +138,15 @@ offset_top = 221.0
 offset_right = 307.0
 offset_bottom = 308.0
 
-[node name="Sprite2D2" type="TextureRect" parent="panel_inventory/inv_2"]
+[node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_2"]
 layout_mode = 0
-offset_left = -127.359
-offset_top = -166.042
-offset_right = 5.64084
-offset_bottom = -102.042
+offset_left = -64.9003
+offset_top = -127.563
+offset_right = 39.0997
+offset_bottom = -76.5628
 scale = Vector2(4.39237, 4.39237)
 texture = ExtResource("6_3nu7x")
+expand_mode = 1
 
 [node name="inv_3" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
@@ -121,14 +155,15 @@ offset_top = 110.0
 offset_right = 307.0
 offset_bottom = 197.0
 
-[node name="Sprite2D2" type="TextureRect" parent="panel_inventory/inv_3"]
+[node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_3"]
 layout_mode = 0
-offset_left = -127.359
-offset_top = -166.042
-offset_right = 5.64084
-offset_bottom = -102.042
+offset_left = -64.9003
+offset_top = -127.563
+offset_right = 39.0997
+offset_bottom = -76.5628
 scale = Vector2(4.39237, 4.39237)
 texture = ExtResource("6_3nu7x")
+expand_mode = 1
 
 [node name="inv_4" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
@@ -137,14 +172,15 @@ offset_top = 110.0
 offset_right = 474.0
 offset_bottom = 197.0
 
-[node name="Sprite2D2" type="TextureRect" parent="panel_inventory/inv_4"]
+[node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_4"]
 layout_mode = 0
-offset_left = -127.359
-offset_top = -166.042
-offset_right = 5.64085
-offset_bottom = -102.042
+offset_left = -64.9003
+offset_top = -127.563
+offset_right = 39.0997
+offset_bottom = -76.5628
 scale = Vector2(4.39237, 4.39237)
 texture = ExtResource("6_3nu7x")
+expand_mode = 1
 
 [node name="inv_5" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
@@ -153,14 +189,15 @@ offset_top = 221.0
 offset_right = 474.0
 offset_bottom = 308.0
 
-[node name="Sprite2D2" type="TextureRect" parent="panel_inventory/inv_5"]
+[node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_5"]
 layout_mode = 0
-offset_left = -127.359
-offset_top = -166.042
-offset_right = 5.64085
-offset_bottom = -102.042
+offset_left = -64.9003
+offset_top = -127.563
+offset_right = 39.0997
+offset_bottom = -76.5628
 scale = Vector2(4.39237, 4.39237)
 texture = ExtResource("6_3nu7x")
+expand_mode = 1
 
 [node name="inv_6" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
@@ -169,14 +206,15 @@ offset_top = 336.0
 offset_right = 474.0
 offset_bottom = 423.0
 
-[node name="Sprite2D2" type="TextureRect" parent="panel_inventory/inv_6"]
+[node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_6"]
 layout_mode = 0
-offset_left = -127.359
-offset_top = -166.042
-offset_right = 5.64085
-offset_bottom = -102.042
+offset_left = -64.9003
+offset_top = -127.563
+offset_right = 39.0997
+offset_bottom = -76.5628
 scale = Vector2(4.39237, 4.39237)
 texture = ExtResource("6_3nu7x")
+expand_mode = 1
 
 [node name="btn_sold" parent="panel_inventory" instance=ExtResource("5_gmhi7")]
 layout_mode = 1
@@ -189,10 +227,15 @@ text = "vender"
 
 [node name="panel_merge" parent="." instance=ExtResource("1_21ycv")]
 layout_mode = 1
-offset_left = -49.0
-offset_top = 15.0
-offset_right = 556.0
-offset_bottom = 299.0
+anchors_preset = -1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 527.0
+offset_top = 339.0
+offset_right = -20.0
+offset_bottom = -25.0
 
 [node name="Label4" parent="panel_merge" instance=ExtResource("2_4g13u")]
 layout_mode = 1
@@ -279,9 +322,24 @@ texture = ExtResource("6_3nu7x")
 
 [node name="panel_shop" parent="." instance=ExtResource("1_21ycv")]
 layout_mode = 1
-offset_top = -363.0
-offset_right = 552.0
-offset_bottom = -15.0
+anchors_preset = -1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 361.0
+offset_top = -39.0
+offset_right = -24.0
+offset_bottom = -339.0
+
+[node name="temporizador" parent="panel_shop" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = -296.5
+offset_top = -133.0
+offset_right = -145.5
+offset_bottom = -72.0
+theme_override_font_sizes/font_size = 30
+text = "00"
 
 [node name="text_shop" parent="panel_shop" instance=ExtResource("2_4g13u")]
 layout_mode = 1

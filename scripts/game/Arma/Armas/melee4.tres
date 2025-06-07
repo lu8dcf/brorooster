@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_porqg"]
 [ext_resource type="PackedScene" uid="uid://bb0lfcam5hcep" path="res://scenes/game/Bullet/meleeBullet.tscn" id="3_kku85"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="4_kgxhq"]
-[ext_resource type="Texture2D" uid="uid://6ly7o0p42dxs" path="res://assets/graphics/character_graphics/armas/arma8.png" id="5_sxt8x"]
+[ext_resource type="Texture2D" uid="uid://djlp51nfam2qb" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma2_nivel1.png" id="5_l7uxv"]
 
 [resource]
 script = ExtResource("4_kgxhq")
+id = 2
 nombre = "lucy"
-sprite = ExtResource("5_sxt8x")
-damage = 8
+sprite = ExtResource("5_l7uxv")
+damage = 0.0
 tiempoDisparo = 0.4
 arma_escena = ExtResource("2_porqg")
 _bullet_type = "C"

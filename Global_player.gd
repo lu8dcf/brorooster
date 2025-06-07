@@ -18,6 +18,9 @@ class_name CharacterData
 @export var _armor: float = 1.0:
 	set(value):
 		_armor = clamp(value, 0.1, 1.0)
+		
+		
+
 
 # Señales
 signal health_changed(new_value: int)
@@ -30,5 +33,12 @@ func take_damage(amount: int) -> void:
 func heal(amount: int) -> void:
 	_health = min(100, _health + amount)
 
+
+func get_sprite() -> Texture2D:
+	return _texture
+	
 func get_texture_path() -> String:
 	return _texture.resource_path if _texture else ""
+	
+func get_display_name() -> String:
+	return _display_name

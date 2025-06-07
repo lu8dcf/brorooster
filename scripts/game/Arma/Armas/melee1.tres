@@ -1,16 +1,17 @@
 [gd_resource type="Resource" script_class="ArmaData" load_steps=6 format=3 uid="uid://b710q5t6ql66w"]
 
 [ext_resource type="Texture2D" uid="uid://b8qg5qfscxwvd" path="res://assets/graphics/character_graphics/weapon_menu/Iconodearma4.png" id="1_64w2y"]
-[ext_resource type="Texture2D" uid="uid://b7xtixvxdlkrh" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma_nivel1_4.png" id="1_c25oh"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="1_qdhyo"]
 [ext_resource type="PackedScene" uid="uid://bb0lfcam5hcep" path="res://scenes/game/Bullet/meleeBullet.tscn" id="1_us0b2"]
 [ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_c25oh"]
+[ext_resource type="Texture2D" uid="uid://m8fb80o6gext" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma4_nivel1.png" id="5_c25oh"]
 
 [resource]
 script = ExtResource("1_qdhyo")
+id = 4
 nombre = "neptuno"
-sprite = ExtResource("1_c25oh")
-damage = 15
+sprite = ExtResource("5_c25oh")
+damage = 0.0
 tiempoDisparo = 0.3
 arma_escena = ExtResource("2_c25oh")
 _bullet_type = "C"

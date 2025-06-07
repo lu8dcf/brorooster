@@ -1,34 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://chhyjtslwr2x2"]
+[gd_scene load_steps=4 format=3 uid="uid://chhyjtslwr2x2"]
 
 [ext_resource type="Script" uid="uid://ba5ldqywlqbxh" path="res://scripts/base_hudgame_weapon.gd" id="1_nlfkl"]
 [ext_resource type="PackedScene" uid="uid://di8wmjenmmyrs" path="res://scenes/hud/base/base_weapon_shadow.tscn" id="2_nlfkl"]
-[ext_resource type="Texture2D" uid="uid://egjhmangrvj8" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma_nivel1_1.png" id="3_g58h3"]
 [ext_resource type="PackedScene" uid="uid://bh8g3tik5mpcj" path="res://scenes/hud/base/base_label.tscn" id="4_bumkb"]
 
 [node name="BaseHudgameWeapon" type="Control"]
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 1152.0
+offset_top = 648.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_nlfkl")
 
 [node name="Slots" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = -448.0
 offset_top = -43.0
 offset_right = -15.0
 offset_bottom = -27.0
-grow_horizontal = 0
-grow_vertical = 0
 theme_override_constants/separation = 26
 
 [node name="weapon_inv_1" parent="Slots" instance=ExtResource("2_nlfkl")]
@@ -42,7 +34,6 @@ offset_top = -24.0
 offset_right = 5.0
 offset_bottom = -14.0
 scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("3_g58h3")
 expand_mode = 1
 
 [node name="Label" parent="Slots/weapon_inv_1" instance=ExtResource("4_bumkb")]
@@ -65,7 +56,6 @@ offset_top = -24.0
 offset_right = 5.0
 offset_bottom = -14.0
 scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("3_g58h3")
 expand_mode = 1
 
 [node name="Label" parent="Slots/weapon_inv_2" instance=ExtResource("4_bumkb")]
@@ -88,7 +78,6 @@ offset_top = -24.0
 offset_right = 5.0
 offset_bottom = -14.0
 scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("3_g58h3")
 expand_mode = 1
 
 [node name="Label" parent="Slots/weapon_inv_3" instance=ExtResource("4_bumkb")]
@@ -111,7 +100,6 @@ offset_top = -24.0
 offset_right = 5.0
 offset_bottom = -14.0
 scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("3_g58h3")
 expand_mode = 1
 
 [node name="Label" parent="Slots/weapon_inv_4" instance=ExtResource("4_bumkb")]
@@ -134,7 +122,6 @@ offset_top = -24.0
 offset_right = 5.0
 offset_bottom = -14.0
 scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("3_g58h3")
 expand_mode = 1
 
 [node name="Label" parent="Slots/weapon_inv_5" instance=ExtResource("4_bumkb")]
@@ -157,7 +144,6 @@ offset_top = -24.0
 offset_right = 5.0
 offset_bottom = -14.0
 scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("3_g58h3")
 expand_mode = 1
 
 [node name="Label" parent="Slots/weapon_inv_6" instance=ExtResource("4_bumkb")]

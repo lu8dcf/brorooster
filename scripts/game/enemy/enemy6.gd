@@ -13,7 +13,7 @@ var movimiento = Vector2()
 var tiene_maiz := false
 
 func _ready():
-	update_health(health)
+	
 	$Sprite2D.texture = load(sprite)
 	$Sprite2D.modulate = Color(red, green, blue)
 
@@ -40,7 +40,7 @@ func _on_area_2d_body_entered(body):
 
 func take_damage(amount: float):
 	health -= amount
-	update_health(health)
+	
 	if health <= 0:
 		die()
 
@@ -51,8 +51,7 @@ func die():
 		#maiz.global_position = global_position
 	queue_free()
 
-func update_health(value: float):
-	$HealthBar/ProgressBar.value = value
+
 
 func _on_area_daño_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.has_method("take_damage"):

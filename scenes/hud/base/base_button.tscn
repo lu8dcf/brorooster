@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://lvvnb1v5hp5o"]
+[gd_scene load_steps=12 format=3 uid="uid://lvvnb1v5hp5o"]
 
 [ext_resource type="FontFile" uid="uid://bbufnohtiso2" path="res://assets/font/omega-pixel-biform.ttf" id="1_g3l2f"]
 [ext_resource type="Texture2D" uid="uid://clpbv1yb8dhlu" path="res://assets/graphics/menu_graphics/btn_hover.png" id="2_g4i27"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3f6ip"]
 texture = ExtResource("2_g4i27")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7oap5"]
+texture = ExtResource("4_7oap5")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qdhl5"]
 texture = ExtResource("2_g4i27")
@@ -34,6 +37,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_g3l2f")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxTexture_3f6ip")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_7oap5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_qdhl5")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_p27ap")
 theme_override_styles/normal = SubResource("StyleBoxTexture_vffwk")

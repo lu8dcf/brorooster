@@ -5,8 +5,11 @@ class_name Arma
 @export var arma_data: ArmaData
 
 var puedoDisparar = true
+var inv_image_weapon1=0
+var target_angle: float = 0.0
+var diferencia_sprite_weapon := 0.0  # si querés ajustar el ángulo por sprite
 
-#
+
 #Constructor
 func setup(nombre : String, sprite : Texture2D, damage : int, tiempoDisparo : float, bullet_scene : PackedScene, costo : int) -> void:
 	arma_data = ArmaData.new()
@@ -22,7 +25,20 @@ func _ready() -> void:
 	$Sprite2D.texture = arma_data.sprite
 	set_danio_total()
 
-
+func _process(delta):
+	#cambio la rotacion del arma (tiene que se la instancia, la escena en ejecucion)
+	rotation = lerp_angle(rotation, target_angle + diferencia_sprite_weapon, 14.0 * delta)
+	
+	# Determinar si el arma está apuntando hacia la izquierda invierte el sprite
+	if  abs(target_angle) > PI/2 and inv_image_weapon1 == 0:
+		$Sprite2D.flip_v = true # Voltear horizontalmente el sprite del arma
+		inv_image_weapon1=1
+		
+	elif abs(target_angle) < PI/2  and inv_image_weapon1 == 1:
+		$Sprite2D.flip_v = false # dejarla original
+		inv_image_weapon1=0
+	
+	
 func set_danio_total():
 	return GlobalWeapon.get_danioGlobal() * arma_data.damage
 
@@ -54,14 +70,3 @@ func shoot(posicion: Vector2, direccionEnemigo : float):  # Disparo hacia el ang
 			$AnimationPlayer.play("retroceso")
 		await get_tree().create_timer(get_tiempoDisparo()).timeout
 		puedoDisparar = true
-
-
-
-
-func CombinarArma(condiciones):
-	if(condiciones):
-		print("Cumpli con las condiciones y retorno el path del obj")
-	else:
-		print("No es posoble combinar")
-	pass
-pass
