@@ -29,6 +29,8 @@ func _ready():
 	
 func _on_timer_timeout():
 	tiempo_restante -= 1
+	GlobalOleada.tiempo_restante_oleada = tiempo_restante
+	GlobalOleada.time_changed.emit(tiempo_restante)
 	print (tiempo_restante)
 		
 	if tiempo_restante <= 0:

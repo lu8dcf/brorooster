@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cn6cx6comltn7"]
+[gd_scene load_steps=11 format=3 uid="uid://cn6cx6comltn7"]
 
 [ext_resource type="PackedScene" uid="uid://b3gw0handi0b6" path="res://scenes/hud/base/base_panel.tscn" id="1_21ycv"]
 [ext_resource type="Script" uid="uid://kyx6uel0bmwm" path="res://scripts/hud_shop.gd" id="1_jgdut"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://hbdqji4tmdvy" path="res://assets/graphics/menu_graphics/icon_menu/icon_cost.png" id="4_e6qmr"]
 [ext_resource type="PackedScene" uid="uid://lvvnb1v5hp5o" path="res://scenes/hud/base/base_button.tscn" id="5_gmhi7"]
 [ext_resource type="Texture2D" uid="uid://egjhmangrvj8" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma_nivel1_1.png" id="6_3nu7x"]
+[ext_resource type="Texture2D" uid="uid://tkih1fih0mxj" path="res://assets/graphics/menu_graphics/bg_weapon_selected.png" id="8_v82hh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e6qmr"]
 
@@ -75,6 +76,22 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "    0"
 
+[node name="TextureButton" type="TextureButton" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.036
+anchor_top = -0.607
+anchor_right = 2.303
+anchor_bottom = 1.0
+offset_left = 93.472
+offset_top = 976.336
+offset_right = -922.638
+offset_bottom = 382.75
+texture_normal = ExtResource("8_v82hh")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="panel_inventory" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -99,9 +116,9 @@ text = "inventario"
 
 [node name="inv_1" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 41.0
+offset_left = 39.0
 offset_top = 337.0
-offset_right = 308.0
+offset_right = 306.0
 offset_bottom = 424.0
 
 [node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_1"]

@@ -7,28 +7,21 @@
 
 [node name="BaseHudgameWeapon" type="Control"]
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 1152.0
+offset_top = 648.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_nlfkl")
 
 [node name="Slots" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = -448.0
 offset_top = -43.0
 offset_right = -15.0
 offset_bottom = -27.0
-grow_horizontal = 0
-grow_vertical = 0
 theme_override_constants/separation = 26
 
 [node name="weapon_inv_1" parent="Slots" instance=ExtResource("2_nlfkl")]
