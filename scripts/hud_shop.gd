@@ -1,5 +1,8 @@
 extends Control
 
+var tiempo_restante = GlobalOleada.tiempo_seleccion
+
+
 @onready var panel_character = $panel_character
 @onready var panel_inventory = $panel_inventory
 @onready var panel_shop = $panel_shop
@@ -29,15 +32,40 @@ extends Control
 
 func _ready() -> void:
 	
-	
 	get_tree().paused = false
+	
+	
+	# Configura un Timer para decrementar cada segundo
+	var timer = Timer.new()
+	add_child(timer)
+	timer.timeout.connect(_on_timer_timeout)
+	timer.start(1.0)  # Intervalo de 1 segundo
+	
+	temporizador.text = str(GlobalOleada.tiempo_restante_seleccion)
+	
+	GlobalOleada.time_changed.connect(_on_time_shop_changed)  # Conecta la señal
+	
+	
 	update_character()
 	update_inventory()
 	update_shop()
 	update_merge()
+	
+func _on_timer_timeout():
+	tiempo_restante -= 1
+	GlobalOleada.tiempo_restante_seleccion = tiempo_restante
+	GlobalOleada.time_changed.emit(tiempo_restante)
+	print (tiempo_restante)
+		
+	if tiempo_restante <= 0:
+		# Opcional: Detener el timer al llegar a 0
+		tiempo_restante = GlobalOleada.tiempo_seleccion
+		get_tree().change_scene_to_file("res://scenes/game/main_game.tscn")	
 
-func _process(delta: float) -> void:
-	temporizador.text = str(0)
+
+func _on_time_shop_changed(new_time: int):
+	# Propaga el cambio de salud del personaje como señal global
+	temporizador.text = str(new_time) + " s"
 
 func update_character():
 	name_character.text = Global.currentPlayer.get_display_name()
