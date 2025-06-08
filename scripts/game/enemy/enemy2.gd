@@ -1,6 +1,11 @@
 class_name Lombriz
 extends EnemigoBase
 
+func _ready():
+	# inici de salida del agujero
+	pass
+
+	
 	
 func _physics_process(_delta): 
 	move_and_collide(movimiento)
