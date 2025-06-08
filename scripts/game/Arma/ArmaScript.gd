@@ -55,17 +55,13 @@ func shoot(posicion: Vector2, direccionEnemigo : float):  # Disparo hacia el ang
 			push_error("No hay datos del arma")
 			return
 			
-		var shoot = arma_data.bullet_scene.instantiate()
-		shoot.global_position = posicion
-		shoot.rotation = direccionEnemigo # direccion del enemigo
+		var bullet = arma_data.bullet_scene.instantiate()
+		var direccion = Vector2.from_angle(target_angle)#Vector2.from_angle(direccionEnemigo) 
+		bullet.setup(set_danio_total(), direccion)
+		bullet.global_position = posicion
+		bullet.rotation = target_angle
+		get_tree().get_root().add_child(bullet)
 		
-		var direccion = Vector2.from_angle(direccionEnemigo)
-		
-		if shoot.has_method("set_direction"): # Método en la bala
-			shoot.setup(set_danio_total(), direccion)
-			#shoot.set_direction(Vector2.from_angle(direccionEnemigo))
-
-		get_tree().get_root().add_child(shoot)
 		if has_node("AnimationPlayer"):
 			$AnimationPlayer.play("retroceso")
 		await get_tree().create_timer(get_tiempoDisparo()).timeout

@@ -2,10 +2,13 @@ extends Node
 
 @export var CadenciaDisparo :  float = 1.0 #Recordar que hay velocidades de por ejemplo 0,2
 #Por lo tando 15.0 * 0.2 da 3, 3 segundos entre disparo. (15.0 es excelente para probar)
-@export var danio :int = 1
+@export var danio :float = 1
 var sprite_arma_default = "res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma" # se le agregara el numero de arma y nivel
 var direccionEnemigoCerca
 #Crear una lista accesible de las armas
+
+
+#Señal cuando hay cuando cambia el danio
 
 #set
 func set_CadenciaGlobal (valor: float):
