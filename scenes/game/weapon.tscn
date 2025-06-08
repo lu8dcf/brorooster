@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://jlapuo4uvt6t"]
+[gd_scene load_steps=10 format=3 uid="uid://jlapuo4uvt6t"]
 
 [ext_resource type="Script" uid="uid://o2fv10kawcqa" path="res://scripts/game/Arma/ArmaScript.gd" id="1_tsmt0"]
-[ext_resource type="Texture2D" uid="uid://c8ttj0feihibj" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma3_nivel1.png" id="2_tsmt0"]
+[ext_resource type="Texture2D" uid="uid://bs8nt1ge00pl" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma15_nivel1.png" id="2_tsmt0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsmt0"]
-size = Vector2(2.25, 3.75)
+size = Vector2(11.25, 5)
 
 [sub_resource type="Animation" id="Animation_b6hqs"]
 length = 0.001
@@ -158,9 +158,103 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(-8, -1), Vector2(3, 0), Vector2(2.38419e-07, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_h0ulp"]
+resource_name = "Explosiva"
+length = 1.6015
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(19, 0), Vector2(-33, -1), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1.23),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0436332, -0.970403, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ygvl8"]
+resource_name = "estocada"
+length = 0.81
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(37.69, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.433333, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1.90735e-06, 1.90735e-06), Vector2(31, 8), Vector2(111, -2), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0506145, 0.122173, -0.0610865]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_80mr2"]
 _data = {
+&"Explosiva": SubResource("Animation_h0ulp"),
 &"RESET": SubResource("Animation_b6hqs"),
+&"estocada": SubResource("Animation_ygvl8"),
 &"mele": SubResource("Animation_80mr2"),
 &"retroceso": SubResource("Animation_tsmt0")
 }
@@ -175,7 +269,7 @@ texture = ExtResource("2_tsmt0")
 offset = Vector2(37.69, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.125, 0.125)
+position = Vector2(4.375, -0.5)
 shape = SubResource("RectangleShape2D_tsmt0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
