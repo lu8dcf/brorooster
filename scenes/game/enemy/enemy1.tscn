@@ -16,7 +16,7 @@ frame_2/texture = ExtResource("4_v7vxs")
 frame_2/duration = 2.65
 
 [sub_resource type="Curve" id="Curve_rroe5"]
-_data = [Vector2(0.0675676, 0.758922), 0.0, 0.0, 0, 0, Vector2(0.855212, 0.0247668), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.0617761, 0.533381), 0.0, 0.0, 0, 0, Vector2(0.855212, 0.0247668), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
@@ -103,7 +103,7 @@ initial_velocity_min = 29.63
 initial_velocity_max = 51.85
 angular_velocity_max = 96.0
 scale_amount_min = 0.0
-scale_amount_max = 145.84
+scale_amount_max = 8.81
 scale_amount_curve = SubResource("Curve_rroe5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
