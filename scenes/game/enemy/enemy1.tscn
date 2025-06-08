@@ -90,8 +90,10 @@ script = ExtResource("1_wthq6")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(-26, -18)
+emitting = false
 texture = SubResource("AnimatedTexture_1nps3")
 lifetime = 1.77
+one_shot = true
 speed_scale = 3.17
 explosiveness = 1.0
 randomness = 0.86
