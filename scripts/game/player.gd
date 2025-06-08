@@ -84,21 +84,14 @@ var arma2_scene : PackedScene
 
 var cambioArma = true #true = arma 1 | false = arma 2
 
-	#disparo 1
-#@export var shoot1_scene_path: String = shoot1_path
-#var shoot1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 
 @onready var muzzle1  :  Marker2D = $shoot1 #desde donde sale el disparo
 var shooting1 = false
 
 	#weapon2
-@export var weapon2_scene_path: String = weapon2_path
-var weapon2_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 @onready var weapon2_anchor: Marker2D = $WeaponAnchor2 # punto d eunion del arma
 
 	#disapro2
-@export var shoot2_scene_path: String = shoot2_path
-var shoot2_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
 @onready var muzzle2  :  Marker2D = $shoot2
 var shooting2 = false
 
@@ -119,27 +112,7 @@ func _ready():
 	if arma1_data and arma1_data.arma_escena and arma1_data:
 		arma1_scene = arma1_data.arma_escena
 		equip_weapon1(0.0)
-	# Instalar el Weapon1 
-	#if weapon1_scene_path != "" and weapon1_enable:
-		#weapon1_scene = ResourceLoader.load(weapon1_scene_path)
-		#if weapon1_scene:
-			##var weapon1_instance = weapon1_scene.instantiate()
-			##add_child(weapon1_instance)
-			#equip_weapon1(0.0) # La coloca en la posicion 1
-		##	shoot1_scene = ResourceLoader.load(shoot1_scene_path)
-			##if shoot1_scene:
-				##timer_Shoot1() # Activa el timer de disparo
-		
-	## Instalar el Weapon2 	
-	#if weapon2_scene_path != "" and weapon2_enable:
-		#weapon2_scene = ResourceLoader.load(weapon2_scene_path)
-		#if weapon2_scene:
-			#var weapon2_instance = weapon2_scene.instantiate()
-			##add_child(weapon2_instance)
-			#equip_weapon2(0.0) # La coloca en la posicion 1 ?
-			#shoot2_scene = ResourceLoader.load(shoot2_scene_path)
-			#if shoot2_scene:
-				#timer_Shoot2() # Activa el timer de disparo
+	
 	if arma2_data and arma2_data.arma_escena and arma2_data:
 		arma2_scene = arma2_data.arma_escena
 		equip_weapon2(0.0)
@@ -155,31 +128,11 @@ func _process(delta):
 	if is_instance_valid(current_weapon1): 
 		#Aca le mando la direccion en la que debe rotar. Obtenido desde el main_game
 		current_weapon1.target_angle = target_angle #para que el arma propia rote
-		#var weapon_sprite = current_weapon1.get_node("Sprite2D")  # Sprite del arma
-		##current_weapon1.rotation = lerp_angle(current_weapon1.rotation,prueba            , 10.0 * delta) 
-		#current_weapon1.rotation = lerp_angle(current_weapon1.rotation,target_angle + diferencia_sprit_weapon , 12.0 * delta)  # Ajusta la velocidad de rotación
-		#
-		## Determinar si el arma está apuntando hacia la izquierda invierte el sprite
-		#if  abs(target_angle) > PI/2 and inv_image_weapon1 == 0:
-			#weapon_sprite.flip_v = true # Voltear horizontalmente el sprite del arma
-			#inv_image_weapon1=1
-			#
-		#elif abs(target_angle) < PI/2  and inv_image_weapon1 == 1:
-			#weapon_sprite.flip_v = false # dejarla original
-			#inv_image_weapon1=0
-			
 			
 	if is_instance_valid(current_weapon2):
 		current_weapon2.target_angle = target_angle
-		#current_weapon2.rotation = lerp_angle(current_weapon2.rotation,target_angle + diferencia_sprit_weapon, 10.0 * delta)  # Ajusta la velocidad de rotación
-		#var weapon_sprite = current_weapon2.get_node("Sprite2D")  # Sprite del arma
-		#if  abs(target_angle) > PI/2 and inv_image_weapon2 == 0:
-			#weapon_sprite.flip_v = true
-			#inv_image_weapon2=1
-			#
-		#elif abs(target_angle) < PI/2  and inv_image_weapon2 == 1:
-			#weapon_sprite.flip_v = false
-			#inv_image_weapon2=0
+
+
 func move_with_mouse():
 	
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN) # oculta el mouse y evita que salga de la pantalla del videojuego
@@ -237,16 +190,7 @@ func equip_weapon1(_angle:float):
 	
 	## Instancia la escena del arma
 	
-#
-#func equip_weapon2(_angle:float):
-	#if not weapon2_scene and not is_instance_valid(weapon2_anchor):
-		#return
-		#
-	## Instancia la escena del arma
-	#current_weapon2 = weapon2_scene.instantiate()
-	#$WeaponAnchor2.add_child(current_weapon2)
-	#current_weapon2.position = Vector2.ZERO
-		#
+
 func equip_weapon2(_angle:float):
 	if arma2_data and arma2_data.arma_escena:
 		if is_instance_valid(current_weapon2):
@@ -258,7 +202,6 @@ func equip_weapon2(_angle:float):
 	$WeaponAnchor2.add_child(current_weapon2)
 	current_weapon2.position = Vector2.ZERO
 
-	
 	
 func unequip_weapon1(): # desequipar le arma
 	if is_instance_valid(current_weapon1):
@@ -300,26 +243,9 @@ func shootWeapon2():
 		shooting2 = false
 	
 
-	
-func timer_Shoot2():
-	var shoot2_timer = Timer.new()
-	shoot2_timer.wait_time = time_shoot2
-	shoot2_timer.one_shot = false #que sea ciclico
-	add_child(shoot2_timer)
-	shoot2_timer.start()  # inicia el temporizador
-	shoot2_timer.timeout.connect(shoot2)	
+
 		
 
-	
-	
-func shoot2():  # Disparo hacia el angulo del enemigo mas cercano
-	pass
-	#var shoot2 = shoot2_scene.instantiate()
-	#shoot2.global_position = muzzle2.global_position
-	#shoot2.rotation = target_angle
-	#shoot2.set_direction(Vector2.from_angle(target_angle))  # Método en la bala
-	#get_parent().add_child(shoot2)	
-	#current_weapon2.play_retroceso()
 
 # recibir daño
 func take_damage(amount: float):
