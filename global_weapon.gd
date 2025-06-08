@@ -6,11 +6,12 @@ extends Node
 var sprite_arma_default = "res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma" # se le agregara el numero de arma y nivel
 var direccionEnemigoCerca
 @export var weapons: Array[ArmaData] = []
+var currentWeapon
 
 
 # Señales
 signal weapon_updatedStats #PARA QUE ESTO FUNCIONE, hay que usar si o si, los SET
-
+signal cambioArma (new_weapon: ArmaData)
 
 
 
@@ -43,6 +44,10 @@ func CombinarArma(arma : ArmaData) -> ArmaData:
 	arma.damage +=  randf_range(4,11) #esto se puede mejorar
 	return arma
 pass
+
+func cambiarArma(arma: ArmaData):
+	cambioArma.emit(arma)
+	pass
 
 ##Obtengo la direccion del enemigo mas cercano
 #func _on_enemy_detected(angle: float):

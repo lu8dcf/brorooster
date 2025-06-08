@@ -30,6 +30,10 @@ var currentWeapon: ArmaData = null:
 		else:
 			push_error("Se intentó asignar un tipo inválido a currentWeapon")
 
+func change_currentWeapon(arma :ArmaData):
+	Global.currentWeapon = arma
+	weapon_changed.emit(arma)
+pass
 
 var secondaryWeapon: ArmaData = null:
 	set(value):

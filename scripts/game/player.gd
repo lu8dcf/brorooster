@@ -73,14 +73,11 @@ var diferencia_sprit_weapon = 0 # con el sprite a cero se puede evitar
 var inv_image_weapon1=0 # determinacion hacia adonde aponta el arma de 0aPI/2 derecha =0
 var inv_image_weapon2=0
 
-@export var weapon: Node2D  # Asigna el nodo del arma en el inspector
-	#weapon1
-#@export var weapon1_scene_path: String = weapon1_path
-var weapon1_scene: PackedScene # Exporta la escena del arma para poder asignarla desde el Inspector
+
 @onready var weapon_anchor: Marker2D = $WeaponAnchor1 # punto de union del arma
 
-var arma1_scene : PackedScene
-var arma2_scene : PackedScene
+#var arma1_scene : PackedScene
+#var arma2_scene : PackedScene
 
 var cambioArma = true #true = arma 1 | false = arma 2
 
@@ -110,11 +107,9 @@ func _ready():
 	#Conecto al cambio de arma del global para detectar los cambios.
 	Global.connect("weapon_changed", Callable(self ,"_on_weapon_changed"))
 	if arma1_data and arma1_data.arma_escena and arma1_data:
-		arma1_scene = arma1_data.arma_escena
-		equip_weapon1(0.0)
+		equip_weapon1()
 	
-	if arma2_data and arma2_data.arma_escena and arma2_data:
-		arma2_scene = arma2_data.arma_escena
+	if (Global.inventory_player.get(1)== typeof(ArmaData)):
 		equip_weapon2(0.0)
 	
 		
@@ -179,7 +174,7 @@ func move_with_mouse():
 	
 	# equipa el arma 1
 
-func equip_weapon1(_angle:float):
+func equip_weapon1():
 	if arma1_data and arma1_data.arma_escena:
 		if is_instance_valid(current_weapon1):
 			current_weapon1.queue_free()
@@ -192,6 +187,9 @@ func equip_weapon1(_angle:float):
 	## Instancia la escena del arma
 	
 
+	
+	#Agregar señal desde global que permita saber cuando equipar las segunda arma
+
 func equip_weapon2(_angle:float):
 	if arma2_data and arma2_data.arma_escena:
 		if is_instance_valid(current_weapon2):
@@ -199,7 +197,7 @@ func equip_weapon2(_angle:float):
 	# Instancia la escena del arma
 	current_weapon2 = arma2_data.arma_escena.instantiate()
 	#current_weapon2.arma_data = arma2_data  #Asigno el resurse
-	current_weapon2.arma_data = Global.currentWeapon #si dejo esto asi, va a poner las dos armas iguales! (por lo menos al principio), luego, cambiaran
+	current_weapon2.arma_data = Global.inventory_player.get(1) #si dejo esto asi, va a poner las dos armas iguales! (por lo menos al principio), luego, cambiaran
 	$WeaponAnchor2.add_child(current_weapon2)
 	current_weapon2.position = Vector2.ZERO
 
@@ -276,10 +274,10 @@ func _on_area_recoleccion_area_entered(item) -> void:
 func _on_weapon_changed(nuevaArma :ArmaData):  #Esto es por señal, cuando en el global el arma cambia
 	#que aca des equipo y vuelva a equipar la nueva.
 	#Voy a probar lo siguiente. asigno el arma nueva al global.currentWeapon. ASi que la asigna de la manera que viene haciendo
-	Global.currentWeapon = nuevaArma
+	#Global.currentWeapon = nuevaArma
 	if cambioArma: #Si es true, que cambie el arma 1
 		unequip_weapon1()
-		equip_weapon1(0.0)
+		equip_weapon1()
 	else: #si es false, que cambie el arma 2
 		unequip_weapon2()
 		equip_weapon2(0.0)
