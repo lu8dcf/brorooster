@@ -93,6 +93,6 @@ func iniciar_seleccion_armas():
 	GlobalOleada.eliminar_todos_enemigos()
 	
 	get_tree().paused = true
-
+	GlobalHud.current_state = GlobalHud.GameState.SHOP
 	get_tree().change_scene_to_file("res://scenes/hud/hud_shop.tscn")	
 	# Pausar el juego (excepto la tienda)

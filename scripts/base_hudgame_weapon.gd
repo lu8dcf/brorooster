@@ -2,12 +2,12 @@ extends Control
 
 # Referencias a los slots (asegúrate de que las rutas son correctas en tu escena)
 @onready var slots = [
-	$Slots/weapon_inv_1,
-	$Slots/weapon_inv_2,
-	$Slots/weapon_inv_3,
-	$Slots/weapon_inv_4,
-	$Slots/weapon_inv_5,
-	$Slots/weapon_inv_6
+	$weapon_shadow,
+	$weapon_shadow2,
+	$weapon_shadow3,
+	$weapon_shadow4,
+	$weapon_shadow5,
+	$weapon_shadow6,
 ]
 
 func _ready():

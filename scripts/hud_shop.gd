@@ -18,15 +18,18 @@ var tiempo_restante = GlobalOleada.tiempo_seleccion
 @onready var temporizador = $panel_shop/temporizador
 
 #$ panel inventario
+var selected_slot_index = -1  # -1 significa que no hay slot seleccionado
 
 # Referencias a los slots (asegúrate de que las rutas son correctas en tu escena)
 @onready var slots = [
-	$panel_inventory/inv_1,
-	$panel_inventory/inv_2,
-	$panel_inventory/inv_3,
-	$panel_inventory/inv_4,
-	$panel_inventory/inv_5,
-	$panel_inventory/inv_6
+	
+	$panel_inventory/weapon_shadow,
+	$panel_inventory/weapon_shadow2,
+	$panel_inventory/weapon_shadow3,
+	$panel_inventory/weapon_shadow4,
+	$panel_inventory/weapon_shadow5,
+	$panel_inventory/weapon_shadow6
+	
 ]
 
 
@@ -46,6 +49,13 @@ func _ready() -> void:
 	GlobalOleada.time_changed.connect(_on_time_shop_changed)  # Conecta la señal
 	
 	
+	# Conectar señales de los slots
+	for i in range(slots.size()):
+		slots[i].pressed.connect(_on_slot_pressed.bind(i))
+
+	# Conectar señal del botón de vender
+	$panel_inventory/btn_sold.pressed.connect(_on_vender_pressed)
+
 	update_character()
 	update_inventory()
 	update_shop()
@@ -85,6 +95,10 @@ func update_inventory():
 			portrait.visible = true
 		else:
 			portrait.visible = false
+			# Si el slot está vacío y estaba seleccionado, deseleccionarlo
+			if selected_slot_index == i:
+				_reset_slot_color(i)
+				selected_slot_index = -1
 
 	
 func update_shop():
@@ -92,3 +106,48 @@ func update_shop():
 	
 func update_merge():
 	pass
+	
+	
+func _on_slot_pressed(index: int):
+	# Deseleccionar si ya está seleccionado
+	if selected_slot_index == index:
+		selected_slot_index = -1
+		# Restablecer el color del slot (implementa esta función según tu UI)
+		_reset_slot_color(index)
+	else:
+		# Deseleccionar el slot anterior si hay uno
+		if selected_slot_index != -1:
+			_reset_slot_color(selected_slot_index)
+		
+		# Seleccionar el nuevo slot
+		selected_slot_index = index
+		# Cambiar el color del slot seleccionado (implementa esta función)
+		_highlight_slot(index)
+
+func _on_vender_pressed():
+	if selected_slot_index == -1:
+		return  # No hay nada seleccionado
+	
+	var item = Global.inventory_player[selected_slot_index]
+	if item is ArmaData:
+		# Añadir el valor de venta al maíz
+		GlobalOleada.maiz += (item.costo+100)/2 # modificar ESTOO
+		maiz.text = str(GlobalOleada.maiz)
+		
+		# Eliminar el objeto del inventario
+		Global.inventory_player[selected_slot_index] = null
+		
+		# Actualizar la visualización del inventario
+		update_inventory()
+		
+		# Deseleccionar el slot
+		_reset_slot_color(selected_slot_index)
+		selected_slot_index = -1
+
+func _highlight_slot(index: int):
+	# Cambiar el color del botón seleccionado
+	slots[index].modulate = Color(0.5, 1, 0.5)  # Color verde claro
+
+func _reset_slot_color(index: int):
+	# Restablecer el color original del botón
+	slots[index].modulate = Color(1, 1, 1)  # Color blanco (original)
