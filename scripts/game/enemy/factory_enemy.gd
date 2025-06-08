@@ -2,7 +2,7 @@ extends Node2D
 class_name EnemyFactory
 
 # spawn
-var posicionCero = 10 # margen de posision de spawn de los enemigos en los bordes
+var posicionCero = 100 # margen de posision de spawn de los enemigos en los bordes
 
 # Enemigos
 var timer_between_enemy = GlobalOleada.timer_between_enemy # .5 seg Intervalo que aparecen los enemigos

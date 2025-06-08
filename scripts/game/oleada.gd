@@ -90,7 +90,8 @@ func iniciar_seleccion_armas():
 		factory_enemy.queue_free()
 		factory_enemy = null
 	#
-
+	GlobalOleada.eliminar_todos_enemigos()
+	
 	get_tree().paused = true
 
 	get_tree().change_scene_to_file("res://scenes/hud/hud_shop.tscn")	

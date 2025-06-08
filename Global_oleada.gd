@@ -8,9 +8,14 @@ var maiz = 0
 
 
 # Enemigos
-var enemies = []
+var enemies = [] # se guardan todas las intancias enemigas
 var timer_between_enemy = 2
 
+func eliminar_todos_enemigos():
+	for enemy in enemies:  # rastrea entre todos los enemigos
+		if is_instance_valid(enemy):  # Verifica que la instancia aún existe
+			enemy.queue_free()  # Programa la eliminación para el próximo frame
+	enemies.clear()  # Limpia el array
 
 # Oleada
 var oleada = 5
