@@ -3,6 +3,13 @@ extends Control
 var tiempo_restante = GlobalOleada.tiempo_seleccion
 
 
+
+# Efectos para últimos 5 segundos
+var is_shaking = false
+var shake_intensity :float = 0.0
+var original_position = Vector2.ZERO
+var warning_played = false  # Para evitar repetir el sonido
+
 @onready var panel_character = $panel_character
 @onready var panel_inventory = $panel_inventory
 @onready var panel_shop = $panel_shop
@@ -38,7 +45,7 @@ var cant_weapon = 0
 func _ready() -> void:
 	
 	get_tree().paused = false
-	
+	original_position = position
 	
 	# Configura un Timer para decrementar cada segundo
 	var timer = Timer.new()
@@ -63,6 +70,18 @@ func _ready() -> void:
 	update_shop()
 	update_merge()
 	
+func _process(delta):
+	if is_shaking:
+		shake_intensity = lerp(shake_intensity, 10.0, delta * 2)
+		
+		var offset = Vector2(
+			randf_range(-shake_intensity, shake_intensity),
+			randf_range(-shake_intensity, shake_intensity)
+		)
+		position = original_position + offset  # Usamos position
+	else:
+		position = position.lerp(original_position, delta * 10)  # Usamos position
+	
 func _on_timer_timeout():
 	tiempo_restante -= 1
 	GlobalOleada.tiempo_restante_seleccion = tiempo_restante
@@ -76,8 +95,28 @@ func _on_timer_timeout():
 
 
 func _on_time_shop_changed(new_time: int):
-	# Propaga el cambio de salud del personaje como señal global
 	temporizador.text = str(new_time) + " s"
+	
+	
+	# Efectos para últimos 5 segundos
+	if new_time <= 5 and new_time > 0:
+		if not warning_played:
+			warning_played = true
+			$AudioStreamPlayer2D.play()
+		
+		is_shaking = true
+		temporizador.add_theme_color_override("font_color", Color.RED)
+		
+		var tween = create_tween()
+		tween.tween_property(temporizador, "modulate:a", 0.5, 0.2)
+		tween.tween_property(temporizador, "modulate:a", 1.0, 0.2)
+		tween.set_loops(5)
+	else:
+		is_shaking = false
+		shake_intensity = 0
+		warning_played = false
+		temporizador.remove_theme_color_override("font_color")
+		temporizador.modulate.a = 1.0
 
 func update_character():
 	name_character.text = Global.currentPlayer.get_display_name()

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://014t5hldx08k" path="res://assets/graphics/character_graphics/weapon_menu/Iconodearma1.png" id="6_x7tdh"]
 [ext_resource type="Texture2D" uid="uid://s87f4evqptdm" path="res://assets/graphics/menu_graphics/icon_menu/icon_speed.png" id="9_4moto"]
 [ext_resource type="Texture2D" uid="uid://hbdqji4tmdvy" path="res://assets/graphics/menu_graphics/icon_menu/icon_cost.png" id="9_x7tdh"]
-[ext_resource type="Texture2D" uid="uid://cq5w7skk0la48" path="res://assets/graphics/menu_graphics/icon_menu/icon_bullet.png" id="11_06pme"]
+[ext_resource type="Texture2D" path="res://assets/graphics/menu_graphics/icon_menu/icon_bullet.png" id="11_06pme"]
 
 [node name="WeaponSelector" type="CanvasLayer"]
 script = ExtResource("1_hsk16")
