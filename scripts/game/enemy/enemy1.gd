@@ -40,6 +40,7 @@ func _on_area_2d_body_entered(body):
 
 func take_damage(amount: float):
 	health -= amount
+	print ("daño :",amount, " health ", health)
 	update_health(health)
 	if health <= 0:
 		die()
