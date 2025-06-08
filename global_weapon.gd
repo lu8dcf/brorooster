@@ -2,20 +2,25 @@ extends Node
 
 @export var CadenciaDisparo :  float = 1.0 #Recordar que hay velocidades de por ejemplo 0,2
 #Por lo tando 15.0 * 0.2 da 3, 3 segundos entre disparo. (15.0 es excelente para probar)
-@export var danio :float = 1
+@export var danio :float = 1.0
 var sprite_arma_default = "res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma" # se le agregara el numero de arma y nivel
 var direccionEnemigoCerca
 @export var weapons: Array[ArmaData] = []
 
+# Señales
+signal weapon_updatedStats #PARA QUE ESTO FUNCIONE, hay que usar si o si, los SET
 
-#Señal cuando hay cuando cambia el danio
+
+
 
 #set
 func set_CadenciaGlobal (valor: float):
 	CadenciaDisparo = valor
+	emit_signal("weapon_updatedStats")
 	pass
-func set_danioGlobal(valor: int):
+func set_danioGlobal(valor: float):
 	danio = valor
+	emit_signal("weapon_updatedStats")
 	pass
 	
 #getter
@@ -23,7 +28,7 @@ func get_CadenciaGlobal() -> float:
 	return CadenciaDisparo
 	pass
 	
-func get_danioGlobal() -> int:
+func get_danioGlobal() -> float:
 	return danio
 	pass
 
@@ -38,17 +43,16 @@ func CombinarArma(arma : ArmaData) -> ArmaData:
 	return arma
 pass
 
-#Obtengo la direccion del enemigo mas cercano
-func _on_enemy_detected(angle: float):
-	direccionEnemigoCerca = angle
-	pass
+##Obtengo la direccion del enemigo mas cercano
+#func _on_enemy_detected(angle: float):
+	#direccionEnemigoCerca = angle
+	#pass
+#
+#func getDireccionEnemigo() -> float:
+	#return direccionEnemigoCerca
+#pass
 
-func getDireccionEnemigo() -> float:
-	return direccionEnemigoCerca
-pass
 
-# Señales
-signal weapon_updated
 
 #Funcion para retornar las armas que haya(por si despues se crean mas
 func listaArmas () -> Array[ArmaData]:
