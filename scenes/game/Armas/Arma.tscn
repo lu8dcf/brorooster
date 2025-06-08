@@ -53,7 +53,7 @@ _data = {
 }
 
 [node name="Weapon" type="Node2D"]
-light_mask = 2
+light_mask = 4
 visibility_layer = 2
 script = ExtResource("1_jfrbx")
 

@@ -4,12 +4,14 @@ class_name bulletClass
 var tipo : String = "A"
 var speed = 1000.0  # Velocidad del láser
 var tiempo_sonido = .2
-var damage = 10.0 # Daño que genera la bala, esto se debera hacer generico
+
+var damage : float# Daño que genera la bala, esto se debera hacer generico
+
 var direction: Vector2 # direccion hacia donde ira la bala, enemigo mas cercano
 @onready var animation_player = $AnimationPlayer
 	
 
-func setup(damage_value: int, direction_value: Vector2):
+func setup(damage_value: float, direction_value: Vector2):
 	damage = damage_value
 	direction = direction_value
 	
@@ -21,6 +23,7 @@ func play_retroceso():
 
 func _ready():
 	$sonido_disparo.play() # Sonido del laser a disparar
+	#print (damage)
 	
 	
 func _physics_process(delta):
