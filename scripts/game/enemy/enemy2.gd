@@ -1,8 +1,6 @@
 class_name Lombriz
 extends EnemigoBase
 
-
-
 	
 func _physics_process(_delta): 
 	move_and_collide(movimiento)
@@ -11,7 +9,6 @@ func _physics_process(_delta):
 	else:
 		movimiento = Vector2.ZERO
 	
-		
 func set_vector(vector):
 	movimiento = vector.normalized() * veloci
 	if movimiento.x > 0:
