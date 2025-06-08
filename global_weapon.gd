@@ -10,7 +10,7 @@ var direccionEnemigoCerca
 # Señales
 signal weapon_updatedStats #PARA QUE ESTO FUNCIONE, hay que usar si o si, los SET
 
-#Señal cuando hay cuando cambia el danio
+
 
 
 #set

@@ -5,7 +5,7 @@ class_name Arma
 @export var arma_data: ArmaData
 
 var puedoDisparar = true
-var inv_image_weapon1=0
+var inv_image_weapon=0
 var target_angle: float = 0.0
 var diferencia_sprite_weapon := 0.0  # si querés ajustar el ángulo por sprite
 
@@ -35,13 +35,13 @@ func _process(delta):
 	rotation = lerp_angle(rotation, target_angle + diferencia_sprite_weapon, 14.0 * delta)
 	
 	# Determinar si el arma está apuntando hacia la izquierda invierte el sprite
-	if  abs(target_angle) > PI/2 and inv_image_weapon1 == 0:
+	if  abs(target_angle) > PI/2 and inv_image_weapon == 0:
 		$Sprite2D.flip_v = true # Voltear horizontalmente el sprite del arma
-		inv_image_weapon1=1
+		inv_image_weapon=1
 		
-	elif abs(target_angle) < PI/2  and inv_image_weapon1 == 1:
+	elif abs(target_angle) < PI/2  and inv_image_weapon == 1:
 		$Sprite2D.flip_v = false # dejarla original
-		inv_image_weapon1=0
+		inv_image_weapon=0
 	
 	
 func get_danio_total():
@@ -56,8 +56,6 @@ func get_tiempoDisparo() -> float:
 func shoot(posicion: Vector2):  # Disparo hacia el angulo del enemigo mas cercano
 	if (puedoDisparar == true):
 		puedoDisparar = false
-		print(arma_data.damage)
-		print(arma_data.tiempoDisparo)
 		if not arma_data:
 			push_error("No hay datos del arma")
 			return

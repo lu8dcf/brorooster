@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="ArmaData" load_steps=5 format=3 uid="uid://dgo5klfnh8yo3"]
+[gd_resource type="Resource" script_class="ArmaData" load_steps=6 format=3 uid="uid://dgo5klfnh8yo3"]
 
 [ext_resource type="Texture2D" uid="uid://bipdlos8f2i5h" path="res://assets/graphics/character_graphics/weapon_menu/Iconodearma12.png" id="1_jpibh"]
 [ext_resource type="PackedScene" uid="uid://swmyyvbp2wyd" path="res://scenes/game/Armas/Arma.tscn" id="2_7ptgy"]
+[ext_resource type="PackedScene" uid="uid://bb0lfcam5hcep" path="res://scenes/game/Bullet/meleeBullet.tscn" id="3_7ptgy"]
 [ext_resource type="Script" uid="uid://pfcy5ekpq4t6" path="res://scripts/game/Arma/ArmaData.gd" id="3_hntvp"]
 [ext_resource type="Texture2D" uid="uid://dk4krdfejvrvd" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma12_nivel1.png" id="4_jpibh"]
 
@@ -15,6 +16,7 @@ tiempoDisparo = 0.6
 arma_escena = ExtResource("2_7ptgy")
 _bullet_type = "C"
 _texture = ExtResource("1_jpibh")
+bullet_scene = ExtResource("3_7ptgy")
 costo = 4
 _rarety = 0
 metadata/_custom_type_script = "uid://pfcy5ekpq4t6"
