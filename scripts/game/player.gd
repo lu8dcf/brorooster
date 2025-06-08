@@ -185,6 +185,7 @@ func equip_weapon1(_angle:float):
 			current_weapon1.queue_free()
 	current_weapon1 = arma1_data.arma_escena.instantiate() #va a instanciar un arma
 	current_weapon1.arma_data = Global.currentWeapon #Aca le asigna el current weapon del global
+	#current_weapon1.arma_data = GlobalWeapon.armaRara()
 	weapon_anchor.add_child(current_weapon1)
 	current_weapon1.position = Vector2.ZERO
 	
