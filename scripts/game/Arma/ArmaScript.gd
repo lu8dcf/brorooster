@@ -9,6 +9,8 @@ var inv_image_weapon1=0
 var target_angle: float = 0.0
 var diferencia_sprite_weapon := 0.0  # si querés ajustar el ángulo por sprite
 
+var danio_base #cuando uso un multiplicador, debo hacerlo en base a este valor
+var cadencia_base
 
 #Constructor
 func setup(nombre : String, sprite : Texture2D, damage : int, tiempoDisparo : float, bullet_scene : PackedScene, costo : int) -> void:
@@ -23,7 +25,10 @@ func setup(nombre : String, sprite : Texture2D, damage : int, tiempoDisparo : fl
 
 func _ready() -> void:
 	$Sprite2D.texture = arma_data.sprite
-	set_danio_total()
+	GlobalWeapon.weapon_updatedStats.connect(_on_actualizarArma) #conecto con una señal en globalWeapon, para actualizar estadisticas
+	danio_base = arma_data.damage #agrego esta lineas para tener un margen
+	cadencia_base =arma_data.tiempoDisparo #agrego esta lineas para tener un margen
+	
 
 func _process(delta):
 	#cambio la rotacion del arma (tiene que se la instancia, la escena en ejecucion)
@@ -39,7 +44,7 @@ func _process(delta):
 		inv_image_weapon1=0
 	
 	
-func set_danio_total():
+func get_danio_total():
 	return GlobalWeapon.get_danioGlobal() * arma_data.damage
 
 
@@ -51,13 +56,15 @@ func get_tiempoDisparo() -> float:
 func shoot(posicion: Vector2):  # Disparo hacia el angulo del enemigo mas cercano
 	if (puedoDisparar == true):
 		puedoDisparar = false
+		print(arma_data.damage)
+		print(arma_data.tiempoDisparo)
 		if not arma_data:
 			push_error("No hay datos del arma")
 			return
 			
 		var bullet = arma_data.bullet_scene.instantiate()
 		var direccion = Vector2.from_angle(target_angle)#Vector2.from_angle(direccionEnemigo) 
-		bullet.setup(set_danio_total(), direccion)
+		bullet.setup(get_danio_total(), direccion)
 		bullet.global_position = posicion
 		bullet.rotation = target_angle
 		get_tree().get_root().add_child(bullet)
@@ -66,3 +73,10 @@ func shoot(posicion: Vector2):  # Disparo hacia el angulo del enemigo mas cercan
 			$AnimationPlayer.play("retroceso")
 		await get_tree().create_timer(get_tiempoDisparo()).timeout
 		puedoDisparar = true
+
+func _on_actualizarArma():
+	if (danio_base != GlobalWeapon.get_danioGlobal()):
+		arma_data.damage = danio_base * GlobalWeapon.get_danioGlobal()
+	if ( cadencia_base != GlobalWeapon.get_CadenciaGlobal()):
+		arma_data.tiempoDisparo = cadencia_base *GlobalWeapon.get_CadenciaGlobal()
+	pass
