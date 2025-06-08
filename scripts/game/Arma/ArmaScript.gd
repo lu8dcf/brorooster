@@ -48,7 +48,7 @@ func get_tiempoDisparo() -> float:
 	return (arma_data.tiempoDisparo * GlobalWeapon.get_CadenciaGlobal())
 
 
-func shoot(posicion: Vector2, direccionEnemigo : float):  # Disparo hacia el angulo del enemigo mas cercano
+func shoot(posicion: Vector2):  # Disparo hacia el angulo del enemigo mas cercano
 	if (puedoDisparar == true):
 		puedoDisparar = false
 		if not arma_data:

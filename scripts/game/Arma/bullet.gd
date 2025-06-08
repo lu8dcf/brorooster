@@ -35,7 +35,6 @@ func set_direction(dir: Vector2): # Direccion de la bala
 	
 func _on_body_entered(body):   # cuando pege en el enemigo el daño que le provoca
 	if body.is_in_group("enemies") and body.has_method("take_damage"):
-		print(damage)
 		body.take_damage(damage)  # Método en el enemigo de daño
 		
 	queue_free()

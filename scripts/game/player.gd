@@ -288,14 +288,14 @@ func _on_enemy_detected(angle_to_enemy: float):
 func shootWeapon1():
 	if !shooting1 and current_weapon1:
 		shooting1 = true
-		current_weapon1.shoot(muzzle1.global_position, target_angle)
+		current_weapon1.shoot(muzzle1.global_position)
 		await get_tree().create_timer(arma1_data.tiempoDisparo).timeout
 		shooting1 = false
 	
 func shootWeapon2():
 	if !shooting2 and current_weapon2:
 		shooting2 = true
-		current_weapon2.shoot(muzzle2.global_position, target_angle)
+		current_weapon2.shoot(muzzle2.global_position)
 		await get_tree().create_timer(arma2_data.tiempoDisparo).timeout
 		shooting2 = false
 	
