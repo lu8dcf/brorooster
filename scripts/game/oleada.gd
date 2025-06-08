@@ -2,7 +2,7 @@ extends Node2D
 
 # Factory-Enemy
 var factory_enemy_escene = preload("res://scenes/game/enemy/factoy_enemy.tscn")
-var factory_enemy: Node = null  # Mejor inicializar como null
+var factory_enemy: Node = null  # inicializar como null
 
 var duracion_oleada = GlobalOleada.tiempo_oleada
 var duracion_seleccion = GlobalOleada.tiempo_seleccion
