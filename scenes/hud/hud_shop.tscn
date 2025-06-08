@@ -266,6 +266,16 @@ offset_bottom = 179.0
 theme_override_font_sizes/font_size = 16
 text = "vender"
 
+[node name="Label" parent="panel_inventory" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = 110.0
+offset_top = -119.0
+offset_right = 267.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 20
+text = ""
+autowrap_mode = 2
+
 [node name="panel_merge" parent="." instance=ExtResource("1_21ycv")]
 layout_mode = 1
 anchors_preset = -1

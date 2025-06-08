@@ -19,7 +19,9 @@ var tiempo_restante = GlobalOleada.tiempo_seleccion
 
 #$ panel inventario
 var selected_slot_index = -1  # -1 significa que no hay slot seleccionado
+var cant_weapon = 0
 
+@onready var info_label = $panel_inventory/Label
 # Referencias a los slots (asegúrate de que las rutas son correctas en tu escena)
 @onready var slots = [
 	
@@ -85,12 +87,14 @@ func update_character():
 	
 func update_inventory():
 	
+	
 	for i in range(6):
 		var item = Global.inventory_player[i]
 		var slot = slots[i]
 		# Asegúrate de que estos nodos existen en tu escena InventorySlot
 		var portrait = slot.get_node("TextureRect") # o "Sprite2D" según tu escena
 		if item is ArmaData:
+			cant_weapon+=1
 			portrait.texture = item.sprite  # Usamos _texture que es el icono
 			portrait.visible = true
 		else:
@@ -129,7 +133,7 @@ func _on_vender_pressed():
 		return  # No hay nada seleccionado
 	
 	var item = Global.inventory_player[selected_slot_index]
-	if item is ArmaData:
+	if item is ArmaData and cant_weapon>1:
 		# Añadir el valor de venta al maíz
 		GlobalOleada.maiz += (item.costo+100)/2 # modificar ESTOO
 		maiz.text = str(GlobalOleada.maiz)
@@ -143,6 +147,7 @@ func _on_vender_pressed():
 		# Deseleccionar el slot
 		_reset_slot_color(selected_slot_index)
 		selected_slot_index = -1
+	info_label.text = "Te queda solo un arma.."
 
 func _highlight_slot(index: int):
 	# Cambiar el color del botón seleccionado

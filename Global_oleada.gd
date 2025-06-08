@@ -30,5 +30,5 @@ var timer_spawn = 1  # tiempo por defecto entre spawn d eenemigos
 var tiempo_oleada = 25 # tiempo por defecto que dura una oleada
 var tiempo_restante_oleada = 0
 #tiempo de meni de seleccion
-var tiempo_seleccion = 5 # tiempo que esta el menu se compra y armado para la prox oleada
+var tiempo_seleccion = 15 # tiempo que esta el menu se compra y armado para la prox oleada
 var tiempo_restante_seleccion = 0
