@@ -1,7 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcllyvkq5kbei"]
+[gd_scene load_steps=14 format=3 uid="uid://bcllyvkq5kbei"]
 
 [ext_resource type="Script" uid="uid://ctj6tr0wflkj0" path="res://scripts/game/enemy/enemy1.gd" id="1_wthq6"]
 [ext_resource type="Texture2D" uid="uid://cvtu8xo3rn7cx" path="res://assets/graphics/character_graphics/bichos/bicho1.png" id="2_wthq6"]
+[ext_resource type="Texture2D" uid="uid://bp48ywg6c5p1s" path="res://assets/graphics/character_graphics/bichos/Particulas_Bichos/Particula2_bicho1.png" id="2_x8ej3"]
+[ext_resource type="Texture2D" uid="uid://ciunaixqnmsry" path="res://assets/graphics/character_graphics/bichos/Particulas_Bichos/Particula3_bicho1.png" id="3_pg4gh"]
+[ext_resource type="Texture2D" uid="uid://cqfmsb070vhea" path="res://assets/graphics/character_graphics/bichos/Particulas_Bichos/Particula_bicho1.png" id="4_v7vxs"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_1nps3"]
+frames = 3
+frame_0/texture = ExtResource("2_x8ej3")
+frame_0/duration = 2.38
+frame_1/texture = ExtResource("3_pg4gh")
+frame_1/duration = 2.86
+frame_2/texture = ExtResource("4_v7vxs")
+frame_2/duration = 2.65
+
+[sub_resource type="Curve" id="Curve_rroe5"]
+_data = [Vector2(0.0675676, 0.758922), 0.0, 0.0, 0, 0, Vector2(0.855212, 0.0247668), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
 radius = 12.2139
@@ -72,6 +88,22 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_wthq6")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-26, -18)
+texture = SubResource("AnimatedTexture_1nps3")
+lifetime = 1.77
+speed_scale = 3.17
+explosiveness = 1.0
+randomness = 0.86
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 29.63
+initial_velocity_max = 51.85
+angular_velocity_max = 96.0
+scale_amount_min = 0.0
+scale_amount_max = 145.84
+scale_amount_curve = SubResource("Curve_rroe5")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-24.7731, -21.4569)
 scale = Vector2(0.984132, 1.01629)
@@ -91,6 +123,7 @@ libraries = {
 }
 
 [node name="AreaDaño" type="Area2D" parent="."]
+position = Vector2(1, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
 position = Vector2(-27, -17)
