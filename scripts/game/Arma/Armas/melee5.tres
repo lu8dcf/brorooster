@@ -15,6 +15,6 @@ tiempoDisparo = 0.6
 arma_escena = ExtResource("2_7ptgy")
 _bullet_type = "C"
 _texture = ExtResource("1_jpibh")
-costo = 0
+costo = 4
 _rarety = 0
 metadata/_custom_type_script = "uid://pfcy5ekpq4t6"

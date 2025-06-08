@@ -17,6 +17,6 @@ arma_escena = ExtResource("2_7gvhk")
 _bullet_type = "B"
 _texture = ExtResource("1_rw0fy")
 bullet_scene = ExtResource("3_lwn6q")
-costo = 0
+costo = 12
 _rarety = 0
 metadata/_custom_type_script = "uid://pfcy5ekpq4t6"
