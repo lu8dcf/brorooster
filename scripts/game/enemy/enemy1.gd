@@ -1,25 +1,8 @@
-extends CharacterBody2D
+class_name Babosa
+extends EnemigoBase
 
-var health : float
-var damage : float
-var veloci : float
-var items : int
-var sprite : String
-var red : int
-var green : int
-var blue : int
 
-var movimiento = Vector2()
-
-#var tiene_maiz := false
-
-func _ready():
-	$Sprite2D.texture = load(sprite)
-	$Sprite2D.modulate = Color(red, green, blue)
-
-	#tiene_maiz = randf() < 0.3  # 30% de probabilidad de tener maíz (podés ajustar)
-	
-
+# Movimiento exclusivo de la Babosa
 func _physics_process(_delta):
 	move_and_collide(movimiento)
 	if Global.currentPlayer._health >= 1:
@@ -33,29 +16,3 @@ func set_vector(vector):
 		$AnimationPlayer.play("right")
 	else:
 		$AnimationPlayer.play("left")
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("player"):
-		print("toco")
-
-func take_damage(amount: float):
-	health -= amount
-	if health <= 0:
-		die()
-
-func die():
-	# Obtener la fábrica de items y pedirle que cree el item
-	var item_factory = get_node("res://scenes/game/item/item_factory.tscn")
-	if item_factory:
-		item_factory.spawn_item(items, global_position)
-	queue_free()
-	#if tiene_maiz:
-		#var maiz = maize_scene.instantiate()
-		#get_parent().add_child(maiz)
-		#maiz.global_position = global_position
-	queue_free()
-
-
-func _on_area_daño_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") and body.has_method("take_damage"):
-		body.take_damage(damage)

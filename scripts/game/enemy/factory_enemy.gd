@@ -5,7 +5,7 @@ class_name EnemyFactory
 var posicionCero = 100 # margen de posision de spawn de los enemigos en los bordes
 
 # Enemigos
-var timer_between_enemy = GlobalOleada.timer_between_enemy # .5 seg Intervalo que aparecen los enemigos
+var timer_between_enemy = GlobalOleada.timer_between_enemy # Intervalo que aparecen los enemigos
 var sprite_enemy_default = "res://assets/graphics/character_graphics/bichos/bicho" # se le agregara el numero de bicho y nivel
 var enemy_count = GlobalEnemy.enemy_count  # Cantidad de enemigos para instanciar
 var grup_dificult_per = GlobalEnemy.group_dificult/100 # porcentaje aumentado en el grupo d edificultad
@@ -147,15 +147,19 @@ func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de l
 # Items que contendran los enemy y lo sueltan al morir
 func items():
 	var numero_aleatorio = randi() % 100 + 1  # 100 opciones
+	if numero_aleatorio < porcentaje_items * .50:
+		return 1 # maiz 1
+	if numero_aleatorio < porcentaje_items * .70:
+		return 2 # maiz 2
 	if numero_aleatorio < porcentaje_items * .80:
-		return 1 # maiz
+		return 3 # maiz 3
 	if numero_aleatorio < porcentaje_items * .85:
-		return 2 # Power up Vida
+		return 4 # Power up Vida
 	if numero_aleatorio < porcentaje_items * .90:
-		return 3 # Power up vel
+		return 5 # Power up vel
 	if numero_aleatorio < porcentaje_items * .95:
-		return 4 # Power up daño	
+		return 6 # Power up daño	
 	if numero_aleatorio <= porcentaje_items:
-		return 5 # Power up vel disparo	
+		return 7 # Power up vel disparo	
 	return 0
 	

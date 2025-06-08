@@ -1,22 +1,18 @@
 extends Node2D
 # Diccionario de escenas de items precargadas
 @onready var item_scenes = {
-	1: preload("res://Items/Maiz.tscn"),
-	2: preload("res://Items/PVida.tscn"),
-	3: preload("res://Items/PVelocidad.tscn"),
-	4: preload("res://Items/PVelocidadDisparo.tscn"),
-	5: preload("res://Items/PDanioArma.tscn")
+	1: preload("res://scenes/game/item/maiz_1.tscn"),
+	2: preload("res://scenes/game/item/maiz_2.tscn"),
+	3: preload("res://scenes/game/item/maiz_3.tscn"),
+	4: preload("res://scenes/game/item/maiz_1.tscn"),
+	5: preload("res://scenes/game/item/maiz_1.tscn")
 }
 
-# Función para crear un item en una posición específica
-func spawn_item(item_type: int, position: Vector2) -> void:
-	if item_type > 0 and item_type in item_scenes:
-		var item = item_scenes[item_type].instantiate()
-		get_tree().current_scene.add_child(item)
-		item.global_position = position
 
-# Ejemplo de mejora con efectos (añadir a ItemFactory.gd)
-func spawn_item2(item_type: int, position: Vector2) -> void:
+# Función para crear un item en una posición específica
+
+func spawn_item(item_type: int, position: Vector2) -> void:
+	print (item_type)
 	if item_type > 0 and item_type in item_scenes:
 		var item = item_scenes[item_type].instantiate()
 		get_tree().current_scene.add_child(item)

@@ -7,7 +7,7 @@ class_name Enemy
 
 var enemy_count = 5 # Cantidad de enemigos disponibles
 var group_dificult = 20 # en % porcentaje que se agrega al subir d enivel el bicho en todos sus paramentros
-var porcentaje_items = 20 # en % porcentaje de probabilidad de items
+var porcentaje_items = 90 # en % porcentaje de probabilidad de items
 #tipo de dato
 #[ health , damage , velocidad  ] 
 
