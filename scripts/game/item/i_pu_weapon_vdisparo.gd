@@ -9,7 +9,7 @@ class_name PU_WeaponVDisparo
 func _on_body_entered(body): 
 	if body.is_in_group("player") and not siendo_recolectado:
 		siendo_recolectado = true
-		
+		GlobalWeapon.set_CadenciaGlobal(randf_range(0.5, 0.90))
 		# Funcion caracteristica
 		
 		recolectar_efecto()
