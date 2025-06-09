@@ -63,7 +63,7 @@ func cambiar_estado():
 func iniciar_oleada():
 	get_tree().paused = false
 	estado_actual = EstadoJuego.OLEADA
-	tiempo_restante = duracion_oleada
+	tiempo_restante = duracion_oleada + (numero_oleada - 1) * 5
 	
 	# Activar generación de enemigos
 	factory_enemy = factory_enemy_escene.instantiate()
@@ -83,7 +83,7 @@ func iniciar_oleada():
 
 func iniciar_seleccion_armas():
 	estado_actual = EstadoJuego.SELECCION
-	tiempo_restante = duracion_seleccion
+	tiempo_restante = duracion_seleccion 
 	
 	# Eliminar factory_enemy si existe
 	if is_instance_valid(factory_enemy):

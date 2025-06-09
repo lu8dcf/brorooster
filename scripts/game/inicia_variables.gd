@@ -3,5 +3,15 @@ extends Node2D
 
 func reiniciar():
 	
+	GlobalOleada.oleada=1
+	GlobalOleada.experiencia=0
+	GlobalOleada.maiz=0
+	GlobalOleada.eliminar_todos_enemigos()
 	
-	pass
+	# Player
+	Global.currentPlayer=null
+	Global.currentWeapon=null
+	Global.inventory_player=[null,null,null,null,null,null]
+	
+	# weapon
+	

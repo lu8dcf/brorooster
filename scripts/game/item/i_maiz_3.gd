@@ -10,5 +10,5 @@ class_name Maiz3
 func _on_body_entered(body): 
 	if body.is_in_group("player") and not siendo_recolectado:
 		siendo_recolectado = true
-		GlobalOleada.maiz =+ cantidad
+		GlobalOleada.maiz += cantidad
 		recolectar_efecto()

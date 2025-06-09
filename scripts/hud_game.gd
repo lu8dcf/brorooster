@@ -12,6 +12,9 @@ func _ready() -> void:
 	life_bar.max_value = Global.currentPlayer._max_health if Global.currentPlayer else 100
 	life_bar.value = Global.currentPlayer._health if Global.currentPlayer else 100
 	
+	
+	
+	
 	wave_text.text = "Oleada : "+str(GlobalOleada.oleada)
 	time_text.text = str(GlobalOleada.tiempo_restante_oleada)
 	maiz_text.text = str(GlobalOleada.maiz)
@@ -23,6 +26,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	maiz_text.text = str(GlobalOleada.maiz)
+	if life_bar.value <= 0:
+		get_tree().change_scene_to_file("res://scenes/game/lost.tscn")
 
 
 func _on_lives_changed(new_value: int) -> void:
