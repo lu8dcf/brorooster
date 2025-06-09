@@ -33,7 +33,7 @@ func die():
 	
 	if item_factory:
 		item_factory.spawn_item(items, global_position)
-		
+	GlobalOleada.experiencia += 5	
 	queue_free()  # se elimina el enemigo
 	
 	
