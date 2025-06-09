@@ -70,7 +70,15 @@ func _ready() -> void:
 	# Conectar señales de los slots
 	for i in range(slots.size()):
 		slots[i].pressed.connect(_on_slot_pressed.bind(i))
+		
+	if shop_items.is_empty():
+		initialize_shop()
+	for i in range(slots_items.size()):
+		slots_items[i].pressed.connect(_on_shop_slot_pressed.bind(i))
 
+	# Inicializar la tienda solo si está vacía (al inicio del juego)
+
+		
 	# Conectar señal del botón de vender
 	$panel_inventory/btn_sold.pressed.connect(_on_vender_pressed)
 
@@ -109,7 +117,7 @@ func _on_time_shop_changed(new_time: int):
 	if new_time <= 12 and new_time > 0:
 		if not warning_played:
 			warning_played = true
-			$AudioStreamPlayer2D.play()
+			$Audio_shop.play()
 	
 	# Efectos para últimos 5 segundos
 	if new_time <= 5 and new_time > 0:
@@ -135,7 +143,7 @@ func update_character():
 	
 	
 func update_inventory():
-	
+	cant_weapon = 0 #resetear contador
 	
 	for i in range(6):
 		var item = Global.inventory_player[i]
@@ -152,37 +160,47 @@ func update_inventory():
 			if selected_slot_index == i:
 				_reset_slot_color(i)
 				selected_slot_index = -1
+	# Actualizar mensaje según cantidad de armas
+	if cant_weapon <= 1:
+		info_label.text = "Te queda solo un arma..."
+	else:
+		info_label.text = ""
 
 	
+	
+# Función para inicializar la tienda (solo se llama al inicio)
+func initialize_shop():
+	shop_items = []
+	for i in range(3):  # Máximo 3 items
+		var arma_rara = GlobalWeapon.get_armaRara()
+		shop_items.append(arma_rara)
+	update_shop()
+	
 func update_shop():
-	# Limpiar los slots de la tienda primero
-	for slot in slots_items:
+	# Limpiar todos los slots primero
+	for i in range(slots_items.size()):
+		var slot = slots_items[i]
 		var portrait = slot.get_node("TextureRect")
 		portrait.visible = false
-		slot.modulate = Color(1, 1, 1)  # Resetear color a normal
+		slot.modulate = Color(1, 1, 1)  # Resetear color
 	
-	# Si no hay items en la tienda, generamos nuevos
-	if shop_items.is_empty():
-		shop_items = []
-		for i in range(3):
-			var arma_rara = GlobalWeapon.get_armaRara()
-			shop_items.append(arma_rara)
-	
-	# Mostrar los items en los slots de la tienda
-	for i in range(min(shop_items.size(), slots_items.size())):
+	# Mostrar solo los items existentes
+	for i in range(shop_items.size()):
+		if i >= slots_items.size():
+			break
+			
 		var item = shop_items[i]
 		var slot = slots_items[i]
 		var portrait = slot.get_node("TextureRect")
 		
-		if item is ArmaData:
-			portrait.texture = item.sprite
-			portrait.visible = true
-			
-			# Si no hay suficiente maíz, mostrar en gris
-			if GlobalOleada.maiz < item.costo:
-				slot.modulate = Color(0.5, 0.5, 0.5)  # Color gris
-			else:
-				slot.modulate = Color(1, 1, 1)  # Color normal
+		portrait.texture = item.sprite
+		portrait.visible = true
+		
+		# Mostrar en gris si no hay suficiente dinero
+		if GlobalOleada.maiz < item.costo:
+			slot.modulate = Color(0.5, 0.5, 0.5)
+		else:
+			slot.modulate = Color(1, 1, 1)
 
 
 func _on_shop_slot_pressed(index: int):
@@ -201,29 +219,25 @@ func _on_shop_slot_pressed(index: int):
 			GlobalOleada.maiz -= item.costo
 			maiz.text = str(GlobalOleada.maiz)
 			
-			# Añadir el arma al inventario
+			# Añadir al inventario
 			Global.inventory_player[empty_slot] = item
 			
-			# Eliminar el objeto de la tienda y regenerar uno nuevo
+			# Eliminar el item de la tienda SIN regenerar otro
 			shop_items.remove_at(index)
-			var nueva_arma = GlobalWeapon.get_armaRara()
-			shop_items.insert(index, nueva_arma)
 			
 			# Actualizar las visualizaciones
 			update_inventory()
 			update_shop()
 			
-			# Sonido de compra exitosa (opcional)
+			# Sonido de compra exitosa
 			$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/shop_buy.wav")
 			$AudioStreamPlayer2D.play()
 		else:
 			info_label.text = "Inventario lleno!"
-			# Sonido de error (opcional)
 			$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/shop_cancel.mp3")
 			$AudioStreamPlayer2D.play()
 	elif item is ArmaData:
 		info_label.text = "No tienes suficiente maíz!"
-		# Sonido de error (opcional)
 		$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/shop_cancel.mp3")
 		$AudioStreamPlayer2D.play()
 
