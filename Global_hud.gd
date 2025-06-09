@@ -38,6 +38,7 @@ func _on_options_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	_play_button_sound()
+	get_tree().change_scene_to_file("res://scenes/hud/credits.tscn")
 	# Tu código para créditos aquí
 
 func _on_exit_pressed() -> void:
