@@ -106,12 +106,12 @@ var target_angle: float = 0.0
 func _ready():
 	#Conecto al cambio de arma del global para detectar los cambios.
 	Global.connect("weapon_changed", Callable(self ,"_on_weapon_changed"))
+	Global.connect("segundaArma", Callable(self,"equip_weapon2"))
 	if arma1_data and arma1_data.arma_escena and arma1_data:
 		equip_weapon1()
 	
 	if (Global.inventory_player.get(1)== typeof(ArmaData)):
-		equip_weapon2(0.0)
-	
+		equip_weapon2()
 		
 func _physics_process(delta):
 	# depende de lo que elija el jugador, se ejecutara el movimiento con teclado o con mouse.
@@ -190,14 +190,13 @@ func equip_weapon1():
 	
 	#Agregar señal desde global que permita saber cuando equipar las segunda arma
 
-func equip_weapon2(_angle:float):
-	if arma2_data and arma2_data.arma_escena:
-		if is_instance_valid(current_weapon2):
-			current_weapon2.queue_free()
+func equip_weapon2():
 	# Instancia la escena del arma
 	current_weapon2 = arma2_data.arma_escena.instantiate()
-	#current_weapon2.arma_data = arma2_data  #Asigno el resurse
-	current_weapon2.arma_data = Global.inventory_player.get(1) #si dejo esto asi, va a poner las dos armas iguales! (por lo menos al principio), luego, cambiaran
+	if(current_weapon2 == null):
+		current_weapon2.arma_data = Global.inventory_player.get(1) #si dejo esto asi, va a poner las dos armas iguales! (por lo menos al principio), luego, cambiaran
+	else:
+		current_weapon2.arma_data = Global.currentWeapon
 	$WeaponAnchor2.add_child(current_weapon2)
 	current_weapon2.position = Vector2.ZERO
 
@@ -280,6 +279,6 @@ func _on_weapon_changed(nuevaArma :ArmaData):  #Esto es por señal, cuando en el
 		equip_weapon1()
 	else: #si es false, que cambie el arma 2
 		unequip_weapon2()
-		equip_weapon2(0.0)
+		equip_weapon2()
 	cambioArma = !cambioArma #esto hace que vaya ciclando
 	pass

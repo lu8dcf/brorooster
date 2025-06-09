@@ -9,7 +9,6 @@ class_name PU_WeaponDanio
 func _on_body_entered(body): 
 	if body.is_in_group("player") and not siendo_recolectado:
 		siendo_recolectado = true
-		
-		# Funcion caracteristica
+		GlobalWeapon.set_danioGlobal(randf_range(1.5,3.6)) #Es multiplicado por el danio que ya tiene el arma
 		
 		recolectar_efecto()

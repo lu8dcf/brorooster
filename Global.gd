@@ -34,6 +34,10 @@ func change_currentWeapon(arma :ArmaData):
 	Global.currentWeapon = arma
 	weapon_changed.emit(arma)
 pass
+func set_armaDos():
+	inventory_player.set(1, GlobalWeapon.get_armaRara())
+	Global.currentWeapon = inventory_player.get(2)
+	segundaArma.emit()
 
 var secondaryWeapon: ArmaData = null:
 	set(value):
@@ -58,7 +62,7 @@ signal character_changed(new_character: CharacterData)
 signal weapon_changed(new_weapon: ArmaData)
 signal weapon_changed_secondary(new_weapon:ArmaData)
 signal health_changed(new_value: int)
-
+signal segundaArma()
 
 # Otras propiedades globales
 var mouse_sens := 0.5
