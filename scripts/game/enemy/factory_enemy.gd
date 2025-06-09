@@ -153,13 +153,23 @@ func items():
 		return 2 # maiz 2
 	if numero_aleatorio < porcentaje_items * .80:
 		return 3 # maiz 3
-	if numero_aleatorio < porcentaje_items * .85:
-		return 4 # Power up Vida
-	if numero_aleatorio < porcentaje_items * .90:
-		return 5 # Power up vel
-	if numero_aleatorio < porcentaje_items * .95:
+	if numero_aleatorio < porcentaje_items * .84:
+		return 4 # Power up Velocidad
+	if numero_aleatorio < porcentaje_items * .88:
+		return 5 # Power up Vida
+	if numero_aleatorio < porcentaje_items * .92:
 		return 6 # Power up daño	
-	if numero_aleatorio <= porcentaje_items:
-		return 7 # Power up vel disparo	
+	if numero_aleatorio < porcentaje_items * .96:
+		return 7 # Power up vel disparo
+	if numero_aleatorio < porcentaje_items * .95:
+		return 8 # I_Velocidad
+	if numero_aleatorio < porcentaje_items * .96:
+		return 9 # I_Vida
+	if numero_aleatorio < porcentaje_items * .97:
+		return 10 # Power up vel
+	if numero_aleatorio < porcentaje_items * .98:
+		return 11 # Power up vel
+	
+
 	return 0
 	

@@ -1,18 +1,24 @@
 extends Node2D
 # Diccionario de escenas de items precargadas
 @onready var item_scenes = {
-	1: preload("res://scenes/game/item/maiz_1.tscn"),
-	2: preload("res://scenes/game/item/maiz_2.tscn"),
-	3: preload("res://scenes/game/item/maiz_3.tscn"),
-	4: preload("res://scenes/game/item/maiz_1.tscn"),
-	5: preload("res://scenes/game/item/maiz_1.tscn")
+	1: preload("res://scenes/game/item/i_maiz_1.tscn"),
+	2: preload("res://scenes/game/item/i_maiz_2.tscn"),
+	3: preload("res://scenes/game/item/i_maiz_3.tscn"),
+	4: preload("res://scenes/game/item/i_pu_Veloci.tscn"),
+	5: preload("res://scenes/game/item/i_pu_Vida.tscn"),
+	6: preload("res://scenes/game/item/i_pu_WeaponDanio.tscn"),
+	7: preload("res://scenes/game/item/i_pu_WeaponVdisparo.tscn"),
+	8: preload("res://scenes/game/item/i_Velociti.tscn"),
+	9: preload("res://scenes/game/item/i_Vida.tscn"),
+	10: preload("res://scenes/game/item/I_WeaponDanio.tscn"),
+	11: preload("res://scenes/game/item/i_WeaponVdisparo.tscn")
 }
 
 
 # Función para crear un item en una posición específica
 
 func spawn_item(item_type: int, position: Vector2) -> void:
-	print (item_type)
+	
 	if item_type > 0 and item_type in item_scenes:
 		var item = item_scenes[item_type].instantiate()
 		get_tree().current_scene.add_child(item)
