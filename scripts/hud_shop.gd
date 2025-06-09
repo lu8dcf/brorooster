@@ -1,5 +1,15 @@
 extends Control
 
+var tiempo_restante = GlobalOleada.tiempo_seleccion
+
+
+
+# Efectos para últimos 5 segundos
+var is_shaking = false
+var shake_intensity :float = 0.0
+var original_position = Vector2.ZERO
+var warning_played = false  # Para evitar repetir el sonido
+
 @onready var panel_character = $panel_character
 @onready var panel_inventory = $panel_inventory
 @onready var panel_shop = $panel_shop
@@ -15,29 +25,98 @@ extends Control
 @onready var temporizador = $panel_shop/temporizador
 
 #$ panel inventario
+var selected_slot_index = -1  # -1 significa que no hay slot seleccionado
+var cant_weapon = 0
 
+@onready var info_label = $panel_inventory/Label
 # Referencias a los slots (asegúrate de que las rutas son correctas en tu escena)
 @onready var slots = [
-	$panel_inventory/inv_1,
-	$panel_inventory/inv_2,
-	$panel_inventory/inv_3,
-	$panel_inventory/inv_4,
-	$panel_inventory/inv_5,
-	$panel_inventory/inv_6
+	
+	$panel_inventory/weapon_shadow,
+	$panel_inventory/weapon_shadow2,
+	$panel_inventory/weapon_shadow3,
+	$panel_inventory/weapon_shadow4,
+	$panel_inventory/weapon_shadow5,
+	$panel_inventory/weapon_shadow6
+	
 ]
 
 
 func _ready() -> void:
 	
-	
 	get_tree().paused = false
+	original_position = position
+	
+	# Configura un Timer para decrementar cada segundo
+	var timer = Timer.new()
+	add_child(timer)
+	timer.timeout.connect(_on_timer_timeout)
+	timer.start(1.0)  # Intervalo de 1 segundo
+	
+	temporizador.text = str(GlobalOleada.tiempo_restante_seleccion)
+	
+	GlobalOleada.time_changed.connect(_on_time_shop_changed)  # Conecta la señal
+	
+	
+	# Conectar señales de los slots
+	for i in range(slots.size()):
+		slots[i].pressed.connect(_on_slot_pressed.bind(i))
+
+	# Conectar señal del botón de vender
+	$panel_inventory/btn_sold.pressed.connect(_on_vender_pressed)
+
 	update_character()
 	update_inventory()
 	update_shop()
 	update_merge()
+	
+func _process(delta):
+	if is_shaking:
+		shake_intensity = lerp(shake_intensity, 10.0, delta * 2)
+		
+		var offset = Vector2(
+			randf_range(-shake_intensity, shake_intensity),
+			randf_range(-shake_intensity, shake_intensity)
+		)
+		position = original_position + offset  # Usamos position
+	else:
+		position = position.lerp(original_position, delta * 10)  # Usamos position
+	
+func _on_timer_timeout():
+	tiempo_restante -= 1
+	GlobalOleada.tiempo_restante_seleccion = tiempo_restante
+	GlobalOleada.time_changed.emit(tiempo_restante)
+	print (tiempo_restante)
+		
+	if tiempo_restante <= 0:
+		# Opcional: Detener el timer al llegar a 0
+		tiempo_restante = GlobalOleada.tiempo_seleccion
+		get_tree().change_scene_to_file("res://scenes/game/main_game.tscn")	
 
-func _process(delta: float) -> void:
-	temporizador.text = str(0)
+
+func _on_time_shop_changed(new_time: int):
+	temporizador.text = str(new_time) + " s"
+	
+	
+	# Efectos para últimos 5 segundos
+	if new_time <= 5 and new_time > 0:
+		if not warning_played:
+			warning_played = true
+			$AudioStreamPlayer2D.play()
+		
+		is_shaking = true
+		temporizador.add_theme_color_override("font_color", Color.RED)
+		
+		var tween = create_tween()
+		tween.tween_property(temporizador, "modulate:a", 0.5, 0.2)
+		tween.tween_property(temporizador, "modulate:a", 1.0, 0.2)
+		tween.set_loops(5)
+	else:
+		is_shaking = false
+		shake_intensity = 0
+		warning_played = false
+		temporizador.remove_theme_color_override("font_color")
+		temporizador.modulate.a = 1.0
 
 func update_character():
 	name_character.text = Global.currentPlayer.get_display_name()
@@ -47,16 +126,22 @@ func update_character():
 	
 func update_inventory():
 	
+	
 	for i in range(6):
 		var item = Global.inventory_player[i]
 		var slot = slots[i]
 		# Asegúrate de que estos nodos existen en tu escena InventorySlot
 		var portrait = slot.get_node("TextureRect") # o "Sprite2D" según tu escena
 		if item is ArmaData:
+			cant_weapon+=1
 			portrait.texture = item.sprite  # Usamos _texture que es el icono
 			portrait.visible = true
 		else:
 			portrait.visible = false
+			# Si el slot está vacío y estaba seleccionado, deseleccionarlo
+			if selected_slot_index == i:
+				_reset_slot_color(i)
+				selected_slot_index = -1
 
 	
 func update_shop():
@@ -64,3 +149,49 @@ func update_shop():
 	
 func update_merge():
 	pass
+	
+	
+func _on_slot_pressed(index: int):
+	# Deseleccionar si ya está seleccionado
+	if selected_slot_index == index:
+		selected_slot_index = -1
+		# Restablecer el color del slot (implementa esta función según tu UI)
+		_reset_slot_color(index)
+	else:
+		# Deseleccionar el slot anterior si hay uno
+		if selected_slot_index != -1:
+			_reset_slot_color(selected_slot_index)
+		
+		# Seleccionar el nuevo slot
+		selected_slot_index = index
+		# Cambiar el color del slot seleccionado (implementa esta función)
+		_highlight_slot(index)
+
+func _on_vender_pressed():
+	if selected_slot_index == -1:
+		return  # No hay nada seleccionado
+	
+	var item = Global.inventory_player[selected_slot_index]
+	if item is ArmaData and cant_weapon>1:
+		# Añadir el valor de venta al maíz
+		GlobalOleada.maiz += (item.costo+100)/2 # modificar ESTOO
+		maiz.text = str(GlobalOleada.maiz)
+		
+		# Eliminar el objeto del inventario
+		Global.inventory_player[selected_slot_index] = null
+		
+		# Actualizar la visualización del inventario
+		update_inventory()
+		
+		# Deseleccionar el slot
+		_reset_slot_color(selected_slot_index)
+		selected_slot_index = -1
+	info_label.text = "Te queda solo un arma.."
+
+func _highlight_slot(index: int):
+	# Cambiar el color del botón seleccionado
+	slots[index].modulate = Color(0.5, 1, 0.5)  # Color verde claro
+
+func _reset_slot_color(index: int):
+	# Restablecer el color original del botón
+	slots[index].modulate = Color(1, 1, 1)  # Color blanco (original)

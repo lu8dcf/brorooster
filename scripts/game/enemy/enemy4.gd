@@ -1,16 +1,6 @@
-extends CharacterBody2D
+extends EnemigoBase
 class_name Langosta
 
-# Parámetros obtenidos de la instancia -----------------------
-var health : float  # Vida del bicho
-var damage : float  # daño que causa al player
-var veloci : float  # velocidad de movimiento
-var sprite : String  # Sprite correspondiente al nivel
-var red : int        # color del Sprite - a partir de la oleada 21
-var green : int
-var blue : int
-# --------------------------------------------------------------
-var movimiento = Vector2()
 
 # Lógica de salto
 var salto_timer := Timer.new()
@@ -18,7 +8,6 @@ var salto_fuerza := 10.0
 var desaceleracion := 0.9
 
 func _ready():
-	update_health(health)
 	$Sprite2D.texture = load(sprite)
 	$Sprite2D.modulate = Color(red, green, blue)  # Dejado igual que tu código original
 
@@ -43,23 +32,3 @@ func _on_salto_timer_timeout():
 			$AnimationPlayer.play("left")
 	else:
 		movimiento = Vector2.ZERO
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("player"):
-		print("toco")
-
-func take_damage(amount: float):
-	health -= amount
-	update_health(health)
-	if health <= 0:
-		die()
-
-func die():
-	queue_free()
-
-func update_health(value: float):
-	$HealthBar/ProgressBar.value = value
-
-func _on_area_daño_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") and body.has_method("take_damage"):
-		body.take_damage(damage)

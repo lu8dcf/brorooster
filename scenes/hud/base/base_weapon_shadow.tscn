@@ -1,7 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://di8wmjenmmyrs"]
+[gd_scene load_steps=3 format=3 uid="uid://di8wmjenmmyrs"]
 
 [ext_resource type="Texture2D" uid="uid://bt4ox28mrdbmc" path="res://assets/graphics/menu_graphics/weapon_shadow.png" id="1_28rf0"]
+[ext_resource type="Texture2D" uid="uid://tkih1fih0mxj" path="res://assets/graphics/menu_graphics/bg_weapon_selected.png" id="1_ukgdi"]
 
-[node name="weapon_shadow" type="TextureRect"]
+[node name="weapon_shadow" type="TextureButton"]
+anchors_preset = -1
+anchor_right = 0.111
+anchor_bottom = 0.123
+offset_right = 158.128
+offset_bottom = 99.296
 scale = Vector2(0.446839, 0.446839)
+texture_hover = ExtResource("1_ukgdi")
+texture_focused = ExtResource("1_ukgdi")
+stretch_mode = 0
+
+[node name="shadow" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.965
+anchor_bottom = 0.949
+offset_left = 8.95178
+offset_top = 82.8039
+offset_right = -0.0382385
+offset_bottom = -0.0671387
 texture = ExtResource("1_28rf0")

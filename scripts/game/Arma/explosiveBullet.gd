@@ -4,12 +4,13 @@ var tiempoAExplotar = .3;
 var explotar = false
 
 #Constructor
-func init(dmg: int, dir: Vector2, Texplotar : float):
-	tipo = "B"
-	damage = dmg
-	tiempoAExplotar = Texplotar
-	set_direction(dir)
 
+
+func setup(damage_value: float, direction_value: Vector2):
+	tipo = "B"
+	damage = damage_value
+	direction = direction_value
+	
 
 func _ready():
 	await get_tree().create_timer(tiempoAExplotar).timeout

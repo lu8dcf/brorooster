@@ -2,7 +2,7 @@ extends Node2D
 
 # Factory-Enemy
 var factory_enemy_escene = preload("res://scenes/game/enemy/factoy_enemy.tscn")
-var factory_enemy: Node = null  # Mejor inicializar como null
+var factory_enemy: Node = null  # inicializar como null
 
 var duracion_oleada = GlobalOleada.tiempo_oleada
 var duracion_seleccion = GlobalOleada.tiempo_seleccion
@@ -31,7 +31,7 @@ func _on_timer_timeout():
 	tiempo_restante -= 1
 	GlobalOleada.tiempo_restante_oleada = tiempo_restante
 	GlobalOleada.time_changed.emit(tiempo_restante)
-	print (tiempo_restante)
+	# print (tiempo_restante)
 		
 	if tiempo_restante <= 0:
 		# Opcional: Detener el timer al llegar a 0
@@ -90,8 +90,9 @@ func iniciar_seleccion_armas():
 		factory_enemy.queue_free()
 		factory_enemy = null
 	#
-
+	GlobalOleada.eliminar_todos_enemigos()
+	
 	get_tree().paused = true
-
+	GlobalHud.current_state = GlobalHud.GameState.SHOP
 	get_tree().change_scene_to_file("res://scenes/hud/hud_shop.tscn")	
 	# Pausar el juego (excepto la tienda)

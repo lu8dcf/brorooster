@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbh08cv5ubcbn"]
+
+[ext_resource type="Script" uid="uid://cbtqfukkpd7pe" path="res://scripts/game/item/item_factory.gd" id="1_vwe88"]
+
+[node name="ItemFactory" type="Node2D"]
+script = ExtResource("1_vwe88")

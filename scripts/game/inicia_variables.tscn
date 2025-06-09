@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddy5pr4grd7sy"]
+
+[ext_resource type="Script" uid="uid://c56yp1re7lsdh" path="res://scripts/game/inicia_variables.gd" id="1_1nnlf"]
+
+[node name="inicia_variables" type="Node2D"]
+script = ExtResource("1_1nnlf")

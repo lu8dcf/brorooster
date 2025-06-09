@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq5w7skk0la48"
-path="res://.godot/imported/icon_bullet.png-dfff500dbdd98ae4a2a08c3bc8b2d111.ctex"
+uid="uid://n5ps8ckvkes6"
+path="res://.godot/imported/velocidad.png-d71129e04fbb66f2751d8ccc6d1f64b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/menu_graphics/icon_menu/icon_bullet.png"
-dest_files=["res://.godot/imported/icon_bullet.png-dfff500dbdd98ae4a2a08c3bc8b2d111.ctex"]
+source_file="res://assets/graphics/character_graphics/items/velocidad.png"
+dest_files=["res://.godot/imported/velocidad.png-d71129e04fbb66f2751d8ccc6d1f64b2.ctex"]
 
 [params]
 

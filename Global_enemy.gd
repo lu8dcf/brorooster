@@ -6,18 +6,18 @@ class_name Enemy
 # aca se pueden modificar las caracteristicas de los bichos
 
 var enemy_count = 5 # Cantidad de enemigos disponibles
-var group_dificult = 0.2 # porcentaje que se agrega al subir d enivel el bicho en todos sus paramentros
-
+var group_dificult = 20 # en % porcentaje que se agrega al subir d enivel el bicho en todos sus paramentros
+var porcentaje_items = 90 # en % porcentaje de probabilidad de items
 #tipo de dato
 #[ health , damage , velocidad  ] 
 
 var enemy_param = {
-	1:[5, 10 , .4 ], # "Babosa"
-	2:[10, 10 , .5], # "Lombriz"
-	3:[10, 10 , .6 ], # "Bolita"
-	4:[10, 10 , .7 ], #"Langosta"
-	5:[200, 50 , .5 ],# "Araña"
-	6:[5, 10 , 1 ] # arañas pequeñas
+	1:[5.0, 10.0 , 0.4 ], # "Babosa"
+	2:[10.0, 10.0 , 0.5], # "Lombriz"
+	3:[10.0, 10.0 , 0.6 ], # "Bolita"
+	4:[10.0, 10.0 , 0.7 ], #"Langosta"
+	5:[200.0, 50.0 , 0.5 ],# "Araña"
+	6:[5.0, 10.0 , 1.0 ] # arañas pequeñas
 }
 
 # Diccionario con las rutas de los enemigos

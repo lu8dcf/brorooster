@@ -2,13 +2,15 @@ extends Node2D
 class_name EnemyFactory
 
 # spawn
-var posicionCero = 10 # margen de posision de spawn de los enemigos en los bordes
+var posicionCero = 100 # margen de posision de spawn de los enemigos en los bordes
 
 # Enemigos
-var timer_between_enemy = GlobalOleada.timer_between_enemy # .5 seg Intervalo que aparecen los enemigos
+var timer_between_enemy = GlobalOleada.timer_between_enemy # Intervalo que aparecen los enemigos
 var sprite_enemy_default = "res://assets/graphics/character_graphics/bichos/bicho" # se le agregara el numero de bicho y nivel
 var enemy_count = GlobalEnemy.enemy_count  # Cantidad de enemigos para instanciar
-var grup_dificult_per = GlobalEnemy.group_dificult # porcentaje aumentado en el grupo d edificultad
+var grup_dificult_per = GlobalEnemy.group_dificult/100 # porcentaje aumentado en el grupo d edificultad
+var porcentaje_items = GlobalEnemy.porcentaje_items
+
 #oleada
 var dificult_oleada = GlobalOleada.oleada # tomo el valor d ela oleada actual
 var dificult_grup = 1  # nivel inicial de los bichos
@@ -89,7 +91,7 @@ func init_enemy (enemy_type):
 	enemy.health = parametros[0] *  dificult_percent # carga la vida
 	enemy.damage = parametros[1] *  dificult_percent # carga el daño
 	enemy.veloci = parametros[2] *  dificult_percent  # carga la velocidad
-	
+	enemy.items = items() # Agrega el item por probabilidad
 	# modifica el color del sprite a partir d ela oleada 21
 	match dificult_extra:
 		1:
@@ -141,3 +143,33 @@ func enemy_starting_point(): # genera una posisiocn aleatoria en los bordes de l
 			posicion_x = posicionCero
 			posicion_y = posicionCero
 	return [posicion_x,posicion_y]
+
+# Items que contendran los enemy y lo sueltan al morir
+func items():
+	var numero_aleatorio = randi() % 100 + 1  # 100 opciones
+	if numero_aleatorio < porcentaje_items * .50:
+		return 1 # maiz 1
+	if numero_aleatorio < porcentaje_items * .70:
+		return 2 # maiz 2
+	if numero_aleatorio < porcentaje_items * .80:
+		return 3 # maiz 3
+	if numero_aleatorio < porcentaje_items * .84:
+		return 4 # Power up Velocidad
+	if numero_aleatorio < porcentaje_items * .88:
+		return 5 # Power up Vida
+	if numero_aleatorio < porcentaje_items * .92:
+		return 6 # Power up daño	
+	if numero_aleatorio < porcentaje_items * .96:
+		return 7 # Power up vel disparo
+	if numero_aleatorio < porcentaje_items * .95:
+		return 8 # I_Velocidad
+	if numero_aleatorio < porcentaje_items * .96:
+		return 9 # I_Vida
+	if numero_aleatorio < porcentaje_items * .97:
+		return 10 # Power up vel
+	if numero_aleatorio < porcentaje_items * .98:
+		return 11 # Power up vel
+	
+
+	return 0
+	

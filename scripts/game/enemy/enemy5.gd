@@ -1,15 +1,6 @@
-extends CharacterBody2D
+extends EnemigoBase
 class_name Arania
 
-var health : float
-var damage : float
-var veloci : float
-var sprite : String
-var red : int
-var green : int
-var blue : int
-
-var movimiento = Vector2()
 
 # Variables para movimiento en espiral
 var angulo := 0.0
@@ -50,9 +41,7 @@ func set_spiral_vector(target_pos: Vector2, delta: float):
 	else:
 		$AnimationPlayer.play("left")
 
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("player"):
-		print("toco")
+
 
 func take_damage(amount: float):
 	health -= amount
@@ -60,12 +49,7 @@ func take_damage(amount: float):
 	if health <= 0:
 		die()
 
-func die():
-	queue_free()
+
 
 func update_health(value: float):
 	$HealthBar/ProgressBar.value = value
-
-func _on_area_daño_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") and body.has_method("take_damage"):
-		body.take_damage(damage)

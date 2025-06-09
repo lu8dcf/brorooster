@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cgbviaj0qb76d" path="res://assets/graphics/character_graphics/character_menu/gallina1.png" id="3_gmhi7"]
 [ext_resource type="Texture2D" uid="uid://hbdqji4tmdvy" path="res://assets/graphics/menu_graphics/icon_menu/icon_cost.png" id="4_e6qmr"]
 [ext_resource type="PackedScene" uid="uid://lvvnb1v5hp5o" path="res://scenes/hud/base/base_button.tscn" id="5_gmhi7"]
-[ext_resource type="Texture2D" uid="uid://egjhmangrvj8" path="res://assets/graphics/character_graphics/armas/armas_con_sus_niveles/arma_nivel1_1.png" id="6_3nu7x"]
 [ext_resource type="Texture2D" uid="uid://tkih1fih0mxj" path="res://assets/graphics/menu_graphics/bg_weapon_selected.png" id="8_v82hh"]
+[ext_resource type="AudioStream" uid="uid://bml2bycyrqavy" path="res://assets/sound/menus_effects/alert_shop.mp3" id="9_v82hh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e6qmr"]
 
@@ -114,116 +114,168 @@ offset_bottom = -163.0
 theme_override_font_sizes/font_size = 27
 text = "inventario"
 
-[node name="inv_1" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
+[node name="weapon_shadow" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 39.0
-offset_top = 337.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 22.0
+offset_top = 41.0
+offset_right = 308.0
+offset_bottom = 220.0
+
+[node name="TextureRect" type="TextureRect" parent="panel_inventory/weapon_shadow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.188
+anchor_top = -0.313
+anchor_right = 1.141
+anchor_bottom = 0.827
+offset_left = 33.6265
+offset_top = 9.0302
+offset_right = -16.4675
+offset_bottom = 32.9702
+expand_mode = 1
+stretch_mode = 6
+
+[node name="weapon_shadow2" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 20.0
+offset_top = 160.0
 offset_right = 306.0
-offset_bottom = 424.0
+offset_bottom = 339.0
 
-[node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_1"]
-layout_mode = 0
-offset_left = -64.9003
-offset_top = -127.563
-offset_right = 39.0997
-offset_bottom = -76.5628
-scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("6_3nu7x")
+[node name="TextureRect" type="TextureRect" parent="panel_inventory/weapon_shadow2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.188
+anchor_top = -0.313
+anchor_right = 1.141
+anchor_bottom = 0.827
+offset_left = 33.6265
+offset_top = 9.0302
+offset_right = -16.4675
+offset_bottom = 32.9702
 expand_mode = 1
+stretch_mode = 6
 
-[node name="inv_2" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
+[node name="weapon_shadow3" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 221.0
-offset_right = 307.0
-offset_bottom = 308.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 24.0
+offset_top = 289.0
+offset_right = 310.0
+offset_bottom = 468.0
 
-[node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_2"]
-layout_mode = 0
-offset_left = -64.9003
-offset_top = -127.563
-offset_right = 39.0997
-offset_bottom = -76.5628
-scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("6_3nu7x")
+[node name="TextureRect" type="TextureRect" parent="panel_inventory/weapon_shadow3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.188
+anchor_top = -0.313
+anchor_right = 1.141
+anchor_bottom = 0.827
+offset_left = 33.6265
+offset_top = 9.0302
+offset_right = -16.4675
+offset_bottom = 32.9702
 expand_mode = 1
+stretch_mode = 6
 
-[node name="inv_3" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
+[node name="weapon_shadow4" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 110.0
-offset_right = 307.0
-offset_bottom = 197.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 226.0
+offset_top = 286.0
+offset_right = 512.0
+offset_bottom = 465.0
 
-[node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_3"]
-layout_mode = 0
-offset_left = -64.9003
-offset_top = -127.563
-offset_right = 39.0997
-offset_bottom = -76.5628
-scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("6_3nu7x")
+[node name="TextureRect" type="TextureRect" parent="panel_inventory/weapon_shadow4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.188
+anchor_top = -0.313
+anchor_right = 1.141
+anchor_bottom = 0.827
+offset_left = 33.6265
+offset_top = 9.0302
+offset_right = -16.4675
+offset_bottom = 32.9702
 expand_mode = 1
+stretch_mode = 6
 
-[node name="inv_4" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
+[node name="weapon_shadow5" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 207.0
-offset_top = 110.0
-offset_right = 474.0
-offset_bottom = 197.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 220.0
+offset_top = 160.0
+offset_right = 506.0
+offset_bottom = 339.0
 
-[node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_4"]
-layout_mode = 0
-offset_left = -64.9003
-offset_top = -127.563
-offset_right = 39.0997
-offset_bottom = -76.5628
-scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("6_3nu7x")
+[node name="TextureRect" type="TextureRect" parent="panel_inventory/weapon_shadow5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.188
+anchor_top = -0.313
+anchor_right = 1.141
+anchor_bottom = 0.827
+offset_left = 33.6265
+offset_top = 9.0302
+offset_right = -16.4675
+offset_bottom = 32.9702
 expand_mode = 1
+stretch_mode = 6
 
-[node name="inv_5" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
+[node name="weapon_shadow6" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 207.0
-offset_top = 221.0
-offset_right = 474.0
-offset_bottom = 308.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 219.0
+offset_top = 42.0
+offset_right = 505.0
+offset_bottom = 221.0
 
-[node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_5"]
-layout_mode = 0
-offset_left = -64.9003
-offset_top = -127.563
-offset_right = 39.0997
-offset_bottom = -76.5628
-scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("6_3nu7x")
+[node name="TextureRect" type="TextureRect" parent="panel_inventory/weapon_shadow6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.188
+anchor_top = -0.313
+anchor_right = 1.141
+anchor_bottom = 0.827
+offset_left = 33.6265
+offset_top = 9.0302
+offset_right = -16.4675
+offset_bottom = 32.9702
 expand_mode = 1
-
-[node name="inv_6" parent="panel_inventory" instance=ExtResource("2_nbyaw")]
-layout_mode = 0
-offset_left = 207.0
-offset_top = 336.0
-offset_right = 474.0
-offset_bottom = 423.0
-
-[node name="TextureRect" type="TextureRect" parent="panel_inventory/inv_6"]
-layout_mode = 0
-offset_left = -64.9003
-offset_top = -127.563
-offset_right = 39.0997
-offset_bottom = -76.5628
-scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("6_3nu7x")
-expand_mode = 1
+stretch_mode = 6
 
 [node name="btn_sold" parent="panel_inventory" instance=ExtResource("5_gmhi7")]
 layout_mode = 1
-offset_left = 113.0
+offset_left = 134.0
 offset_top = 103.0
-offset_right = 231.0
+offset_right = 252.0
 offset_bottom = 179.0
 theme_override_font_sizes/font_size = 16
 text = "vender"
+
+[node name="Label" parent="panel_inventory" instance=ExtResource("2_4g13u")]
+layout_mode = 1
+offset_left = 110.0
+offset_top = -119.0
+offset_right = 267.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 20
+text = ""
+autowrap_mode = 2
 
 [node name="panel_merge" parent="." instance=ExtResource("1_21ycv")]
 layout_mode = 1
@@ -257,19 +309,21 @@ text = "Deben ser 2 armas iguales"
 
 [node name="weapon_merge_1" parent="panel_merge" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 184.0
-offset_right = 342.0
-offset_bottom = 271.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 68.0
+offset_top = 112.0
+offset_right = 335.0
+offset_bottom = 199.0
 
-[node name="Sprite2D2" type="TextureRect" parent="panel_merge/weapon_merge_1"]
+[node name="TextureRect" type="TextureRect" parent="panel_merge/weapon_merge_1"]
 layout_mode = 0
 offset_left = -62.6624
 offset_top = -136.514
 offset_right = 70.3376
 offset_bottom = -72.5143
 scale = Vector2(3.26271, 3.26271)
-texture = ExtResource("6_3nu7x")
 
 [node name="Label2" parent="panel_merge" instance=ExtResource("2_4g13u")]
 layout_mode = 1
@@ -282,19 +336,21 @@ text = "+"
 
 [node name="weapon_merge_2" parent="panel_merge" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 236.0
-offset_top = 184.0
-offset_right = 503.0
-offset_bottom = 271.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 229.0
+offset_top = 112.0
+offset_right = 496.0
+offset_bottom = 199.0
 
-[node name="Sprite2D2" type="TextureRect" parent="panel_merge/weapon_merge_2"]
+[node name="TextureRect" type="TextureRect" parent="panel_merge/weapon_merge_2"]
 layout_mode = 0
 offset_left = -62.6624
 offset_top = -136.514
 offset_right = 70.3376
 offset_bottom = -72.5143
 scale = Vector2(3.26271, 3.26271)
-texture = ExtResource("6_3nu7x")
 
 [node name="Label" parent="panel_merge" instance=ExtResource("2_4g13u")]
 layout_mode = 1
@@ -306,19 +362,21 @@ text = "="
 
 [node name="weapon_merge_result" parent="panel_merge" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 412.0
-offset_top = 184.0
-offset_right = 679.0
-offset_bottom = 271.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 407.0
+offset_top = 114.0
+offset_right = 674.0
+offset_bottom = 201.0
 
-[node name="Sprite2D2" type="TextureRect" parent="panel_merge/weapon_merge_result"]
+[node name="TextureRect" type="TextureRect" parent="panel_merge/weapon_merge_result"]
 layout_mode = 0
 offset_left = -62.6624
 offset_top = -136.514
 offset_right = 70.3376
 offset_bottom = -72.5143
 scale = Vector2(3.26271, 3.26271)
-texture = ExtResource("6_3nu7x")
 
 [node name="panel_shop" parent="." instance=ExtResource("1_21ycv")]
 layout_mode = 1
@@ -350,21 +408,46 @@ offset_bottom = -43.5
 theme_override_font_sizes/font_size = 25
 text = "Compras?"
 
-[node name="weapon_shop_1" parent="panel_shop" instance=ExtResource("2_nbyaw")]
+[node name="weapon_shadow" parent="panel_shop" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 109.0
-offset_top = 177.0
-offset_right = 376.0
-offset_bottom = 264.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 106.0
+offset_top = 128.0
+offset_right = 392.0
+offset_bottom = 307.0
 
-[node name="Sprite2D2" type="TextureRect" parent="panel_shop/weapon_shop_1"]
+[node name="TextureRect" type="TextureRect" parent="panel_shop/weapon_shadow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.188
+anchor_top = -0.313
+anchor_right = 1.141
+anchor_bottom = 0.827
+offset_left = 33.6265
+offset_top = 9.0302
+offset_right = -16.4675
+offset_bottom = 32.9702
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="panel_shop/weapon_shadow"]
 layout_mode = 0
-offset_left = -127.359
-offset_top = -166.042
-offset_right = 5.6409
-offset_bottom = -102.042
-scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("6_3nu7x")
+offset_left = 60.7137
+offset_top = 304.524
+offset_right = 239.714
+offset_bottom = 389.524
+
+[node name="Sprite2D" type="Sprite2D" parent="panel_shop/weapon_shadow/VBoxContainer"]
+position = Vector2(15.0028, 25.604)
+scale = Vector2(3.03371, 3.03371)
+texture = ExtResource("4_e6qmr")
+
+[node name="Label" parent="panel_shop/weapon_shadow/VBoxContainer" instance=ExtResource("2_4g13u")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    0"
 
 [node name="text_weapon_shop_1" parent="panel_shop" instance=ExtResource("2_4g13u")]
 layout_mode = 1
@@ -374,38 +457,46 @@ offset_right = -136.5
 offset_bottom = 76.0
 theme_override_font_sizes/font_size = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="panel_shop/text_weapon_shop_1"]
+[node name="weapon_shadow2" parent="panel_shop" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 41.0
-offset_top = 49.0
-offset_right = 123.0
-offset_bottom = 106.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 305.0
+offset_top = 127.0
+offset_right = 591.0
+offset_bottom = 306.0
 
-[node name="Sprite2D" type="Sprite2D" parent="panel_shop/text_weapon_shop_1/VBoxContainer"]
-position = Vector2(6, 13)
-scale = Vector2(1.83333, 1.83333)
+[node name="TextureRect" type="TextureRect" parent="panel_shop/weapon_shadow2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.188
+anchor_top = -0.313
+anchor_right = 1.141
+anchor_bottom = 0.827
+offset_left = 33.6265
+offset_top = 9.0302
+offset_right = -16.4675
+offset_bottom = 32.9702
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="panel_shop/weapon_shadow2"]
+layout_mode = 0
+offset_left = 78.6174
+offset_top = 307.742
+offset_right = 257.617
+offset_bottom = 392.742
+
+[node name="Sprite2D" type="Sprite2D" parent="panel_shop/weapon_shadow2/VBoxContainer"]
+position = Vector2(15.0028, 25.604)
+scale = Vector2(3.03371, 3.03371)
 texture = ExtResource("4_e6qmr")
 
-[node name="Label" parent="panel_shop/text_weapon_shop_1/VBoxContainer" instance=ExtResource("2_4g13u")]
+[node name="Label" parent="panel_shop/weapon_shadow2/VBoxContainer" instance=ExtResource("2_4g13u")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 30
 text = "    0"
-
-[node name="weapon_shop_2" parent="panel_shop" instance=ExtResource("2_nbyaw")]
-layout_mode = 0
-offset_left = 316.0
-offset_top = 177.438
-offset_right = 583.0
-offset_bottom = 264.438
-
-[node name="Sprite2D2" type="TextureRect" parent="panel_shop/weapon_shop_2"]
-layout_mode = 0
-offset_left = -127.359
-offset_top = -166.042
-offset_right = 5.6409
-offset_bottom = -102.042
-scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("6_3nu7x")
 
 [node name="text_weapon_shop_2" parent="panel_shop" instance=ExtResource("2_4g13u")]
 layout_mode = 1
@@ -415,26 +506,54 @@ offset_right = 64.0
 offset_bottom = 86.9375
 theme_override_font_sizes/font_size = 20
 
-[node name="weapon_shop_3" parent="panel_shop" instance=ExtResource("2_nbyaw")]
+[node name="weapon_shadow3" parent="panel_shop" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
-offset_left = 516.0
-offset_top = 177.0
-offset_right = 783.0
-offset_bottom = 264.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 490.0
+offset_top = 128.0
+offset_right = 776.0
+offset_bottom = 307.0
 
-[node name="Sprite2D2" type="TextureRect" parent="panel_shop/weapon_shop_3"]
+[node name="TextureRect" type="TextureRect" parent="panel_shop/weapon_shadow3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.188
+anchor_top = -0.313
+anchor_right = 1.141
+anchor_bottom = 0.827
+offset_left = 33.6265
+offset_top = 9.0302
+offset_right = -16.4675
+offset_bottom = 32.9702
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="panel_shop/weapon_shadow3"]
 layout_mode = 0
-offset_left = -127.359
-offset_top = -166.042
-offset_right = 5.64084
-offset_bottom = -102.042
-scale = Vector2(4.39237, 4.39237)
-texture = ExtResource("6_3nu7x")
+offset_left = 112.187
+offset_top = 302.286
+offset_right = 291.187
+offset_bottom = 387.286
+
+[node name="Sprite2D" type="Sprite2D" parent="panel_shop/weapon_shadow3/VBoxContainer"]
+position = Vector2(15.0028, 25.604)
+scale = Vector2(3.03371, 3.03371)
+texture = ExtResource("4_e6qmr")
+
+[node name="Label" parent="panel_shop/weapon_shadow3/VBoxContainer" instance=ExtResource("2_4g13u")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    0"
 
 [node name="text_weapon_shop_3" parent="panel_shop" instance=ExtResource("2_4g13u")]
 layout_mode = 1
-offset_left = 107.0
-offset_top = 30.5
-offset_right = 287.0
-offset_bottom = 96.5
+offset_left = 86.0
+offset_top = 25.5
+offset_right = 266.0
+offset_bottom = 91.5
 theme_override_font_sizes/font_size = 20
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_v82hh")

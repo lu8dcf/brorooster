@@ -53,3 +53,11 @@ func set_modifier_weapon(comparison: int, is_double: bool = false):
 		-1:
 			modifier_icon1.texture = preload("res://assets/graphics/menu_graphics/icon_menu/icon_down.png")
 			modifier_icon1.show()
+			
+func set_bullet_type(bullet_type: String, texture: Texture2D) -> void:
+	# 1. Oculta las flechas comparativas (no las usamos para el tipo de bala)
+	modifier_icon1.hide()
+	modifier_icon2.hide()
+	
+	# 2. Cambia la textura principal al icono del tipo de bala
+	base_icon.texture = texture

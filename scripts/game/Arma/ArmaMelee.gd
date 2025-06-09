@@ -2,23 +2,25 @@ extends Arma
 
 var atacar = false
 
-
+#var inv_image_weapon1=0
+#var target_angle: float = 0.0
+#var diferencia_sprite_weapon := 0.0  # si querés ajustar el ángulo por sprite
 
 var estoyAtacando = false;
 
 func _ready() -> void:
 	var collision = $CollisionShape2D
 
-func shoot(posicion: Vector2, direccionEnemigo : float):  # Disparo hacia el angulo del enemigo mas cercano
+func shoot(posicion: Vector2):  # Disparo hacia el angulo del enemigo mas cercano
 	if not arma_data:
 		push_error("No hay datos del arma")
 		return
 
 	var shoot = arma_data.bullet_scene.instantiate()
 	shoot.global_position = posicion
-	shoot.rotation = direccionEnemigo # direccion del enemigo
+	shoot.rotation = target_angle # direccion del enemigo
 	if shoot.has_method("set_direction"): # Método en la bala
-		shoot.set_direction(Vector2.from_angle(direccionEnemigo))
+		shoot.set_direction(Vector2.from_angle(target_angle))
 	if shoot is bulletClass:
 		shoot.damage = arma_data.damage
 

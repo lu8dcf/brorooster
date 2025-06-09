@@ -4,6 +4,8 @@ extends Control
 @onready var life_bar: ProgressBar = $VBoxContainer/Background/HBoxContainer/VBoxContainer/life_bar
 @onready var wave_text: Label = $VBoxContainer/Background/HBoxContainer/wave_text
 @onready var time_text: Label = $VBoxContainer/Background/HBoxContainer/time
+@onready var maiz_text: Label = $VBoxContainer/Background/HBoxContainer/VBoxContainer/maiz
+
 
 func _ready() -> void:
 	# Configuración inicia
@@ -12,12 +14,15 @@ func _ready() -> void:
 	
 	wave_text.text = "Oleada : "+str(GlobalOleada.oleada)
 	time_text.text = str(GlobalOleada.tiempo_restante_oleada)
+	maiz_text.text = str(GlobalOleada.maiz)
 	
 	# Conexión de señal
 	Global.lives_changed.connect(_on_lives_changed)
 	GlobalOleada.wave_changed.connect(_on_wave_changed)
 	GlobalOleada.time_changed.connect(_on_time_wave_changed)  # Conecta la señal
 
+func _process(delta: float) -> void:
+	maiz_text.text = str(GlobalOleada.maiz)
 
 
 func _on_lives_changed(new_value: int) -> void:

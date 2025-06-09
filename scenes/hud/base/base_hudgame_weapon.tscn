@@ -9,148 +9,228 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1152.0
-offset_top = 648.0
+offset_left = 999.0
+offset_top = 640.0
+offset_right = -153.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_nlfkl")
 
-[node name="Slots" type="HBoxContainer" parent="."]
-layout_mode = 1
-offset_left = -448.0
-offset_top = -43.0
-offset_right = -15.0
-offset_bottom = -27.0
-theme_override_constants/separation = 26
-
-[node name="weapon_inv_1" parent="Slots" instance=ExtResource("2_nlfkl")]
-layout_mode = 2
-expand_mode = 3
-
-[node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_1"]
+[node name="weapon_shadow" parent="." instance=ExtResource("2_nlfkl")]
 layout_mode = 0
-offset_left = -15.0
-offset_top = -24.0
-offset_right = 5.0
-offset_bottom = -14.0
-scale = Vector2(4.39237, 4.39237)
-expand_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -740.667
+offset_top = -121.333
+offset_right = -454.667
+offset_bottom = 57.6666
+scale = Vector2(0.6, 0.6)
 
-[node name="Label" parent="Slots/weapon_inv_1" instance=ExtResource("4_bumkb")]
+[node name="TextureRect" type="TextureRect" parent="weapon_shadow"]
 layout_mode = 1
-offset_left = -37.5517
-offset_top = -8.0
-offset_right = 37.4483
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 10
+anchors_preset = -1
+anchor_left = -0.064
+anchor_top = -0.096
+anchor_right = 1.092
+anchor_bottom = 0.96
+offset_left = -0.0286999
+offset_top = -0.0381374
+offset_right = 220.355
+offset_bottom = 125.938
+scale = Vector2(0.6, 0.6)
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" parent="weapon_shadow" instance=ExtResource("4_bumkb")]
+layout_mode = 1
+offset_left = -84.1268
+offset_top = 55.2692
+offset_right = 186.873
+offset_bottom = 200.269
+scale = Vector2(0.6, 0.6)
 text = "num"
 
-[node name="weapon_inv_2" parent="Slots" instance=ExtResource("2_nlfkl")]
-layout_mode = 2
-expand_mode = 3
-
-[node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_2"]
+[node name="weapon_shadow2" parent="." instance=ExtResource("2_nlfkl")]
 layout_mode = 0
-offset_left = -15.0
-offset_top = -24.0
-offset_right = 5.0
-offset_bottom = -14.0
-scale = Vector2(4.39237, 4.39237)
-expand_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -575.667
+offset_top = -121.333
+offset_right = -289.667
+offset_bottom = 57.6666
+scale = Vector2(0.6, 0.6)
 
-[node name="Label" parent="Slots/weapon_inv_2" instance=ExtResource("4_bumkb")]
+[node name="Label" parent="weapon_shadow2" instance=ExtResource("4_bumkb")]
 layout_mode = 1
-offset_left = -37.5517
-offset_top = -8.0
-offset_right = 37.4483
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 10
+offset_left = -84.1268
+offset_top = 55.2692
+offset_right = 186.873
+offset_bottom = 200.269
+scale = Vector2(0.6, 0.6)
 text = "num"
 
-[node name="weapon_inv_3" parent="Slots" instance=ExtResource("2_nlfkl")]
-layout_mode = 2
-expand_mode = 3
-
-[node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_3"]
-layout_mode = 0
-offset_left = -15.0
-offset_top = -24.0
-offset_right = 5.0
-offset_bottom = -14.0
-scale = Vector2(4.39237, 4.39237)
-expand_mode = 1
-
-[node name="Label" parent="Slots/weapon_inv_3" instance=ExtResource("4_bumkb")]
+[node name="TextureRect" type="TextureRect" parent="weapon_shadow2"]
 layout_mode = 1
-offset_left = -37.5517
-offset_top = -8.0
-offset_right = 37.4483
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 10
+anchors_preset = -1
+anchor_left = -0.064
+anchor_top = -0.096
+anchor_right = 1.092
+anchor_bottom = 0.96
+offset_left = -0.0286999
+offset_top = -0.0381374
+offset_right = 220.355
+offset_bottom = 125.938
+scale = Vector2(0.6, 0.6)
+expand_mode = 1
+stretch_mode = 6
+
+[node name="weapon_shadow3" parent="." instance=ExtResource("2_nlfkl")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -414.0
+offset_top = -121.333
+offset_right = -128.0
+offset_bottom = 57.6666
+scale = Vector2(0.6, 0.6)
+
+[node name="Label" parent="weapon_shadow3" instance=ExtResource("4_bumkb")]
+layout_mode = 1
+offset_left = -84.1268
+offset_top = 55.2692
+offset_right = 186.873
+offset_bottom = 200.269
+scale = Vector2(0.6, 0.6)
 text = "num"
 
-[node name="weapon_inv_4" parent="Slots" instance=ExtResource("2_nlfkl")]
-layout_mode = 2
-expand_mode = 3
-
-[node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_4"]
-layout_mode = 0
-offset_left = -15.0
-offset_top = -24.0
-offset_right = 5.0
-offset_bottom = -14.0
-scale = Vector2(4.39237, 4.39237)
-expand_mode = 1
-
-[node name="Label" parent="Slots/weapon_inv_4" instance=ExtResource("4_bumkb")]
+[node name="TextureRect" type="TextureRect" parent="weapon_shadow3"]
 layout_mode = 1
-offset_left = -37.5517
-offset_top = -8.0
-offset_right = 37.4483
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 10
+anchors_preset = -1
+anchor_left = -0.064
+anchor_top = -0.096
+anchor_right = 1.092
+anchor_bottom = 0.96
+offset_left = -0.0286999
+offset_top = -0.0381374
+offset_right = 220.355
+offset_bottom = 125.938
+scale = Vector2(0.6, 0.6)
+expand_mode = 1
+stretch_mode = 6
+
+[node name="weapon_shadow4" parent="." instance=ExtResource("2_nlfkl")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -250.667
+offset_top = -121.333
+offset_right = 35.3331
+offset_bottom = 57.6666
+scale = Vector2(0.6, 0.6)
+
+[node name="Label" parent="weapon_shadow4" instance=ExtResource("4_bumkb")]
+layout_mode = 1
+offset_left = -84.1268
+offset_top = 55.2692
+offset_right = 186.873
+offset_bottom = 200.269
+scale = Vector2(0.6, 0.6)
 text = "num"
 
-[node name="weapon_inv_5" parent="Slots" instance=ExtResource("2_nlfkl")]
-layout_mode = 2
-expand_mode = 3
-
-[node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_5"]
-layout_mode = 0
-offset_left = -15.0
-offset_top = -24.0
-offset_right = 5.0
-offset_bottom = -14.0
-scale = Vector2(4.39237, 4.39237)
-expand_mode = 1
-
-[node name="Label" parent="Slots/weapon_inv_5" instance=ExtResource("4_bumkb")]
+[node name="TextureRect" type="TextureRect" parent="weapon_shadow4"]
 layout_mode = 1
-offset_left = -37.5517
-offset_top = -8.0
-offset_right = 37.4483
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 10
+anchors_preset = -1
+anchor_left = -0.064
+anchor_top = -0.096
+anchor_right = 1.092
+anchor_bottom = 0.96
+offset_left = -0.0286732
+offset_top = -0.0380554
+offset_right = 220.355
+offset_bottom = 125.938
+scale = Vector2(0.6, 0.6)
+expand_mode = 1
+stretch_mode = 6
+
+[node name="weapon_shadow5" parent="." instance=ExtResource("2_nlfkl")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -85.6669
+offset_top = -121.333
+offset_right = 200.333
+offset_bottom = 57.6666
+scale = Vector2(0.6, 0.6)
+
+[node name="Label" parent="weapon_shadow5" instance=ExtResource("4_bumkb")]
+layout_mode = 1
+offset_left = -84.1268
+offset_top = 55.2692
+offset_right = 186.873
+offset_bottom = 200.269
+scale = Vector2(0.6, 0.6)
 text = "num"
 
-[node name="weapon_inv_6" parent="Slots" instance=ExtResource("2_nlfkl")]
-layout_mode = 2
-expand_mode = 3
-
-[node name="TextureRect" type="TextureRect" parent="Slots/weapon_inv_6"]
-layout_mode = 0
-offset_left = -15.0
-offset_top = -24.0
-offset_right = 5.0
-offset_bottom = -14.0
-scale = Vector2(4.39237, 4.39237)
-expand_mode = 1
-
-[node name="Label" parent="Slots/weapon_inv_6" instance=ExtResource("4_bumkb")]
+[node name="TextureRect" type="TextureRect" parent="weapon_shadow5"]
 layout_mode = 1
-offset_left = -37.5517
-offset_top = -8.0
-offset_right = 37.4483
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 10
+anchors_preset = -1
+anchor_left = -0.064
+anchor_top = -0.096
+anchor_right = 1.092
+anchor_bottom = 0.96
+offset_left = -0.0286732
+offset_top = -0.0380554
+offset_right = 220.355
+offset_bottom = 125.938
+scale = Vector2(0.6, 0.6)
+expand_mode = 1
+stretch_mode = 6
+
+[node name="weapon_shadow6" parent="." instance=ExtResource("2_nlfkl")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 75.9999
+offset_top = -121.333
+offset_right = 362.0
+offset_bottom = 57.6666
+scale = Vector2(0.6, 0.6)
+
+[node name="Label" parent="weapon_shadow6" instance=ExtResource("4_bumkb")]
+layout_mode = 1
+offset_left = -84.1268
+offset_top = 55.2692
+offset_right = 186.873
+offset_bottom = 200.269
+scale = Vector2(0.6, 0.6)
 text = "num"
+
+[node name="TextureRect" type="TextureRect" parent="weapon_shadow6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.064
+anchor_top = -0.096
+anchor_right = 1.092
+anchor_bottom = 0.96
+offset_left = -0.0286942
+offset_top = -0.0381374
+offset_right = 220.355
+offset_bottom = 125.938
+scale = Vector2(0.6, 0.6)
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_left = -433.0
+offset_top = -83.0
+offset_right = 40.0
+offset_bottom = 40.0

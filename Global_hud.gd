@@ -8,6 +8,7 @@ enum GameState {
 	MAIN_MENU,
 	CHARACTER_SELECT,
 	WEAPON_SELECT,
+	SHOP,
 	IN_GAME
 }
 
@@ -60,6 +61,8 @@ func _input(event: InputEvent) -> void:
 				_on_play_pressed()  # Va al selector de personajes
 				GlobalHud.current_state = GlobalHud.GameState.CHARACTER_SELECT  # Actualiza el estado
 			GlobalHud.GameState.CHARACTER_SELECT:
-				GlobalHud.current_state = GlobalHud.GameState.IN_GAME  # Actualiza el estado
+				GlobalHud.current_state = GlobalHud.GameState.WEAPON_SELECT  # Actualiza el estado
+			GlobalHud.GameState.WEAPON_SELECT:
+				GlobalHud.current_state = GlobalHud.GameState.IN_GAME
 			_:
 				pass  # Otras escenas no hacen nada con Enter
