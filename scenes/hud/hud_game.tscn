@@ -70,7 +70,7 @@ position = Vector2(23, 58.5)
 scale = Vector2(2.09167, 1.93286)
 texture = ExtResource("2_d3ly5")
 
-[node name="Label" parent="VBoxContainer/Background/HBoxContainer/VBoxContainer" instance=ExtResource("2_kn25u")]
+[node name="maiz" parent="VBoxContainer/Background/HBoxContainer/VBoxContainer" instance=ExtResource("2_kn25u")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 19
 text = "0"
