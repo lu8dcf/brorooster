@@ -87,3 +87,4 @@ roster"
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]

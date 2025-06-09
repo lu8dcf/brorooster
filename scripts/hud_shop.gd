@@ -181,26 +181,22 @@ func update_shop():
 	for i in range(slots_items.size()):
 		var slot = slots_items[i]
 		var portrait = slot.get_node("TextureRect")
-		portrait.visible = false
-		slot.modulate = Color(1, 1, 1)  # Resetear color
-	
-	# Mostrar solo los items existentes
-	for i in range(shop_items.size()):
-		if i >= slots_items.size():
-			break
+		
+# Verificar si hay un item en esta posición
+		if i < shop_items.size() and shop_items[i] != null:
+			var item = shop_items[i]
+			portrait.texture = item.sprite
+			portrait.visible = true
 			
-		var item = shop_items[i]
-		var slot = slots_items[i]
-		var portrait = slot.get_node("TextureRect")
-		
-		portrait.texture = item.sprite
-		portrait.visible = true
-		
-		# Mostrar en gris si no hay suficiente dinero
-		if GlobalOleada.maiz < item.costo:
-			slot.modulate = Color(0.5, 0.5, 0.5)
+			# Mostrar en gris si no hay suficiente dinero
+			if GlobalOleada.maiz < item.costo:
+				slot.modulate = Color(0.5, 0.5, 0.5)
+			else:
+				slot.modulate = Color(1, 1, 1)
 		else:
-			slot.modulate = Color(1, 1, 1)
+			# Slot vacío
+			portrait.visible = false
+			slot.modulate = Color(1, 1, 1)  # Resetear color
 
 
 func _on_shop_slot_pressed(index: int):
@@ -209,7 +205,9 @@ func _on_shop_slot_pressed(index: int):
 		return
 	
 	var item = shop_items[index]
-	
+	# Si el slot está vacío, no hacer nada
+	if item == null:
+		return
 	# Verificar si es un ArmaData y si hay suficiente maíz
 	if item is ArmaData and GlobalOleada.maiz >= item.costo:
 		# Verificar si hay espacio en el inventario
@@ -222,8 +220,8 @@ func _on_shop_slot_pressed(index: int):
 			# Añadir al inventario
 			Global.inventory_player[empty_slot] = item
 			
-			# Eliminar el item de la tienda SIN regenerar otro
-			shop_items.remove_at(index)
+			# Marcar el slot de la tienda como vacío (null) en lugar de eliminarlo
+			shop_items[index] = null
 			
 			# Actualizar las visualizaciones
 			update_inventory()
