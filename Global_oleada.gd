@@ -11,6 +11,7 @@ var maiz = 0
 # Enemigos
 var enemies = [] # se guardan todas las intancias enemigas
 var timer_between_enemy = 1
+var experiencia = 0
 
 func eliminar_todos_enemigos():
 	for enemy in enemies:  # rastrea entre todos los enemigos
