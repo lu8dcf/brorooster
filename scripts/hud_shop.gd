@@ -23,6 +23,9 @@ var warning_played = false  # Para evitar repetir el sonido
 
 #panel compras
 @onready var temporizador = $panel_shop/temporizador
+var shop_items = []  # Almacenará las armas disponibles en la tienda
+var selected_shop_item_index = -1  # Índice del item seleccionado en la tienda
+
 
 #$ panel inventario
 var selected_slot_index = -1  # -1 significa que no hay slot seleccionado
@@ -30,7 +33,7 @@ var cant_weapon = 0
 
 @onready var info_label = $panel_inventory/Label
 # Referencias a los slots (asegúrate de que las rutas son correctas en tu escena)
-@onready var slots = [
+@onready var slots = [ # slots inteario
 	
 	$panel_inventory/weapon_shadow,
 	$panel_inventory/weapon_shadow2,
@@ -39,6 +42,12 @@ var cant_weapon = 0
 	$panel_inventory/weapon_shadow5,
 	$panel_inventory/weapon_shadow6
 	
+]
+
+@onready var slots_items=[ # slots de compra
+	$panel_shop/weapon_shadow,
+	$panel_shop/weapon_shadow2,
+	$panel_shop/weapon_shadow3
 ]
 
 
@@ -72,7 +81,7 @@ func _ready() -> void:
 	
 func _process(delta):
 	if is_shaking:
-		shake_intensity = lerp(shake_intensity, 10.0, delta * 2)
+		shake_intensity = lerp(shake_intensity, 2.0, delta * 2)
 		
 		var offset = Vector2(
 			randf_range(-shake_intensity, shake_intensity),
@@ -97,12 +106,13 @@ func _on_timer_timeout():
 func _on_time_shop_changed(new_time: int):
 	temporizador.text = str(new_time) + " s"
 	
-	
-	# Efectos para últimos 5 segundos
-	if new_time <= 5 and new_time > 0:
+	if new_time <= 12 and new_time > 0:
 		if not warning_played:
 			warning_played = true
 			$AudioStreamPlayer2D.play()
+	
+	# Efectos para últimos 5 segundos
+	if new_time <= 5 and new_time > 0:
 		
 		is_shaking = true
 		temporizador.add_theme_color_override("font_color", Color.RED)
@@ -145,8 +155,79 @@ func update_inventory():
 
 	
 func update_shop():
-	pass
+	# Limpiar los slots de la tienda primero
+	for slot in slots_items:
+		var portrait = slot.get_node("TextureRect")
+		portrait.visible = false
+		slot.modulate = Color(1, 1, 1)  # Resetear color a normal
 	
+	# Si no hay items en la tienda, generamos nuevos
+	if shop_items.is_empty():
+		shop_items = []
+		for i in range(3):
+			var arma_rara = GlobalWeapon.get_armaRara()
+			shop_items.append(arma_rara)
+	
+	# Mostrar los items en los slots de la tienda
+	for i in range(min(shop_items.size(), slots_items.size())):
+		var item = shop_items[i]
+		var slot = slots_items[i]
+		var portrait = slot.get_node("TextureRect")
+		
+		if item is ArmaData:
+			portrait.texture = item.sprite
+			portrait.visible = true
+			
+			# Si no hay suficiente maíz, mostrar en gris
+			if GlobalOleada.maiz < item.costo:
+				slot.modulate = Color(0.5, 0.5, 0.5)  # Color gris
+			else:
+				slot.modulate = Color(1, 1, 1)  # Color normal
+
+
+func _on_shop_slot_pressed(index: int):
+	# Verificar que el índice es válido
+	if index < 0 or index >= shop_items.size():
+		return
+	
+	var item = shop_items[index]
+	
+	# Verificar si es un ArmaData y si hay suficiente maíz
+	if item is ArmaData and GlobalOleada.maiz >= item.costo:
+		# Verificar si hay espacio en el inventario
+		var empty_slot = Global.inventory_player.find(null)
+		if empty_slot != -1:
+			# Restar el costo
+			GlobalOleada.maiz -= item.costo
+			maiz.text = str(GlobalOleada.maiz)
+			
+			# Añadir el arma al inventario
+			Global.inventory_player[empty_slot] = item
+			
+			# Eliminar el objeto de la tienda y regenerar uno nuevo
+			shop_items.remove_at(index)
+			var nueva_arma = GlobalWeapon.get_armaRara()
+			shop_items.insert(index, nueva_arma)
+			
+			# Actualizar las visualizaciones
+			update_inventory()
+			update_shop()
+			
+			# Sonido de compra exitosa (opcional)
+			$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/shop_buy.wav")
+			$AudioStreamPlayer2D.play()
+		else:
+			info_label.text = "Inventario lleno!"
+			# Sonido de error (opcional)
+			$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/shop_cancel.mp3")
+			$AudioStreamPlayer2D.play()
+	elif item is ArmaData:
+		info_label.text = "No tienes suficiente maíz!"
+		# Sonido de error (opcional)
+		$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/shop_cancel.mp3")
+		$AudioStreamPlayer2D.play()
+
+
 func update_merge():
 	pass
 	
@@ -179,6 +260,8 @@ func _on_vender_pressed():
 		
 		# Eliminar el objeto del inventario
 		Global.inventory_player[selected_slot_index] = null
+		$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/shop_sold.wav")
+		$AudioStreamPlayer2D.play()
 		
 		# Actualizar la visualización del inventario
 		update_inventory()
@@ -194,4 +277,4 @@ func _highlight_slot(index: int):
 
 func _reset_slot_color(index: int):
 	# Restablecer el color original del botón
-	slots[index].modulate = Color(1, 1, 1)  # Color blanco (original)
+	slots[index].modulate = Color(1, 1, 1)  # Color original

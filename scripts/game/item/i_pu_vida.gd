@@ -1,5 +1,5 @@
 extends ItemBase
-class_name PU_Vida
+class_name PU_Vidaa
 
 # Variables exportables para ajustar desde el editor
 #@export var cantidad: int = 2
