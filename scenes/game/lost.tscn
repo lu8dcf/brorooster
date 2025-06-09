@@ -79,3 +79,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_g1v24")
 }
 movie_quit_on_finish = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"Music"
