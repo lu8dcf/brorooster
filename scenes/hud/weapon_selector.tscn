@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://014t5hldx08k" path="res://assets/graphics/character_graphics/weapon_menu/Iconodearma1.png" id="6_x7tdh"]
 [ext_resource type="Texture2D" uid="uid://s87f4evqptdm" path="res://assets/graphics/menu_graphics/icon_menu/icon_speed.png" id="9_4moto"]
 [ext_resource type="Texture2D" uid="uid://hbdqji4tmdvy" path="res://assets/graphics/menu_graphics/icon_menu/icon_cost.png" id="9_x7tdh"]
-[ext_resource type="Texture2D" path="res://assets/graphics/menu_graphics/icon_menu/icon_bullet.png" id="11_06pme"]
+
+[sub_resource type="Resource" id="Resource_hsk16"]
+metadata/__load_path__ = "res://assets/graphics/menu_graphics/icon_menu/icon_bullet.png"
 
 [node name="WeaponSelector" type="CanvasLayer"]
 script = ExtResource("1_hsk16")
@@ -102,7 +104,7 @@ base_icon_texture = ExtResource("9_4moto")
 [node name="bullet_type_indicator" parent="Panel/HBoxContainer" instance=ExtResource("6_06pme")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-base_icon_texture = ExtResource("11_06pme")
+base_icon_texture = SubResource("Resource_hsk16")
 
 [connection signal="pressed" from="Panel/btn_rig" to="." method="_on_btn_rig_pressed"]
 [connection signal="pressed" from="Panel/btn_lef" to="." method="_on_btn_lef_pressed"]
