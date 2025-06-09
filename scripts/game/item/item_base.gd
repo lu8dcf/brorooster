@@ -1,3 +1,4 @@
+# Clase abstracta "items"
 extends Area2D
 class_name ItemBase
 

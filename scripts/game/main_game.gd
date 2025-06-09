@@ -50,9 +50,6 @@ func init_player():  # Inicia al player 1
 		add_child(player)  # Agrega el nodo hijo
 	
 
-func init_factory_enemy():
-	await get_tree().create_timer(.2).timeout
-	add_child(preload("res://scenes/game/enemy/factoy_enemy.tscn").instantiate())
 
 func init_oleada():
 	await get_tree().create_timer(.2).timeout

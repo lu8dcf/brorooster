@@ -20,7 +20,7 @@ func eliminar_todos_enemigos():
 	enemies.clear()  # Limpia el array
 
 # Oleada
-var oleada = 5
+var oleada = 2
 
 
 #Factory enemy
