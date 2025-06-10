@@ -59,12 +59,13 @@ offset_left = -59.0
 offset_top = 84.0
 offset_right = 333.0
 offset_bottom = 160.0
-theme_override_constants/separation = 80
+theme_override_constants/separation = 30
 
-[node name="off" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="g_off" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
-[node name="Label" parent="panel_sounds/general/VBoxContainer/off" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/general/VBoxContainer/g_off" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -72,20 +73,21 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 3.0
+offset_top = 9.0
 offset_right = 50.0
-offset_bottom = 50.0
+offset_bottom = 56.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_colors/font_color = Color(0.862745, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "0"
 
-[node name="25" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="g_25" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 tooltip_text = "25"
 
-[node name="Label" parent="panel_sounds/general/VBoxContainer/25" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/general/VBoxContainer/g_25" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -93,19 +95,20 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 4.0
+offset_top = 10.0
 offset_right = 50.0
-offset_bottom = 51.0
+offset_bottom = 57.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 20
 text = "25"
 
-[node name="50" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="g_50" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 tooltip_text = "25"
 
-[node name="Label" parent="panel_sounds/general/VBoxContainer/50" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/general/VBoxContainer/g_50" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -113,19 +116,20 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 4.0
+offset_top = 10.0
 offset_right = 50.0
-offset_bottom = 51.0
+offset_bottom = 57.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 20
 text = "50"
 
-[node name="75" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="g_75" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 tooltip_text = "25"
 
-[node name="Label" parent="panel_sounds/general/VBoxContainer/75" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/general/VBoxContainer/g_75" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -133,19 +137,20 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 4.0
+offset_top = 8.0
 offset_right = 50.0
-offset_bottom = 51.0
+offset_bottom = 55.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 20
 text = "75"
 
-[node name="76" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="g_all" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 tooltip_text = "25"
 
-[node name="Label" parent="panel_sounds/general/VBoxContainer/76" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/general/VBoxContainer/g_all" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -153,9 +158,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 4.0
-offset_right = 50.0
-offset_bottom = 51.0
+offset_top = 9.0
+offset_right = 51.0
+offset_bottom = 56.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 20
@@ -171,16 +176,18 @@ theme_override_font_sizes/font_size = 20
 text = "musica"
 
 [node name="VBoxContainer" type="HBoxContainer" parent="panel_sounds/musica"]
-offset_left = -52.0
-offset_top = 73.0
-offset_right = 340.0
-offset_bottom = 149.0
-theme_override_constants/separation = 80
+layout_mode = 0
+offset_left = -59.0
+offset_top = 69.0
+offset_right = 361.0
+offset_bottom = 145.0
+theme_override_constants/separation = 30
 
-[node name="off" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="m_off" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
-[node name="Label" parent="panel_sounds/musica/VBoxContainer/off" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/musica/VBoxContainer/m_off" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -188,20 +195,21 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 3.0
+offset_top = 9.0
 offset_right = 50.0
-offset_bottom = 50.0
+offset_bottom = 56.0
 grow_horizontal = 1
 grow_vertical = 1
-theme_override_colors/font_color = Color(0.823529, 0, 0, 1)
+theme_override_colors/font_color = Color(0.862745, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "0"
 
-[node name="25" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="m_25" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 tooltip_text = "25"
 
-[node name="Label" parent="panel_sounds/musica/VBoxContainer/25" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/musica/VBoxContainer/m_25" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -209,19 +217,20 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 4.0
+offset_top = 10.0
 offset_right = 50.0
-offset_bottom = 51.0
+offset_bottom = 57.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 20
 text = "25"
 
-[node name="50" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="m_50" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 tooltip_text = "25"
 
-[node name="Label" parent="panel_sounds/musica/VBoxContainer/50" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/musica/VBoxContainer/m_50" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -229,19 +238,20 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 4.0
+offset_top = 10.0
 offset_right = 50.0
-offset_bottom = 51.0
+offset_bottom = 57.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 20
 text = "50"
 
-[node name="75" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="m_75" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 tooltip_text = "25"
 
-[node name="Label" parent="panel_sounds/musica/VBoxContainer/75" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/musica/VBoxContainer/m_75" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -249,19 +259,20 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 4.0
+offset_top = 8.0
 offset_right = 50.0
-offset_bottom = 51.0
+offset_bottom = 55.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 20
 text = "75"
 
-[node name="76" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="m_all" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 tooltip_text = "25"
 
-[node name="Label" parent="panel_sounds/musica/VBoxContainer/76" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/musica/VBoxContainer/m_all" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -269,9 +280,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 4.0
-offset_right = 50.0
-offset_bottom = 51.0
+offset_top = 9.0
+offset_right = 51.0
+offset_bottom = 56.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 20
@@ -280,23 +291,25 @@ text = "100"
 [node name="efectos" parent="panel_sounds" instance=ExtResource("2_mqi07")]
 layout_mode = 1
 offset_left = -135.5
-offset_top = 33.5
+offset_top = 29.5
 offset_right = 135.5
-offset_bottom = 178.5
+offset_bottom = 174.5
 theme_override_font_sizes/font_size = 20
 text = "efectos"
 
 [node name="VBoxContainer" type="HBoxContainer" parent="panel_sounds/efectos"]
-offset_left = -50.0
-offset_top = 100.0
-offset_right = 342.0
-offset_bottom = 176.0
-theme_override_constants/separation = 80
+layout_mode = 0
+offset_left = -60.0
+offset_top = 94.0
+offset_right = 360.0
+offset_bottom = 170.0
+theme_override_constants/separation = 30
 
-[node name="off" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="e_off" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
-[node name="Label" parent="panel_sounds/efectos/VBoxContainer/off" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/efectos/VBoxContainer/e_off" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -304,20 +317,21 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 3.0
+offset_top = 9.0
 offset_right = 50.0
-offset_bottom = 50.0
+offset_bottom = 56.0
 grow_horizontal = 1
 grow_vertical = 1
-theme_override_colors/font_color = Color(0.901961, 0, 0, 1)
+theme_override_colors/font_color = Color(0.862745, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "0"
 
-[node name="25" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="e_25" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 tooltip_text = "25"
 
-[node name="Label" parent="panel_sounds/efectos/VBoxContainer/25" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/efectos/VBoxContainer/e_25" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -325,19 +339,20 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 4.0
+offset_top = 10.0
 offset_right = 50.0
-offset_bottom = 51.0
+offset_bottom = 57.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 20
 text = "25"
 
-[node name="50" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="e_50" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 tooltip_text = "25"
 
-[node name="Label" parent="panel_sounds/efectos/VBoxContainer/50" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/efectos/VBoxContainer/e_50" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -345,19 +360,20 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 4.0
+offset_top = 10.0
 offset_right = 50.0
-offset_bottom = 51.0
+offset_bottom = 57.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 20
 text = "50"
 
-[node name="75" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="e_75" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 tooltip_text = "25"
 
-[node name="Label" parent="panel_sounds/efectos/VBoxContainer/75" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/efectos/VBoxContainer/e_75" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -365,19 +381,20 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 4.0
+offset_top = 8.0
 offset_right = 50.0
-offset_bottom = 51.0
+offset_bottom = 55.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 20
 text = "75"
 
-[node name="76" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+[node name="e_all" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 tooltip_text = "25"
 
-[node name="Label" parent="panel_sounds/efectos/VBoxContainer/76" instance=ExtResource("2_mqi07")]
+[node name="Label" parent="panel_sounds/efectos/VBoxContainer/e_all" instance=ExtResource("2_mqi07")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -385,9 +402,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 8.0
-offset_top = 4.0
-offset_right = 50.0
-offset_bottom = 51.0
+offset_top = 9.0
+offset_right = 51.0
+offset_bottom = 56.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 20
@@ -417,13 +434,13 @@ offset_right = 328.0
 offset_bottom = 130.0
 theme_override_constants/separation = 100
 
-[node name="Button" type="Button" parent="panel_game/pantalla/HBoxContainer"]
+[node name="btn_completa" type="Button" parent="panel_game/pantalla/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_ilxmy")
 theme_override_font_sizes/font_size = 20
 text = "completa"
 
-[node name="Button2" type="Button" parent="panel_game/pantalla/HBoxContainer"]
+[node name="btn_ventana" type="Button" parent="panel_game/pantalla/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_ilxmy")
 theme_override_font_sizes/font_size = 20
@@ -439,27 +456,28 @@ theme_override_font_sizes/font_size = 20
 text = "dificultad"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="panel_game/dificultad"]
+layout_mode = 0
 offset_left = -65.0
 offset_top = 87.0
 offset_right = 328.0
 offset_bottom = 130.0
 theme_override_constants/separation = 40
 
-[node name="Button" type="Button" parent="panel_game/dificultad/HBoxContainer"]
+[node name="facil" type="Button" parent="panel_game/dificultad/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.796078, 0, 1)
 theme_override_fonts/font = ExtResource("5_ilxmy")
 theme_override_font_sizes/font_size = 20
 text = "facil"
 
-[node name="Button2" type="Button" parent="panel_game/dificultad/HBoxContainer"]
+[node name="normal" type="Button" parent="panel_game/dificultad/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.823529, 0.894118, 0, 1)
 theme_override_fonts/font = ExtResource("5_ilxmy")
 theme_override_font_sizes/font_size = 20
 text = "normal"
 
-[node name="Button3" type="Button" parent="panel_game/dificultad/HBoxContainer"]
+[node name="dificil" type="Button" parent="panel_game/dificultad/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_ilxmy")
@@ -504,5 +522,25 @@ offset_bottom = -227.0
 theme_override_font_sizes/font_size = 18
 text = "Ok"
 
+[connection signal="pressed" from="panel_sounds/general/VBoxContainer/g_off" to="." method="_on_g_off_pressed"]
+[connection signal="pressed" from="panel_sounds/general/VBoxContainer/g_25" to="." method="_on_g_25_pressed"]
+[connection signal="pressed" from="panel_sounds/general/VBoxContainer/g_50" to="." method="_on_g_50_pressed"]
+[connection signal="pressed" from="panel_sounds/general/VBoxContainer/g_75" to="." method="_on_g_75_pressed"]
+[connection signal="pressed" from="panel_sounds/general/VBoxContainer/g_all" to="." method="_on_g_all_pressed"]
+[connection signal="pressed" from="panel_sounds/musica/VBoxContainer/m_off" to="." method="_on_m_off_pressed"]
+[connection signal="pressed" from="panel_sounds/musica/VBoxContainer/m_25" to="." method="_on_m_25_pressed"]
+[connection signal="pressed" from="panel_sounds/musica/VBoxContainer/m_50" to="." method="_on_m_50_pressed"]
+[connection signal="pressed" from="panel_sounds/musica/VBoxContainer/m_75" to="." method="_on_m_75_pressed"]
+[connection signal="pressed" from="panel_sounds/musica/VBoxContainer/m_all" to="." method="_on_m_all_pressed"]
+[connection signal="pressed" from="panel_sounds/efectos/VBoxContainer/e_off" to="." method="_on_e_off_pressed"]
+[connection signal="pressed" from="panel_sounds/efectos/VBoxContainer/e_25" to="." method="_on_e_25_pressed"]
+[connection signal="pressed" from="panel_sounds/efectos/VBoxContainer/e_50" to="." method="_on_e_50_pressed"]
+[connection signal="pressed" from="panel_sounds/efectos/VBoxContainer/e_75" to="." method="_on_e_75_pressed"]
+[connection signal="pressed" from="panel_sounds/efectos/VBoxContainer/e_all" to="." method="_on_e_all_pressed"]
+[connection signal="pressed" from="panel_game/pantalla/HBoxContainer/btn_completa" to="." method="_on_btn_completa_pressed"]
+[connection signal="pressed" from="panel_game/pantalla/HBoxContainer/btn_ventana" to="." method="_on_btn_ventana_pressed"]
+[connection signal="pressed" from="panel_game/dificultad/HBoxContainer/facil" to="." method="_on_facil_pressed"]
+[connection signal="pressed" from="panel_game/dificultad/HBoxContainer/normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="panel_game/dificultad/HBoxContainer/dificil" to="." method="_on_dificil_pressed"]
 [connection signal="pressed" from="btn_atras" to="." method="_on_btn_atras_pressed"]
 [connection signal="pressed" from="btn_aceptar" to="." method="_on_btn_aceptar_pressed"]
