@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dy6sd6414wvyk"]
+[gd_scene load_steps=15 format=3 uid="uid://dy6sd6414wvyk"]
 
 [ext_resource type="Script" uid="uid://bo3r5lgu6xxkp" path="res://scripts/game/enemy/enemy2.gd" id="1_q1dl8"]
 [ext_resource type="Texture2D" uid="uid://dy15m7nyu5k7i" path="res://assets/graphics/character_graphics/bichos/bicho2.png" id="2_q1dl8"]
+[ext_resource type="Texture2D" uid="uid://bp48ywg6c5p1s" path="res://assets/graphics/character_graphics/bichos/Particulas_Bichos/Particula2_bicho1.png" id="3_u7qfg"]
+[ext_resource type="Texture2D" uid="uid://ciunaixqnmsry" path="res://assets/graphics/character_graphics/bichos/Particulas_Bichos/Particula3_bicho1.png" id="4_2p1pr"]
+[ext_resource type="Texture2D" uid="uid://cqfmsb070vhea" path="res://assets/graphics/character_graphics/bichos/Particulas_Bichos/Particula_bicho1.png" id="5_5obhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qd6x"]
 size = Vector2(102, 55.2632)
@@ -217,6 +220,19 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1dl8"]
 size = Vector2(142.563, 63.5)
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_pdlfy"]
+frames = 3
+frame_0/texture = ExtResource("3_u7qfg")
+frame_0/duration = 2.38
+frame_1/texture = ExtResource("4_2p1pr")
+frame_1/duration = 2.86
+frame_2/texture = ExtResource("5_5obhb")
+frame_2/duration = 2.65
+
+[sub_resource type="Curve" id="Curve_yial6"]
+_data = [Vector2(0.0617761, 0.533381), 0.0, 0.0, 0, 0, Vector2(0.855212, 0.0247668), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Enemy2" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
 collision_mask = 5
@@ -249,9 +265,22 @@ shape = SubResource("RectangleShape2D_q1dl8")
 [node name="DelayTimer" type="Timer" parent="."]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(1, 1)
+position = Vector2(-26, -18)
 emitting = false
+texture = SubResource("AnimatedTexture_pdlfy")
+lifetime = 1.77
 one_shot = true
+speed_scale = 3.17
+explosiveness = 1.0
+randomness = 0.86
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 29.63
+initial_velocity_max = 51.85
+angular_velocity_max = 96.0
+scale_amount_min = 0.0
+scale_amount_max = 8.81
+scale_amount_curve = SubResource("Curve_yial6")
 
 [connection signal="body_entered" from="AreaDaño" to="." method="_on_area_daño_body_entered"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
