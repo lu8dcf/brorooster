@@ -110,7 +110,7 @@ func _ready():
 	if arma1_data and arma1_data.arma_escena and arma1_data:
 		equip_weapon1()
 	
-	if (Global.inventory_player.get(1)== typeof(ArmaData)):
+	if (Global.inventory_player.get(1) is ArmaData):
 		equip_weapon2()
 		
 func _physics_process(delta):
