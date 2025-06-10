@@ -34,7 +34,8 @@ func _on_menu_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	_play_button_sound()
-	# Tu código para opciones aquí
+	
+	get_tree().change_scene_to_file("res://scenes/hud/options.tscn")
 
 func _on_credits_pressed() -> void:
 	_play_button_sound()

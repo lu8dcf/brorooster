@@ -1,0 +1,508 @@
+[gd_scene load_steps=7 format=3 uid="uid://6dg7bxwjo1du"]
+
+[ext_resource type="Script" uid="uid://cuev4pkstdjww" path="res://scripts/options.gd" id="1_vrwnq"]
+[ext_resource type="PackedScene" uid="uid://bh8g3tik5mpcj" path="res://scenes/hud/base/base_label.tscn" id="2_mqi07"]
+[ext_resource type="PackedScene" uid="uid://b3gw0handi0b6" path="res://scenes/hud/base/base_panel.tscn" id="3_vhbmr"]
+[ext_resource type="PackedScene" uid="uid://lvvnb1v5hp5o" path="res://scenes/hud/base/base_button.tscn" id="4_h4fnr"]
+[ext_resource type="PackedScene" uid="uid://b6j1ulp823dyp" path="res://scenes/hud/base/base_button_option.tscn" id="4_yelnr"]
+[ext_resource type="FontFile" uid="uid://bbufnohtiso2" path="res://assets/font/omega-pixel-biform.ttf" id="5_ilxmy"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vrwnq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.18, 0.18, 1)
+
+[node name="Label" parent="." instance=ExtResource("2_mqi07")]
+layout_mode = 1
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -135.5
+offset_top = 0.0
+offset_right = 135.5
+offset_bottom = 145.0
+grow_vertical = 1
+text = "OPCIONES"
+
+[node name="panel_sounds" parent="." instance=ExtResource("3_vhbmr")]
+layout_mode = 1
+offset_left = -661.0
+offset_top = -215.0
+offset_right = -26.0
+offset_bottom = 308.0
+
+[node name="general" parent="panel_sounds" instance=ExtResource("2_mqi07")]
+layout_mode = 1
+offset_left = -125.5
+offset_top = -233.5
+offset_right = 145.5
+offset_bottom = -122.5
+theme_override_font_sizes/font_size = 20
+text = "audio general"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="panel_sounds/general"]
+layout_mode = 0
+offset_left = -59.0
+offset_top = 84.0
+offset_right = 333.0
+offset_bottom = 160.0
+theme_override_constants/separation = 80
+
+[node name="off" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+
+[node name="Label" parent="panel_sounds/general/VBoxContainer/off" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_colors/font_color = Color(0.862745, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="25" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+tooltip_text = "25"
+
+[node name="Label" parent="panel_sounds/general/VBoxContainer/25" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 51.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "25"
+
+[node name="50" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+tooltip_text = "25"
+
+[node name="Label" parent="panel_sounds/general/VBoxContainer/50" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 51.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "50"
+
+[node name="75" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+tooltip_text = "25"
+
+[node name="Label" parent="panel_sounds/general/VBoxContainer/75" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 51.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "75"
+
+[node name="76" parent="panel_sounds/general/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+tooltip_text = "25"
+
+[node name="Label" parent="panel_sounds/general/VBoxContainer/76" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 51.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "100"
+
+[node name="musica" parent="panel_sounds" instance=ExtResource("2_mqi07")]
+layout_mode = 1
+offset_left = -134.5
+offset_top = -81.5
+offset_right = 136.5
+offset_bottom = 8.5
+theme_override_font_sizes/font_size = 20
+text = "musica"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="panel_sounds/musica"]
+offset_left = -52.0
+offset_top = 73.0
+offset_right = 340.0
+offset_bottom = 149.0
+theme_override_constants/separation = 80
+
+[node name="off" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+
+[node name="Label" parent="panel_sounds/musica/VBoxContainer/off" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_colors/font_color = Color(0.823529, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="25" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+tooltip_text = "25"
+
+[node name="Label" parent="panel_sounds/musica/VBoxContainer/25" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 51.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "25"
+
+[node name="50" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+tooltip_text = "25"
+
+[node name="Label" parent="panel_sounds/musica/VBoxContainer/50" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 51.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "50"
+
+[node name="75" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+tooltip_text = "25"
+
+[node name="Label" parent="panel_sounds/musica/VBoxContainer/75" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 51.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "75"
+
+[node name="76" parent="panel_sounds/musica/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+tooltip_text = "25"
+
+[node name="Label" parent="panel_sounds/musica/VBoxContainer/76" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 51.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "100"
+
+[node name="efectos" parent="panel_sounds" instance=ExtResource("2_mqi07")]
+layout_mode = 1
+offset_left = -135.5
+offset_top = 33.5
+offset_right = 135.5
+offset_bottom = 178.5
+theme_override_font_sizes/font_size = 20
+text = "efectos"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="panel_sounds/efectos"]
+offset_left = -50.0
+offset_top = 100.0
+offset_right = 342.0
+offset_bottom = 176.0
+theme_override_constants/separation = 80
+
+[node name="off" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+
+[node name="Label" parent="panel_sounds/efectos/VBoxContainer/off" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_colors/font_color = Color(0.901961, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="25" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+tooltip_text = "25"
+
+[node name="Label" parent="panel_sounds/efectos/VBoxContainer/25" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 51.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "25"
+
+[node name="50" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+tooltip_text = "25"
+
+[node name="Label" parent="panel_sounds/efectos/VBoxContainer/50" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 51.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "50"
+
+[node name="75" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+tooltip_text = "25"
+
+[node name="Label" parent="panel_sounds/efectos/VBoxContainer/75" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 51.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "75"
+
+[node name="76" parent="panel_sounds/efectos/VBoxContainer" instance=ExtResource("4_yelnr")]
+layout_mode = 2
+tooltip_text = "25"
+
+[node name="Label" parent="panel_sounds/efectos/VBoxContainer/76" instance=ExtResource("2_mqi07")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 51.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "100"
+
+[node name="panel_game" parent="." instance=ExtResource("3_vhbmr")]
+layout_mode = 1
+offset_left = 28.0
+offset_top = -216.0
+offset_right = 663.0
+offset_bottom = 307.0
+
+[node name="pantalla" parent="panel_game" instance=ExtResource("2_mqi07")]
+layout_mode = 1
+offset_left = -126.5
+offset_top = -233.5
+offset_right = 144.5
+offset_bottom = -122.5
+theme_override_font_sizes/font_size = 20
+text = "pantalla"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="panel_game/pantalla"]
+layout_mode = 0
+offset_left = -65.0
+offset_top = 87.0
+offset_right = 328.0
+offset_bottom = 130.0
+theme_override_constants/separation = 100
+
+[node name="Button" type="Button" parent="panel_game/pantalla/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_ilxmy")
+theme_override_font_sizes/font_size = 20
+text = "completa"
+
+[node name="Button2" type="Button" parent="panel_game/pantalla/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_ilxmy")
+theme_override_font_sizes/font_size = 20
+text = "ventana"
+
+[node name="dificultad" parent="panel_game" instance=ExtResource("2_mqi07")]
+layout_mode = 1
+offset_left = -130.5
+offset_top = -77.5
+offset_right = 140.5
+offset_bottom = 12.5
+theme_override_font_sizes/font_size = 20
+text = "dificultad"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="panel_game/dificultad"]
+offset_left = -65.0
+offset_top = 87.0
+offset_right = 328.0
+offset_bottom = 130.0
+theme_override_constants/separation = 40
+
+[node name="Button" type="Button" parent="panel_game/dificultad/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.796078, 0, 1)
+theme_override_fonts/font = ExtResource("5_ilxmy")
+theme_override_font_sizes/font_size = 20
+text = "facil"
+
+[node name="Button2" type="Button" parent="panel_game/dificultad/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.823529, 0.894118, 0, 1)
+theme_override_fonts/font = ExtResource("5_ilxmy")
+theme_override_font_sizes/font_size = 20
+text = "normal"
+
+[node name="Button3" type="Button" parent="panel_game/dificultad/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_ilxmy")
+theme_override_font_sizes/font_size = 20
+text = "dificil"
+
+[node name="multiplayer" parent="panel_game" instance=ExtResource("2_mqi07")]
+layout_mode = 1
+offset_left = -135.5
+offset_top = 37.5
+offset_right = 135.5
+offset_bottom = 182.5
+theme_override_colors/font_color = Color(1, 1, 1, 0.529412)
+theme_override_font_sizes/font_size = 20
+text = "multijugador"
+
+[node name="Label" parent="panel_game/multiplayer" instance=ExtResource("2_mqi07")]
+layout_mode = 1
+offset_left = -187.5
+offset_top = -42.5
+offset_right = 201.5
+offset_bottom = 102.5
+theme_override_colors/font_color = Color(0.980392, 0.2, 0.258824, 0.756863)
+theme_override_font_sizes/font_size = 30
+text = "proximamente"
+
+[node name="btn_atras" parent="." instance=ExtResource("4_h4fnr")]
+layout_mode = 1
+offset_left = -551.0
+offset_top = -309.0
+offset_right = -441.0
+offset_bottom = -227.0
+theme_override_font_sizes/font_size = 18
+text = "atras"
+
+[node name="btn_aceptar" parent="." instance=ExtResource("4_h4fnr")]
+layout_mode = 1
+offset_left = 441.0
+offset_top = -309.0
+offset_right = 551.0
+offset_bottom = -227.0
+theme_override_font_sizes/font_size = 18
+text = "Ok"
+
+[connection signal="pressed" from="btn_atras" to="." method="_on_btn_atras_pressed"]
+[connection signal="pressed" from="btn_aceptar" to="." method="_on_btn_aceptar_pressed"]

@@ -101,6 +101,15 @@ custom_minimum_size = Vector2(0, 590)
 layout_mode = 2
 size_flags_vertical = 4
 
+[node name="exp" parent="VBoxContainer/weapon_player_hudgame" instance=ExtResource("2_kn25u")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "puntos: 0"
+metadata/_edit_use_anchors_ = true
+
 [node name="BaseHudgameWeapon" parent="." instance=ExtResource("4_6li8a")]
 layout_mode = 2
 anchors_preset = 0
