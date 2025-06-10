@@ -5,7 +5,7 @@ signal time_changed(new_value)
 signal time_hud_changed(new_value)
 
 # General 
-var maiz = 0
+var maiz = 100
 
 
 # Enemigos
