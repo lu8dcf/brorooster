@@ -10,7 +10,7 @@ var desaceleracion := 0.9
 func _ready():
 	$Sprite2D.texture = load(sprite)
 	$Sprite2D.modulate = Color(red, green, blue)  # Dejado igual que tu código original
-
+	cpu_particles = get_node("CPUParticles2D")  # o $CPUParticles2D
 	# Configurar el timer de salto
 	salto_timer.wait_time = 1.5
 	salto_timer.one_shot = false

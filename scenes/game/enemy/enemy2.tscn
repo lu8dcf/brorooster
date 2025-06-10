@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dy15m7nyu5k7i" path="res://assets/graphics/character_graphics/bichos/bicho2.png" id="2_q1dl8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qd6x"]
-size = Vector2(48.7141, 23.1579)
+size = Vector2(102, 55.2632)
 
 [sub_resource type="Animation" id="Animation_5nfiu"]
 length = 0.001
@@ -43,18 +43,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-90, -44)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_1qd6x"]
@@ -227,7 +215,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1dl8"]
-size = Vector2(71.125, 23)
+size = Vector2(142.563, 63.5)
 
 [node name="Enemy2" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -243,7 +231,7 @@ hframes = 17
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 5
-position = Vector2(0.911751, 3.2)
+position = Vector2(2, 1)
 scale = Vector2(1.2353, 0.76)
 shape = SubResource("RectangleShape2D_1qd6x")
 
@@ -255,10 +243,15 @@ libraries = {
 [node name="AreaDaño" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
-position = Vector2(-2, 4)
+position = Vector2(4, -2)
 shape = SubResource("RectangleShape2D_q1dl8")
 
 [node name="DelayTimer" type="Timer" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(1, 1)
+emitting = false
+one_shot = true
 
 [connection signal="body_entered" from="AreaDaño" to="." method="_on_area_daño_body_entered"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]

@@ -8,6 +8,7 @@ var timer_acelerar := Timer.new()
 
 func _ready():
 	velocidad_actual = veloci * 0.2  # velocidad inicial lenta
+	cpu_particles = get_node("CPUParticles2D")  # o $CPUParticles2D
 
 	timer_acelerar.wait_time = 2.0  # después de 2 segundos acelera
 	timer_acelerar.one_shot = true

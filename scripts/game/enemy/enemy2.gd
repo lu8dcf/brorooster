@@ -6,7 +6,7 @@ var can_move := false  # Variable para controlar cuando puede moverse
 func _ready():
 	$DelayTimer.wait_time = 1.5  # Configurar tiempo desde código
 	salida()
-	
+	cpu_particles = get_node("CPUParticles2D")  # o $CPUParticles2D
 	
 func _physics_process(_delta): 
 	if can_move:  # Solo mover si puede moverse

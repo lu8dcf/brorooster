@@ -11,14 +11,16 @@ var porcentaje_items = 90 # en % porcentaje de probabilidad de items
 var margen_spawn= 100 # margen de spawn con referencia a la pantallla donde inician los enemigos
 #tipo de dato
 #[ health , damage , velocidad  ] 
+var dificultad = 1
+
 
 var enemy_param = {
-	1:[5.0, 5.0 , 0.4 ], # "Babosa"
-	2:[10.0, 5.0 , 0.5], # "Lombriz"
-	3:[10.0, 5.0 , 0.6 ], # "Bolita"
-	4:[10.0, 5.0 , 0.7 ], #"Langosta"
-	5:[200.0, 50.0 , 2.0 ],# "Araña"
-	6:[5.0, 10.0 , 0.5 ] # arañas pequeñas
+	1:[50.0 * dificultad, 5.0 * dificultad , 0.1 * dificultad], # "Babosa"
+	2:[50.0 * dificultad , 5.0 * dificultad , 0.1 * dificultad], # "Lombriz"
+	3:[50.0 * dificultad, 5.0 * dificultad , 0.1 * dificultad], # "Bolita"
+	4:[50.0 * dificultad, 5.0 * dificultad , 0.1 * dificultad ], #"Langosta"
+	5:[200.0 * dificultad, 50.0 * dificultad , 2.0 * dificultad],# "Araña"
+	6:[5.0 * dificultad, 10.0 * dificultad , 0.1 * dificultad] # arañas pequeñas
 }
 
 # Diccionario con las rutas de los enemigos
