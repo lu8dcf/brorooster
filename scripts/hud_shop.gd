@@ -50,6 +50,14 @@ var cant_weapon = 0
 	$panel_shop/weapon_shadow3
 ]
 
+@onready var slots_merge ={ # slots de combinacion
+	"slot1" : $panel_merge/weapon_merge_1,
+	"slot2" : $panel_merge/weapon_merge_2,
+	"result" : $panel_merge/weapon_merge_result
+}
+var merge_weapons = []  # Almacenará las armas a combinar
+var merged_result: ArmaData = null  # El resultado de la combinación
+
 
 func _ready() -> void:
 	
@@ -75,6 +83,9 @@ func _ready() -> void:
 		initialize_shop()
 	for i in range(slots_items.size()):
 		slots_items[i].pressed.connect(_on_shop_slot_pressed.bind(i))
+		
+	# Conectar señal del botón de resultado de fusión
+		slots_merge["result"].pressed.connect(_on_merge_result_pressed)
 
 	# Inicializar la tienda solo si está vacía (al inicio del juego)
 
@@ -243,9 +254,78 @@ func _on_shop_slot_pressed(index: int):
 
 
 func update_merge():
-	pass
+	for slot in slots_merge.values():
+		var portrait = slot.get_node("TextureRect")
+		portrait.visible = false
 	
+	# Buscar armas para combinar
+	find_mergeable_weapons()
+	if merge_weapons.size() == 2:
+		#mostrar primer arma
+		var portrait1 = slots_merge["slot1"].get_node("TextureRect")
+		portrait1.texture = merge_weapons[0].sprite
+		portrait1.visible = true
 	
+		# Mostrar segunda arma
+		var portrait2 = slots_merge["slot2"].get_node("TextureRect")
+		portrait2.texture = merge_weapons[1].sprite
+		portrait2.visible = true
+		
+		# Calcular resultado de combinación
+		merged_result = GlobalWeapon.CombinarArma(merge_weapons[0])
+
+		# Mostrar resultado
+		var result_portrait = slots_merge["result"].get_node("TextureRect")
+		result_portrait.texture = merged_result.sprite
+		result_portrait.visible = true
+		# Conectar señal del botón de resultado
+		slots_merge["result"].pressed.connect(_on_merge_result_pressed)
+	else:
+		var label_info = $panel_merge/Label3
+		label_info.text = "no hay armas para combinar"
+		print("no se pudo")
+
+func find_mergeable_weapons():
+	merge_weapons.clear()
+	
+	# Buscar todas las armas en el inventario
+	var weapons = []
+	for item in Global.inventory_player:
+		if item is ArmaData:
+			weapons.append(item)
+	
+	# Buscar pares de armas iguales
+	for i in range(weapons.size()):
+		for j in range(i + 1, weapons.size()):
+			if weapons[i].nombre == weapons[j].nombre and weapons[i].rareza == weapons[j].rareza:
+				merge_weapons = [weapons[i], weapons[j]]
+				return
+
+func _on_merge_result_pressed():
+	if merge_weapons.size() != 2 or merged_result == null:
+		return
+	
+	# Eliminar las armas originales del inventario
+	for i in range(Global.inventory_player.size()):
+		if Global.inventory_player[i] in merge_weapons:
+			Global.inventory_player[i] = null
+	
+	# Añadir el resultado al primer slot vacío
+	var empty_slot = Global.inventory_player.find(null)
+	if empty_slot != -1:
+		Global.inventory_player[empty_slot] = merged_result
+	
+	# Actualizar todo
+	merge_weapons.clear()
+	merged_result = null
+	update_inventory()
+	update_merge()
+	
+	# Sonido de combinación exitosa
+	#$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/merge_success.wav")
+	#$AudioStreamPlayer2D.play()
+
+
 func _on_slot_pressed(index: int):
 	# Deseleccionar si ya está seleccionado
 	if selected_slot_index == index:
