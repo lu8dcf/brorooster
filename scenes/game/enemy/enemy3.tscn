@@ -176,7 +176,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wthq6"]
-radius = 32.0624
+radius = 21.0238
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_ktiei"]
 frames = 3
@@ -218,7 +218,6 @@ libraries = {
 [node name="AreaDaño" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
-position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_wthq6")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

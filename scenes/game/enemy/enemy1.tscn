@@ -81,7 +81,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wthq6"]
-radius = 26.0
+radius = 21.0238
 
 [node name="Enemy1" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -127,7 +127,7 @@ libraries = {
 position = Vector2(1, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
-position = Vector2(-2, -2)
+position = Vector2(-1, 2)
 shape = SubResource("CircleShape2D_wthq6")
 
 [connection signal="body_entered" from="AreaDaño" to="." method="_on_area_daño_body_entered"]
