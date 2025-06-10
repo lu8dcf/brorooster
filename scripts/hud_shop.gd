@@ -181,11 +181,13 @@ func update_shop():
 	for i in range(slots_items.size()):
 		var slot = slots_items[i]
 		var portrait = slot.get_node("TextureRect")
+		var label = slot.get_node("text")
 		
 # Verificar si hay un item en esta posición
 		if i < shop_items.size() and shop_items[i] != null:
 			var item = shop_items[i]
 			portrait.texture = item.sprite
+			label.text = item.nombre
 			portrait.visible = true
 			
 			# Mostrar en gris si no hay suficiente dinero

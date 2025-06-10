@@ -67,7 +67,7 @@ offset_right = 249.0
 offset_bottom = 152.0
 
 [node name="Sprite2D" type="Sprite2D" parent="panel_character/VBoxContainer"]
-position = Vector2(6, 13)
+position = Vector2(-4, 13)
 scale = Vector2(1.83333, 1.83333)
 texture = ExtResource("4_e6qmr")
 
@@ -449,13 +449,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "    0"
 
-[node name="text_weapon_shop_1" parent="panel_shop" instance=ExtResource("2_4g13u")]
+[node name="text" parent="panel_shop/weapon_shadow" instance=ExtResource("2_4g13u")]
 layout_mode = 1
-offset_left = -291.5
-offset_top = 41.0
-offset_right = -136.5
-offset_bottom = 76.0
-theme_override_font_sizes/font_size = 20
+offset_left = -104.955
+offset_top = 111.915
+offset_right = 117.045
+offset_bottom = 173.915
+theme_override_font_sizes/font_size = 30
 
 [node name="weapon_shadow2" parent="panel_shop" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
@@ -498,13 +498,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "    0"
 
-[node name="text_weapon_shop_2" parent="panel_shop" instance=ExtResource("2_4g13u")]
+[node name="text" parent="panel_shop/weapon_shadow2" instance=ExtResource("2_4g13u")]
 layout_mode = 1
-offset_left = -80.0
-offset_top = 26.9375
-offset_right = 64.0
-offset_bottom = 86.9375
-theme_override_font_sizes/font_size = 20
+offset_left = -104.955
+offset_top = 111.915
+offset_right = 117.045
+offset_bottom = 173.915
+theme_override_font_sizes/font_size = 30
 
 [node name="weapon_shadow3" parent="panel_shop" instance=ExtResource("2_nbyaw")]
 layout_mode = 0
@@ -547,13 +547,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "    0"
 
-[node name="text_weapon_shop_3" parent="panel_shop" instance=ExtResource("2_4g13u")]
+[node name="text" parent="panel_shop/weapon_shadow3" instance=ExtResource("2_4g13u")]
 layout_mode = 1
-offset_left = 86.0
-offset_top = 25.5
-offset_right = 266.0
-offset_bottom = 91.5
-theme_override_font_sizes/font_size = 20
+offset_left = -104.955
+offset_top = 111.915
+offset_right = 117.045
+offset_bottom = 173.915
+theme_override_font_sizes/font_size = 30
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 bus = &"Music"
