@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ccv782ygvrwof"]
+[gd_scene load_steps=16 format=3 uid="uid://ccv782ygvrwof"]
 
 [ext_resource type="Script" uid="uid://cefw0qn2gpwqs" path="res://scripts/game/enemy/enemy3.gd" id="1_lmc2w"]
 [ext_resource type="Texture2D" uid="uid://cbi50bbnyn6b2" path="res://assets/graphics/character_graphics/bichos/bicho3_nivel1.png" id="2_lmc2w"]
@@ -23,12 +23,36 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [21]
+}
 
 [sub_resource type="Animation" id="Animation_wthq6"]
 resource_name = "left"
-length = 0.5
+length = 0.8
 loop_mode = 1
-step = 0.25
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -36,17 +60,29 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0)]
+"values": [Vector2i(21, 0), Vector2i(22, 0), Vector2i(23, 0), Vector2i(24, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_dkfay"]
 resource_name = "right"
-length = 0.5
+length = 0.8
 loop_mode = 1
-step = 0.25
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -54,17 +90,89 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [Vector2i(4, 0), Vector2i(6, 0)]
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [21, 22, 23, 24]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i55ah"]
+resource_name = "roll_derecha"
+length = 1.8
+step = 0.0857
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0857, 0.1714, 0.2571, 0.3428, 0.4285, 0.5142, 0.5999, 0.6856, 0.7713, 0.857, 0.9427, 1.0284, 1.1141, 1.1998, 1.2855, 1.3712, 1.4569, 1.5426, 1.6283, 1.714),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0), Vector2i(11, 0), Vector2i(12, 0), Vector2i(13, 0), Vector2i(14, 0), Vector2i(15, 0), Vector2i(16, 0), Vector2i(17, 0), Vector2i(18, 0), Vector2i(19, 0), Vector2i(20, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q0g7s"]
+resource_name = "roll_izquierda"
+length = 1.8
+step = 0.0857
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0857, 0.1714, 0.2571, 0.3428, 0.4285, 0.5142, 0.5999, 0.6856, 0.7713, 0.857, 0.9427, 1.0284, 1.1141, 1.1998, 1.2855, 1.3712, 1.4569, 1.5426, 1.6283, 1.714),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0), Vector2i(11, 0), Vector2i(12, 0), Vector2i(13, 0), Vector2i(14, 0), Vector2i(15, 0), Vector2i(16, 0), Vector2i(17, 0), Vector2i(18, 0), Vector2i(19, 0), Vector2i(20, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8ej3"]
 _data = {
 &"RESET": SubResource("Animation_5nfiu"),
 &"left": SubResource("Animation_wthq6"),
-&"right": SubResource("Animation_dkfay")
+&"right": SubResource("Animation_dkfay"),
+&"roll_derecha": SubResource("Animation_i55ah"),
+&"roll_izquierda": SubResource("Animation_q0g7s")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wthq6"]
@@ -90,8 +198,10 @@ script = ExtResource("1_lmc2w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.76837e-07, 0)
+scale = Vector2(-1, 1)
 texture = ExtResource("2_lmc2w")
-hframes = 16
+hframes = 25
+frame = 21
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
