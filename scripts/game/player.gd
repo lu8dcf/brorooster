@@ -79,7 +79,7 @@ var inv_image_weapon2=0
 #var arma1_scene : PackedScene
 #var arma2_scene : PackedScene
 
-var cambioArma = true #true = arma 1 | false = arma 2
+var cambioArma = false #true = arma 1 | false = arma 2
 
 
 @onready var muzzle1  :  Marker2D = $shoot1 #desde donde sale el disparo
@@ -106,12 +106,9 @@ var target_angle: float = 0.0
 func _ready():
 	#Conecto al cambio de arma del global para detectar los cambios.
 	Global.connect("weapon_changed", Callable(self ,"_on_weapon_changed"))
-	Global.connect("segundaArma", Callable(self,"equip_weapon2"))
 	if arma1_data and arma1_data.arma_escena and arma1_data:
 		equip_weapon1()
-	
-	if (Global.inventory_player.get(1) is ArmaData):
-		equip_weapon2()
+
 		
 func _physics_process(delta):
 	# depende de lo que elija el jugador, se ejecutara el movimiento con teclado o con mouse.
@@ -180,7 +177,6 @@ func equip_weapon1():
 			current_weapon1.queue_free()
 	current_weapon1 = arma1_data.arma_escena.instantiate() #va a instanciar un arma
 	current_weapon1.arma_data = Global.currentWeapon #Aca le asigna el current weapon del global
-	#current_weapon1.arma_data = GlobalWeapon.armaRara()
 	weapon_anchor.add_child(current_weapon1)
 	current_weapon1.position = Vector2.ZERO
 	
@@ -193,10 +189,7 @@ func equip_weapon1():
 func equip_weapon2():
 	# Instancia la escena del arma
 	current_weapon2 = arma2_data.arma_escena.instantiate()
-	if(current_weapon2 == null):
-		current_weapon2.arma_data = Global.inventory_player.get(1) #si dejo esto asi, va a poner las dos armas iguales! (por lo menos al principio), luego, cambiaran
-	else:
-		current_weapon2.arma_data = Global.currentWeapon
+	current_weapon2.arma_data = Global.currentWeapon
 	$WeaponAnchor2.add_child(current_weapon2)
 	current_weapon2.position = Vector2.ZERO
 
@@ -213,6 +206,8 @@ func unequip_weapon2(): # desequipar le arma
 		remove_child(current_weapon2)
 		current_weapon2.queue_free()
 		current_weapon2 = null
+	else:
+		return
 		#print("Arma desequipada.")
 
 
@@ -275,9 +270,11 @@ func _on_weapon_changed(nuevaArma :ArmaData):  #Esto es por señal, cuando en el
 	#Voy a probar lo siguiente. asigno el arma nueva al global.currentWeapon. ASi que la asigna de la manera que viene haciendo
 	#Global.currentWeapon = nuevaArma
 	if cambioArma: #Si es true, que cambie el arma 1
+		arma1_data = nuevaArma #copio el arma para que no cambie 
 		unequip_weapon1()
 		equip_weapon1()
 	else: #si es false, que cambie el arma 2
+		arma2_data = nuevaArma #copio el arma para que no cambie 
 		unequip_weapon2()
 		equip_weapon2()
 	cambioArma = !cambioArma #esto hace que vaya ciclando
