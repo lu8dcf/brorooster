@@ -12,11 +12,12 @@ var blue : int
 
 var movimiento = Vector2()
 var recibe_danio = true  # en ocasiones los bichos son inmunes al daño
+var cpu_particles : Node  # o $CPUParticles2D
 
 func _ready():
 	$Sprite2D.texture = load(sprite)
 	$Sprite2D.modulate = Color(red, green, blue)
-	
+	cpu_particles = get_node("CPUParticles2D")  # o $CPUParticles2D
 	
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
@@ -25,7 +26,8 @@ func _on_area_2d_body_entered(body):
 func take_damage(amount: float):
 	if recibe_danio: # inmunidad al daño
 		health -= amount
-	
+		cpu_particles.emitting = true  # Activa la emisión
+		cpu_particles.one_shot = true  # Asegura que sea solo una vez
 		if health <= 0:
 			die()
 

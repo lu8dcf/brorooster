@@ -30,7 +30,7 @@ var pasoy = true  # cuando esta al medio y
 func _ready():
 	original_health = health
 	update_health(health)
-	
+	cpu_particles = get_node("CPUParticles2D")  # o $CPUParticles2D
 	
 	$Sprite2D.texture = load(sprite)
 	$Sprite2D.modulate = Color(red, green, blue)
@@ -103,6 +103,8 @@ func set_vector(vector):
 func take_damage(amount: float):
 	health -= amount
 	update_health(health)
+	cpu_particles.emitting = true  # Activa la emisión
+	cpu_particles.one_shot = true  # Asegura que sea solo una vez
 	if health <= 0:
 		die()
 
