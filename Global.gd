@@ -32,13 +32,8 @@ var currentWeapon: ArmaData = null:
 
 func change_currentWeapon(arma :ArmaData):
 	Global.currentWeapon = arma
-	weapon_changed.emit(arma)
 
 
-func set_armaDos():
-	inventory_player.set(1, GlobalWeapon.get_armaRara())
-	Global.currentWeapon = inventory_player.get(2)
-	segundaArma.emit()
 
 var secondaryWeapon: ArmaData = null:
 	set(value):
