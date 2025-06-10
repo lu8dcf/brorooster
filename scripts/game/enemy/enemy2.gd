@@ -24,6 +24,7 @@ func set_vector(vector):
 		$AnimationPlayer.play("left")
 
 func salida():
+	recibe_danio=false
 	$AnimationPlayer.play("SPAWN")
 	$DelayTimer.start()  # Inicia el temporizador de 2.3 segundos
 	
@@ -35,4 +36,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_delay_timer_timeout() -> void:
 	can_move = true  # Permite el movimiento después de 2.3 segundos
+	recibe_danio=true # permite recibir daño
 	

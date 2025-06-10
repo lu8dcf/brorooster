@@ -11,6 +11,7 @@ var green : int
 var blue : int
 
 var movimiento = Vector2()
+var recibe_danio = true  # en ocasiones los bichos son inmunes al daño
 
 func _ready():
 	$Sprite2D.texture = load(sprite)
@@ -22,10 +23,11 @@ func _on_area_2d_body_entered(body):
 		print("toco")
 
 func take_damage(amount: float):
-	health -= amount
+	if recibe_danio: # inmunidad al daño
+		health -= amount
 	
-	if health <= 0:
-		die()
+		if health <= 0:
+			die()
 
 func die():
 	# Obtener la fábrica de items y pedirle que cree el item
