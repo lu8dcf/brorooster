@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bo3r5lgu6xxkp" path="res://scripts/game/enemy/enemy2.gd" id="1_q1dl8"]
 [ext_resource type="Texture2D" uid="uid://dy15m7nyu5k7i" path="res://assets/graphics/character_graphics/bichos/bicho2.png" id="2_q1dl8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
-radius = 12.2139
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qd6x"]
+size = Vector2(48.7141, 23.1579)
 
 [sub_resource type="Animation" id="Animation_5nfiu"]
 length = 0.001
@@ -44,10 +44,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-90, -44)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_1qd6x"]
 resource_name = "SPAWN"
-length = 2.2375
+length = 1.4
 step = 0.09
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -84,6 +96,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-84, -44)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.00314822, 1.27273, 1.37289, 2.2375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.992157), Color(1, 1, 1, 0.552941), Color(1, 1, 1, 0.121569), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_wthq6"]
@@ -127,6 +151,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(28, -44)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.65098), Color(1, 1, 1, 0.976471)]
+}
 
 [sub_resource type="Animation" id="Animation_dkfay"]
 resource_name = "right"
@@ -169,6 +205,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-85, -44)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.992157), Color(1, 1, 1, 0.992157)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8ej3"]
 _data = {
@@ -178,8 +226,8 @@ _data = {
 &"right": SubResource("Animation_dkfay")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wthq6"]
-radius = 19.0263
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1dl8"]
+size = Vector2(71.125, 23)
 
 [node name="Enemy2" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -195,9 +243,9 @@ hframes = 17
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 5
-position = Vector2(-26, -18)
+position = Vector2(0.911751, 3.2)
 scale = Vector2(1.2353, 0.76)
-shape = SubResource("CircleShape2D_dkfay")
+shape = SubResource("RectangleShape2D_1qd6x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -207,8 +255,8 @@ libraries = {
 [node name="AreaDaño" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
-position = Vector2(-27, -17)
-shape = SubResource("CircleShape2D_wthq6")
+position = Vector2(-2, 4)
+shape = SubResource("RectangleShape2D_q1dl8")
 
 [node name="DelayTimer" type="Timer" parent="."]
 

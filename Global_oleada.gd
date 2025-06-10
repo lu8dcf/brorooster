@@ -10,7 +10,7 @@ var maiz = 300
 
 # Enemigos
 var enemies = [] # se guardan todas las intancias enemigas
-var timer_between_enemy = 1
+var timer_between_enemy = 2
 var experiencia = 0
 
 func eliminar_todos_enemigos():
@@ -20,7 +20,7 @@ func eliminar_todos_enemigos():
 	enemies.clear()  # Limpia el array
 
 # Oleada
-var oleada = 1
+var oleada = 5
 
 
 #Factory enemy

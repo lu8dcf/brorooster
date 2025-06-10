@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://behekbgwu4h48" path="res://assets/graphics/character_graphics/bichos/bicho5_nivel1.png" id="2_b3f5t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
-radius = 12.2139
+radius = 32.2495
 
 [sub_resource type="Animation" id="Animation_5nfiu"]
 length = 0.001
@@ -135,7 +135,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wthq6"]
-radius = 19.0263
+radius = 41.3038
 
 [node name="Enemy5" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -143,15 +143,15 @@ collision_mask = 5
 script = ExtResource("1_b3f5t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-23, -42)
-scale = Vector2(0.984132, 1.01629)
+position = Vector2(4.76837e-07, -1)
+scale = Vector2(0.506416, 0.517358)
 texture = ExtResource("2_b3f5t")
 hframes = 38
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 5
-position = Vector2(-26, -18)
+position = Vector2(-2, 2.00001)
 scale = Vector2(1.2353, 0.76)
 shape = SubResource("CircleShape2D_dkfay")
 
@@ -170,10 +170,10 @@ offset_bottom = -32.0
 
 [node name="ProgressBar" type="ProgressBar" parent="HealthBar"]
 layout_mode = 0
-offset_left = -18.0
-offset_top = -12.0
-offset_right = 129.0
-offset_bottom = 15.0
+offset_left = 7.0
+offset_top = -14.0
+offset_right = 154.0
+offset_bottom = 13.0
 scale = Vector2(0.15, 0.15)
 max_value = 30.0
 step = 1.0
@@ -182,7 +182,7 @@ rounded = true
 [node name="AreaDaño" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
-position = Vector2(-27, -17)
+position = Vector2(-2, 0)
 shape = SubResource("CircleShape2D_wthq6")
 
 [connection signal="body_entered" from="AreaDaño" to="." method="_on_area_daño_body_entered"]

@@ -65,7 +65,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wthq6"]
-radius = 19.0263
+radius = 17.1172
 
 [node name="Enemy3" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -73,15 +73,15 @@ collision_mask = 5
 script = ExtResource("1_lmc2w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-24.7731, -21.4569)
-scale = Vector2(0.984132, 1.01629)
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(0.660273, 0.741165)
 texture = ExtResource("2_lmc2w")
 hframes = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 5
-position = Vector2(-26, -18)
+position = Vector2(-1, 1)
 scale = Vector2(1.2353, 0.76)
 shape = SubResource("CircleShape2D_dkfay")
 
@@ -93,7 +93,7 @@ libraries = {
 [node name="AreaDaño" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
-position = Vector2(-27, -17)
+position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_wthq6")
 
 [connection signal="body_entered" from="AreaDaño" to="." method="_on_area_daño_body_entered"]
