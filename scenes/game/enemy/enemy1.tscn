@@ -89,7 +89,6 @@ collision_mask = 5
 script = ExtResource("1_wthq6")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(-26, -18)
 emitting = false
 texture = SubResource("AnimatedTexture_1nps3")
 lifetime = 1.77

@@ -101,7 +101,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxu75"]
-size = Vector2(65.5625, 37.0625)
+size = Vector2(62.5625, 35.0625)
 
 [node name="Enemy4" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -128,7 +128,7 @@ libraries = {
 [node name="AreaDaño" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
-position = Vector2(-2.78125, 46.5313)
+position = Vector2(-4.28125, 47.5313)
 shape = SubResource("RectangleShape2D_bxu75")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
