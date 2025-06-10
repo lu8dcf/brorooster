@@ -66,8 +66,8 @@ var speed_main := 200
 var deadzone_radius_main := 20 
 var score := 0
 var enemigos_eliminados := 0
-var pantalla_ancho := 1160
-var pantalla_alto := 764
+var pantalla_ancho := 1152
+var pantalla_alto := 648
 var angle := 0
 # var stage := 1   # se debe dejar de usar serian oleadas
 

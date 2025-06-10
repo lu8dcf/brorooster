@@ -5,7 +5,7 @@ signal time_changed(new_value)
 signal time_hud_changed(new_value)
 
 # General 
-var maiz = 300
+var maiz = 0
 
 
 # Enemigos
@@ -20,7 +20,7 @@ func eliminar_todos_enemigos():
 	enemies.clear()  # Limpia el array
 
 # Oleada
-var oleada = 5
+var oleada = 1
 
 
 #Factory enemy

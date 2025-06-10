@@ -1,19 +1,12 @@
-extends CharacterBody2D
+class_name aranita
+extends EnemigoBase
 
-var health : float
-var damage : float
-var veloci : float
-var sprite : String
-var red : int
-var green : int
-var blue : int
 
-var movimiento = Vector2()
 
 var tiene_maiz := false
 
 func _ready():
-	
+	cpu_particles = get_node("CPUParticles2D")  # o $CPUParticles2D
 	$Sprite2D.texture = load(sprite)
 	$Sprite2D.modulate = Color(red, green, blue)
 

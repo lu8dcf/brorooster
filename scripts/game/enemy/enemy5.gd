@@ -14,20 +14,24 @@ var original_health: float
 # pantalla
 var pantalla_ancho = Global.pantalla_ancho
 var pantalla_alto = Global.pantalla_alto
-var margen_spawn = 1.1 * GlobalEnemy.margen_spawn  # margen donde inician los enemigos
+var margen_spawn = 1.5 * GlobalEnemy.margen_spawn  # margen donde inician los enemigos
 var topeX = true # indicador de extremo X
 var topeY = true # indicador de extremo Y
 
-var direccion : Vector2
+var direccion :  Vector2
 var side : int # de 1 a 4 hacia que direcciuon se dirige
 var cambio_timer := Timer.new()  # tiempo de espera par acambio de direccion
 var puede_cambiar = true
+var pasox = true  # cuando esta al medio x
+var pasoy = true  # cuando esta al medio y
+# var screen_size: Vector2
+
 
 func _ready():
 	original_health = health
 	update_health(health)
+	cpu_particles = get_node("CPUParticles2D")  # o $CPUParticles2D
 	
-	# Obtener el tamaño de la pantalla 
 	$Sprite2D.texture = load(sprite)
 	$Sprite2D.modulate = Color(red, green, blue)
 	
@@ -41,53 +45,66 @@ func _ready():
 func _physics_process(delta):
 	
 	move_and_collide(movimiento)
+	position.x = clamp(position.x, 0.5 * margen_spawn, pantalla_ancho - 0.5 * margen_spawn)
+	position.y = clamp(position.y, 0.5 * margen_spawn, pantalla_alto - 0.5 * margen_spawn)
+	
 	set_vector(position)
 	
 func set_vector(vector):
-	
-	var side = randi() % 2 + 1
-	# esta en el borde de X
-	if (vector.x <  margen_spawn or vector.x > pantalla_ancho -  margen_spawn) and topeX and puede_cambiar:
-		cambio_direccionY()
 		
+	if puede_cambiar:
+		var side = randi() % 2 + 1
 		
-	if (vector.y <   margen_spawn or vector.y > pantalla_alto -  margen_spawn)  and topeY and puede_cambiar:	
-		cambio_direccionX()
+		if vector.x <  margen_spawn:    # esta Iquierda
+			print ("izquierda")
+			if  vector.y <  margen_spawn:  # esta arriba
+				match side:
+					1: direccion = Vector2(1,0)  #se dirije hacia derecha
+					2: direccion = Vector2(0,1)  #se dirije hacia abajo
+			
+			if  vector.y >   pantalla_alto - margen_spawn:  # esta abajo
+				match side:
+					1: direccion = Vector2(1,0)  #se dirije hacia derecha
+					2: direccion = Vector2(0,-1)  #se dirije hacia arriba
+			
+					
+		elif vector.x >  pantalla_ancho - margen_spawn:  # esta en la derecha
+			print ("derecha")
+			if  vector.y <  margen_spawn:  # esta arriba
+				match side:
+					1: direccion = Vector2(-1,0)  #se dirije hacia izq
+					2: direccion = Vector2(0,1)  #se dirije hacia abajo
+			if  vector.y >   pantalla_alto - margen_spawn:  # estaarriba
+				match side:
+					1: direccion = Vector2(-1,0)  #se dirije hacia izq
+					2: direccion = Vector2(0,1)  #se dirije hacia arriba  # esta abajo			
 		
+		if vector.x <=  pantalla_ancho - margen_spawn and vector.x >  margen_spawn and  pasox:
+				match side:
+					1: direccion = Vector2(-1,0)  #se dirije hacia izq
+					2: direccion =  Vector2(1,0)  #se dirije hacia derecha		
+				pasox= false
+				
 		
+		elif vector.y <=  pantalla_alto - margen_spawn and vector.y >  margen_spawn and  pasoy:
+				match side:
+					1: direccion = Vector2(0,-1)  #se dirije hacia arriba
+					2: direccion =  Vector2(0,1)  #se dirije hacia abajo		
+				pasoy= false
+		puede_cambiar= false
 	
 	if movimiento.x > 0:
 		$AnimationPlayer.play("right")
 	else:
 		$AnimationPlayer.play("left")	
-	movimiento = direccion.normalized() * veloci
+	movimiento = direccion * veloci
 	# limites de movimiento
-	movimiento.x = clamp(movimiento.x, 0.9 * margen_spawn,pantalla_ancho -  0.9 * margen_spawn)
-	movimiento.y = clamp(movimiento.y, 0.9 * margen_spawn,pantalla_alto -  0.9 * margen_spawn)
-	print (vector.x ," x ",movimiento.x, " -- ",vector.y , " y ", movimiento.y, " tope ", topeX)
-
-func cambio_direccionY():
-	var side = randi() % 2 + 1
-	match side:
-		1: direccion = Vector2(0,1)  #se dirije hacia abajo
-		2: direccion = Vector2(0,-1)  #se dirije hacia arriba
-	topeX=false
-	topeY=true
-	puede_cambiar = false
 	
-func cambio_direccionX():
-	var side = randi() % 2 + 1
-	match side:
-		1: direccion = Vector2(1,0)  #se dirije hacia derecha
-		2: direccion = Vector2(-1,0)  #se dirije hacia izquiersda
-	topeY=false	
-	topeX=true
-	puede_cambiar = false
-
-
 func take_damage(amount: float):
 	health -= amount
 	update_health(health)
+	cpu_particles.emitting = true  # Activa la emisión
+	cpu_particles.one_shot = true  # Asegura que sea solo una vez
 	if health <= 0:
 		die()
 

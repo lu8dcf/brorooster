@@ -330,6 +330,12 @@ func _on_slot_pressed(index: int):
 	# Deseleccionar si ya está seleccionado
 	if selected_slot_index == index:
 		selected_slot_index = -1
+		
+		# Sonido de compra exitosa
+		$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/shop_buy.wav")
+		$AudioStreamPlayer2D.play()
+			
+			
 		# Restablecer el color del slot (implementa esta función según tu UI)
 		_reset_slot_color(index)
 	else:

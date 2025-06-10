@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://chxltb7p82b2g" path="res://assets/graphics/character_graphics/bichos/bicho4_nivel1.png" id="2_c7cqe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7cqe"]
-size = Vector2(25.1666, 50.1974)
+size = Vector2(47.3927, 121.809)
 
 [sub_resource type="Animation" id="Animation_5nfiu"]
 length = 0.001
@@ -101,7 +101,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxu75"]
-size = Vector2(35, 47)
+size = Vector2(71.125, 92.125)
 
 [node name="Enemy4" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -110,14 +110,13 @@ script = ExtResource("1_c7cqe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.2441, 0)
-scale = Vector2(0.443092, 0.445348)
 texture = ExtResource("2_c7cqe")
 hframes = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 5
-position = Vector2(-0.544125, 3.925)
+position = Vector2(-1, 4)
 scale = Vector2(1.2353, 0.76)
 shape = SubResource("RectangleShape2D_c7cqe")
 
@@ -129,7 +128,11 @@ libraries = {
 [node name="AreaDaño" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
-position = Vector2(0, 3)
+position = Vector2(2, 5)
 shape = SubResource("RectangleShape2D_bxu75")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+one_shot = true
 
 [connection signal="body_entered" from="AreaDaño" to="." method="_on_area_daño_body_entered"]

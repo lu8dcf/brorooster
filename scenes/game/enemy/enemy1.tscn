@@ -20,7 +20,7 @@ _data = [Vector2(0.0617761, 0.533381), 0.0, 0.0, 0, 0, Vector2(0.855212, 0.02476
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkfay"]
-radius = 10.0644
+radius = 19.6059
 
 [sub_resource type="Animation" id="Animation_5nfiu"]
 length = 0.001
@@ -81,7 +81,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wthq6"]
-radius = 13.0
+radius = 26.0
 
 [node name="Enemy1" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -108,7 +108,6 @@ scale_amount_curve = SubResource("Curve_rroe5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.999998, -1)
-scale = Vector2(0.653341, 0.747701)
 texture = ExtResource("2_wthq6")
 hframes = 8
 
@@ -128,7 +127,7 @@ libraries = {
 position = Vector2(1, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
-position = Vector2(-1, 1)
+position = Vector2(-2, -2)
 shape = SubResource("CircleShape2D_wthq6")
 
 [connection signal="body_entered" from="AreaDaño" to="." method="_on_area_daño_body_entered"]
