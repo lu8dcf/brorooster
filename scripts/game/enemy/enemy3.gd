@@ -7,9 +7,6 @@ var velocidad_actual : float
 var timer_acelerar := Timer.new()
 
 func _ready():
-	
-	
-
 	velocidad_actual = veloci * 0.2  # velocidad inicial lenta
 
 	timer_acelerar.wait_time = 2.0  # después de 2 segundos acelera
@@ -20,10 +17,8 @@ func _ready():
 
 func _physics_process(_delta):
 	move_and_collide(movimiento)
-	if Global.currentPlayer._health >= 1:
-		set_vector(get_node("/root/main_game/player").global_position - global_position)
-	else:
-		movimiento = Vector2.ZERO
+	set_vector(get_node("/root/main_game/player").global_position - global_position)
+	
 
 func set_vector(vector):
 	movimiento = vector.normalized() * velocidad_actual
