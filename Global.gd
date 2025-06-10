@@ -30,20 +30,20 @@ var currentWeapon: ArmaData = null:
 		else:
 			push_error("Se intentó asignar un tipo inválido a currentWeapon")
 
-func change_currentWeapon(arma :ArmaData):
-	Global.currentWeapon = arma
+func change_currentWeapon(arma :ArmaData): #Llamar a este desde inventario
+	Global.currentWeapon = arma		#para el cambio de arma (y segunda arma tambien)
 
 
 
-var secondaryWeapon: ArmaData = null:
-	set(value):
-		if value is ArmaData:
-			secondaryWeapon = value
-			# Conecta señales del personaje
-			weapon_changed_secondary.emit(secondaryWeapon)
-			inventory_player[1] = secondaryWeapon
-		else:
-			push_error("Se intentó asignar un tipo inválido a currentWeapon")
+#var secondaryWeapon: ArmaData = null:
+	#set(value):
+		#if value is ArmaData:
+			#secondaryWeapon = value
+			## Conecta señales del personaje
+			#weapon_changed_secondary.emit(secondaryWeapon)
+			#inventory_player[1] = secondaryWeapon
+		#else:
+			#push_error("Se intentó asignar un tipo inválido a currentWeapon")
 
 
 func _ready() -> void:
