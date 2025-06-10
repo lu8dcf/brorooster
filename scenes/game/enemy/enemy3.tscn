@@ -1,5 +1,5 @@
 
-[gd_scene load_steps=14 format=3 uid="uid://ccv782ygvrwof"]
+[gd_scene load_steps=11 format=3 uid="uid://ccv782ygvrwof"]
 
 [ext_resource type="Script" uid="uid://cefw0qn2gpwqs" path="res://scripts/game/enemy/enemy3.gd" id="1_lmc2w"]
 [ext_resource type="Texture2D" uid="uid://cbi50bbnyn6b2" path="res://assets/graphics/character_graphics/bichos/bicho3_nivel1.png" id="2_lmc2w"]
