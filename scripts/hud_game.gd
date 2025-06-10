@@ -5,7 +5,7 @@ extends Control
 @onready var wave_text: Label = $VBoxContainer/Background/HBoxContainer/wave_text
 @onready var time_text: Label = $VBoxContainer/Background/HBoxContainer/time
 @onready var maiz_text: Label = $VBoxContainer/Background/HBoxContainer/VBoxContainer/maiz
-@onready var weapon_hud: Control = $BaseHudGameWeapon
+@onready var weapon_hud: Control = $BaseHudgameWeapon
 @onready var exp: Label = $VBoxContainer/weapon_player_hudgame/exp
 
 func _ready() -> void:
@@ -40,7 +40,7 @@ func select_weapon(index: int):
 	if index < Global.inventory_player.size() and Global.inventory_player[index] is ArmaData:
 		#Global.current_weapon = Global.inventory_player[index]
 		Global.change_currentWeapon(Global.inventory_player[index])
-		print("se cambia arma, de ",  Global.current_weapon.nombre, " a ",Global.inventory_player[index].nombre )
+		#print("se cambia arma, de ",  Global.current_weapon.nombre, " a ",Global.inventory_player[index].nombre )
 		# Aquí puedes agregar lógica adicional como:
 		# - Actualizar el arma equipada en el jugador
 		# - Resaltar el slot seleccionado en el HUD

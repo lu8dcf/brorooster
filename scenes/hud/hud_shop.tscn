@@ -308,22 +308,27 @@ theme_override_font_sizes/font_size = 15
 text = "Deben ser 2 armas iguales"
 
 [node name="weapon_merge_1" parent="panel_merge" instance=ExtResource("2_nbyaw")]
-layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 68.0
-offset_top = 112.0
-offset_right = 335.0
-offset_bottom = 199.0
+offset_left = 57.0
+offset_top = 109.0
+offset_right = 343.0
+offset_bottom = 288.0
 
 [node name="TextureRect" type="TextureRect" parent="panel_merge/weapon_merge_1"]
-layout_mode = 0
-offset_left = -62.6624
-offset_top = -136.514
-offset_right = 70.3376
-offset_bottom = -72.5143
-scale = Vector2(3.26271, 3.26271)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.188
+anchor_top = -0.313
+anchor_right = 1.141
+anchor_bottom = 0.827
+offset_left = 33.6265
+offset_top = 9.0302
+offset_right = -16.4675
+offset_bottom = 32.9702
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Label2" parent="panel_merge" instance=ExtResource("2_4g13u")]
 layout_mode = 1
@@ -335,22 +340,27 @@ theme_override_font_sizes/font_size = 70
 text = "+"
 
 [node name="weapon_merge_2" parent="panel_merge" instance=ExtResource("2_nbyaw")]
-layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 229.0
-offset_top = 112.0
-offset_right = 496.0
-offset_bottom = 199.0
+offset_left = 232.0
+offset_top = 109.0
+offset_right = 518.0
+offset_bottom = 288.0
 
 [node name="TextureRect" type="TextureRect" parent="panel_merge/weapon_merge_2"]
-layout_mode = 0
-offset_left = -62.6624
-offset_top = -136.514
-offset_right = 70.3376
-offset_bottom = -72.5143
-scale = Vector2(3.26271, 3.26271)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.188
+anchor_top = -0.313
+anchor_right = 1.141
+anchor_bottom = 0.827
+offset_left = 33.6265
+offset_top = 9.0302
+offset_right = -16.4675
+offset_bottom = 32.9702
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Label" parent="panel_merge" instance=ExtResource("2_4g13u")]
 layout_mode = 1
@@ -361,22 +371,27 @@ offset_bottom = 52.0
 text = "="
 
 [node name="weapon_merge_result" parent="panel_merge" instance=ExtResource("2_nbyaw")]
-layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 407.0
-offset_top = 114.0
-offset_right = 674.0
-offset_bottom = 201.0
+offset_left = 402.0
+offset_top = 109.0
+offset_right = 688.0
+offset_bottom = 288.0
 
 [node name="TextureRect" type="TextureRect" parent="panel_merge/weapon_merge_result"]
-layout_mode = 0
-offset_left = -62.6624
-offset_top = -136.514
-offset_right = 70.3376
-offset_bottom = -72.5143
-scale = Vector2(3.26271, 3.26271)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.188
+anchor_top = -0.313
+anchor_right = 1.141
+anchor_bottom = 0.827
+offset_left = 33.6265
+offset_top = 9.0302
+offset_right = -16.4675
+offset_bottom = 32.9702
+expand_mode = 1
+stretch_mode = 6
 
 [node name="panel_shop" parent="." instance=ExtResource("1_21ycv")]
 layout_mode = 1
