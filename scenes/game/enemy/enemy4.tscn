@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgadr6c6nsamm"]
+[gd_scene load_steps=14 format=3 uid="uid://dgadr6c6nsamm"]
 
 [ext_resource type="Script" uid="uid://c18u4jqf4cu0j" path="res://scripts/game/enemy/enemy4.gd" id="1_c7cqe"]
 [ext_resource type="Texture2D" uid="uid://chxltb7p82b2g" path="res://assets/graphics/character_graphics/bichos/bicho4_nivel1.png" id="2_c7cqe"]
+[ext_resource type="Texture2D" uid="uid://bp48ywg6c5p1s" path="res://assets/graphics/character_graphics/bichos/Particulas_Bichos/Particula2_bicho1.png" id="3_5ko4s"]
+[ext_resource type="Texture2D" uid="uid://ciunaixqnmsry" path="res://assets/graphics/character_graphics/bichos/Particulas_Bichos/Particula3_bicho1.png" id="4_e14k6"]
+[ext_resource type="Texture2D" uid="uid://cqfmsb070vhea" path="res://assets/graphics/character_graphics/bichos/Particulas_Bichos/Particula_bicho1.png" id="5_71ng0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7cqe"]
 size = Vector2(47.3927, 121.809)
@@ -35,7 +38,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_wthq6"]
 resource_name = "left"
-length = 1.5
+length = 1.15
 loop_mode = 1
 step = 0.0815
 tracks/0/type = "value"
@@ -103,6 +106,19 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxu75"]
 size = Vector2(71.125, 92.125)
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_bc1ho"]
+frames = 3
+frame_0/texture = ExtResource("3_5ko4s")
+frame_0/duration = 2.38
+frame_1/texture = ExtResource("4_e14k6")
+frame_1/duration = 2.86
+frame_2/texture = ExtResource("5_71ng0")
+frame_2/duration = 2.65
+
+[sub_resource type="Curve" id="Curve_o2nkh"]
+_data = [Vector2(0.0617761, 0.533381), 0.0, 0.0, 0, 0, Vector2(0.855212, 0.0247668), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Enemy4" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
 collision_mask = 5
@@ -132,7 +148,21 @@ position = Vector2(2, 5)
 shape = SubResource("RectangleShape2D_bxu75")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(2, 19)
 emitting = false
+texture = SubResource("AnimatedTexture_bc1ho")
+lifetime = 1.77
 one_shot = true
+speed_scale = 3.17
+explosiveness = 1.0
+randomness = 0.86
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 29.63
+initial_velocity_max = 51.85
+angular_velocity_max = 96.0
+scale_amount_min = 0.0
+scale_amount_max = 8.81
+scale_amount_curve = SubResource("Curve_o2nkh")
 
 [connection signal="body_entered" from="AreaDaño" to="." method="_on_area_daño_body_entered"]

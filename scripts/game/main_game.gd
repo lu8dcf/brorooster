@@ -13,6 +13,7 @@ var player = null  # instancia del player
 var background = null
 
 func _ready():	# Comienza el juego
+	print("dificultad: ", GlobalEnemy.dificultad)
 	$sound_level.play()
 	
 	init_background()

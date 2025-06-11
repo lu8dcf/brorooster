@@ -50,6 +50,7 @@ var cant_weapon = 0
 	$panel_shop/weapon_shadow3
 ]
 
+
 @onready var slots_merge ={ # slots de combinacion
 	"slot1" : $panel_merge/weapon_merge_1,
 	"slot2" : $panel_merge/weapon_merge_2,
@@ -193,12 +194,14 @@ func update_shop():
 		var slot = slots_items[i]
 		var portrait = slot.get_node("TextureRect")
 		var label = slot.get_node("text")
+		var costo = slot.get_node("VBoxContainer/Label")
 		
 # Verificar si hay un item en esta posición
 		if i < shop_items.size() and shop_items[i] != null:
 			var item = shop_items[i]
 			portrait.texture = item.sprite
 			label.text = item.nombre
+			costo.text = str(item.costo)
 			portrait.visible = true
 			
 			# Mostrar en gris si no hay suficiente dinero
@@ -297,7 +300,7 @@ func find_mergeable_weapons():
 	# Buscar pares de armas iguales
 	for i in range(weapons.size()):
 		for j in range(i + 1, weapons.size()):
-			if weapons[i].nombre == weapons[j].nombre and weapons[i].rareza == weapons[j].rareza:
+			if weapons[i].nombre == weapons[j].nombre and weapons[i]._rarety == weapons[j]._rarety:
 				merge_weapons = [weapons[i], weapons[j]]
 				return
 
