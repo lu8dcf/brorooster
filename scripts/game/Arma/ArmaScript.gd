@@ -32,7 +32,7 @@ func _ready() -> void:
 
 func _process(delta):
 	#cambio la rotacion del arma (tiene que se la instancia, la escena en ejecucion)
-	rotation = lerp_angle(rotation, target_angle + diferencia_sprite_weapon, 14.0 * delta)
+	rotation = lerp_angle(rotation, target_angle +  diferencia_sprite_weapon + deg_to_rad(randf_range(-3, 3)), 16.0 * delta)
 	
 	# Determinar si el arma está apuntando hacia la izquierda invierte el sprite
 	if  abs(target_angle) > PI/2 and inv_image_weapon == 0:

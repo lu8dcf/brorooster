@@ -39,7 +39,8 @@ func get_danioGlobal() -> float:
 
 func CombinarArma(arma : ArmaData) -> ArmaData:
 	#solo modifico y retorno
-	arma.sprite = sprite_arma_default + str(arma.id) + "_nivel" + str(arma._rarety+1) + ".png"
+	var sprite_path = sprite_arma_default + str(arma.id) + "_nivel" + str(arma._rarety+1) + ".png"
+	arma.sprite = load(sprite_path)
 	arma._rarety +=1
 	arma.damage +=  randf_range(4,11) #esto se puede mejorar
 	return arma

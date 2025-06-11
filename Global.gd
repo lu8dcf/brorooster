@@ -35,18 +35,6 @@ func change_currentWeapon(arma :ArmaData): #Llamar a este desde inventario
 	
 
 
-
-#var secondaryWeapon: ArmaData = null:
-	#set(value):
-		#if value is ArmaData:
-			#secondaryWeapon = value
-			## Conecta señales del personaje
-			#weapon_changed_secondary.emit(secondaryWeapon)
-			#inventory_player[1] = secondaryWeapon
-		#else:
-			#push_error("Se intentó asignar un tipo inválido a currentWeapon")
-
-
 func _ready() -> void:
 	# Inicializar con personaje por defecto
 	if currentPlayer == null:
