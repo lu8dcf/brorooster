@@ -76,7 +76,8 @@ var inv_image_weapon2=0
 
 var nuevaArma : ArmaData
 var useSelector = false
-var queArmaToca = 1
+#var queArmaToca = 1 funcinamiento de par e impar
+var cambioArma= false #si es cambia false = arma 2 ||  true cambia arma 1
 
 @onready var muzzle1  :  Marker2D = $shoot1 #desde donde sale el disparo
 var shooting1 = false
@@ -246,7 +247,7 @@ func take_damage(amount: float):
 	# $AnimationPlayer.play("hit")
 	armor = Global.currentPlayer._armor
 	var damage_taken = amount * armor
-	Global.currentPlayer.take_damage(damage_taken)
+	#Global.currentPlayer.take_damage(damage_taken)
 	#print (Global.currentPlayer._health, "sacar: ", damage_taken, "armor,", armor)
 	if Global.currentPlayer._health <= 0:
 		die()
@@ -268,7 +269,8 @@ func _on_area_recoleccion_area_entered(item) -> void:
 func _on_weapon_changed(armaNueva :ArmaData):  #Esto es por señal, cuando en el global el arma cambia
 	#que aca des equipo y vuelva a equipar la nueva.
 	#Voy a probar lo siguiente. asigno el arma nueva al global.currentWeapon. ASi que la asigna de la manera que viene haciendo
-	if queArmaToca % 2 == 0:
+	#if queArmaToca % 2 == 0:
+	if cambioArma:
 		# Cambiar arma 1
 		if arma1_data == armaNueva:
 			return
@@ -282,6 +284,5 @@ func _on_weapon_changed(armaNueva :ArmaData):  #Esto es por señal, cuando en el
 		unequip_weapon2()
 		nuevaArma = armaNueva.duplicate()
 		equip_weapon2()
-
-	queArmaToca += 1
+	cambioArma = !cambioArma
 	

@@ -1,6 +1,6 @@
 extends Control
 
-
+var current_weapon_index := -1 #variable para saber si esa arma ya se selecciono
 @onready var life_bar: ProgressBar = $VBoxContainer/Background/HBoxContainer/VBoxContainer/life_bar
 @onready var wave_text: Label = $VBoxContainer/Background/HBoxContainer/wave_text
 @onready var time_text: Label = $VBoxContainer/Background/HBoxContainer/time
@@ -33,13 +33,16 @@ func _process(delta: float) -> void:
 	# Detección de teclas numéricas
 	for i in range(6):  # 0-5 para teclas 1-6
 		if Input.is_key_pressed(KEY_1 + i) and Global.inventory_player.size() > i:
-			select_weapon(i)
+			if i != current_weapon_index: #Hago esta verificacion para que no se vuelva a cargar (si es igual al index, es decir que ya se cargo)
+				select_weapon(i)
+			break
 
 
 func select_weapon(index: int):
 	if index < Global.inventory_player.size() and Global.inventory_player[index] is ArmaData:
 		#Global.current_weapon = Global.inventory_player[index]
-		Global.change_currentWeapon(Global.inventory_player[index])
+		current_weapon_index = index #lo actualizo
+		Global.change_currentWeapon(Global.inventory_player.get(index)) #envio el arma a change_currentWeapon
 		#print("se cambia arma, de ",  Global.current_weapon.nombre, " a ",Global.inventory_player[index].nombre )
 		# Aquí puedes agregar lógica adicional como:
 		# - Actualizar el arma equipada en el jugador
