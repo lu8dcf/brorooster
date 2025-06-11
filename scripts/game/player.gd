@@ -61,13 +61,7 @@ var move_left = "left"
 @export var arma1_data: ArmaData
 @export var arma2_data: ArmaData
 
-var weapon1_enable = true
 
-var time_shoot1= GlobalShoot.time_shoot1
-var weapon2_enable = true
-var weapon2_path= "res://scenes/game/weapon.tscn"
-var shoot2_path="res://scenes/game/laser.tscn"
-var time_shoot2= GlobalShoot.time_shoot2
 
 var diferencia_sprit_weapon = 0 # con el sprite a cero se puede evitar
 var inv_image_weapon1=0 # determinacion hacia adonde aponta el arma de 0aPI/2 derecha =0
@@ -79,8 +73,10 @@ var inv_image_weapon2=0
 #var arma1_scene : PackedScene
 #var arma2_scene : PackedScene
 
-var cambioArma = false #true = arma 1 | false = arma 2
 
+var nuevaArma : ArmaData
+var useSelector = false
+var queArmaToca = 1
 
 @onready var muzzle1  :  Marker2D = $shoot1 #desde donde sale el disparo
 var shooting1 = false
@@ -97,7 +93,6 @@ var shooting2 = false
 #var new_weapon = null
 var current_weapon1: Node2D 
 var current_weapon2: Node2D 
-
 var target_angle: float = 0.0 
 
 
@@ -176,9 +171,14 @@ func equip_weapon1():
 		if is_instance_valid(current_weapon1):
 			current_weapon1.queue_free()
 	current_weapon1 = arma1_data.arma_escena.instantiate() #va a instanciar un arma
-	current_weapon1.arma_data = Global.currentWeapon #Aca le asigna el current weapon del global
+	if(!useSelector):
+		current_weapon1.arma_data = Global.currentWeapon #Aca le asigna el current weapon del global
+		useSelector = true
+	else:
+		current_weapon1.arma_data = nuevaArma
 	weapon_anchor.add_child(current_weapon1)
 	current_weapon1.position = Vector2.ZERO
+
 	
 	## Instancia la escena del arma
 	
@@ -189,7 +189,7 @@ func equip_weapon1():
 func equip_weapon2():
 	# Instancia la escena del arma
 	current_weapon2 = arma2_data.arma_escena.instantiate()
-	current_weapon2.arma_data = Global.currentWeapon
+	current_weapon2.arma_data = nuevaArma
 	$WeaponAnchor2.add_child(current_weapon2)
 	current_weapon2.position = Vector2.ZERO
 
@@ -265,17 +265,23 @@ func _on_area_recoleccion_area_entered(item) -> void:
 		item.take_maiz()  # recibir la cantidad de maiz
 
 #Esto deberia permitirme reemplazar el arma, cuando haya cambios
-func _on_weapon_changed(nuevaArma :ArmaData):  #Esto es por señal, cuando en el global el arma cambia
+func _on_weapon_changed(armaNueva :ArmaData):  #Esto es por señal, cuando en el global el arma cambia
 	#que aca des equipo y vuelva a equipar la nueva.
 	#Voy a probar lo siguiente. asigno el arma nueva al global.currentWeapon. ASi que la asigna de la manera que viene haciendo
-	#Global.currentWeapon = nuevaArma
-	if cambioArma: #Si es true, que cambie el arma 1
-		arma1_data = nuevaArma #copio el arma para que no cambie 
+	if queArmaToca % 2 == 0:
+		# Cambiar arma 1
+		if arma1_data == armaNueva:
+			return
 		unequip_weapon1()
+		nuevaArma = armaNueva.duplicate()
 		equip_weapon1()
-	else: #si es false, que cambie el arma 2
-		arma2_data = nuevaArma #copio el arma para que no cambie 
+	else:
+		# Cambiar arma 2
+		if arma2_data == nuevaArma:
+			return
 		unequip_weapon2()
+		nuevaArma = armaNueva.duplicate()
 		equip_weapon2()
-	cambioArma = !cambioArma #esto hace que vaya ciclando
-	pass
+
+	queArmaToca += 1
+	

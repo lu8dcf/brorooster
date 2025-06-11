@@ -31,7 +31,8 @@ var currentWeapon: ArmaData = null:
 			push_error("Se intentó asignar un tipo inválido a currentWeapon")
 
 func change_currentWeapon(arma :ArmaData): #Llamar a este desde inventario
-	Global.currentWeapon = arma		#para el cambio de arma (y segunda arma tambien)
+	#Global.currentWeapon = arma		#para el cambio de arma (y segunda arma tambien)
+	weapon_changed.emit(arma)
 
 
 
@@ -56,9 +57,7 @@ func _ready() -> void:
 # Señales globales
 signal character_changed(new_character: CharacterData)
 signal weapon_changed(new_weapon: ArmaData)
-signal weapon_changed_secondary(new_weapon:ArmaData)
 signal health_changed(new_value: int)
-signal segundaArma()
 
 # Otras propiedades globales
 var mouse_sens := 0.5
