@@ -37,4 +37,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_delay_timer_timeout() -> void:
 	can_move = true  # Permite el movimiento después de 2.3 segundos
 	recibe_danio=true # permite recibir daño
-	
+
+# daño a player
+func _on_area_daño_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player") and body.has_method("take_damage"):
+		body.take_damage(damage)

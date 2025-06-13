@@ -46,3 +46,9 @@ func _on_salto_timer_timeout():
 				$Sprite2D.flip_h = true
 			etapa = 0
 	etapa += 1
+
+# daño a player
+func _on_area_daño_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player") and body.has_method("take_damage"):
+		body.take_damage(damage)
+		
