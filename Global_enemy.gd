@@ -17,8 +17,8 @@ var dificultad = 1
 var enemy_param = {
 	1:[50.0 * dificultad, 5.0 * dificultad , 0.1 * dificultad], # "Babosa"
 	2:[50.0 * dificultad , 5.0 * dificultad , 0.1 * dificultad], # "Lombriz"
-	3:[50.0 * dificultad, 5.0 * dificultad , 0.1 * dificultad], # "Bolita"
-	4:[50.0 * dificultad, 5.0 * dificultad , 0.1 * dificultad ], #"Langosta"
+	3:[50.0 * dificultad, 5.0 * dificultad , 1 * dificultad], # "Bolita"
+	4:[50.0 * dificultad, 5.0 * dificultad , 0.5 * dificultad ], #"Langosta"
 	5:[200.0 * dificultad, 50.0 * dificultad , 2.0 * dificultad],# "Araña"
 	6:[5.0 * dificultad, 10.0 * dificultad , 0.1 * dificultad] # arañas pequeñas
 }

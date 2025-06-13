@@ -1,32 +1,48 @@
 extends EnemigoBase
 class_name Bolita
 
-
-
-var velocidad_actual : float
-var timer_acelerar := Timer.new()
+var salto_timer := Timer.new()
+var etapa=1
 
 func _ready():
-	velocidad_actual = veloci * 0.2  # velocidad inicial lenta
+	$Sprite2D.texture = load(sprite)
+	$Sprite2D.modulate = Color(red, green, blue)  # Dejado igual que tu código original
 	cpu_particles = get_node("CPUParticles2D")  # o $CPUParticles2D
+	# Configurar el timer de salto
+	salto_timer.wait_time = 2.1
+	salto_timer.one_shot = false
+	salto_timer.connect("timeout", Callable(self, "_on_salto_timer_timeout"))
+	add_child(salto_timer)
+	salto_timer.start()
 
-	timer_acelerar.wait_time = 2.0  # después de 2 segundos acelera
-	timer_acelerar.one_shot = true
-	timer_acelerar.connect("timeout", Callable(self, "_on_timer_acelerar_timeout"))
-	add_child(timer_acelerar)
-	timer_acelerar.start()
-
-func _physics_process(_delta):
+func _physics_process(_delta): 
 	move_and_collide(movimiento)
-	set_vector(get_node("/root/main_game/player").global_position - global_position)
+#	
+
+func _on_salto_timer_timeout():
 	
-
-func set_vector(vector):
-	movimiento = vector.normalized() * velocidad_actual
-	if movimiento.x > 0:
-		$AnimationPlayer.play("right")
-	else:
-		$AnimationPlayer.play("left")
-
-func _on_timer_acelerar_timeout():
-	velocidad_actual = 2.0  # velocidad rápida fija
+	match etapa:
+		1:
+			recibe_danio=true
+			var direccion = get_node("/root/main_game/player").global_position - global_position
+			movimiento = direccion.normalized() * veloci
+			$AnimationPlayer.play("anda")
+			if movimiento.x > 0:
+				$Sprite2D.flip_h = false
+			else:
+				$Sprite2D.flip_h = true
+			
+		2:
+			recibe_danio=false
+			var direccion = get_node("/root/main_game/player").global_position - global_position
+			# Elige aleatoriamente entre perpendicular izquierda o derecha
+			var sentido = 1 if randf() > 0.5 else -1
+			var movimiento = direccion.normalized().rotated(deg_to_rad(90 * sentido)) * veloci
+			
+			$AnimationPlayer.play("rueda")
+			if movimiento.x > 0:
+				$Sprite2D.flip_h = false
+			else:
+				$Sprite2D.flip_h = true
+			etapa = 0
+	etapa += 1
