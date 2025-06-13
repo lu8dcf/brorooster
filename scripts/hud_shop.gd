@@ -29,7 +29,6 @@ var selected_shop_item_index = -1  # Índice del item seleccionado en la tienda
 
 #$ panel inventario
 var selected_slot_index = -1  # -1 significa que no hay slot seleccionado
-var cant_weapon = 0
 
 @onready var info_label = $panel_inventory/Label
 # Referencias a los slots (asegúrate de que las rutas son correctas en tu escena)
@@ -155,7 +154,7 @@ func update_character():
 	
 	
 func update_inventory():
-	cant_weapon = 0 #resetear contador
+	var weapon_count = 0 #resetear contador
 	
 	for i in range(6):
 		var item = Global.inventory_player[i]
@@ -163,7 +162,7 @@ func update_inventory():
 		# Asegúrate de que estos nodos existen en tu escena InventorySlot
 		var portrait = slot.get_node("TextureRect") # o "Sprite2D" según tu escena
 		if item is ArmaData:
-			cant_weapon+=1
+			weapon_count +=1
 			portrait.texture = item.sprite  # Usamos _texture que es el icono
 			portrait.visible = true
 		else:
@@ -173,7 +172,7 @@ func update_inventory():
 				_reset_slot_color(i)
 				selected_slot_index = -1
 	# Actualizar mensaje según cantidad de armas
-	if cant_weapon <= 1:
+	if weapon_count  <= 1:
 		info_label.text = "Te queda solo un arma..."
 	else:
 		info_label.text = ""
@@ -224,6 +223,7 @@ func _on_shop_slot_pressed(index: int):
 	# Si el slot está vacío, no hacer nada
 	if item == null:
 		return
+		
 	# Verificar si es un ArmaData y si hay suficiente maíz
 	if item is ArmaData and GlobalOleada.maiz >= item.costo:
 		# Verificar si hay espacio en el inventario
@@ -242,6 +242,10 @@ func _on_shop_slot_pressed(index: int):
 			# Actualizar las visualizaciones
 			update_inventory()
 			update_shop()
+			
+			# Esperar un frame antes de verificar combinaciones
+			await get_tree().process_frame            
+			update_merge()
 			
 			# Sonido de compra exitosa
 			$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/shop_buy.wav")
@@ -296,16 +300,40 @@ func find_mergeable_weapons():
 	for item in Global.inventory_player:
 		if item is ArmaData:
 			weapons.append(item)
+			
+	# Buscar EXACTAMENTE 2 armas idénticas (no más)
+	var weapon_counts = {}
+	for weapon in weapons:
+		var key = weapon.nombre + str(weapon._rarety)
+		if not weapon_counts.has(key):
+			weapon_counts[key] = []
+		weapon_counts[key].append(weapon)
 	
-	# Buscar pares de armas iguales
-	for i in range(weapons.size()):
-		for j in range(i + 1, weapons.size()):
-			if weapons[i].nombre == weapons[j].nombre and weapons[i]._rarety == weapons[j]._rarety:
-				merge_weapons = [weapons[i], weapons[j]]
-				return
+	# Encontrar el primer par de armas idénticas
+	for key in weapon_counts:
+		if weapon_counts[key].size() >= 2:
+			merge_weapons = [weapon_counts[key][0], weapon_counts[key][1]]
+			return
+	#
+	## Buscar pares de armas iguales
+	#for i in range(weapons.size()):
+		#for j in range(i + 1, weapons.size()):
+			#if weapons[i].nombre == weapons[j].nombre and weapons[i]._rarety == weapons[j]._rarety:
+				#merge_weapons = [weapons[i], weapons[j]]
+				#return
 
 func _on_merge_result_pressed():
 	if merge_weapons.size() != 2 or merged_result == null:
+		return
+	
+	# Verificación adicional para asegurar que las armas aún existen
+	var valid_weapons = 0
+	for weapon in merge_weapons:
+		if weapon in Global.inventory_player:
+			valid_weapons += 1
+	
+	if valid_weapons != 2:
+		print("Error: Las armas a combinar ya no están en el inventario")
 		return
 	
 	# Eliminar las armas originales del inventario
@@ -356,23 +384,30 @@ func _on_vender_pressed():
 		return  # No hay nada seleccionado
 	
 	var item = Global.inventory_player[selected_slot_index]
-	if item is ArmaData and cant_weapon>1:
-		# Añadir el valor de venta al maíz
-		GlobalOleada.maiz += (item.costo+100)/2 # modificar ESTOO
-		maiz.text = str(GlobalOleada.maiz)
-		
-		# Eliminar el objeto del inventario
-		Global.inventory_player[selected_slot_index] = null
-		$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/shop_sold.wav")
-		$AudioStreamPlayer2D.play()
-		
-		# Actualizar la visualización del inventario
-		update_inventory()
-		
-		# Deseleccionar el slot
-		_reset_slot_color(selected_slot_index)
-		selected_slot_index = -1
-	info_label.text = "Te queda solo un arma.."
+	if item is ArmaData:
+		var weapon_count = 0
+		for weapon in Global.inventory_player:
+			if weapon is ArmaData:
+				weapon_count += 1
+		if weapon_count > 1:
+			# Añadir el valor de venta al maíz
+			GlobalOleada.maiz += (item.costo+100)/2 # modificar ESTOO
+			maiz.text = str(GlobalOleada.maiz)
+			
+			# Eliminar el objeto del inventario
+			Global.inventory_player[selected_slot_index] = null
+			$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/shop_sold.wav")
+			$AudioStreamPlayer2D.play()
+			
+			# Actualizar la visualización del inventario
+			update_inventory()
+			update_merge()
+			
+			# Deseleccionar el slot
+			_reset_slot_color(selected_slot_index)
+			selected_slot_index = -1
+		else:
+			info_label.text = "Te queda solo un arma.."
 
 func _highlight_slot(index: int):
 	# Cambiar el color del botón seleccionado

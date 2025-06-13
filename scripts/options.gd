@@ -111,8 +111,10 @@ func _on_btn_atras_pressed() -> void:
 func _on_btn_aceptar_pressed() -> void:
 	#acepta los cambios hechos en las opciones
 	# Guardar los cambios y volver al menú principal
+	
 	save_settings()
 	save_volumes()
+	aplicar_modo_pantalla()
 	get_tree().change_scene_to_file("res://scenes/hud/Main_menu.tscn")
 
 func save_settings():
@@ -238,12 +240,10 @@ func _on_dificil_pressed() -> void:
 
 func _on_btn_completa_pressed() -> void:
 	pantalla_completa = true
-	aplicar_modo_pantalla()
 	actualizar_botones_pantalla()
 	guardar_configuracion_pantalla()
 
 func _on_btn_ventana_pressed() -> void:
 	pantalla_completa = false
-	aplicar_modo_pantalla()
 	actualizar_botones_pantalla()
 	guardar_configuracion_pantalla()
