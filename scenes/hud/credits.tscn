@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bh6kdgir6qygq"]
 
 [ext_resource type="Script" uid="uid://bfwyx7larm70p" path="res://scripts/credits.gd" id="1_m24lg"]
-[ext_resource type="Texture2D" uid="uid://yg0kw47ba74k" path="res://assets/graphics/menu_graphics/creditos.png" id="2_3v576"]
+[ext_resource type="Texture2D" uid="uid://nllh6bkplffe" path="res://assets/graphics/menu_graphics/creditos.png" id="2_3v576"]
 
 [sub_resource type="Animation" id="Animation_f1hd7"]
 resource_name = "Creditos"
@@ -85,6 +85,7 @@ autoplay = true
 libraries = {
 &"": SubResource("AnimationLibrary_351af")
 }
+movie_quit_on_finish = true
 
 [node name="Creditos" type="Sprite2D" parent="."]
 position = Vector2(577, 1212)
