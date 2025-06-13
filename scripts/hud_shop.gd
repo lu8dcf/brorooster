@@ -114,7 +114,6 @@ func _on_timer_timeout():
 	tiempo_restante -= 1
 	GlobalOleada.tiempo_restante_seleccion = tiempo_restante
 	GlobalOleada.time_changed.emit(tiempo_restante)
-	print (tiempo_restante)
 		
 	if tiempo_restante <= 0:
 		# Opcional: Detener el timer al llegar a 0
@@ -234,11 +233,10 @@ func _on_shop_slot_pressed(index: int):
 			maiz.text = str(GlobalOleada.maiz)
 			
 			# Añadir al inventario
-			Global.inventory_player[empty_slot] = item
+			Global.inventory_player[empty_slot] = item.duplicate()
 			
 			# Marcar el slot de la tienda como vacío (null) en lugar de eliminarlo
 			shop_items[index] = null
-			
 			# Actualizar las visualizaciones
 			update_inventory()
 			update_shop()
@@ -247,6 +245,9 @@ func _on_shop_slot_pressed(index: int):
 			await get_tree().process_frame            
 			update_merge()
 			
+			# Debug: Verificar rareza
+			print("Arma comprada - Rareza:", Global.inventory_player[empty_slot]._rarety)
+			print("Arma en tienda - Rareza:", item._rarety if item else "N/A")
 			# Sonido de compra exitosa
 			$AudioStreamPlayer2D.stream = load("res://assets/sound/menus_effects/shop_buy.wav")
 			$AudioStreamPlayer2D.play()
@@ -268,59 +269,46 @@ func update_merge():
 	# Buscar armas para combinar
 	find_mergeable_weapons()
 	if merge_weapons.size() == 2:
-		#mostrar primer arma
+		# Mostrar armas (solo visual, sin modificar)
 		var portrait1 = slots_merge["slot1"].get_node("TextureRect")
 		portrait1.texture = merge_weapons[0].sprite
 		portrait1.visible = true
 	
-		# Mostrar segunda arma
 		var portrait2 = slots_merge["slot2"].get_node("TextureRect")
 		portrait2.texture = merge_weapons[1].sprite
 		portrait2.visible = true
 		
-		# Calcular resultado de combinación
-		merged_result = GlobalWeapon.CombinarArma(merge_weapons[0])
+		# Calcular resultado (creando nueva instancia)
+		merged_result = GlobalWeapon.CombinarArma(merge_weapons[0].duplicate())  # Usar duplicate() para no modificar el original
 
 		# Mostrar resultado
 		var result_portrait = slots_merge["result"].get_node("TextureRect")
 		result_portrait.texture = merged_result.sprite
 		result_portrait.visible = true
-		# Conectar señal del botón de resultado
-		slots_merge["result"].pressed.connect(_on_merge_result_pressed)
 	else:
-		var label_info = $panel_merge/Label3
-		label_info.text = "no hay armas para combinar"
-		print("no se pudo")
+		$panel_merge/Label3.text = "No hay armas para combinar"
 
 func find_mergeable_weapons():
 	merge_weapons.clear()
 	
-	# Buscar todas las armas en el inventario
-	var weapons = []
-	for item in Global.inventory_player:
-		if item is ArmaData:
-			weapons.append(item)
-			
-	# Buscar EXACTAMENTE 2 armas idénticas (no más)
-	var weapon_counts = {}
-	for weapon in weapons:
-		var key = weapon.nombre + str(weapon._rarety)
-		if not weapon_counts.has(key):
-			weapon_counts[key] = []
-		weapon_counts[key].append(weapon)
+	# Usar diccionario para agrupar armas por nombre y rareza
+	var weapon_groups = {}
 	
-	# Encontrar el primer par de armas idénticas
-	for key in weapon_counts:
-		if weapon_counts[key].size() >= 2:
-			merge_weapons = [weapon_counts[key][0], weapon_counts[key][1]]
+	# Recorrer inventario sin modificar
+	for i in range(Global.inventory_player.size()):
+		var item = Global.inventory_player[i]
+		if item is ArmaData:
+			var key = item.nombre + "_" + str(item._rarety)  # Clave única por nombre y rareza
+			if not weapon_groups.has(key):
+				weapon_groups[key] = []
+			weapon_groups[key].append(item)
+	
+	# Buscar grupos con exactamente 2 armas idénticas
+	for key in weapon_groups:
+		if weapon_groups[key].size() >= 2:
+			# Tomar solo las primeras 2 armas del grupo
+			merge_weapons = [weapon_groups[key][0], weapon_groups[key][1]]
 			return
-	#
-	## Buscar pares de armas iguales
-	#for i in range(weapons.size()):
-		#for j in range(i + 1, weapons.size()):
-			#if weapons[i].nombre == weapons[j].nombre and weapons[i]._rarety == weapons[j]._rarety:
-				#merge_weapons = [weapons[i], weapons[j]]
-				#return
 
 func _on_merge_result_pressed():
 	if merge_weapons.size() != 2 or merged_result == null:

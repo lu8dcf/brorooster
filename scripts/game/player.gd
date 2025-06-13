@@ -247,7 +247,7 @@ func take_damage(amount: float):
 	# $AnimationPlayer.play("hit")
 	armor = Global.currentPlayer._armor
 	var damage_taken = amount * armor
-	#Global.currentPlayer.take_damage(damage_taken)
+	Global.currentPlayer.take_damage(damage_taken)
 	#print (Global.currentPlayer._health, "sacar: ", damage_taken, "armor,", armor)
 	if Global.currentPlayer._health <= 0:
 		die()

@@ -38,13 +38,15 @@ func get_danioGlobal() -> float:
 
 
 func CombinarArma(arma : ArmaData) -> ArmaData:
+	# Crear copia independiente del arma
+	var nueva_arma = arma.duplicate()
 	#solo modifico y retorno
-	var sprite_path = sprite_arma_default + str(arma.id) + "_nivel" + str(arma._rarety+1) + ".png"
-	arma.sprite = load(sprite_path)
-	arma._rarety +=1
-	arma.damage +=  randf_range(4,11) #esto se puede mejorar
-	return arma
-pass
+	var sprite_path = sprite_arma_default + str(nueva_arma.id) + "_nivel" + str(nueva_arma._rarety+1) + ".png"
+	nueva_arma.sprite = load(sprite_path)
+	nueva_arma._rarety +=1
+	nueva_arma.damage +=  randf_range(4,11) #esto se puede mejorar
+	return nueva_arma
+
 
 func cambiarArma(arma: ArmaData):
 	cambioArma.emit(arma)
