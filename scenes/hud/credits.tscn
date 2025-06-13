@@ -1,6 +1,68 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh6kdgir6qygq"]
+[gd_scene load_steps=6 format=3 uid="uid://bh6kdgir6qygq"]
 
 [ext_resource type="Script" uid="uid://bfwyx7larm70p" path="res://scripts/credits.gd" id="1_m24lg"]
+[ext_resource type="Texture2D" uid="uid://yg0kw47ba74k" path="res://assets/graphics/menu_graphics/creditos.png" id="2_3v576"]
+
+[sub_resource type="Animation" id="Animation_f1hd7"]
+resource_name = "Creditos"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Creditos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 34.67),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(577, 1212), Vector2(577, -592.95)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Creditos:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 36.5333, 39.67),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aehmg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Creditos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(577, 1212)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Creditos:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_351af"]
+_data = {
+&"Creditos": SubResource("Animation_f1hd7"),
+&"RESET": SubResource("Animation_aehmg")
+}
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -16,3 +78,15 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_351af")
+}
+
+[node name="Creditos" type="Sprite2D" parent="."]
+position = Vector2(577, 1212)
+scale = Vector2(1.36412, 1.36412)
+texture = ExtResource("2_3v576")
